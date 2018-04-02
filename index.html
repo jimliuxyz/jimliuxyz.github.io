@@ -285,6 +285,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/Hexo安裝紀錄/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/02/Hexo安裝紀錄/" itemprop="url">Hexo安裝紀錄</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/紀錄/" itemprop="url" rel="index">
+                    <span itemprop="name">紀錄</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">Hexo</a></p>
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github</p>
+<h5 id="安裝node-js"><a href="#安裝node-js" class="headerlink" title="安裝node.js"></a>安裝node.js</h5><blockquote>
+<p>node.js唯一本地端的js執行平台 用途廣泛</p>
+</blockquote>
+<h5 id="npm-安裝node-js時會一並安裝"><a href="#npm-安裝node-js時會一並安裝" class="headerlink" title="npm (安裝node.js時會一並安裝)"></a>npm (安裝node.js時會一並安裝)</h5><blockquote>
+<p>一個套件管理系統 能透過命令列安裝套件</p>
+</blockquote>
+<h5 id="安裝git"><a href="#安裝git" class="headerlink" title="安裝git"></a>安裝git</h5><blockquote>
+<p>版本控管工具 做為本地端工具與github連結</p>
+</blockquote>
+<h5 id="github"><a href="#github" class="headerlink" title="github"></a>github</h5><blockquote>
+<p>一個線上的版本控管工具 其附加功能使其能成為http伺服器<br>其Repo需命名為”ACCOUNT.github.io”</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//安裝hexo命令列工具</span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">//在該目錄建立node.js執行環境與repo</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">//在該目錄建立blog</span><br><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//發佈到git的工具</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">//使網頁能即時自動更新的工具</span><br><span class="line">npm install hexo-browsersync --save</span><br><span class="line"></span><br><span class="line">//複製慣用的blog主題</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//新增文章</span><br><span class="line">hexo new test_my_site</span><br><span class="line"></span><br><span class="line">//產生文件</span><br><span class="line">hexo g --watch</span><br><span class="line"></span><br><span class="line">//上傳到git</span><br><span class="line">hexo d</span><br><span class="line"></span><br><span class="line">//啟動本地端http伺服器</span><br><span class="line">hexo</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/My-New-Post3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -616,7 +774,7 @@
       
         
           <div class="note info"><p>Content (md partial supported) </p></div>
-<p>123<br>
+<p>12345<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/02/My-New-Post/#more" rel="contents">
@@ -831,7 +989,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -842,7 +1000,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分類</span>
                 </a>
               </div>

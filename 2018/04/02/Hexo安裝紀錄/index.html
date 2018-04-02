@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="JimLiuXyz">
 <meta property="og:description" content="Hexo 、NexT 目標本地端透過Hexo建立網站骨架 並將markdown文章轉為html 發佈在github做為blog網站">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T13:37:57.000Z">
+<meta property="og:updated_time" content="2018-04-02T13:54:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo安裝紀錄">
 <meta name="twitter:description" content="Hexo 、NexT 目標本地端透過Hexo建立網站骨架 並將markdown文章轉為html 發佈在github做為blog網站">
@@ -392,7 +392,9 @@
 <p>一個線上的版本控管工具 其附加功能使其能成為http伺服器<br>其Repo需命名為”ACCOUNT.github.io”</p>
 </blockquote>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安裝hexo命令列工具</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br><span class="line"><span class="comment">#在該目錄建立node.js執行環境與repo</span></span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="comment">#在該目錄建立blog</span></span><br><span class="line">hexo init blog</span><br><span class="line"></span><br><span class="line"><span class="comment">#發佈到git的工具</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line"><span class="comment">#使網頁能即時自動更新的工具</span></span><br><span class="line">npm install hexo-browsersync --save</span><br><span class="line"></span><br><span class="line"><span class="comment">#下載慣用的blog主題佈局(NexT)</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<hr>
 <h1 id="常規操作"><a href="#常規操作" class="headerlink" title="常規操作"></a>常規操作</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#新增文章</span></span><br><span class="line">hexo new <span class="string">"My New Post"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#啟動本地端server</span></span><br><span class="line">hexo server</span><br><span class="line"></span><br><span class="line"><span class="comment">#產生文件</span></span><br><span class="line">hexo g --watch</span><br><span class="line"></span><br><span class="line"><span class="comment">#上傳到git</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<hr>
 <h1 id="語法測試"><a href="#語法測試" class="headerlink" title="語法測試"></a>語法測試</h1><div class="note info"><p>測試</p></div>
 <p><span class="inline-green">測試</span> <span class="inline-path">測試</span></p>
 

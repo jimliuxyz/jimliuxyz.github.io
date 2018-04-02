@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-tw">
+<html class="theme-next mist use-motion" lang="zh-tw">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="Hexo 前提本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github 安裝node.js node.js唯一本地端的js執行平台 用途廣泛  npm (安裝node.js時會一並安裝) 一個套件管理系統 能透過命令列安裝套件  安裝git 版本控管工具 做為本地端工具與github連結  github 一個線上的版本控管工具 其附加功能使其能成為http伺服器其Rep">
+<meta name="description" content="Hexo 、NexT 目標本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github做為blog網站">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo安裝紀錄">
 <meta property="og:url" content="http://yoursite.com/2018/04/02/Hexo安裝紀錄/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
-<meta property="og:description" content="Hexo 前提本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github 安裝node.js node.js唯一本地端的js執行平台 用途廣泛  npm (安裝node.js時會一並安裝) 一個套件管理系統 能透過命令列安裝套件  安裝git 版本控管工具 做為本地端工具與github連結  github 一個線上的版本控管工具 其附加功能使其能成為http伺服器其Rep">
+<meta property="og:description" content="Hexo 、NexT 目標本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github做為blog網站">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T12:26:30.000Z">
+<meta property="og:updated_time" content="2018-04-02T13:34:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo安裝紀錄">
-<meta name="twitter:description" content="Hexo 前提本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github 安裝node.js node.js唯一本地端的js執行平台 用途廣泛  npm (安裝node.js時會一並安裝) 一個套件管理系統 能透過命令列安裝套件  安裝git 版本控管工具 做為本地端工具與github連結  github 一個線上的版本控管工具 其附加功能使其能成為http伺服器其Rep">
+<meta name="twitter:description" content="Hexo 、NexT 目標本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github做為blog網站">
 
 
 
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -377,8 +377,8 @@
       
 
       
-        <p><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">Hexo</a></p>
-<h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github</p>
+        <p><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">Hexo</a> 、<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
+<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><p>本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github做為blog網站<br><a id="more"></a></p>
 <h4 id="安裝node-js"><a href="#安裝node-js" class="headerlink" title="安裝node.js"></a>安裝node.js</h4><blockquote>
 <p>node.js唯一本地端的js執行平台 用途廣泛</p>
 </blockquote>
@@ -391,9 +391,10 @@
 <h4 id="github"><a href="#github" class="headerlink" title="github"></a>github</h4><blockquote>
 <p>一個線上的版本控管工具 其附加功能使其能成為http伺服器<br>其Repo需命名為”ACCOUNT.github.io”</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//安裝hexo命令列工具</span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">//在該目錄建立node.js執行環境與repo</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">//在該目錄建立blog</span><br><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//發佈到git的工具</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">//使網頁能即時自動更新的工具</span><br><span class="line">npm install hexo-browsersync --save</span><br><span class="line"></span><br><span class="line">//複製慣用的blog主題</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//新增文章</span><br><span class="line">hexo new test_my_site</span><br><span class="line"></span><br><span class="line">//產生文件</span><br><span class="line">hexo g --watch</span><br><span class="line"></span><br><span class="line">//上傳到git</span><br><span class="line">hexo d</span><br><span class="line"></span><br><span class="line">//啟動本地端http伺服器</span><br><span class="line">hexo</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安裝hexo命令列工具</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br><span class="line"><span class="comment">#在該目錄建立node.js執行環境與repo</span></span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="comment">#在該目錄建立blog</span></span><br><span class="line">hexo init blog</span><br><span class="line"></span><br><span class="line"><span class="comment">#發佈到git的工具</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line"><span class="comment">#使網頁能即時自動更新的工具</span></span><br><span class="line">npm install hexo-browsersync --save</span><br><span class="line"></span><br><span class="line"><span class="comment">#下載慣用的blog主題佈局(NexT)</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<h1 id="常規操作"><a href="#常規操作" class="headerlink" title="常規操作"></a>常規操作</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#新增文章</span></span><br><span class="line">hexo new <span class="string">"My New Post"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#啟動本地端server</span></span><br><span class="line">hexo server</span><br><span class="line"></span><br><span class="line"><span class="comment">#產生文件</span></span><br><span class="line">hexo g --watch</span><br><span class="line"></span><br><span class="line"><span class="comment">#上傳到git</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h1 id="語法測試"><a href="#語法測試" class="headerlink" title="語法測試"></a>語法測試</h1><div class="note info"><p>測試</p></div>
+<p><span class="inline-green">測試</span> <span class="inline-path">測試</span></p>
 
       
     </div>
@@ -414,22 +415,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/02/My-New-Post3/" rel="next" title="My New Post3">
-                <i class="fa fa-chevron-left"></i> My New Post3
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -503,7 +488,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -576,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前提"><span class="nav-number">1.</span> <span class="nav-text">前提</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝node-js"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">安裝node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-安裝node-js時會一並安裝"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">npm (安裝node.js時會一並安裝)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝git"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">安裝git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">github</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目標"><span class="nav-number">1.</span> <span class="nav-text">目標</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝node-js"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">安裝node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-安裝node-js時會一並安裝"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">npm (安裝node.js時會一並安裝)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝git"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">安裝git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">github</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常規操作"><span class="nav-number">2.</span> <span class="nav-text">常規操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#語法測試"><span class="nav-number">3.</span> <span class="nav-text">語法測試</span></a></li></ol></div>
             
 
           </div>
@@ -614,7 +599,7 @@
 
 
 
-  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -713,13 +698,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Hexo安裝紀錄]]></title>
     <url>%2F2018%2F04%2F02%2FHexo%E5%AE%89%E8%A3%9D%E7%B4%80%E9%8C%84%2F</url>
-    <content type="text"><![CDATA[Hexo 、NexT 目標本地端透過Hexo建立網站骨架 並將markdown轉為html 發佈在github做為blog網站 安裝node.js node.js唯一本地端的js執行平台 用途廣泛 npm (安裝node.js時會一並安裝) 一個套件管理系統 能透過命令列安裝套件 安裝git 版本控管工具 做為本地端工具與github連結 github 一個線上的版本控管工具 其附加功能使其能成為http伺服器其Repo需命名為”ACCOUNT.github.io” 1234567891011121314151617#安裝hexo命令列工具npm install -g hexo-cli#在該目錄建立node.js執行環境與reponpm install#在該目錄建立bloghexo init blog#發佈到git的工具npm install hexo-deployer-git --save#使網頁能即時自動更新的工具npm install hexo-browsersync --save#下載慣用的blog主題佈局(NexT)git clone https://github.com/iissnan/hexo-theme-next themes/next 常規操作1234567891011#新增文章hexo new "My New Post"#啟動本地端serverhexo server#產生文件hexo g --watch#上傳到githexo d 語法測試測試 測試 測試]]></content>
+    <content type="text"><![CDATA[Hexo 、NexT 目標本地端透過Hexo建立網站骨架 並將markdown文章轉為html 發佈在github做為blog網站 安裝node.js node.js為一本地端的js執行平台 用途廣泛 npm (安裝node.js時會一並安裝) 一個套件管理系統 能透過命令列安裝套件 安裝git 版本控管工具 做為本地端工具與github連結 github 一個線上的版本控管工具 其附加功能使其能成為http伺服器其Repo需命名為”ACCOUNT.github.io” 1234567891011121314151617#安裝hexo命令列工具npm install -g hexo-cli#在該目錄建立node.js執行環境與reponpm install#在該目錄建立bloghexo init blog#發佈到git的工具npm install hexo-deployer-git --save#使網頁能即時自動更新的工具npm install hexo-browsersync --save#下載慣用的blog主題佈局(NexT)git clone https://github.com/iissnan/hexo-theme-next themes/next 常規操作1234567891011#新增文章hexo new "My New Post"#啟動本地端serverhexo server#產生文件hexo g --watch#上傳到githexo d 語法測試測試 測試 測試]]></content>
       <categories>
         <category>紀錄</category>
       </categories>

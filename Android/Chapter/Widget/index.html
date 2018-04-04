@@ -81,14 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="Widget 一個自訂的service(app)顯示且整合於WorkSpace中 整合困難的部分在於launcher與widget執行於兩個不同的process中   AppWidget 即自訂的app AppWidgetHost 一個AppWidget的宿主 負責與AppWidget交互 AppWidgetHostView  AppWidgetManager  AppWidgetProvider">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Widget">
+<meta property="og:url" content="http://yoursite.com/Android/Chapter/Widget/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="Widget 一個自訂的service(app)顯示且整合於WorkSpace中 整合困難的部分在於launcher與widget執行於兩個不同的process中   AppWidget 即自訂的app AppWidgetHost 一個AppWidget的宿主 負責與AppWidget交互 AppWidgetHostView  AppWidgetManager  AppWidgetProvider">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:updated_time" content="2018-04-04T08:52:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Widget">
+<meta name="twitter:description" content="Widget 一個自訂的service(app)顯示且整合於WorkSpace中 整合困難的部分在於launcher與widget執行於兩個不同的process中   AppWidget 即自訂的app AppWidgetHost 一個AppWidget的宿主 負責與AppWidget交互 AppWidgetHostView  AppWidgetManager  AppWidgetProvider">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Android/Chapter/Widget/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>Widget | JimLiuXyz</title>
   
 
 
@@ -273,40 +276,160 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Chapter/Widget/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Widget</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:52:02+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="Widget"><a href="#Widget" class="headerlink" title="Widget"></a>Widget</h2><blockquote>
+<p>一個自訂的service(app)顯示且整合於WorkSpace中 整合困難的部分在於launcher與widget執行於兩個不同的process中</p>
+</blockquote>
+<ul>
+<li>AppWidget 即自訂的app</li>
+<li>AppWidgetHost 一個AppWidget的宿主 負責與AppWidget交互</li>
+<li><p>AppWidgetHostView</p>
+</li>
+<li><p>AppWidgetManager</p>
+</li>
+<li>AppWidgetProvider 提供view的更新 是一個BroadReceiver (即使是空的也無所謂)</li>
+<li>AppWidgetProviderInfo 提供資料的更新(mata-data)</li>
+</ul>
+<blockquote>
+<p>寫code只需要AppWidgetProvider與Manifest+provider_info+layout的設定即可</p>
+</blockquote>
+<h4 id="RemoteViews"><a href="#RemoteViews" class="headerlink" title="RemoteViews"></a>RemoteViews</h4><blockquote>
+<p>一個能夠對映view的投射物件(兩者都從相同的layout建立) 透過RomoteViews操作view 再將此RomoteViews丟到遠端 遠端即可知道如何更新實際的view 達到跨process的view操作</p>
+</blockquote>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android/Chapter/Animation/" rel="next" title="Animation">
+                <i class="fa fa-chevron-left"></i> Animation
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android/Chapter/Misc/" rel="prev" title="Misc">
+                Misc <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +438,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +462,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +550,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Widget"><span class="nav-number">1.</span> <span class="nav-text">Widget</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RemoteViews"><span class="nav-number">1.0.1.</span> <span class="nav-text">RemoteViews</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

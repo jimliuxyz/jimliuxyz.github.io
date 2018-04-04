@@ -81,14 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="Broadcast 發送或接收系統事件廣播 如低電量/簡訊生命週期在onReceive()結束後終止以靜態方式(manifest)註冊接收器 可以不用開app 也能接收事件  registerReceiver(new BroadcastReceiver()&amp;#123;&amp;#125;, new IntentFilter(&quot;action...&quot;));unregisterReceiver(mybc);In">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Broadcast">
+<meta property="og:url" content="http://yoursite.com/Android/Chapter/Broadcast/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="Broadcast 發送或接收系統事件廣播 如低電量/簡訊生命週期在onReceive()結束後終止以靜態方式(manifest)註冊接收器 可以不用開app 也能接收事件  registerReceiver(new BroadcastReceiver()&amp;#123;&amp;#125;, new IntentFilter(&quot;action...&quot;));unregisterReceiver(mybc);In">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:updated_time" content="2018-04-04T11:59:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Broadcast">
+<meta name="twitter:description" content="Broadcast 發送或接收系統事件廣播 如低電量/簡訊生命週期在onReceive()結束後終止以靜態方式(manifest)註冊接收器 可以不用開app 也能接收事件  registerReceiver(new BroadcastReceiver()&amp;#123;&amp;#125;, new IntentFilter(&quot;action...&quot;));unregisterReceiver(mybc);In">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Android/Chapter/Broadcast/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>Broadcast | JimLiuXyz</title>
   
 
 
@@ -273,40 +276,142 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Chapter/Broadcast/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Broadcast</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:59:35+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a>Broadcast</h2><blockquote>
+<p>發送或接收系統事件廣播 如低電量/簡訊<br>生命週期在onReceive()結束後終止<br>以靜態方式(manifest)註冊接收器 可以不用開app 也能接收事件</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">registerReceiver(<span class="keyword">new</span> BroadcastReceiver()&#123;&#125;, <span class="keyword">new</span> IntentFilter(<span class="string">"action..."</span>));</span><br><span class="line">unregisterReceiver(mybc);</span><br><span class="line"></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyBC.class)</span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"action..."</span>)</span><br><span class="line">intent.putExtra(<span class="string">"data"</span>, <span class="string">"mydata"</span>);</span><br><span class="line"></span><br><span class="line">sendBroiadcast(intent);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line">    onReceive(content, intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或以常駐的方式(不論app是否啟動或kill都能被執行)</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MyReceiver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.EDIT"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android/Chapter/DevLog/" rel="next" title="Android Dev Log">
+                <i class="fa fa-chevron-left"></i> Android Dev Log
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +420,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +444,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +532,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Broadcast"><span class="nav-number">1.</span> <span class="nav-text">Broadcast</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

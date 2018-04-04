@@ -81,14 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="Storage internal與external是以app間分享的角度,external表示可被分享   無論internal或external 在app移除都會跟著移除 除非用是PublicDirectory  internal /data/data/ 被連結到(/data/user/...)   一定存在 別的app不能訪問 用Context.filesDir取得  primary exte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storage">
+<meta property="og:url" content="http://yoursite.com/Android/Chapter/Storage/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="Storage internal與external是以app間分享的角度,external表示可被分享   無論internal或external 在app移除都會跟著移除 除非用是PublicDirectory  internal /data/data/ 被連結到(/data/user/...)   一定存在 別的app不能訪問 用Context.filesDir取得  primary exte">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:updated_time" content="2018-04-04T10:38:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Storage">
+<meta name="twitter:description" content="Storage internal與external是以app間分享的角度,external表示可被分享   無論internal或external 在app移除都會跟著移除 除非用是PublicDirectory  internal /data/data/ 被連結到(/data/user/...)   一定存在 別的app不能訪問 用Context.filesDir取得  primary exte">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Android/Chapter/Storage/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>Storage | JimLiuXyz</title>
   
 
 
@@ -273,40 +276,164 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Chapter/Storage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Storage</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T18:37:14+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h2><blockquote>
+<p>internal與external是以app間分享的角度,external表示可被分享</p>
+</blockquote>
+<blockquote>
+<p>無論internal或external 在app移除都會跟著移除 除非用是PublicDirectory</p>
+</blockquote>
+<h4 id="internal"><a href="#internal" class="headerlink" title="internal"></a>internal</h4><blockquote>
+<p>/data/data/ <code>被連結到(/data/user/...)</code></p>
+</blockquote>
+<blockquote>
+<p>一定存在 別的app不能訪問 用Context.filesDir取得</p>
+</blockquote>
+<h4 id="primary-external"><a href="#primary-external" class="headerlink" title="primary external"></a>primary external</h4><blockquote>
+<p>/Android/data/PACKAGE_NAME <code>被連結到(/storage/emulated/...)</code></p>
+</blockquote>
+<blockquote>
+<p>可能是<code>內部記憶體卡的分割</code>或<code>外部記憶裝置(Adoptable Storage)</code> 用Context.getExternalFilesDir取得</p>
+</blockquote>
+<h4 id="secondary-external"><a href="#secondary-external" class="headerlink" title="secondary external"></a>secondary external</h4><blockquote>
+<p>外部記憶裝置 不一定存在</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Context.filesDir (/data/data的連結)</span></span><br><span class="line">    /data/user/<span class="number">0</span>/PACKAGENAME/files</span><br><span class="line"></span><br><span class="line"><span class="comment">//Context.getExternalFilesDir</span></span><br><span class="line">    /storage/emulated/<span class="number">0</span>/Android/data/PACKAGENAME/files/Pictures</span><br><span class="line"></span><br><span class="line"><span class="comment">//Context.getExternalFilesDirs (Primary/Secondary)</span></span><br><span class="line">    /storage/emulated/<span class="number">0</span>/Android/data/PACKAGENAME/files/Pictures</span><br><span class="line">    /storage/<span class="number">12E9</span>-<span class="number">1105</span>/Android/data/PACKAGENAME/files/Pictures</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Environment.getExternalStorageDirectory</span></span><br><span class="line">    /storage/emulated/<span class="number">0</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//Environment.getExternalStoragePublicDirectory</span></span><br><span class="line">    /storage/emulated/<span class="number">0</span>/Pictures</span><br><span class="line">    </span><br><span class="line"><span class="comment">//Environment.getDataDirectory</span></span><br><span class="line">    /data</span><br><span class="line"><span class="comment">//Environment.getDownloadCacheDirectory</span></span><br><span class="line">    /cache</span><br><span class="line"><span class="comment">//Environment.getRootDirectory</span></span><br><span class="line">    /system</span><br><span class="line"><span class="comment">//Environment.getExternalStorageState</span></span><br><span class="line">    mounted</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android/Chapter/Layout/" rel="next" title="Layout">
+                <i class="fa fa-chevron-left"></i> Layout
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android/Chapter/Resource/" rel="prev" title="Resource">
+                Resource <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +442,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +466,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +554,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Storage"><span class="nav-number">1.</span> <span class="nav-text">Storage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#internal"><span class="nav-number">1.0.1.</span> <span class="nav-text">internal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#primary-external"><span class="nav-number">1.0.2.</span> <span class="nav-text">primary external</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#secondary-external"><span class="nav-number">1.0.3.</span> <span class="nav-text">secondary external</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

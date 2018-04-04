@@ -81,14 +81,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="編譯流程 Dalvik : Android的JVM dex : 類似jar appt：Android Asset Packaging Tool    MinifestMinifest-activity參數  Contextref    context可理解為app的執行環境 (包含狀態與工具)   ContextWrapper會包含一個Context實例(mBase)達到複製Context">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android環境概念">
+<meta property="og:url" content="http://yoursite.com/Android/Chapter/basic/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="編譯流程 Dalvik : Android的JVM dex : 類似jar appt：Android Asset Packaging Tool    MinifestMinifest-activity參數  Contextref    context可理解為app的執行環境 (包含狀態與工具)   ContextWrapper會包含一個Context實例(mBase)達到複製Context">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20161122102458470">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1311456-5ca2e2152180d6aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/623">
+<meta property="og:updated_time" content="2018-04-04T10:32:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Android環境概念">
+<meta name="twitter:description" content="編譯流程 Dalvik : Android的JVM dex : 類似jar appt：Android Asset Packaging Tool    MinifestMinifest-activity參數  Contextref    context可理解為app的執行環境 (包含狀態與工具)   ContextWrapper會包含一個Context實例(mBase)達到複製Context">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20161122102458470">
 
 
 
@@ -118,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Android/Chapter/basic/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>Android環境概念 | JimLiuXyz</title>
   
 
 
@@ -273,40 +279,170 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Chapter/basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Android環境概念</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:13:31+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <hr>
+<h1 id="編譯流程"><a href="#編譯流程" class="headerlink" title="編譯流程"></a>編譯流程</h1><ul>
+<li>Dalvik : Android的JVM</li>
+<li>dex : 類似jar</li>
+<li>appt：Android Asset Packaging Tool</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20161122102458470" alt="編譯流程"></p>
+<hr>
+<h1 id="Minifest"><a href="#Minifest" class="headerlink" title="Minifest"></a>Minifest</h1><p><a href="http://www.wenwenti.info/article/856135" target="_blank" rel="noopener">Minifest-activity參數</a></p>
+<hr>
+<h1 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h1><p><a href="https://www.jianshu.com/p/fb0681f5f12b" target="_blank" rel="noopener">ref</a></p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/1311456-5ca2e2152180d6aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/623" width="400" alt=""></p>
+<blockquote>
+<p>context可理解為app的執行環境 (包含狀態與工具)</p>
+</blockquote>
+<blockquote>
+<p>ContextWrapper會包含一個Context實例(mBase)達到複製Context</p>
+</blockquote>
+<blockquote>
+<p>Application與Activity與Service雖都能當context用(但非對應同一個mBase) 要注意Activity與Service是有被回收的可能 避免將其當context傳遞 但某些關聯性的動作只能使用activity(像是show dialog)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若context的傳遞會被對方持有時 盡可能使用Application的context</span></span><br><span class="line">context.getApplicationContext()</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h1><blockquote>
+<p>繼承Context 可以理解為另外一個層級的執行環境<br>透過Manifest指定自訂的Application類</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--Manifest--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">application</span> <span class="attr">android:name</span>=<span class="string">".CustomApplication"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="SharedPreference"><a href="#SharedPreference" class="headerlink" title="SharedPreference"></a>SharedPreference</h1><p>key/value pair的儲存器 用於儲存app的設定值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">MODE_MULTI_PROCESS</span><br><span class="line">MODE_PRIVATE</span><br><span class="line"></span><br><span class="line">sp = PreferenceManager.getDefaultSharedPreferences(context);</span><br><span class="line">sp = getSharedPreferences(<span class="string">"mysp"</span>, Context. MODE_PRIVATE);</span><br><span class="line">sp.getBoolean(<span class="string">"key"</span>, <span class="keyword">false</span>);</span><br><span class="line">sp.edit().putBoolean(<span class="string">"key"</span>, <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Java/Java/index/" rel="next" title="Java知識樹">
+                <i class="fa fa-chevron-left"></i> Java知識樹
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android/Chapter/Accessibility/" rel="prev" title="Accessibility">
+                Accessibility <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +451,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +563,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#編譯流程"><span class="nav-number">1.</span> <span class="nav-text">編譯流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Minifest"><span class="nav-number">2.</span> <span class="nav-text">Minifest</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Context"><span class="nav-number">3.</span> <span class="nav-text">Context</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Application"><span class="nav-number">4.</span> <span class="nav-text">Application</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SharedPreference"><span class="nav-number">5.</span> <span class="nav-text">SharedPreference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

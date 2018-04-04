@@ -81,14 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="*post animation property (透過修改view實例自動產生動畫) view animation (tween) (Alpha Rotate Scale Translate Set) drawable animation (frame by frame)   單位: 數字 : px 50% : 自己寬度的50% 50p : 容器寬度的50%    //Tweenanim.set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Animation">
+<meta property="og:url" content="http://yoursite.com/Android/Chapter/Animation/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="*post animation property (透過修改view實例自動產生動畫) view animation (tween) (Alpha Rotate Scale Translate Set) drawable animation (frame by frame)   單位: 數字 : px 50% : 自己寬度的50% 50p : 容器寬度的50%    //Tweenanim.set">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:updated_time" content="2018-04-04T09:26:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Animation">
+<meta name="twitter:description" content="*post animation property (透過修改view實例自動產生動畫) view animation (tween) (Alpha Rotate Scale Translate Set) drawable animation (frame by frame)   單位: 數字 : px 50% : 自己寬度的50% 50p : 容器寬度的50%    //Tweenanim.set">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Android/Chapter/Animation/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>Animation | JimLiuXyz</title>
   
 
 
@@ -273,40 +276,183 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Chapter/Animation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Animation</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:44:01+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p><a href="http://wiki.jikexueyuan.com/project/android-animation/" target="_blank" rel="noopener">*post</a></p>
+<h2 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h2><ol>
+<li>property (透過修改view實例自動產生動畫)</li>
+<li>view animation (tween) (Alpha Rotate Scale Translate Set)</li>
+<li>drawable animation (frame by frame)</li>
+</ol>
+<ul>
+<li>單位:<ol>
+<li>數字 : px</li>
+<li>50% : 自己寬度的50%</li>
+<li>50p : 容器寬度的50%</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Tween</span></span><br><span class="line"></span><br><span class="line">anim.setDuration</span><br><span class="line">anim.repeatMode <span class="comment">// 重頭再開始 / 倒退再開始</span></span><br><span class="line"></span><br><span class="line">anim.fillAfter <span class="comment">// 停在結束</span></span><br><span class="line"></span><br><span class="line">anim_set.add(anim)</span><br><span class="line"></span><br><span class="line">view.startAnimation(...)</span><br><span class="line"></span><br><span class="line">anim = animationUtils.loadAnimation(R.id....) <span class="comment">// from xml</span></span><br><span class="line"></span><br><span class="line">aty.overridePendingTransition() <span class="comment">//過場動畫</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//viewFlipper</span></span><br><span class="line">filper.setInAnimation(...)</span><br><span class="line">filper.setOutAnimation(...)</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">android:activityOpenEnterAnimation</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ViewAnimator</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:inAnimation</span>=<span class="string">"@android:anim/slide_in_left"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">ViewAnimator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://www.youtube.com/watch?v=cp-2Cl6OWRQ&amp;index=60&amp;list=PLHOqLxXumAI-hCYIzsnn6LCmZHzEStuuh" target="_blank" rel="noopener">youtube</a></p>
+<h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
+<li>Tweened<ul>
+<li>alpha 透明(淡入淡出)</li>
+<li>rotate</li>
+<li>scale</li>
+<li>translate 移動</li>
+</ul>
+</li>
+<li>Frame-by-Frame</li>
+</ul>
+<h2 id="Tweened"><a href="#Tweened" class="headerlink" title="Tweened"></a>Tweened</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AlphaAnimation animate = <span class="keyword">new</span> AlphaAnimation(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">animate.setStartOffset(<span class="number">1000</span>);</span><br><span class="line">animate.setDuration(<span class="number">1000</span>);</span><br><span class="line">animate.setFillAfter(<span class="keyword">true</span>); <span class="comment">//動畫後停留在最後</span></span><br><span class="line">animate.setFillBefore(<span class="keyword">false</span>); <span class="comment">//動畫後回到起點</span></span><br><span class="line">animate.setRepeatCount(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">AnimationSet aset = <span class="keyword">new</span> AnimationSet(<span class="keyword">true</span>); <span class="comment">//共用interpolator</span></span><br><span class="line">aset.addAnimation(animate);</span><br><span class="line"></span><br><span class="line">imageview.startAnimation(aset);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//rotate需定義旋轉的中心點,中心點可相對於自己或containar</span></span><br><span class="line">RotateAnimation animate = <span class="keyword">new</span> RotateAnimation(<span class="number">0</span>, <span class="number">360</span></span><br><span class="line">    Animation.RELATIVE_TO_PARENT, <span class="number">1f</span>,</span><br><span class="line">    Animation.RELATIVE_TO_PARENT, <span class="number">0f</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//scale需定義縮放的軸心,軸心可相對於自己或containar</span></span><br><span class="line">ScaleAnimation animate = <span class="keyword">new</span> ScaleAnimation(<span class="number">1</span>, <span class="number">0.1f</span>, <span class="number">1</span>, <span class="number">0.1f</span></span><br><span class="line">    Animation.RELATIVE_TO_SELF, <span class="number">0.5f</span>,</span><br><span class="line">    Animation.RELATIVE_TO_SELF, <span class="number">0.5f</span>); <span class="comment">//向中心點縮小</span></span><br></pre></td></tr></table></figure>
+<p>####用xml建動畫流程<br>建res/anim目錄,寫alpha.xml,android studio會自動產生對應的code在gen/R.java</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">...</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">alpha</span> <span class="attr">...</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Animation animate = AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.alpha);</span><br></pre></td></tr></table></figure>
+<h2 id="Interpolator"><a href="#Interpolator" class="headerlink" title="Interpolator"></a>Interpolator</h2><p><a href="https://www.youtube.com/watch?v=kNx83ejQLlY" target="_blank" rel="noopener">用途示範</a><br>插值器 補插動畫效果</p>
+<h2 id="Frame-by-Frame"><a href="#Frame-by-Frame" class="headerlink" title="Frame-by-Frame"></a>Frame-by-Frame</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">animation-list</span> <span class="attr">...</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"..."</span> <span class="attr">android:duration</span>=<span class="string">"500"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">animation-list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">imageview.setBackgroundResource(R.drawable.animff);</span><br><span class="line">AnimationDrawable ad = (AnimationDrawable)imageview.getBackground();</span><br><span class="line">ad = AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.alpha);</span><br></pre></td></tr></table></figure>
+<h2 id="LayoutAnimationController"><a href="#LayoutAnimationController" class="headerlink" title="LayoutAnimationController"></a>LayoutAnimationController</h2><p>控制layout group中動畫的順序</p>
+<p>####從java建立<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Animation animate = AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.alpha);</span><br><span class="line">LayoutAnimationController lac = <span class="keyword">new</span> LayoutAnimationController(animate);</span><br><span class="line">lac.setDelay(<span class="number">0.5f</span>);</span><br><span class="line">lac.setOrder(LayoutAnimationController.ORDER_NORMAL);</span><br><span class="line">listview.setLayoutAnimation(lac);</span><br></pre></td></tr></table></figure></p>
+<p>####從xml導入<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LayoutAnimation</span></span></span><br><span class="line"><span class="tag">    <span class="attr">delay</span>=<span class="string">"0.5"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">animationOrder</span>=<span class="string">"normal"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">animation</span>=<span class="string">"@anim/alpha"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ListView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">layoutAnimation</span> =<span class="string">"@..."</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="AnimationListener"><a href="#AnimationListener" class="headerlink" title="AnimationListener"></a>AnimationListener</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">animation.setAnimationListener(<span class="keyword">new</span> AnimationListener()&#123;</span><br><span class="line">    onAnimationStart()</span><br><span class="line">    onAnimationEnd()</span><br><span class="line">    onAnimationRepeat()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Single/Thread的各式需求/" rel="next" title="Thread的各式需求">
+                <i class="fa fa-chevron-left"></i> Thread的各式需求
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android/Chapter/Widget/" rel="prev" title="Widget">
+                Widget <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +461,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +573,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#animation"><span class="nav-number">1.</span> <span class="nav-text">animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation"><span class="nav-number">2.</span> <span class="nav-text">Animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tweened"><span class="nav-number">3.</span> <span class="nav-text">Tweened</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpolator"><span class="nav-number">4.</span> <span class="nav-text">Interpolator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frame-by-Frame"><span class="nav-number">5.</span> <span class="nav-text">Frame-by-Frame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LayoutAnimationController"><span class="nav-number">6.</span> <span class="nav-text">LayoutAnimationController</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AnimationListener"><span class="nav-number">7.</span> <span class="nav-text">AnimationListener</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

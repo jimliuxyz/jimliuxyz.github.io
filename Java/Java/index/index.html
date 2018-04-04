@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="知識樹," />
 
 
 
@@ -81,14 +81,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="…">
+<meta name="keywords" content="知識樹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java知識樹">
+<meta property="og:url" content="http://yoursite.com/Java/Java/index/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="…">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:updated_time" content="2018-04-04T07:12:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Java知識樹">
+<meta name="twitter:description" content="…">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Java/Java/index/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>Java知識樹 | JimLiuXyz</title>
   
 
 
@@ -273,40 +277,184 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Java/index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Java知識樹</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T10:59:00+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>…<a id="more"></a></p>
+<h4 id="Daemon-Thread"><a href="#Daemon-Thread" class="headerlink" title="Daemon Thread"></a>Daemon Thread</h4><blockquote>
+<p>thread的一項設定setDaemon(true) 使其自動結束於<code>沒有其他thread需執行</code>時 又稱<code>守護線程</code> 例如GC的thread便是屬於此類<br>daemon的結束是屬於強制中斷 無法預期中斷點 故其執行任務是有限制的</p>
+</blockquote>
+<hr>
+<h1 id="多線程設計模式"><a href="#多線程設計模式" class="headerlink" title="多線程設計模式"></a>多線程設計模式</h1><h4 id="Thread-Per-Message"><a href="#Thread-Per-Message" class="headerlink" title="Thread-Per-Message"></a>Thread-Per-Message</h4><blockquote>
+<p>即每個message都建立一個新的thread處理 message執行完thread就結束</p>
+</blockquote>
+<h4 id="Worker-Thread"><a href="#Worker-Thread" class="headerlink" title="Worker Thread"></a>Worker Thread</h4><blockquote>
+<p>即重複不斷接受工作的thread 如同thread pool般運作 又稱background thread</p>
+</blockquote>
+<hr>
+<h1 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h1><h4 id="Timer-與-TimerTask"><a href="#Timer-與-TimerTask" class="headerlink" title="Timer 與 TimerTask"></a>Timer 與 TimerTask</h4><blockquote>
+<p>依時間參數 以worker thread執行TimerTask</p>
+</blockquote>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/知識樹/" rel="tag"># 知識樹</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android/Android/index/" rel="next" title="Android知識樹">
+                <i class="fa fa-chevron-left"></i> Android知識樹
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android/Chapter/basic/" rel="prev" title="Android環境概念">
+                Android環境概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +463,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +575,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Daemon-Thread"><span class="nav-number">1.</span> <span class="nav-text">Daemon Thread</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多線程設計模式"><span class="nav-number"></span> <span class="nav-text">多線程設計模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Thread-Per-Message"><span class="nav-number">1.</span> <span class="nav-text">Thread-Per-Message</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Worker-Thread"><span class="nav-number">2.</span> <span class="nav-text">Worker Thread</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thread"><span class="nav-number"></span> <span class="nav-text">Thread</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Timer-與-TimerTask"><span class="nav-number">1.</span> <span class="nav-text">Timer 與 TimerTask</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

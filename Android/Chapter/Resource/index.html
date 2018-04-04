@@ -81,14 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="資源引用出現的樣式[@|?][namespace:]type/name//type : string，dimen，drawable，layout，color，anim，animator，mipmap，raw，id，style，attr，array//@ : 引用切確資源@android:string/title   //Android本身的資源@string/title           //省">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Resource">
+<meta property="og:url" content="http://yoursite.com/Android/Chapter/Resource/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="資源引用出現的樣式[@|?][namespace:]type/name//type : string，dimen，drawable，layout，color，anim，animator，mipmap，raw，id，style，attr，array//@ : 引用切確資源@android:string/title   //Android本身的資源@string/title           //省">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:updated_time" content="2018-04-04T11:32:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Resource">
+<meta name="twitter:description" content="資源引用出現的樣式[@|?][namespace:]type/name//type : string，dimen，drawable，layout，color，anim，animator，mipmap，raw，id，style，attr，array//@ : 引用切確資源@android:string/title   //Android本身的資源@string/title           //省">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Android/Chapter/Resource/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>Resource | JimLiuXyz</title>
   
 
 
@@ -273,40 +276,174 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Chapter/Resource/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Resource</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T18:38:33+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="資源引用出現的樣式"><a href="#資源引用出現的樣式" class="headerlink" title="資源引用出現的樣式"></a>資源引用出現的樣式</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[@|?][namespace:]type/name</span><br><span class="line"></span><br><span class="line"><span class="comment">//type : string，dimen，drawable，layout，color，anim，animator，mipmap，raw，id，style，attr，array</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@ : 引用切確資源</span></span><br><span class="line"><span class="meta">@android</span>:string/title   <span class="comment">//Android本身的資源</span></span><br><span class="line"><span class="meta">@string</span>/title           <span class="comment">//省略namespace即引用自建資源</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//? : 引用自主題屬性 (如果主題沒定義該屬性會報InflateException)</span></span><br><span class="line">android:background=<span class="string">"?attr/colorPrimary"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//+ : 通常是替自己建立資源設定ID時使用</span></span><br><span class="line">android:id=<span class="string">"@+id/myViewId"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@null : 應該是一個特別的id 讓某些屬性能夠不執行</span></span><br><span class="line">android:button=<span class="string">"@null"</span></span><br><span class="line">android:background=<span class="string">"@null"</span></span><br></pre></td></tr></table></figure>
+<h2 id="assets與raw"><a href="#assets與raw" class="headerlink" title="assets與raw"></a>assets與raw</h2><blockquote>
+<p>assets不會產生id於R資源 可有目錄結構 透過AssetManager讀取</p>
+</blockquote>
+<blockquote>
+<p>raw屬於R資源 透過R.id讀取</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AssetManager am = getAssets();  </span><br><span class="line">InputStream is = am.open(<span class="string">"filename"</span>);  </span><br><span class="line"></span><br><span class="line">InputStream is = getResources().openRawResource(R.id.fileNameID);</span><br><span class="line"></span><br><span class="line">VideoView.setVideoUri(Uri.parse(<span class="string">"android.resource://"</span> + getpackageName() + <span class="string">"/"</span> + R.raw.movie));</span><br></pre></td></tr></table></figure>
+<h2 id="多國語言"><a href="#多國語言" class="headerlink" title="多國語言"></a>多國語言</h2><p>只需透過IDE編輯即可 (勾選不需要翻譯的字串)</p>
+<hr>
+<h1 id="Drawable"><a href="#Drawable" class="headerlink" title="Drawable"></a>Drawable</h1><blockquote>
+<p>可被畫出在View上的 例如圖檔來源 from BitmapDrawable</p>
+</blockquote>
+<blockquote>
+<p>也可從xml定義</p>
+</blockquote>
+<ul>
+<li>color</li>
+<li>shape : 形狀 方圓線等<ul>
+<li>stroke 描邊</li>
+<li>solid 填充</li>
+<li>corners 邊角</li>
+<li>padding</li>
+</ul>
+</li>
+<li>selector : 狀態 每個item搭配一個狀態對應一個drawable<ul>
+<li>state_pressed / state_focused / state_selected / state_checkable</li>
+<li>state_checked/ state_enabled / state_activated / state_hovered</li>
+<li>state_window_focused</li>
+</ul>
+</li>
+<li>layer-list : 圖層 越先執行的在越底層 用很多層疊出一個drawable</li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android/Chapter/Storage/" rel="next" title="Storage">
+                <i class="fa fa-chevron-left"></i> Storage
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android/Chapter/IDE-ENV/" rel="prev" title="IDE_ENV">
+                IDE_ENV <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +452,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +476,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +564,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#資源引用出現的樣式"><span class="nav-number">1.</span> <span class="nav-text">資源引用出現的樣式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assets與raw"><span class="nav-number">2.</span> <span class="nav-text">assets與raw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多國語言"><span class="nav-number">3.</span> <span class="nav-text">多國語言</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Drawable"><span class="nav-number"></span> <span class="nav-text">Drawable</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

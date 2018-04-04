@@ -81,14 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="TypeConverter 建立物件與database primitive type的轉換  data class Word(        @SerializedName(&quot;naText&quot;)        var naText: String,        @SerializedName(&quot;taText&quot;)        var taText: String)//透過TypeConverter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Room">
+<meta property="og:url" content="http://yoursite.com/Android/Chapter/Room/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="TypeConverter 建立物件與database primitive type的轉換  data class Word(        @SerializedName(&quot;naText&quot;)        var naText: String,        @SerializedName(&quot;taText&quot;)        var taText: String)//透過TypeConverter">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:updated_time" content="2018-04-04T08:33:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Room">
+<meta name="twitter:description" content="TypeConverter 建立物件與database primitive type的轉換  data class Word(        @SerializedName(&quot;naText&quot;)        var naText: String,        @SerializedName(&quot;taText&quot;)        var taText: String)//透過TypeConverter">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Android/Chapter/Room/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>Room | JimLiuXyz</title>
   
 
 
@@ -273,40 +276,162 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Chapter/Room/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Room</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:31:06+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="TypeConverter"><a href="#TypeConverter" class="headerlink" title="TypeConverter"></a>TypeConverter</h2><blockquote>
+<p>建立物件與database primitive type的轉換</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Word</span></span>(</span><br><span class="line">        <span class="meta">@SerializedName(<span class="meta-string">"naText"</span>)</span></span><br><span class="line">        <span class="keyword">var</span> naText: String,</span><br><span class="line">        <span class="meta">@SerializedName(<span class="meta-string">"taText"</span>)</span></span><br><span class="line">        <span class="keyword">var</span> taText: String</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//透過TypeConverter建立object與json字串的轉換</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordConverter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@TypeConverter</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">word2Json</span><span class="params">(words: <span class="type">ArrayList</span>&lt;<span class="type">Word</span>&gt;)</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">val</span> json = Gson().toJson(words)</span><br><span class="line">        <span class="keyword">return</span> json</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TypeConverter</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">json2Word</span><span class="params">(json: <span class="type">String</span>)</span></span>: ArrayList&lt;Word&gt; &#123;</span><br><span class="line">        <span class="keyword">val</span> turnsType = <span class="keyword">object</span> : TypeToken&lt;ArrayList&lt;Word&gt;&gt;() &#123;&#125;.type</span><br><span class="line">        <span class="keyword">val</span> list = Gson().fromJson&lt;ArrayList&lt;Word&gt;&gt;(json, turnsType)</span><br><span class="line">        <span class="keyword">return</span> list</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entity(foreignKeys = [ForeignKey(entity = BookInfo::class,</span></span><br><span class="line"><span class="meta">        parentColumns = [<span class="meta-string">"id"</span>],</span></span><br><span class="line"><span class="meta">        childColumns = [<span class="meta-string">"bookId"</span>],</span></span><br><span class="line"><span class="meta">        onDelete = CASCADE)</span>])</span><br><span class="line"><span class="meta">@TypeConverters(WordConverter::class)</span> <span class="comment">//加入需要的TypeConverter</span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">BookContent</span></span>(<span class="meta">@PrimaryKey(autoGenerate = true)</span> <span class="keyword">var</span> id: <span class="built_in">Long</span>,</span><br><span class="line">                       <span class="keyword">var</span> bookId: <span class="built_in">Long</span>,</span><br><span class="line">                       <span class="keyword">var</span> words: ArrayList&lt;Word&gt; = ArrayList&lt;Word&gt;()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="ForeignKey-外鍵"><a href="#ForeignKey-外鍵" class="headerlink" title="ForeignKey (外鍵)"></a>ForeignKey (外鍵)</h2><blockquote>
+<p>使該table(child)與外界的table(parent)連動 例如一起被刪除</p>
+</blockquote>
+<h2 id="Embedded"><a href="#Embedded" class="headerlink" title="Embedded"></a>Embedded</h2><blockquote>
+<p>在table中坎入其他table或pojo class 避免宣告裡必須攤平所有欄位失去結構 可作為查詢時暫用的表</p>
+</blockquote>
+<blockquote>
+<p>實際的解析上有點像是將Embedded表的欄位名(變數名)平面化 所以各個表中的欄位名還不能重複 若重複還要加prefix將整個表的欄位名加前綴</p>
+</blockquote>
+<blockquote>
+<p>select語句針對prefix的部分必須一一列出(太麻煩了)</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *, tbl_b.id <span class="keyword">as</span> prefix_id <span class="keyword">FROM</span> tbl_a <span class="keyword">INNER</span> <span class="keyword">JOIN</span> tbl_b <span class="keyword">ON</span> tbl_a.id=tbl_b.id <span class="keyword">WHERE</span> ...</span><br></pre></td></tr></table></figure>
+<h2 id="Relation"><a href="#Relation" class="headerlink" title="Relation"></a>Relation</h2><blockquote>
+<p>可以建立一個連動的查詢 整合到一個table中 (用起來方便但要多建一個class)</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">BookSet</span></span>(</span><br><span class="line">        <span class="meta">@Embedded</span></span><br><span class="line">        <span class="keyword">var</span> info: BookInfo?=<span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//BookContent.bookId對映BookInfo.id</span></span><br><span class="line"><span class="comment">//查詢的結果必須是List或Set</span></span><br><span class="line">        <span class="meta">@Relation(parentColumn = <span class="meta-string">"id"</span>,</span></span><br><span class="line"><span class="meta">                entityColumn = <span class="meta-string">"bookId"</span>)</span> <span class="keyword">var</span> content: List&lt;BookContent&gt;?=<span class="literal">null</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="Migration-升級"><a href="#Migration-升級" class="headerlink" title="Migration 升級"></a>Migration 升級</h2>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android/Chapter/DB-MySQL/" rel="next" title="DB-MySQL">
+                <i class="fa fa-chevron-left"></i> DB-MySQL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Single/Thread的各式需求/" rel="prev" title="Thread的各式需求">
+                Thread的各式需求 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +440,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +552,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TypeConverter"><span class="nav-number">1.</span> <span class="nav-text">TypeConverter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ForeignKey-外鍵"><span class="nav-number">2.</span> <span class="nav-text">ForeignKey (外鍵)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Embedded"><span class="nav-number">3.</span> <span class="nav-text">Embedded</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relation"><span class="nav-number">4.</span> <span class="nav-text">Relation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Migration-升級"><span class="nav-number">5.</span> <span class="nav-text">Migration 升級</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

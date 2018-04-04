@@ -81,14 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="Activity.runOnUiThread activity內建的一方法 便於異步切回main thread  AsyncTaskref  aad : Execute a background task inside of a Service   thread pool+handler應用的再封裝 易於與main(UI) thread切換 需在main thread建立與執行 (最終記得canc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Task">
+<meta property="og:url" content="http://yoursite.com/Android/Chapter/Task/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="Activity.runOnUiThread activity內建的一方法 便於異步切回main thread  AsyncTaskref  aad : Execute a background task inside of a Service   thread pool+handler應用的再封裝 易於與main(UI) thread切換 需在main thread建立與執行 (最終記得canc">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:updated_time" content="2018-04-04T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Task">
+<meta name="twitter:description" content="Activity.runOnUiThread activity內建的一方法 便於異步切回main thread  AsyncTaskref  aad : Execute a background task inside of a Service   thread pool+handler應用的再封裝 易於與main(UI) thread切換 需在main thread建立與執行 (最終記得canc">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Android/Chapter/Task/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>Task | JimLiuXyz</title>
   
 
 
@@ -273,40 +276,178 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Chapter/Task/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Task</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:08:38+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="Activity-runOnUiThread"><a href="#Activity-runOnUiThread" class="headerlink" title="Activity.runOnUiThread"></a>Activity.runOnUiThread</h2><blockquote>
+<p>activity內建的一方法 便於異步切回main thread</p>
+</blockquote>
+<h2 id="AsyncTask"><a href="#AsyncTask" class="headerlink" title="AsyncTask"></a>AsyncTask</h2><p><a href="https://blog.csdn.net/carson_ho/article/details/79314325" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
+<p>aad : Execute a background task inside of a Service</p>
+</blockquote>
+<ul>
+<li>thread pool+handler應用的再封裝 易於與main(UI) thread切換</li>
+<li>需在main thread建立與執行 (最終記得cancel)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">String</span> , <span class="title">Integer</span> , <span class="title">Bitmap</span>&gt;</span>&#123;</span><br><span class="line"><span class="comment">//&lt;傳入型態, 進度值型態, 結果型態&gt;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bitmap <span class="title">doInBackground</span><span class="params">(String ...args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//進入異步 不要做view操作</span></span><br><span class="line">        publishProgress(...);</span><br><span class="line">        </span><br><span class="line">        activity.runOnUiThread</span><br><span class="line">    &#125;</span><br><span class="line">    onPreExecute() <span class="comment">//回main thread</span></span><br><span class="line">    onProgressUpdate(Integer... values) <span class="comment">//回main thread</span></span><br><span class="line">    onPostExecute(Bitmap bitmap) <span class="comment">//回main thread</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> MyTask().execute(<span class="string">"str"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1.設定好要count down的數量</span></span><br><span class="line"><span class="keyword">final</span> CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.在異步thread結束後countDown使其歸零</span></span><br><span class="line">countDownLatch.countDown();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.一直等到countDownLatch為0才返回</span></span><br><span class="line">countDownLatch.await();</span><br></pre></td></tr></table></figure>
+<h2 id="Timer-amp-TimerTask"><a href="#Timer-amp-TimerTask" class="headerlink" title="Timer &amp; TimerTask"></a>Timer &amp; TimerTask</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Timer timer = <span class="keyword">new</span> Timer()</span><br><span class="line">timer.schedule(<span class="keyword">new</span> TimerTask() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="number">1000</span>, <span class="number">1000</span>);</span><br><span class="line">timer.cancel()</span><br></pre></td></tr></table></figure>
+<h2 id="Looper-Handler"><a href="#Looper-Handler" class="headerlink" title="Looper + Handler"></a>Looper + Handler</h2><blockquote>
+<p>Looper消息接收器 建立時連帶建立一個MessageQueue</p>
+</blockquote>
+<blockquote>
+<p>Handler消息處理/發送器</p>
+</blockquote>
+<blockquote>
+<p>用途在於將msg或task隊列執行 </p>
+</blockquote>
+<blockquote>
+<p>Looper與Handler內部都是利用current thread做為key 所以建立與呼叫時所處的thread很重要</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//自訂的</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LooperThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Handler mHandler;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//以當下thread建立looper (內部會存於map中)</span></span><br><span class="line">        Looper.prepare();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//以當下thread建立Handler 並取得當下thread的looper中的MessageQueue</span></span><br><span class="line">        <span class="comment">//於是looper與handler都有共通的msgQueue</span></span><br><span class="line">        <span class="comment">//之後外部可用handler建立傳遞msg進入msgQueue</span></span><br><span class="line">        <span class="comment">//loop即能收到msg並透過msg的callback回叫handler</span></span><br><span class="line">        mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//以當下thread執行loop (當下thread會進入等待msg的loop而block住)</span></span><br><span class="line">        Looper.loop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="MessageQueue"><a href="#MessageQueue" class="headerlink" title="MessageQueue"></a>MessageQueue</h4><blockquote>
+<p>內部是透過native code實現主要機制</p>
+</blockquote>
+<h4 id="HandlerThread"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</h4><blockquote>
+<p>同上方範例 但沒有handler</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">download2</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">    HandlerThread ht = <span class="keyword">new</span> HandlerThread(<span class="string">"MyHandlerThread"</span>);</span><br><span class="line">    ht.start();<span class="comment">//必須先啟動thread (執行prepare後looper才會建立)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//直接指定Handler的looper</span></span><br><span class="line">    Handler handler = <span class="keyword">new</span> Handler(ht.getLooper()) &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//H:MyHandlerThread</span></span><br><span class="line">            System.out.println(<span class="string">"H:"</span>+Thread.currentThread().getName());</span><br><span class="line">            <span class="keyword">if</span> (msg.obj==<span class="string">"quit"</span>)</span><br><span class="line">               getLooper().quit();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    handler.post(<span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="comment">//R:MyHandlerThread</span></span><br><span class="line">            System.out.println(<span class="string">"R:"</span>+Thread.currentThread().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    handler.obtainMessage(<span class="number">0</span>, <span class="string">"url"</span>).sendToTarget();</span><br><span class="line">    handler.obtainMessage(<span class="number">0</span>, <span class="string">"quit"</span>).sendToTarget();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>main thread預設已執行prepare 所以在main thread下Handler能直接使用</p>
+</blockquote>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android/Chapter/MonkeyTest/" rel="next" title="壓力循環測試">
+                <i class="fa fa-chevron-left"></i> 壓力循環測試
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android/Chapter/DB-MySQL/" rel="prev" title="DB-MySQL">
+                DB-MySQL <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +456,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +480,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +568,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity-runOnUiThread"><span class="nav-number">1.</span> <span class="nav-text">Activity.runOnUiThread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask"><span class="nav-number">2.</span> <span class="nav-text">AsyncTask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">3.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Timer-amp-TimerTask"><span class="nav-number">4.</span> <span class="nav-text">Timer &amp; TimerTask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Looper-Handler"><span class="nav-number">5.</span> <span class="nav-text">Looper + Handler</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MessageQueue"><span class="nav-number">5.0.1.</span> <span class="nav-text">MessageQueue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HandlerThread"><span class="nav-number">5.0.2.</span> <span class="nav-text">HandlerThread</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

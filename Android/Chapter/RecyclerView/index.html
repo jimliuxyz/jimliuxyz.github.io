@@ -81,14 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="加入RecyclerView//0. 取得viewvar view = findViewById&amp;lt;RecyclerView&amp;gt;(R.id.recyclerView)//1. 設定layoutval layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)view.layoutManager">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RecyclerView">
+<meta property="og:url" content="http://yoursite.com/Android/Chapter/RecyclerView/index.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="加入RecyclerView//0. 取得viewvar view = findViewById&amp;lt;RecyclerView&amp;gt;(R.id.recyclerView)//1. 設定layoutval layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)view.layoutManager">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-02T08:14:12.000Z">
+<meta property="og:updated_time" content="2018-04-04T11:36:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="RecyclerView">
+<meta name="twitter:description" content="加入RecyclerView//0. 取得viewvar view = findViewById&amp;lt;RecyclerView&amp;gt;(R.id.recyclerView)//1. 設定layoutval layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)view.layoutManager">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/Android/Chapter/RecyclerView/"/>
 
 
 
 
 
-  <title>categories | JimLiuXyz</title>
+  <title>RecyclerView | JimLiuXyz</title>
   
 
 
@@ -273,40 +276,142 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Chapter/RecyclerView/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共計 9 個分類
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/紀錄/">紀錄</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">RecyclerView</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:36:16+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="加入RecyclerView"><a href="#加入RecyclerView" class="headerlink" title="加入RecyclerView"></a>加入RecyclerView</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//0. 取得view</span></span><br><span class="line"><span class="keyword">var</span> view = findViewById&lt;RecyclerView&gt;(R.id.recyclerView)</span><br><span class="line"></span><br><span class="line"><span class="comment">//1. 設定layout</span></span><br><span class="line"><span class="keyword">val</span> layoutManager = LinearLayoutManager(<span class="keyword">this</span>, LinearLayoutManager.VERTICAL, <span class="literal">false</span>)</span><br><span class="line">view.layoutManager = layoutManager</span><br><span class="line"></span><br><span class="line"><span class="comment">//2. 設定adapter</span></span><br><span class="line">view.adapter = MyAdapter(<span class="keyword">data</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//3. 設定分隔線</span></span><br><span class="line">view.addItemDecoration(DividerItemDecoration(<span class="keyword">this</span>, DividerItemDecoration.VERTICAL));</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> : <span class="type">RecyclerView.Adapter</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateViewHolder</span><span class="params">(parent: <span class="type">ViewGroup</span>?, viewType: <span class="type">Int</span>)</span></span>: ViewHolder &#123;</span><br><span class="line">        <span class="comment">//建立ItemView並存於ViewHolder回傳</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBindViewHolder</span><span class="params">(holder: <span class="type">ViewHolder</span>?, position: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//將欲顯示的內容抽換到holder中的view</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getItemCount</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//自訂ItemView的Holder</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span></span>(itemView: View) : RecyclerView.ViewHolder(itemView)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android/Chapter/Fragment/" rel="next" title="Fragment">
+                <i class="fa fa-chevron-left"></i> Fragment
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android/Chapter/DevLog/" rel="prev" title="Android Dev Log">
+                Android Dev Log <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -315,6 +420,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +444,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +532,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#加入RecyclerView"><span class="nav-number">1.</span> <span class="nav-text">加入RecyclerView</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

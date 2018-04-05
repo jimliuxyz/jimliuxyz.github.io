@@ -81,13 +81,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="JimLiuXyz">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta name="description" content="相關知識  program : binary code,一段機械碼或可被執行的檔案 process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap)與thread. process間是不共用的,互相通信需特殊的機制 thread : 實際執行程式碼的單元 包含一stack儲存原生變數與參考及函數流程等執行位址 task : 任務,軟體概念,task是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thread的各式需求">
+<meta property="og:url" content="http://yoursite.com/Single/Thread的各式需求.html">
 <meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="相關知識  program : binary code,一段機械碼或可被執行的檔案 process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap)與thread. process間是不共用的,互相通信需特殊的機制 thread : 實際執行程式碼的單元 包含一stack儲存原生變數與參考及函數流程等執行位址 task : 任務,軟體概念,task是">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://www.w3.org/People/Frystyk/thesis/MultiStackThread.gif">
+<meta property="og:image" content="https://equinoxrar.files.wordpress.com/2014/08/threads1.png">
+<meta property="og:image" content="http://alvinalexander.com/sites/default/files/photos/parallelism-vs-concurrency.png">
+<meta property="og:updated_time" content="2018-04-04T08:41:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JimLiuXyz">
+<meta name="twitter:title" content="Thread的各式需求">
+<meta name="twitter:description" content="相關知識  program : binary code,一段機械碼或可被執行的檔案 process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap)與thread. process間是不共用的,互相通信需特殊的機制 thread : 實際執行程式碼的單元 包含一stack儲存原生變數與參考及函數流程等執行位址 task : 任務,軟體概念,task是">
+<meta name="twitter:image" content="https://www.w3.org/People/Frystyk/thesis/MultiStackThread.gif">
 
 
 
@@ -117,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/"/>
+  <link rel="canonical" href="http://yoursite.com/Single/Thread的各式需求.html"/>
 
 
 
 
 
-  <title>歸檔 | JimLiuXyz</title>
+  <title>Thread的各式需求 | JimLiuXyz</title>
   
 
 
@@ -142,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -270,410 +278,184 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共計 32 篇文章。 繼續努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/Thread的各式需求.html">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/home/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">Thread的各式需求</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:41:05+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Broadcast.html" itemprop="url">
-              
-                <span itemprop="name">Broadcast</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:59:35+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/DevLog.html" itemprop="url">
-              
-                <span itemprop="name">Android Dev Log</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:39:45+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/RecyclerView.html" itemprop="url">
-              
-                <span itemprop="name">RecyclerView</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:36:16+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Fragment.html" itemprop="url">
-              
-                <span itemprop="name">Fragment</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:34:06+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        <h2 id="相關知識"><a href="#相關知識" class="headerlink" title="相關知識"></a>相關知識</h2><p><img src="https://www.w3.org/People/Frystyk/thesis/MultiStackThread.gif" alt=""><br><img src="https://equinoxrar.files.wordpress.com/2014/08/threads1.png" alt=""></p>
+<ul>
+<li>program : binary code,一段機械碼或可被執行的檔案</li>
+<li>process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap)與thread. process間是不共用的,互相通信需特殊的機制</li>
+<li>thread : 實際執行程式碼的單元 包含一stack儲存原生變數與參考及函數流程等執行位址</li>
+<li>task : 任務,軟體概念,task是指派給thread執行的,類似Runnable</li>
+<li>corutine: 協程,軟體概念,由應用程式或編譯器實作的軟體架構,目的在於有效與便利運用thread與thread間的切換</li>
+</ul>
+<h4 id="corutine"><a href="#corutine" class="headerlink" title="corutine"></a>corutine</h4><p>例如要完成一個取得一筆資料顯示到ui上,額外需要一個io thread避免ui thread被較慢的io thread阻塞,程式的編寫上可能需要一個func切換到io thread執行,還要一個callback func返回執行結束,以及一個組合這些流程的func,一整個流程散落各處. 協程相當於將block排程到thread中,由背景系統決定執行時機,也就是說該block成為該thread中一個異步執行的任務,我們只需透過async宣告異步任務與await等待任務,就能將前述的動作寫在一個block中. 用於單執行緒的javascript中最為顯著.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>&#123;</span><br><span class="line">    value = <span class="keyword">await</span> getData();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="concurrent-vs-parallel"><a href="#concurrent-vs-parallel" class="headerlink" title="concurrent vs parallel"></a>concurrent vs parallel</h2><p><img src="http://alvinalexander.com/sites/default/files/photos/parallelism-vs-concurrency.png" alt="concurrent vs parallel"></p>
+<ul>
+<li>concurrent : 並行 N -&gt; 1 像是排程(Javascript)</li>
+<li>parallel : 平行 N -&gt; N</li>
+</ul>
+<h1 id="Thread的切換"><a href="#Thread的切換" class="headerlink" title="Thread的切換"></a>Thread的切換</h1><p>一個流程中某些動作必須跳到異步執行 待執行完再切回原本的thread 這些切換thread的動作將使一個流程無法順暢的寫完</p>
+<p>舉例:</p>
+<ol>
+<li>user按下執行按鈕 (ui)</li>
+<li>下載url的內容 (network)</li>
+<li>存成本地檔案 (i/o)</li>
+<li>取得執行狀況 將內容顯示於ui (ui)</li>
+</ol>
+<h4 id="coroutine-協程"><a href="#coroutine-協程" class="headerlink" title="coroutine 協程"></a>coroutine 協程</h4><blockquote>
+<p>透過async/await讓工作不立即執行 且能夠被等待 相當於排程的概念 更有效率的使用thread</p>
+</blockquote>
+<p>例如 : 在main thread中連續執行ABC三函數</p>
+<ul>
+<li>一般情況下執行的順序是ABC</li>
+<li>若B能進入異步 順序會變為AC…B (B不確定何時執行)</li>
+<li>若B能進入異步 且C能等待B執行完 順序又變回ABC</li>
+<li>假若B在異步執行時是透過其他thread 那C等待B時main thread還能繼續其他工作</li>
+</ul>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h4 id="message-handler"><a href="#message-handler" class="headerlink" title="message handler"></a>message handler</h4><p>適合簡單的切換 多個連續流程仍難以處理</p>
+<h4 id="exector"><a href="#exector" class="headerlink" title="exector"></a>exector</h4><ul>
+<li>預先做好各個thread,執行時丟入runnable</li>
+<li>切換越多次巢狀越明顯</li>
+<li>沒辦法等待(await) (等待會進入blocking)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppExecutors</span> </span>&#123; <span class="comment">//seeu 建立Thread切換機制</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> THREAD_COUNT = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor diskIO;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor networkIO;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor mainThread;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AppExecutors</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        diskIO = Executors.newSingleThreadExecutor();</span><br><span class="line">        networkIO = Executors.newFixedThreadPool(THREAD_COUNT);</span><br><span class="line">        mainThread = <span class="keyword">new</span> MainThreadExecutor());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">diskIO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> diskIO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">networkIO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> networkIO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">mainThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mainThread;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MainThreadExecutor</span> <span class="keyword">implements</span> <span class="title">Executor</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Handler mainThreadHandler = <span class="keyword">new</span> Handler(Looper.getMainLooper());</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(@NonNull Runnable command)</span> </span>&#123;</span><br><span class="line">            mainThreadHandler.post(command);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Kotlin-透過協程"><a href="#Kotlin-透過協程" class="headerlink" title="Kotlin (透過協程)"></a>Kotlin (透過協程)</h2><h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h2><h2 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h2>
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Gradle.html" itemprop="url">
-              
-                <span itemprop="name">Gradle</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:10:47+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/IDE-ENV.html" itemprop="url">
-              
-                <span itemprop="name">IDE_ENV</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:04:53+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Resource.html" itemprop="url">
-              
-                <span itemprop="name">Resource</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T18:38:33+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Storage.html" itemprop="url">
-              
-                <span itemprop="name">Storage</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T18:37:14+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Layout.html" itemprop="url">
-              
-                <span itemprop="name">Layout</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T17:46:56+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/ArchitectureComponent.html" itemprop="url">
-              
-                <span itemprop="name">ArchitectureComponent</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T17:24:29+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/Android/Room.html" rel="next" title="Room">
+                <i class="fa fa-chevron-left"></i> Room
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/Android/Animation.html" rel="prev" title="Animation">
+                Animation <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/home/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/home/archives/page/4/">4</a><a class="extend next" rel="next" href="/home/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -681,6 +463,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -701,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -780,6 +575,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相關知識"><span class="nav-number">1.</span> <span class="nav-text">相關知識</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#corutine"><span class="nav-number">1.0.1.</span> <span class="nav-text">corutine</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concurrent-vs-parallel"><span class="nav-number">2.</span> <span class="nav-text">concurrent vs parallel</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thread的切換"><span class="nav-number"></span> <span class="nav-text">Thread的切換</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#coroutine-協程"><span class="nav-number">0.0.1.</span> <span class="nav-text">coroutine 協程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java"><span class="nav-number">1.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#message-handler"><span class="nav-number">1.0.1.</span> <span class="nav-text">message handler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exector"><span class="nav-number">1.0.2.</span> <span class="nav-text">exector</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin-透過協程"><span class="nav-number">2.</span> <span class="nav-text">Kotlin (透過協程)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava"><span class="nav-number">3.</span> <span class="nav-text">RxJava</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EventBus"><span class="nav-number">4.</span> <span class="nav-text">EventBus</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -913,6 +724,10 @@
   
 
   
+  <script type="text/javascript" src="/home/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/home/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

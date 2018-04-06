@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="S7HvkrH4R_HiKK7j675QXHEjbdWWQiVyrmMeDjXxZT8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,知識樹," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="開發紀錄 Cheat Sheet 入門知識IDE編譯流程GradleAndroidManifest.xml 供Android系統得知此app包含的組件內容與設定  class Context 可視為app執行環境(上下文) 許多操作都是需要有執行環境才能完成Application/Activity/Service都有各自的Context 但生命週期不同  class Application 做為">
+<meta name="keywords" content="Android,知識樹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android知識樹">
+<meta property="og:url" content="http://yoursite.com/2018/04/02/Android/00.index/index.html">
+<meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="開發紀錄 Cheat Sheet 入門知識IDE編譯流程GradleAndroidManifest.xml 供Android系統得知此app包含的組件內容與設定  class Context 可視為app執行環境(上下文) 許多操作都是需要有執行環境才能完成Application/Activity/Service都有各自的Context 但生命週期不同  class Application 做為">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android知識樹">
+<meta name="twitter:description" content="開發紀錄 Cheat Sheet 入門知識IDE編譯流程GradleAndroidManifest.xml 供Android系統得知此app包含的組件內容與設定  class Context 可視為app執行環境(上下文) 許多操作都是需要有執行環境才能完成Application/Activity/Service都有各自的Context 但生命週期不同  class Application 做為">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/02/Android/00.index/"/>
+
+
+
+
+
+  <title>Android知識樹 | JimLiuXyz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JimLiuXyz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/Android/00.index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android知識樹</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<p><a href="/home/Android/DevLog.html">開發紀錄</a> <a href="/home/Android/CheatSheet.html">Cheat Sheet</a></p>
+<h1 id="入門知識"><a href="#入門知識" class="headerlink" title="入門知識"></a><a href="/home/Android/basic.html">入門知識</a></h1><h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a><a href="/home/Android/IDE-ENV.html">IDE</a></h2><h2 id="編譯流程"><a href="#編譯流程" class="headerlink" title="編譯流程"></a><a href="/home/Android/basic.html#編譯流程">編譯流程</a></h2><h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a><a href="/home/Android/Gradle.html">Gradle</a></h2><h2 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h2><blockquote>
+<p>供Android系統得知此app包含的組件內容與設定</p>
+</blockquote>
+<h2 id="class-Context"><a href="#class-Context" class="headerlink" title="class Context"></a><a href="/home/Android/basic.html#Context">class Context</a></h2><blockquote>
+<p>可視為app執行環境(上下文) 許多操作都是需要有執行環境才能完成<br>Application/Activity/Service都有各自的Context 但生命週期不同</p>
+</blockquote>
+<h2 id="class-Application"><a href="#class-Application" class="headerlink" title="class Application"></a><a href="/home/Android/basic.html#Application">class Application</a></h2><blockquote>
+<p>做為app的single instance 相當於app的母生命週期</p>
+</blockquote>
+<h2 id="SharedPreference"><a href="#SharedPreference" class="headerlink" title="SharedPreference"></a><a href="/home/Android/basic.html#SharedPreference">SharedPreference</a></h2><h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><blockquote>
+<p>一段已載入記憶體執行的程式碼 例如一個執行中的app就是一個process</p>
+</blockquote>
+<h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><blockquote>
+<p>實質執行程式碼的單元<br>app中起始的thread稱為main thread又稱為ui thread 其最主要的工作為在每個16ms繪製一次畫面 若沒辦法如期執行就會造成畫面lag</p>
+</blockquote>
+<h1 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a><a href="/home/Android/Resource.html">Resource</a></h1><h1 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a><a href="/home/Android/Intent">Intent</a></h1><p>每個app都是獨立的process 無法直接互動 Intent則做為之間互動的<code>意圖/訊息內容</code>. 透過intent描述欲執行的動作 交由android系統執行. 通常執行動作都是啟動某個app或service.</p>
+<h2 id="PendingIntent"><a href="#PendingIntent" class="headerlink" title="PendingIntent"></a><a href="/home/Android/Intent.html#PendingIntent">PendingIntent</a></h2><blockquote>
+<p>PendingIntent會持有一個intent 交給android系統保留 如同委託系統代為於特定時機執行 (此時intent的執行與否已與建立該intent的app無關了)</p>
+</blockquote>
+<h2 id="IntentFilter"><a href="#IntentFilter" class="headerlink" title="IntentFilter"></a><a href="/home/Android/Intent.html#IntentFilter">IntentFilter</a></h2><blockquote>
+<p>對於能被intent啟動的對象來說(例如Service) 需要過濾不相干的意圖 (即需預先描述相關的意圖於Filter中)</p>
+</blockquote>
+<h2 id="Notification"><a href="#Notification" class="headerlink" title="Notification"></a><a href="/home/Android/Intent.html#Notification">Notification</a></h2><blockquote>
+<p>位於手機上方的通知欄</p>
+</blockquote>
+<h1 id="四大組件"><a href="#四大組件" class="headerlink" title="四大組件"></a>四大組件</h1><p>即Activity/Service/ContentProvider/Broadcast 這些組件的共通點就是能被別的app透過intent啟動或間接存取</p>
+<p>四大組件生命週期互不相同 但都是經由系統實例化誕生 或依系統機制結束 我們僅能發送intent告知意圖</p>
+<h1 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a><a href="/home/Android/Activity">Activity</a></h1><p>可視為一個<code>頁面</code>的持有者</p>
+<h2 id="Activity重建與復用"><a href="#Activity重建與復用" class="headerlink" title="Activity重建與復用"></a><a href="/home/Android/Activity.html#Activity重建與復用">Activity重建與復用</a></h2><blockquote>
+<p>Activity常有機會被系統重建 例如螢幕翻轉或語系更動 重建後可能造成狀態的喪失</p>
+</blockquote>
+<h1 id="Activity導航"><a href="#Activity導航" class="headerlink" title="Activity導航"></a><a href="/home/Android/Nav">Activity導航</a></h1><h2 id="Deep-Link"><a href="#Deep-Link" class="headerlink" title="Deep Link"></a>Deep Link</h2><blockquote>
+<p>使app能透過超連結方式被開啟</p>
+</blockquote>
+<h2 id="TaskStack"><a href="#TaskStack" class="headerlink" title="TaskStack"></a>TaskStack</h2><blockquote>
+<p>相關於頁面的堆疊 即<code>上一頁</code>的功能</p>
+</blockquote>
+<h2 id="launchMode"><a href="#launchMode" class="headerlink" title="launchMode"></a><a href="/home/Android/Nav.html#launchMode">launchMode</a></h2><blockquote>
+<p>指定TaskStack堆疊的策略</p>
+</blockquote>
+<h2 id="FLAG-ACTIVITY"><a href="#FLAG-ACTIVITY" class="headerlink" title="FLAG_ACTIVITY"></a><a href="/home/Android/Nav.html#FLAG-ACTIVITY">FLAG_ACTIVITY</a></h2><blockquote>
+<p>用Intent開啟Activity的堆疊策略</p>
+</blockquote>
+<h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a><a href="/home/Android/Service">Service</a></h1><p>可視為一個<code>服務</code> 服務能提供給自己或別的app 或常態的在背景默默執行<br>Service衍生出了許多不同的類別 用以達到特定的需求</p>
+<h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2><blockquote>
+<p>Service執行於main thread 但IntentService會切到worker thread佇列執行</p>
+</blockquote>
+<h2 id="JobService-與-JobScheduler"><a href="#JobService-與-JobScheduler" class="headerlink" title="JobService 與 JobScheduler"></a>JobService 與 JobScheduler</h2><blockquote>
+<p>能依系統狀態約定任務的執行 例如有網路時才執行 使更有效率的驅動任務 節約電力</p>
+</blockquote>
+<h1 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a><a href="/home/Android/ContentProvider">ContentProvider</a></h1><p>可視為一個<code>資料提供者</code> 提供資料給自己或別的app 透過特定的uri即可存取特定的ContentProvider 例如’電話簿聯絡人’等資訊就是透過ContentProvider運作</p>
+<h2 id="Cursor"><a href="#Cursor" class="headerlink" title="Cursor"></a>Cursor</h2><blockquote>
+<p>可以理解為資料指針 其持有一群資料 透過指定cursor的位置即可取得某一筆資料</p>
+</blockquote>
+<h2 id="CursorLoader"><a href="#CursorLoader" class="headerlink" title="CursorLoader"></a>CursorLoader</h2><h1 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a><a href="/home/Android/Broadcast">Broadcast</a></h1><p>發送或接收廣播 例如系統電力不足時會發送廣播給有註冊的接收器</p>
+<h1 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a><a href="/home/Android/Fragment">Fragment</a></h1><p>可視為一個<code>頁面中的一小部分</code>的持有者 用意在將整個頁面拆散 其生命週期基本上是依附Activity上 或由FragmentManager管理</p>
+<h1 id="Database-MySQL"><a href="#Database-MySQL" class="headerlink" title="Database MySQL"></a><a href="/home/Android/DB-MySQL">Database MySQL</a></h1><p>Android內建的Database</p>
+<h1 id="Thread-Task"><a href="#Thread-Task" class="headerlink" title="Thread / Task"></a><a href="/home/Android/Task">Thread / Task</a></h1><p>為了順利與容易的協調各式工作 各種衍生的類別孕育而生</p>
+<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><blockquote>
+<p>一個透過<code>當下執行緒</code>建立的<code>message handler</code> 其目的在使工作能透過該執行緒<code>佇列的被執行</code> 可以作為執行時切換執行緒的手段 或當佇列安插異步工作於執行緒</p>
+</blockquote>
+<h2 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h2><blockquote>
+<p>一個透過<code>當下執行緒</code>建立的訊息接收器 其內部包含一個<code>message queue</code> 是促成Handler運作的背後推手</p>
+</blockquote>
+<h2 id="AsyncTask"><a href="#AsyncTask" class="headerlink" title="AsyncTask"></a>AsyncTask</h2><blockquote>
+<p>建立一個異步工作 執行於worker thread 且提供機制與main thread互動</p>
+</blockquote>
+<h2 id="AlarmManager"><a href="#AlarmManager" class="headerlink" title="AlarmManager"></a>AlarmManager</h2><blockquote>
+<p>安排定時任務(如鬧鐘般) 用PendingIntent設定 時間到開啟Activity或Service<br>能夠喚醒Android系統</p>
+</blockquote>
+<h1 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a><a href="/home/Android/RecyclerView.html">RecyclerView</a></h1><h1 id="View-amp-Style"><a href="#View-amp-Style" class="headerlink" title="View &amp; Style"></a><a href="/home/Android/ViewN&#39;Style.html">View &amp; Style</a></h1><h1 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a><a href="/home/Android/Layout.html">Layout</a></h1><h1 id="Widget"><a href="#Widget" class="headerlink" title="Widget"></a><a href="/home/Android/Widget.html">Widget</a></h1><blockquote>
+<p>app widget 手機HomeScreen上的小工具</p>
+</blockquote>
+<h1 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h1><h2 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a><a href="/home/Android/Testing.html#JUnit">JUnit</a></h2><blockquote>
+</blockquote>
+<h2 id="Espresso"><a href="#Espresso" class="headerlink" title="Espresso"></a><a href="/home/Android/Testing.html#Espresso">Espresso</a></h2><blockquote>
+</blockquote>
+<h2 id="Monkey"><a href="#Monkey" class="headerlink" title="Monkey"></a><a href="/home/Android/MonkeyTest.html">Monkey</a></h2><blockquote>
+<p>壓力循環測試</p>
+</blockquote>
+<h1 id="3rd-Party-Library"><a href="#3rd-Party-Library" class="headerlink" title="3rd Party Library"></a>3rd Party Library</h1><h2 id="Dagger"><a href="#Dagger" class="headerlink" title="Dagger"></a><a href="/home/Android/Dagger.html">Dagger</a></h2><blockquote>
+<p>依賴注入工具 何謂依賴? A物件需要B物件才能運作 B即為A的依賴物 將依賴物帶進A的實現方式即稱為依賴注入<br>將各個<code>物件實體的建立或獲取</code>寫成函數方法 Dagger會建立其之間的依賴關係 並將依賴注入到物件中</p>
+</blockquote>
+<h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a><a href="/home/Android/RxJava.html">RxJava</a></h2><blockquote>
+<p>ReactiveX 響應式編程 將數據流轉化為事件觸發 例如[1,2,3]會分別產生3個事件<br>流之間可經由運算符號(即鏈式函數)加工產生新的流</p>
+</blockquote>
+<h2 id="Gson"><a href="#Gson" class="headerlink" title="Gson"></a>Gson</h2><blockquote>
+<p>Json文件的解析</p>
+</blockquote>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a><a href="/home/Android/HelpingTools">工具</a></h1><h2 id="uiautomatorviewer"><a href="#uiautomatorviewer" class="headerlink" title="uiautomatorviewer"></a>uiautomatorviewer</h2><blockquote>
+<p>檢視View階層 (方面找ID)</p>
+</blockquote>
+<h2 id="draw9patch"><a href="#draw9patch" class="headerlink" title="draw9patch"></a>draw9patch</h2><blockquote>
+<p>製作不受縮放影響畫質的按鈕外框圖樣 (避免四角被伸縮)</p>
+</blockquote>
+<h2 id="查詢TaskStack"><a href="#查詢TaskStack" class="headerlink" title="查詢TaskStack"></a>查詢TaskStack</h2><blockquote>
+<p>adb shell dumpsys</p>
+</blockquote>
+<h2 id="Android-Debug-Database"><a href="#Android-Debug-Database" class="headerlink" title="Android-Debug-Database"></a>Android-Debug-Database</h2><blockquote>
+<p>mysql網頁伺服器介面</p>
+</blockquote>
+<h2 id="LeakCanary"><a href="#LeakCanary" class="headerlink" title="LeakCanary"></a>LeakCanary</h2><blockquote>
+<p>記憶體洩漏偵測</p>
+</blockquote>
+<hr>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="LruCache"><a href="#LruCache" class="headerlink" title="LruCache"></a><a href="https://www.youtube.com/watch?v=R5ON3iwx78M" target="_blank" rel="noopener">LruCache</a></h2><blockquote>
+<p>快取 當空間吃緊時能首先移除掉<code>近期最少使用的(Least recent used)</code></p>
+</blockquote>
+<h2 id="Accessibility"><a href="#Accessibility" class="headerlink" title="Accessibility"></a><a href="/home/Android/Accessibility">Accessibility</a></h2><blockquote>
+<p>輔助殘疾人士 使其便於操作app</p>
+</blockquote>
+<h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a><a href="/home/Android/Animation">Animation</a></h2><blockquote>
+<p>動畫</p>
+</blockquote>
+<h2 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a><a href="/home/Android/Storage">Storage</a></h2><h2 id="Room"><a href="#Room" class="headerlink" title="Room"></a><a href="/home/Android/Room">Room</a></h2><blockquote>
+<p>MySql的另一種操作方式</p>
+</blockquote>
+<h2 id="ArchitectureComponent"><a href="#ArchitectureComponent" class="headerlink" title="ArchitectureComponent"></a><a href="/home/Android/ArchitectureComponent">ArchitectureComponent</a></h2><blockquote>
+<p>LifeCycle與Observable的整合 使其產生LiveData 套用MVVM架構</p>
+</blockquote>
+<h2 id="debug過程"><a href="#debug過程" class="headerlink" title="debug過程"></a><a href="https://www.youtube.com/watch?v=Hgtq3yXiOas" target="_blank" rel="noopener">debug過程</a></h2><blockquote>
+<p>操作內建的debug工具</p>
+</blockquote>
+<h2 id="雜項"><a href="#雜項" class="headerlink" title="雜項"></a><a href="/home/Android/MISC">雜項</a></h2><blockquote>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/知識樹/" rel="tag"># 知識樹</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/02/Android/Service/" rel="next" title="Service">
+                <i class="fa fa-chevron-left"></i> Service
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/02/Single/Hexo安裝紀錄/" rel="prev" title="Hexo安裝紀錄">
+                Hexo安裝紀錄 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jim</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/zh-tw/docs/" title="Hexo" target="_blank">Hexo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://theme-next.iissnan.com/" title="NextT" target="_blank">NextT</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入門知識"><span class="nav-number">1.</span> <span class="nav-text">入門知識</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IDE"><span class="nav-number">1.1.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#編譯流程"><span class="nav-number">1.2.</span> <span class="nav-text">編譯流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle"><span class="nav-number">1.3.</span> <span class="nav-text">Gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AndroidManifest-xml"><span class="nav-number">1.4.</span> <span class="nav-text">AndroidManifest.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class-Context"><span class="nav-number">1.5.</span> <span class="nav-text">class Context</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class-Application"><span class="nav-number">1.6.</span> <span class="nav-text">class Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SharedPreference"><span class="nav-number">1.7.</span> <span class="nav-text">SharedPreference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Process"><span class="nav-number">1.8.</span> <span class="nav-text">Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thread"><span class="nav-number">1.9.</span> <span class="nav-text">Thread</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Resource"><span class="nav-number">2.</span> <span class="nav-text">Resource</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intent"><span class="nav-number">3.</span> <span class="nav-text">Intent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PendingIntent"><span class="nav-number">3.1.</span> <span class="nav-text">PendingIntent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IntentFilter"><span class="nav-number">3.2.</span> <span class="nav-text">IntentFilter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notification"><span class="nav-number">3.3.</span> <span class="nav-text">Notification</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四大組件"><span class="nav-number">4.</span> <span class="nav-text">四大組件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Activity"><span class="nav-number">5.</span> <span class="nav-text">Activity</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity重建與復用"><span class="nav-number">5.1.</span> <span class="nav-text">Activity重建與復用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Activity導航"><span class="nav-number">6.</span> <span class="nav-text">Activity導航</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Link"><span class="nav-number">6.1.</span> <span class="nav-text">Deep Link</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TaskStack"><span class="nav-number">6.2.</span> <span class="nav-text">TaskStack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#launchMode"><span class="nav-number">6.3.</span> <span class="nav-text">launchMode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FLAG-ACTIVITY"><span class="nav-number">6.4.</span> <span class="nav-text">FLAG_ACTIVITY</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Service"><span class="nav-number">7.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IntentService"><span class="nav-number">7.1.</span> <span class="nav-text">IntentService</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JobService-與-JobScheduler"><span class="nav-number">7.2.</span> <span class="nav-text">JobService 與 JobScheduler</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ContentProvider"><span class="nav-number">8.</span> <span class="nav-text">ContentProvider</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cursor"><span class="nav-number">8.1.</span> <span class="nav-text">Cursor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CursorLoader"><span class="nav-number">8.2.</span> <span class="nav-text">CursorLoader</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Broadcast"><span class="nav-number">9.</span> <span class="nav-text">Broadcast</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fragment"><span class="nav-number">10.</span> <span class="nav-text">Fragment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-MySQL"><span class="nav-number">11.</span> <span class="nav-text">Database MySQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thread-Task"><span class="nav-number">12.</span> <span class="nav-text">Thread / Task</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler"><span class="nav-number">12.1.</span> <span class="nav-text">Handler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Looper"><span class="nav-number">12.2.</span> <span class="nav-text">Looper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask"><span class="nav-number">12.3.</span> <span class="nav-text">AsyncTask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AlarmManager"><span class="nav-number">12.4.</span> <span class="nav-text">AlarmManager</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RecyclerView"><span class="nav-number">13.</span> <span class="nav-text">RecyclerView</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#View-amp-Style"><span class="nav-number">14.</span> <span class="nav-text">View &amp; Style</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Layout"><span class="nav-number">15.</span> <span class="nav-text">Layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Widget"><span class="nav-number">16.</span> <span class="nav-text">Widget</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Testing"><span class="nav-number">17.</span> <span class="nav-text">Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JUnit"><span class="nav-number">17.1.</span> <span class="nav-text">JUnit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Espresso"><span class="nav-number">17.2.</span> <span class="nav-text">Espresso</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monkey"><span class="nav-number">17.3.</span> <span class="nav-text">Monkey</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3rd-Party-Library"><span class="nav-number">18.</span> <span class="nav-text">3rd Party Library</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dagger"><span class="nav-number">18.1.</span> <span class="nav-text">Dagger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava"><span class="nav-number">18.2.</span> <span class="nav-text">RxJava</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gson"><span class="nav-number">18.3.</span> <span class="nav-text">Gson</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具"><span class="nav-number">19.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#uiautomatorviewer"><span class="nav-number">19.1.</span> <span class="nav-text">uiautomatorviewer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#draw9patch"><span class="nav-number">19.2.</span> <span class="nav-text">draw9patch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查詢TaskStack"><span class="nav-number">19.3.</span> <span class="nav-text">查詢TaskStack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Debug-Database"><span class="nav-number">19.4.</span> <span class="nav-text">Android-Debug-Database</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeakCanary"><span class="nav-number">19.5.</span> <span class="nav-text">LeakCanary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">20.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LruCache"><span class="nav-number">20.1.</span> <span class="nav-text">LruCache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Accessibility"><span class="nav-number">20.2.</span> <span class="nav-text">Accessibility</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation"><span class="nav-number">20.3.</span> <span class="nav-text">Animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storage"><span class="nav-number">20.4.</span> <span class="nav-text">Storage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Room"><span class="nav-number">20.5.</span> <span class="nav-text">Room</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArchitectureComponent"><span class="nav-number">20.6.</span> <span class="nav-text">ArchitectureComponent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debug過程"><span class="nav-number">20.7.</span> <span class="nav-text">debug過程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#雜項"><span class="nav-number">20.8.</span> <span class="nav-text">雜項</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jim</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

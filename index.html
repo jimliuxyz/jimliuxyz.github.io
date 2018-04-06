@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Java8Explained.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/JMM.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -304,7 +304,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/home/Java/Java8Explained.html" itemprop="url">Java 8 增訂</a></h1>
+                <a class="post-title-link" href="/Java/JMM.html" itemprop="url">JMM (Java Memory Model)</a></h1>
         
 
         <div class="post-meta">
@@ -356,18 +356,31 @@
       
         
           
-            <h2 id="Lambda-箭頭函數"><a href="#Lambda-箭頭函數" class="headerlink" title="Lambda 箭頭函數"></a>Lambda 箭頭函數</h2><p>lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生</p>
-<p>可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method</p>
-<p>為什麼要這樣?因為java的method不能像變數一樣當作參數 要傳函數勢必只能整個object傳入 而箭頭函數就是為了解決這樣的困擾</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Runnable runnbale = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	System.out.println(<span class="string">"run me!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Runnable <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//將現有的method當作箭頭函數般回傳</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>::run;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//箭頭函數的形式</span></span><br><span class="line">Runnable runnbale = () -&gt; System.out.println(<span class="string">"run me!"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="Collection走訪"><a href="#Collection走訪" class="headerlink" title="Collection走訪"></a>Collection走訪</h2><p>functional programming的另一個重點就是function chain與Collection(list/map/array)的走訪. 搭配<code>Collection的stream()</code></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//透過stream()衍生function chain</span></span><br><span class="line">list.stream().filter(s -&gt; Integer.valueOf(s) &lt; <span class="number">3</span>).forEach(s -&gt; System.out.print(s));</span><br><span class="line"></span><br><span class="line"><span class="comment">//parallelStream() : 平行處理的stream</span></span><br></pre></td></tr></table></figure>
-<h2 id="Lambda-以函數為參數"><a href="#Lambda-以函數為參數" class="headerlink" title="Lambda 以函數為參數"></a>Lambda 以函數為參數</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//格式</span></span><br><span class="line">Function&lt;input, output&gt;</span><br><span class="line">Consumer&lt;input, <span class="keyword">void</span>&gt;</span><br><span class="line">Predication&lt;input, <span class="keyword">boolean</span>&gt;</span><br><span class="line">Supplier&lt;output&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> x, Function&lt;<span class="keyword">int</span>, string&gt; fun)</span></span>&#123;</span><br><span class="line">    f.apply(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="number">99</span>, (<span class="keyword">int</span> x) -&gt; &#123;<span class="keyword">return</span> <span class="string">"99"</span>&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="Interface擴展"><a href="#Interface擴展" class="headerlink" title="Interface擴展"></a>Interface擴展</h2><p>interface的method可前綴default與static的關鍵字 用以擴展interface的method</p>
-<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p><a href="http://blog.tonycube.com/2015/10/java-java8-4-optional.html" target="_blank" rel="noopener">link</a></p>
-<p>Optional是一個新的類別 用於封裝一個傳入或回傳值 並提供一些良好的方法 讓programer養成良好的習慣</p>
-<h2 id="Data-Time方面的新類別"><a href="#Data-Time方面的新類別" class="headerlink" title="Data/Time方面的新類別"></a>Data/Time方面的新類別</h2>
+            <p><a href="https://blog.csdn.net/qq_33689414/article/details/73527438" target="_blank" rel="noopener">ref</a> <a href="https://medium.com/@kevingyc/java-java-thread-model-memory-model-22692fc08671" target="_blank" rel="noopener">ref</a></p>
+<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a>JMM (Java Memory Model)</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png" alt=""></p>
+<p>JVM執行區分 主內存 與 本地內存</p>
+<ul>
+<li>Main : 主記憶體 (heap)</li>
+<li>Local : 各個thread獨立使用 (cache)</li>
+</ul>
+<p>thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步main的資料</p>
+<ul>
+<li>local從main讀寫資料應該是視為synchronized</li>
+</ul>
+<h2 id="可見性-visibility"><a href="#可見性-visibility" class="headerlink" title="可見性(visibility)"></a>可見性(visibility)</h2><blockquote>
+<p>指A修改變數x時 確保B能夠隨時得到最新的值 (即cache失效)<br>Java透過volatile將變數宣告為<code>易變的/易揮發的</code> 以提示其需要可見性的維護 (但並沒有原子性保護)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">x = <span class="number">0</span>;</span><br><span class="line">AB兩thread同時執行+<span class="number">3</span>與+<span class="number">5</span>,預期得到<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">volatile</span> x = <span class="number">0</span>;</span><br><span class="line">A(x=x+<span class="number">3</span>) : <span class="number">0</span>+<span class="number">3</span>=<span class="number">3</span> 將<span class="number">3</span>指定給x</span><br><span class="line">B(x=x+<span class="number">5</span>) : <span class="number">0</span>+<span class="number">5</span>=<span class="number">5</span> 此時x變為<span class="number">3</span>,但運算已結束 將<span class="number">5</span>指定給x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最後卻得到5,這是因為x=x+5的動作並不屬於原子操作,x+5與x=?是分別執行的,中間可以穿插,所以volatile不一定能確保變數一定是thread-safe的<br>故volatile一般都用在<code>狀態或旗標</code>變數上</p>
+</blockquote>
+<h2 id="原子操作-atomic"><a href="#原子操作-atomic" class="headerlink" title="原子操作 (atomic)"></a>原子操作 (atomic)</h2><p>原子是最小無法分割之物 用來形容操作是不能分割的 以完成i++為例 分別需要取值/運算/賦值 假若期間無法插入任何與i相關的操作 就可以確保i的正確性</p>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">AtomicInteger a = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">                x = x + <span class="number">1</span>;</span><br><span class="line">                a.addAndGet(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (Thread.class)&#123;</span><br><span class="line">                    y = y + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"ans x : "</span> + x); <span class="comment">//405949 &lt;- 錯的</span></span><br><span class="line">            System.out.println(<span class="string">"ans y : "</span> + y); <span class="comment">//500000</span></span><br><span class="line">            System.out.println(<span class="string">"ans a : "</span> + a); <span class="comment">//500000</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><ul>
+<li>compareAndSet(expected, new) atomic檢查主入內存與expected是否相同,若相同表示可以賦值為new 否則回傳false</li>
+<li>猜測應該是用在<code>鎖</code>的應用上 類似CountDownLatch 但不會阻塞</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">atomicI = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">safeCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        runCount++;</span><br><span class="line">        <span class="keyword">int</span> i = atomicI.get();</span><br><span class="line">        <span class="keyword">boolean</span> suc = atomicI.compareAndSet(i, ++i);</span><br><span class="line">        <span class="keyword">if</span> (suc) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -415,7 +428,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Collection.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Collection.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -434,7 +447,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/home/Java/Collection.html" itemprop="url">Collection</a></h1>
+                <a class="post-title-link" href="/Java/Collection.html" itemprop="url">Collection</a></h1>
         
 
         <div class="post-meta">
@@ -589,7 +602,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/JMM.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Lock.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -608,150 +621,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/home/Java/JMM.html" itemprop="url">JMM (Java Memory Model)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
-                2018-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://blog.csdn.net/qq_33689414/article/details/73527438" target="_blank" rel="noopener">ref</a> <a href="https://medium.com/@kevingyc/java-java-thread-model-memory-model-22692fc08671" target="_blank" rel="noopener">ref</a></p>
-<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a>JMM (Java Memory Model)</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png" alt=""></p>
-<p>JVM執行區分 主內存 與 本地內存</p>
-<ul>
-<li>Main : 主記憶體 (heap)</li>
-<li>Local : 各個thread獨立使用 (cache)</li>
-</ul>
-<p>thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步main的資料</p>
-<ul>
-<li>local從main讀寫資料應該是視為synchronized</li>
-</ul>
-<h2 id="可見性-visibility"><a href="#可見性-visibility" class="headerlink" title="可見性(visibility)"></a>可見性(visibility)</h2><blockquote>
-<p>指A修改變數x時 確保B能夠隨時得到最新的值 (即cache失效)<br>Java透過volatile將變數宣告為<code>易變的/易揮發的</code> 以提示其需要可見性的維護 (但並沒有原子性保護)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">x = <span class="number">0</span>;</span><br><span class="line">AB兩thread同時執行+<span class="number">3</span>與+<span class="number">5</span>,預期得到<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">volatile</span> x = <span class="number">0</span>;</span><br><span class="line">A(x=x+<span class="number">3</span>) : <span class="number">0</span>+<span class="number">3</span>=<span class="number">3</span> 將<span class="number">3</span>指定給x</span><br><span class="line">B(x=x+<span class="number">5</span>) : <span class="number">0</span>+<span class="number">5</span>=<span class="number">5</span> 此時x變為<span class="number">3</span>,但運算已結束 將<span class="number">5</span>指定給x</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>最後卻得到5,這是因為x=x+5的動作並不屬於原子操作,x+5與x=?是分別執行的,中間可以穿插,所以volatile不一定能確保變數一定是thread-safe的<br>故volatile一般都用在<code>狀態或旗標</code>變數上</p>
-</blockquote>
-<h2 id="原子操作-atomic"><a href="#原子操作-atomic" class="headerlink" title="原子操作 (atomic)"></a>原子操作 (atomic)</h2><p>原子是最小無法分割之物 用來形容操作是不能分割的 以完成i++為例 分別需要取值/運算/賦值 假若期間無法插入任何與i相關的操作 就可以確保i的正確性</p>
-<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">AtomicInteger a = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">                x = x + <span class="number">1</span>;</span><br><span class="line">                a.addAndGet(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (Thread.class)&#123;</span><br><span class="line">                    y = y + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"ans x : "</span> + x); <span class="comment">//405949 &lt;- 錯的</span></span><br><span class="line">            System.out.println(<span class="string">"ans y : "</span> + y); <span class="comment">//500000</span></span><br><span class="line">            System.out.println(<span class="string">"ans a : "</span> + a); <span class="comment">//500000</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><ul>
-<li>compareAndSet(expected, new) atomic檢查主入內存與expected是否相同,若相同表示可以賦值為new 否則回傳false</li>
-<li>猜測應該是用在<code>鎖</code>的應用上 類似CountDownLatch 但不會阻塞</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">atomicI = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">safeCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        runCount++;</span><br><span class="line">        <span class="keyword">int</span> i = atomicI.get();</span><br><span class="line">        <span class="keyword">boolean</span> suc = atomicI.compareAndSet(i, ++i);</span><br><span class="line">        <span class="keyword">if</span> (suc) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Lock.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JimLiuXyz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Java/Lock.html" itemprop="url">Lock</a></h1>
+                <a class="post-title-link" href="/Java/Lock.html" itemprop="url">Lock</a></h1>
         
 
         <div class="post-meta">
@@ -852,7 +722,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/泛型.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Java8Explained.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -871,7 +741,137 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/home/Java/泛型.html" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/Java/Java8Explained.html" itemprop="url">Java 8 增訂</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lambda-箭頭函數"><a href="#Lambda-箭頭函數" class="headerlink" title="Lambda 箭頭函數"></a>Lambda 箭頭函數</h2><p>lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生</p>
+<p>可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method</p>
+<p>為什麼要這樣?因為java的method不能像變數一樣當作參數 要傳函數勢必只能整個object傳入 而箭頭函數就是為了解決這樣的困擾</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Runnable runnbale = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	System.out.println(<span class="string">"run me!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Runnable <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//將現有的method當作箭頭函數般回傳</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>::run;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//箭頭函數的形式</span></span><br><span class="line">Runnable runnbale = () -&gt; System.out.println(<span class="string">"run me!"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Collection走訪"><a href="#Collection走訪" class="headerlink" title="Collection走訪"></a>Collection走訪</h2><p>functional programming的另一個重點就是function chain與Collection(list/map/array)的走訪. 搭配<code>Collection的stream()</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//透過stream()衍生function chain</span></span><br><span class="line">list.stream().filter(s -&gt; Integer.valueOf(s) &lt; <span class="number">3</span>).forEach(s -&gt; System.out.print(s));</span><br><span class="line"></span><br><span class="line"><span class="comment">//parallelStream() : 平行處理的stream</span></span><br></pre></td></tr></table></figure>
+<h2 id="Lambda-以函數為參數"><a href="#Lambda-以函數為參數" class="headerlink" title="Lambda 以函數為參數"></a>Lambda 以函數為參數</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//格式</span></span><br><span class="line">Function&lt;input, output&gt;</span><br><span class="line">Consumer&lt;input, <span class="keyword">void</span>&gt;</span><br><span class="line">Predication&lt;input, <span class="keyword">boolean</span>&gt;</span><br><span class="line">Supplier&lt;output&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> x, Function&lt;<span class="keyword">int</span>, string&gt; fun)</span></span>&#123;</span><br><span class="line">    f.apply(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="number">99</span>, (<span class="keyword">int</span> x) -&gt; &#123;<span class="keyword">return</span> <span class="string">"99"</span>&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Interface擴展"><a href="#Interface擴展" class="headerlink" title="Interface擴展"></a>Interface擴展</h2><p>interface的method可前綴default與static的關鍵字 用以擴展interface的method</p>
+<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p><a href="http://blog.tonycube.com/2015/10/java-java8-4-optional.html" target="_blank" rel="noopener">link</a></p>
+<p>Optional是一個新的類別 用於封裝一個傳入或回傳值 並提供一些良好的方法 讓programer養成良好的習慣</p>
+<h2 id="Data-Time方面的新類別"><a href="#Data-Time方面的新類別" class="headerlink" title="Data/Time方面的新類別"></a>Data/Time方面的新類別</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/泛型.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Java/泛型.html" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -987,7 +987,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/Singleton.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Single/Singleton.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1006,7 +1006,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/home/Single/Singleton.html" itemprop="url">Singleton</a></h1>
+                <a class="post-title-link" href="/Single/Singleton.html" itemprop="url">Singleton</a></h1>
         
 
         <div class="post-meta">
@@ -1132,7 +1132,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Java.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java/Java.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1151,7 +1151,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/home/Java/Java.html" itemprop="url">Java</a></h1>
+                <a class="post-title-link" href="/Java/Java.html" itemprop="url">Java</a></h1>
         
 
         <div class="post-meta">
@@ -1273,7 +1273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/Kotlin.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Single/Kotlin.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1292,7 +1292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/home/Single/Kotlin.html" itemprop="url">Kotlin</a></h1>
+                <a class="post-title-link" href="/Single/Kotlin.html" itemprop="url">Kotlin</a></h1>
         
 
         <div class="post-meta">
@@ -1555,7 +1555,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/OAuth.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Single/OAuth.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1574,7 +1574,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/home/Single/OAuth.html" itemprop="url">OAuth</a></h1>
+                <a class="post-title-link" href="/Single/OAuth.html" itemprop="url">OAuth</a></h1>
         
 
         <div class="post-meta">
@@ -1707,7 +1707,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Dagger.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Dagger.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1726,7 +1726,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/home/Android/Dagger.html" itemprop="url">Dagger</a></h1>
+                <a class="post-title-link" href="/Android/Dagger.html" itemprop="url">Dagger</a></h1>
         
 
         <div class="post-meta">

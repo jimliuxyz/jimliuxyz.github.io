@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="S7HvkrH4R_HiKK7j675QXHEjbdWWQiVyrmMeDjXxZT8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="gradle設定dependencies &amp;#123;    kapt &amp;apos;com.google.dagger:dagger-compiler:2.5&amp;apos;    compile &amp;apos;com.google.dagger:dagger:2.5&amp;apos;&amp;#125; android/kotlin注意事項@Inject/@Named 註解欄位時要加field:fragment要繼">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dagger">
+<meta property="og:url" content="http://yoursite.com/home//Android/Dagger.html">
+<meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="gradle設定dependencies &amp;#123;    kapt &amp;apos;com.google.dagger:dagger-compiler:2.5&amp;apos;    compile &amp;apos;com.google.dagger:dagger:2.5&amp;apos;&amp;#125; android/kotlin注意事項@Inject/@Named 註解欄位時要加field:fragment要繼">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dagger">
+<meta name="twitter:description" content="gradle設定dependencies &amp;#123;    kapt &amp;apos;com.google.dagger:dagger-compiler:2.5&amp;apos;    compile &amp;apos;com.google.dagger:dagger:2.5&amp;apos;&amp;#125; android/kotlin注意事項@Inject/@Named 註解欄位時要加field:fragment要繼">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/home//Android/Dagger.html"/>
+
+
+
+
+
+  <title>Dagger | JimLiuXyz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JimLiuXyz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Dagger.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Dagger</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T12:11:26+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="gradle設定"><a href="#gradle設定" class="headerlink" title="gradle設定"></a>gradle設定</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    kapt &apos;com.google.dagger:dagger-compiler:2.5&apos;</span><br><span class="line">    compile &apos;com.google.dagger:dagger:2.5&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="android-kotlin注意事項"><a href="#android-kotlin注意事項" class="headerlink" title="android/kotlin注意事項"></a>android/kotlin注意事項</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Inject</span>/<span class="meta">@Named</span> 註解欄位時要加field:</span><br><span class="line">fragment要繼承DaggerFragment (否則從FragmemtManger取回時不會注入)</span><br><span class="line">activity要繼承DaggerAppCompatActivity</span><br></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>欲在MainActivity中自動注入Car實例</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span></span>()&#123;</span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> car: Car</span><br><span class="line">    init&#123;</span><br><span class="line">        car = Car() <span class="comment">//希望透過別的方式將Car注入到MainActivity的car</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="對象名詞定義"><a href="#對象名詞定義" class="headerlink" title="對象名詞定義"></a>對象名詞定義</h2><ul>
+<li>dependency : 依賴物 如Car</li>
+<li>client : 接收依賴者 如MainActivity</li>
+</ul>
+<h2 id="先設想一個注入器要有哪些提示才能完善"><a href="#先設想一個注入器要有哪些提示才能完善" class="headerlink" title="先設想一個注入器要有哪些提示才能完善"></a>先設想一個注入器要有哪些提示才能完善</h2><ul>
+<li>依據什麼對應D和C? 用類型,但要切確,例如不能把Object注入到String field</li>
+<li>怎麼知道哪個field需要被注入? 用@Inject標記field</li>
+<li>哪些類是可以拿來注入的? 用@Inject標記constructor</li>
+<li>建構依賴時可能需要建構參數或靈活性? 用@Provides做method回傳建構好的實體</li>
+<li>所以依賴可用@Inject標記constructor”或”直接做@Provides method回傳依賴物</li>
+<li>同一個類但對應多個不同的子類或不同建構參數? 用@Qualifier給各自一個別名</li>
+<li>field想宣告成界面類型要怎麼做? 用@Binds做綁定該類與其介面</li>
+<li>注入的東西生命週期為何? 用@Scope定義</li>
+<li>可以需要一個或多個生產依賴的工廠 稱作Module</li>
+<li>至少要有個注射器建構這些工程吧 Component就是注射器 而Module依附在注射器裡</li>
+<li>注射器下還有子注射器區別不同的環境 叫做SubComponent</li>
+<li>那不就要寫很多code? 幾乎只要用interface或abstract進行描述 dagger會自動產生實做好的類別(Component/Module)</li>
+</ul>
+<h2 id="尚未驗證"><a href="#尚未驗證" class="headerlink" title="尚未驗證"></a>尚未驗證</h2><ul>
+<li><p>依賴的可視性應該取決於注射器與子注射器的繼承關係 子能見父 但子與子間互不可見 “父可能也不能見子” (父子指的是注射器產生出的實體)</p>
+</li>
+<li><p>子的注射物無法override父的注射物 仍要用key</p>
+</li>
+<li><p>是否單例取決於scope 同名scope在不同注射器上應如同不scope 同注射器同scope間僅能有一個實體 沒指名scope表示沒此注射都用不同實體 一個依賴只能有一個scope</p>
+</li>
+<li><p>@Singleton是一個Application層的scope 相當於global/root/最頂層</p>
+</li>
+<li><p>開始於一個該scope的頂層物件 該物件在產生其他依賴 這一群的依賴中</p>
+</li>
+<li><p>同一個Lazy只會回傳一個實體 與singleton無關 只是快取</p>
+</li>
+</ul>
+<h2 id="step1-Inject"><a href="#step1-Inject" class="headerlink" title="step1 @Inject"></a>step1 @Inject</h2><blockquote>
+<p>宣告注入物 : 在注入物的Constructor標註@Inject (一種可以不在Module中宣告的方式)</p>
+</blockquote>
+<blockquote>
+<p>使用注入物 : 在其使用處(注入處)標註@Inject (可用Lazy取得緩衝物件)</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Singleton</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="meta">@Inject</span> <span class="keyword">constructor</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span></span>()&#123;</span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> car: Car</span><br><span class="line">        <span class="meta">@Inject</span> <span class="keyword">set</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>發現在android的dagger2, Constructor不一定需要@Inject</p>
+</blockquote>
+<h2 id="step2-Module"><a href="#step2-Module" class="headerlink" title="step2 @Module"></a>step2 @Module</h2><blockquote>
+<p>Module如同依賴物的生產工廠 當有需要依賴時dagger會自己叫用這裡的fun</p>
+</blockquote>
+<blockquote>
+<p>Module可為’class一般類’或’abstract class抽象類’或’object實例’ 其中只有抽象類能用@Binds(因為code是自動產生的,僅需提供介面)</p>
+</blockquote>
+<ul>
+<li>用抽象函數提供依賴 其輸入參數最終要能得到實例 (靠@Inject或@Provides)</li>
+<li>@Binds 用抽象函數提供轉型 @Binds abstract OutCls trans(InCls obj)</li>
+<li>@Provides 直接提供注入函數 回傳實例</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Module</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CarModule</span></span>&#123;</span><br><span class="line">    <span class="meta">@Singleton</span>  <span class="comment">//標示provide一個singleton實例</span></span><br><span class="line">    <span class="meta">@Provides</span>   <span class="comment">//標示該fun為一provide函數</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">provideCar</span><span class="params">()</span></span> = Car()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="一個物件要被提供給注射器"><a href="#一個物件要被提供給注射器" class="headerlink" title="一個物件要被提供給注射器"></a>一個物件要被提供給注射器</h2><ol>
+<li>@I : 直接在該物件的constructor宣告@Inject (會自動產生依賴函數於注射器)</li>
+<li><p>@P : 用@Provides寫函數回傳提供 (寫在Module裡,就可以省略1)</p>
+</li>
+<li><p>@B : 轉型需求 僅是一個輔助 1或2再加上@Binds abstract fun…</p>
+</li>
+</ol>
+<h2 id="step3-Component"><a href="#step3-Component" class="headerlink" title="step3 @Component"></a>step3 @Component</h2><blockquote>
+<p>Component稱為注入器更貼切 只需定義其介面 dagger2的builder會實作該介面 並建出前綴為Dagger的class 並用該class建立注射器實體</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Singleton</span> <span class="comment">//如果Module中有Singleton這裡也要有(原因可能跟@Scope綁定作用域相似)</span></span><br><span class="line"><span class="meta">@Component(modules = arrayOf(CarModule::class)</span>) <span class="comment">//定義注入器能注入的Module</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span>  <span class="title">MainActivityComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">injectCar</span><span class="params">(main: <span class="type">MainActivity</span>)</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//dagger2會自動建出DaggerMainActivityComponent並且實作injectCar()</span></span><br></pre></td></tr></table></figure>
+<h2 id="step4-實際注入"><a href="#step4-實際注入" class="headerlink" title="step4 實際注入"></a>step4 實際注入</h2><blockquote>
+<p>dagger2負責建立依賴 但依賴注入的時間點仍須自己處理</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//方式1 自有注射器 (或繼承DaggerAppCompatActivity 他能替我們注入activity的依賴)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span></span>&#123;</span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> car: Car</span><br><span class="line">        <span class="meta">@Inject</span> <span class="keyword">set</span></span><br><span class="line"></span><br><span class="line">    init&#123;</span><br><span class="line">        DaggerMainActivityComponent <span class="comment">//dagger自己產生的class</span></span><br><span class="line">            .builder()</span><br><span class="line">            .carModule(CarModule()) <span class="comment">//將Module提供給注入器</span></span><br><span class="line">            .build()            <span class="comment">//建立注入器實體</span></span><br><span class="line">            .injectCar(<span class="keyword">this</span>)    <span class="comment">//替this注入依賴 (沒有lazy)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//方式2 建立Android Framwork App共用的注射器 App要註冊到manifest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> : <span class="type">Application</span></span>() &#123; <span class="comment">//android.app.Application</span></span><br><span class="line">    <span class="keyword">val</span> injector: AppComponent <span class="keyword">by</span> lazy &#123;</span><br><span class="line">        DaggerMainActivityComponent</span><br><span class="line">                .builder()</span><br><span class="line">                .carModule(CarModule())</span><br><span class="line">                .build()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="more1-Qualifier-或-Named-“type”"><a href="#more1-Qualifier-或-Named-“type”" class="headerlink" title="more1 @Qualifier 或@Named(“type”)"></a>more1 @Qualifier 或@Named(“type”)</h2><blockquote>
+<p>用來替@Inject注入處綁定@Provide fun, 解決Car能由多個provide fun產出的情形</p>
+</blockquote>
+<p>首先要自訂Annotation</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Qualifier</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Retention</span>(RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ProvideID &#123;</span><br><span class="line">  <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@QualifierA</span></span><br><span class="line"><span class="meta">@Provides</span> <span class="function">fun <span class="title">provideCarA</span><span class="params">()</span>:Car</span>&#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@QualifierB</span></span><br><span class="line"><span class="meta">@Provides</span> <span class="function">fun <span class="title">provideCarB</span><span class="params">()</span>:Car</span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin中明確指出annotation作用的位置為field:</span></span><br><span class="line"><span class="meta">@Inject</span></span><br><span class="line"><span class="meta">@field:Named</span>(<span class="string">"local"</span>)</span><br><span class="line"><span class="keyword">lateinit</span> <span class="keyword">var</span> ....</span><br><span class="line">或</span><br><span class="line"><span class="meta">@field:</span>[Inject Named(<span class="string">"local"</span>)]</span><br><span class="line"><span class="keyword">lateinit</span> <span class="keyword">var</span> ....</span><br></pre></td></tr></table></figure>
+<p>將該Annotation註釋到@Provide與@Inject的注入處即可</p>
+<h2 id="more2-Scope"><a href="#more2-Scope" class="headerlink" title="more2 @Scope"></a>more2 @Scope</h2><p><a href="https://www.jianshu.com/p/c4ed826c1473" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
+<p>用來綁定@Provide與@Component注入器間的生命週期 讓provide產生的實例沿用直至注入器結束</p>
+</blockquote>
+<ul>
+<li>一個component中僅能有一個scope</li>
+<li>同一個component中不允許兩個同類型的’注射物類型’ (以類型的字面定義區分 無論繼承關係)</li>
+<li>同一個scope中不會建立兩個同類型的’注射物實體’ (即局部單例)</li>
+</ul>
+<blockquote>
+<p>用@I或@P方式建立依賴物(當兩個都有建立時,依賴是優先從@P方式取得)</p>
+</blockquote>
+<blockquote>
+<p>若是依賴在注射器中是從@P方式取得 則@I的scope宣告會被忽略 故scope應該建立於provider函數上 (很容易理解 因為provider函數的回傳是我們自己實例化的 scope限制的是該函數 而不是函數的回傳)</p>
+</blockquote>
+<blockquote>
+<p>@B因為是自動產生provider函數 所以會參考@I的scope宣告</p>
+</blockquote>
+<h2 id="more2-Singelton"><a href="#more2-Singelton" class="headerlink" title="more2 @Singelton"></a>more2 @Singelton</h2><blockquote>
+<p>即@Scope做出來的一個Annotaion 字面上的意思是Singelton 實際上每個scope中的每個類型都僅能有一個實體對映 若要對映多個 1.用@Qualifier區分 2.用@Binds轉成不同型別(非@Binds真正的目的)</p>
+</blockquote>
+<h2 id="more3-Reusable"><a href="#more3-Reusable" class="headerlink" title="more3 @Reusable"></a>more3 @Reusable</h2><blockquote>
+<p>類似@Singelton但不再需要與注入器綁定 multi-thread時可能會出現多個實例</p>
+</blockquote>
+<h2 id="more4-BindsInstance"><a href="#more4-BindsInstance" class="headerlink" title="more4 @BindsInstance"></a>more4 @BindsInstance</h2><blockquote>
+<p>與@Component注射器的builder相關 貌似能從builder()後接上需要提供的依賴物</p>
+</blockquote>
+<h2 id="more5-注射器間的依賴"><a href="#more5-注射器間的依賴" class="headerlink" title="more5 注射器間的依賴"></a>more5 注射器間的依賴</h2><blockquote>
+<p>一個注射器的依賴來源可以是Module 也可以是另一個注射器</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component(dependencies = MainActivityComponent.class)</span> <span class="comment">//依賴另一個注射器</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span>  <span class="title">Activity2Component</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">injectCar</span><span class="params">(aty: <span class="type">Activity2</span>)</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Activity2Component aty2Component = Dagger Activity2Component.builder()</span><br><span class="line">    .mainActivityComponent(mainAtyComponent) <span class="comment">//build時需提供注射器的依賴</span></span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<h2 id="more6-注入器間的繼承-SubComponent"><a href="#more6-注入器間的繼承-SubComponent" class="headerlink" title="more6 注入器間的繼承 @SubComponent"></a>more6 注入器間的繼承 @SubComponent</h2><blockquote>
+<p>Annotation使用上如同@Component 同一個Component下的SubComponent可以有各自的scope 概念就跟類別繼承一樣</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/Android/RxJava.html" rel="next" title="RxJava">
+                <i class="fa fa-chevron-left"></i> RxJava
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/Single/OAuth.html" rel="prev" title="OAuth">
+                OAuth <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jim</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/zh-tw/docs/" title="Hexo" target="_blank">Hexo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://theme-next.iissnan.com/" title="NextT" target="_blank">NextT</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle設定"><span class="nav-number">1.</span> <span class="nav-text">gradle設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android-kotlin注意事項"><span class="nav-number">2.</span> <span class="nav-text">android/kotlin注意事項</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#對象名詞定義"><span class="nav-number">4.</span> <span class="nav-text">對象名詞定義</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先設想一個注入器要有哪些提示才能完善"><span class="nav-number">5.</span> <span class="nav-text">先設想一個注入器要有哪些提示才能完善</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尚未驗證"><span class="nav-number">6.</span> <span class="nav-text">尚未驗證</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step1-Inject"><span class="nav-number">7.</span> <span class="nav-text">step1 @Inject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step2-Module"><span class="nav-number">8.</span> <span class="nav-text">step2 @Module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一個物件要被提供給注射器"><span class="nav-number">9.</span> <span class="nav-text">一個物件要被提供給注射器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step3-Component"><span class="nav-number">10.</span> <span class="nav-text">step3 @Component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step4-實際注入"><span class="nav-number">11.</span> <span class="nav-text">step4 實際注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more1-Qualifier-或-Named-“type”"><span class="nav-number">12.</span> <span class="nav-text">more1 @Qualifier 或@Named(“type”)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more2-Scope"><span class="nav-number">13.</span> <span class="nav-text">more2 @Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more2-Singelton"><span class="nav-number">14.</span> <span class="nav-text">more2 @Singelton</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more3-Reusable"><span class="nav-number">15.</span> <span class="nav-text">more3 @Reusable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more4-BindsInstance"><span class="nav-number">16.</span> <span class="nav-text">more4 @BindsInstance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more5-注射器間的依賴"><span class="nav-number">17.</span> <span class="nav-text">more5 注射器間的依賴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more6-注入器間的繼承-SubComponent"><span class="nav-number">18.</span> <span class="nav-text">more6 注入器間的繼承 @SubComponent</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jim</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

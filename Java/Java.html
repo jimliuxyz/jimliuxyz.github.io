@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="Android測試 adb (android debug bridge)Android SDK本地端執行程式 crash / anr(activity not responding) //列出deviceadb devices//進入手機shell (如果Permission denied可執行su)adb shell//到安裝路徑cd /data/data/com.jimliuxyz.vocab">
-<meta name="keywords" content="Android">
+<meta name="description" content="引用 強引用(Strong)  強行使物件無法被回收   軟引用(Soft)  不置於立即回收 做cache時很適合   弱應用(Weak)  同軟引用 但更容易會被回收   虛引用(Phantom)  該回收就回收 可用於檢查物件的回收與否    person = new Person(&quot;john&quot;, 10);ref = new SoftReference&amp;lt;Person&amp;gt;(pers">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="壓力循環測試">
-<meta property="og:url" content="http://yoursite.com/Android/MonkeyTest.html">
+<meta property="og:title" content="Java">
+<meta property="og:url" content="http://yoursite.com/Java/Java.html">
 <meta property="og:site_name" content="JimLiuXyz">
-<meta property="og:description" content="Android測試 adb (android debug bridge)Android SDK本地端執行程式 crash / anr(activity not responding) //列出deviceadb devices//進入手機shell (如果Permission denied可執行su)adb shell//到安裝路徑cd /data/data/com.jimliuxyz.vocab">
+<meta property="og:description" content="引用 強引用(Strong)  強行使物件無法被回收   軟引用(Soft)  不置於立即回收 做cache時很適合   弱應用(Weak)  同軟引用 但更容易會被回收   虛引用(Phantom)  該回收就回收 可用於檢查物件的回收與否    person = new Person(&quot;john&quot;, 10);ref = new SoftReference&amp;lt;Person&amp;gt;(pers">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta property="og:updated_time" content="2018-04-06T09:40:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="壓力循環測試">
-<meta name="twitter:description" content="Android測試 adb (android debug bridge)Android SDK本地端執行程式 crash / anr(activity not responding) //列出deviceadb devices//進入手機shell (如果Permission denied可執行su)adb shell//到安裝路徑cd /data/data/com.jimliuxyz.vocab">
+<meta name="twitter:title" content="Java">
+<meta name="twitter:description" content="引用 強引用(Strong)  強行使物件無法被回收   軟引用(Soft)  不置於立即回收 做cache時很適合   弱應用(Weak)  同軟引用 但更容易會被回收   虛引用(Phantom)  該回收就回收 可用於檢查物件的回收與否    person = new Person(&quot;john&quot;, 10);ref = new SoftReference&amp;lt;Person&amp;gt;(pers">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/Android/MonkeyTest.html"/>
+  <link rel="canonical" href="http://yoursite.com/Java/Java.html"/>
 
 
 
 
 
-  <title>壓力循環測試 | JimLiuXyz</title>
+  <title>Java | JimLiuXyz</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/MonkeyTest.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Java.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">壓力循環測試</h1>
+          <h1 class="post-title" itemprop="name headline">Java</h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:06:51+08:00">
-                2018-04-04
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T12:17:09+08:00">
+                2018-04-06
               </time>
             
 
@@ -356,18 +356,29 @@
       
 
       
-        <p><a href="https://www.youtube.com/playlist?list=PLO5e_-yXpYLD_0y8agkLMcYwqegmXFNMD" target="_blank" rel="noopener">Android測試</a></p>
-<h2 id="adb-android-debug-bridge"><a href="#adb-android-debug-bridge" class="headerlink" title="adb (android debug bridge)"></a>adb (android debug bridge)</h2><p>Android SDK本地端執行程式</p>
-<p>crash / anr(activity not responding)</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//列出device</span><br><span class="line">adb devices</span><br><span class="line"></span><br><span class="line">//進入手機shell (如果Permission denied可執行su)</span><br><span class="line">adb shell</span><br><span class="line"></span><br><span class="line">//到安裝路徑</span><br><span class="line"><span class="built_in">cd</span> /data/data/com.jimliuxyz.vocabook.mock/</span><br><span class="line"></span><br><span class="line">//安裝apk</span><br><span class="line">adb install package.apk</span><br><span class="line"></span><br><span class="line">//取得 device <span class="built_in">log</span></span><br><span class="line">adb logcat</span><br></pre></td></tr></table></figure>
-<h2 id="monkey"><a href="#monkey" class="headerlink" title="monkey"></a>monkey</h2><p>Android OS上的測試程式</p>
-<h2 id="monkey-自動壓力測試-隨機操作"><a href="#monkey-自動壓力測試-隨機操作" class="headerlink" title="monkey 自動壓力測試(隨機操作)"></a>monkey 自動壓力測試(隨機操作)</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//執行測試 (隨機點擊操作)</span><br><span class="line">adb shell monkey 100</span><br><span class="line"></span><br><span class="line">//執行100個操作 每1000ms執行一次 以50為操作seed</span><br><span class="line">adb shell monkey -p tw.com.langstar.t1 -v -s 50 --throttle 1000 100</span><br><span class="line"></span><br><span class="line">-v : detial info</span><br><span class="line">-s : seed操作種子 固定的種子能複製出同樣的操作行為</span><br><span class="line">--pct-touch : touch操作的百分比</span><br><span class="line">--ignore-crashes : crash後自動重啟再測試</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">//手機內存放anr的<span class="built_in">log</span>目錄</span><br><span class="line">data/anr</span><br></pre></td></tr></table></figure>
-<h2 id="monkey-自訂測試腳本"><a href="#monkey-自訂測試腳本" class="headerlink" title="monkey 自訂測試腳本"></a>monkey 自訂測試腳本</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//Android SDK內建的UI元件檢視器 能查詢執行中的app</span><br><span class="line">/Users/jimliu/Library/Android/sdk/tools/bin/uiautomatorviewer</span><br><span class="line"></span><br><span class="line">//上傳檔案</span><br><span class="line">adb push myscript /data/<span class="built_in">local</span>/tmp</span><br><span class="line"></span><br><span class="line">//執行測試 (隨機點擊操作)</span><br><span class="line">adb shell monkey -f /data/<span class="built_in">local</span>/tmp/myscript 100</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">// 點擊</span><br><span class="line">DispatchPointer(downtime,eventide,press:0/release:1,x,y,pressure,size,metastate,xpresision,ypresision,device,edgeflags)DispatchPointer(10,10,0,100,100,1,1,-1,1,1,0,0)</span><br><span class="line"></span><br><span class="line">DispatchString(mystr)</span><br><span class="line"></span><br><span class="line">//manifest的activity須加exported=<span class="string">"true"</span>屬性</span><br><span class="line">LaunchActivity(package, package + ActivityName)</span><br><span class="line"></span><br><span class="line">UserWait(1000) //ms</span><br><span class="line"></span><br><span class="line">DispatchPress(66) //keycode</span><br></pre></td></tr></table></figure>
-<h2 id="monkeyrunner"><a href="#monkeyrunner" class="headerlink" title="monkeyrunner"></a>monkeyrunner</h2><p>Android SDK本地端程式<br>/Users/jimliu/Library/Android/sdk/tools/bin/monkeyrunner<br>從本地端執行python控制測試流程 可抓圖</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyRunner,MonkeyDevice,MonkeyImage</span><br><span class="line"><span class="comment">#MonkeyRunner.alert("msg", "title", "okText")</span></span><br><span class="line"></span><br><span class="line">device = MonkeyRunner.waitForConnection(<span class="number">3</span>, <span class="string">"emulator-5554"</span>)</span><br><span class="line"></span><br><span class="line">device.startActivity(<span class="string">"package/package.activityname"</span>)</span><br><span class="line"></span><br><span class="line">MonkeyRunner.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">device.touch(<span class="number">100</span>, <span class="number">100</span>, <span class="string">"DOWN_AND_UP"</span>)</span><br><span class="line"></span><br><span class="line">device.type(<span class="string">"string"</span>)</span><br><span class="line">device.press(<span class="string">"KEYCODE_ENTER"</span>, <span class="string">"DOWN_AND_UP"</span>)</span><br><span class="line"></span><br><span class="line">image = device.takeSnapshot()</span><br><span class="line">image.writeToFile(<span class="string">"./test.png"</span>, <span class="string">"png"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">monkeyrunner demo.py</span><br></pre></td></tr></table></figure>
-
+        <h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
+<li><p>強引用(Strong)</p>
+<blockquote>
+<p>強行使物件無法被回收</p>
+</blockquote>
+</li>
+<li><p>軟引用(Soft)</p>
+<blockquote>
+<p>不置於立即回收 做cache時很適合</p>
+</blockquote>
+</li>
+<li><p>弱應用(Weak)</p>
+<blockquote>
+<p>同軟引用 但更容易會被回收</p>
+</blockquote>
+</li>
+<li><p>虛引用(Phantom)</p>
+<blockquote>
+<p>該回收就回收 可用於檢查物件的回收與否</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">person = <span class="keyword">new</span> Person(<span class="string">"john"</span>, <span class="number">10</span>);</span><br><span class="line">ref = <span class="keyword">new</span> SoftReference&lt;Person&gt;(person);</span><br><span class="line"></span><br><span class="line">Person p = ref.get();</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -384,7 +395,7 @@
       
         <div class="post-tags">
           
-            <a href="/home/tags/Android/" rel="tag"># Android</a>
+            <a href="/home/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -397,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/home/Linux/Single/ShellCmd.html" rel="next" title="ShellCmd">
-                <i class="fa fa-chevron-left"></i> ShellCmd
+              <a href="/home/Single/Kotlin.html" rel="next" title="Kotlin">
+                <i class="fa fa-chevron-left"></i> Kotlin
               </a>
             
           </div>
@@ -407,8 +418,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/home/Android/Task.html" rel="prev" title="Task">
-                Task <i class="fa fa-chevron-right"></i>
+              <a href="/home/Single/Singleton.html" rel="prev" title="Singleton">
+                Singleton <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -559,7 +570,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#adb-android-debug-bridge"><span class="nav-number">1.</span> <span class="nav-text">adb (android debug bridge)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monkey"><span class="nav-number">2.</span> <span class="nav-text">monkey</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monkey-自動壓力測試-隨機操作"><span class="nav-number">3.</span> <span class="nav-text">monkey 自動壓力測試(隨機操作)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monkey-自訂測試腳本"><span class="nav-number">4.</span> <span class="nav-text">monkey 自訂測試腳本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monkeyrunner"><span class="nav-number">5.</span> <span class="nav-text">monkeyrunner</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">1.</span> <span class="nav-text">引用</span></a></li></ol></div>
             
 
           </div>

@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="1 Lambda 箭頭函數lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生 可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method 為什麼要這">
+<meta name="description" content="Lambda 箭頭函數lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生 可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method 為什麼要這樣?">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 8 增訂">
 <meta property="og:url" content="http://yoursite.com/Java/Java8Explained.html">
 <meta property="og:site_name" content="JimLiuXyz">
-<meta property="og:description" content="1 Lambda 箭頭函數lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生 可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method 為什麼要這">
+<meta property="og:description" content="Lambda 箭頭函數lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生 可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method 為什麼要這樣?">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="http://yoursite.com/home/Java/Java8Explained/Java中的引用，區別與用途.png">
-<meta property="og:updated_time" content="2018-04-06T09:21:00.000Z">
+<meta property="og:updated_time" content="2018-04-06T09:27:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 8 增訂">
-<meta name="twitter:description" content="1 Lambda 箭頭函數lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生 可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method 為什麼要這">
-<meta name="twitter:image" content="http://yoursite.com/home/Java/Java8Explained/Java中的引用，區別與用途.png">
+<meta name="twitter:description" content="Lambda 箭頭函數lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生 可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method 為什麼要這樣?">
 
 
 
@@ -358,8 +356,7 @@
       
 
       
-        <p><img src="/home/Java/Java8Explained/Java中的引用，區別與用途.png" alt=""><br>1</p>
-<h2 id="Lambda-箭頭函數"><a href="#Lambda-箭頭函數" class="headerlink" title="Lambda 箭頭函數"></a>Lambda 箭頭函數</h2><p>lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生</p>
+        <h2 id="Lambda-箭頭函數"><a href="#Lambda-箭頭函數" class="headerlink" title="Lambda 箭頭函數"></a>Lambda 箭頭函數</h2><p>lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生</p>
 <p>可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method</p>
 <p>為什麼要這樣?因為java的method不能像變數一樣當作參數 要傳函數勢必只能整個object傳入 而箭頭函數就是為了解決這樣的困擾</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Runnable runnbale = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	System.out.println(<span class="string">"run me!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Runnable <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//將現有的method當作箭頭函數般回傳</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>::run;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//箭頭函數的形式</span></span><br><span class="line">Runnable runnbale = () -&gt; System.out.println(<span class="string">"run me!"</span>);</span><br></pre></td></tr></table></figure>
@@ -400,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/home/Java/Collection.html" rel="next" title="Collection">
-                <i class="fa fa-chevron-left"></i> Collection
+              <a href="/home/Java/JMM.html" rel="next" title="JMM (Java Memory Model)">
+                <i class="fa fa-chevron-left"></i> JMM (Java Memory Model)
               </a>
             
           </div>
@@ -409,6 +406,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/Java/Lock.html" rel="prev" title="Lock">
+                Lock <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -485,7 +486,7 @@
               
                 <a href="/home/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -507,7 +508,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/home/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>

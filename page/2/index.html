@@ -285,6 +285,410 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/RxJava.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/home/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/RxJava.html" itemprop="url">RxJava</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T11:49:48+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="stream的類型"><a href="#stream的類型" class="headerlink" title="stream的類型"></a>stream的類型</h2><ul>
+<li>cold : 如同隨選視訊 流是固定的 訂閱才送 每次送都是完整的 不論是否送過給別人</li>
+<li>hot : 如同直播 流是不斷送出的 無法減速的 每次訂閱都只能從當下開始 沒有終點的</li>
+</ul>
+<h2 id="物件解釋"><a href="#物件解釋" class="headerlink" title="物件解釋"></a>物件解釋</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//基於Obserable建立一個可訂閱對象</span></span><br><span class="line">Obserable.create(</span><br><span class="line">    <span class="keyword">new</span> OnSubscribe&lt;String&gt;()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(Emitter&lt;String&gt; e)</span></span>&#123;</span><br><span class="line">            <span class="comment">//發送事件</span></span><br><span class="line">            e.onNext(<span class="string">"new event!"</span>);</span><br><span class="line">            e.onComplete();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .subscribe( <span class="comment">//訂閱並設定接收的對象 參數列:onNext, onComplete, onError</span></span><br><span class="line">        <span class="keyword">new</span> Consumer&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">( String s)</span> </span>&#123;</span><br><span class="line">                System.out.println(s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">new</span> Consumer&lt;Throwable&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">                throwable.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/p/45309538ad94" target="_blank" rel="noopener">ref</a></p>
+<ul>
+<li>Obserable : 可觀察對象 除此還有多種不同類型的可觀察對象可以create</li>
+<li>OnSubscribe : 可訂閱對象 負責發送產生事件</li>
+<li>Emitter : 相當程度代表一個訂戶(多少有連結關係)</li>
+<li>Observer : 觀察者 即訂戶 接收事件</li>
+<li>Consumer : 一個通用的介面 帶有一個accept方法 該方法被叫用的意義與時機由外界定義</li>
+<li>BiConsumer : 同Consumer 但accept能傳如兩個參數</li>
+<li>upstream / downstream : 即兩個observable的相對應關係 donw=up.map(…)</li>
+</ul>
+<h2 id="大致流程-一種意象上的形容-幫助記憶"><a href="#大致流程-一種意象上的形容-幫助記憶" class="headerlink" title="大致流程(一種意象上的形容 幫助記憶)"></a>大致流程(一種意象上的形容 幫助記憶)</h2><ul>
+<li>最末端的observer開始o.subscribe(observer) 一路向上訂閱</li>
+<li>操作符也如同一個observer+observable (向上進行訂閱 向下提供可觀察對象)</li>
+<li>一直訂閱到最頂端的observable (到頂端前,中間的操作符也可能發射值)</li>
+<li>observer相當於會被丟到OnSubscribe.subscribe()直接被呼叫onNext/onError/onCompleted</li>
+<li>一個observable被重複訂閱也是相同的流程 但不見得會發射一樣的值 要視observable設計與規劃而定 例如cold與hot的差別</li>
+</ul>
+<h2 id="Observables"><a href="#Observables" class="headerlink" title="Observables"></a>Observables</h2><p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2017/0726/8268.html" target="_blank" rel="noopener">RxJava搭配Room</a></p>
+<ul>
+<li>observable</li>
+<li>flowable : 有backpresure策略 可控制流速</li>
+<li>single : 只發1次(onSuccess)或0次(onError)事件 沒有其他選項</li>
+<li>completable : 沒有事件 只有成功與否 只有onComplete與onError 常用.andThen(…)操作符再轉出其他obserable</li>
+<li>maybe : single+completable</li>
+</ul>
+<blockquote>
+<p>一次性使用 : single / maybe</p>
+</blockquote>
+<blockquote>
+<p>僅關注成敗 : completaion</p>
+</blockquote>
+<h2 id="emmiter-interface"><a href="#emmiter-interface" class="headerlink" title="emmiter interface"></a>emmiter interface</h2><ul>
+<li>onNext(T t) 多事件型會用這個關鍵字</li>
+<li>onSuccess(T t) 單事件型 相對應的是onError(Throwable t)</li>
+</ul>
+<h2 id="observer-interface"><a href="#observer-interface" class="headerlink" title="observer interface"></a>observer interface</h2><p>observer與emmiter的介面有點像是mapping 呼叫emmiter的onNext近似於observer的onNext被呼叫</p>
+<ul>
+<li>onError後 onComplete應該就不會被呼叫了</li>
+</ul>
+<h2 id="Subject"><a href="#Subject" class="headerlink" title="Subject"></a>Subject</h2><p><a href="https://www.jianshu.com/p/1257c8ba7c0c" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
+<p>subject同時擁有observable與observer的能力. 做為observer可以直接透過subject實體餵入事件onNext(“event”) 做為observable能讓外部訂閱 算是一種整合應用</p>
+</blockquote>
+<blockquote>
+<p>做為observer很單純 但做為observable則有很多變化</p>
+</blockquote>
+<ul>
+<li>PublishSubject 沒有任何特殊機制</li>
+<li>BehaviorSubject 訂閱時會發射預設值或最後一值 像是一個狀態變數一樣 任何時候都有值</li>
+<li>AsyncSubject 只在onCompleted才發射值(最後一個)</li>
+<li>ReplaySubject 任何時間訂閱都從頭再發射一次</li>
+</ul>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><blockquote>
+<p>操作符回傳的都是Observable 但向操作符提供的function僅是完善操作符的一小部分 func的in/out與操作符的out是不相干的</p>
+</blockquote>
+<blockquote>
+<p>操作符的應用 應考慮流的屬性(hot/cold)</p>
+</blockquote>
+<h2 id="操作符-結合"><a href="#操作符-結合" class="headerlink" title="操作符 - 結合"></a>操作符 - 結合</h2><h4 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h4><p>一個流結束 才切到下一個流</p>
+<h4 id="marge"><a href="#marge" class="headerlink" title="marge"></a>marge</h4><p>多個流同時穿插 當一個流onError就全部結束</p>
+<h2 id="操作符-建立"><a href="#操作符-建立" class="headerlink" title="操作符 - 建立"></a>操作符 - 建立</h2><h4 id="create"><a href="#create" class="headerlink" title="create"></a>create</h4><blockquote>
+<p>自訂OnSubscribe 自己提供值來發射</p>
+</blockquote>
+<h4 id="from"><a href="#from" class="headerlink" title="from"></a>from</h4><blockquote>
+<p>用Iterable的內容值發射</p>
+</blockquote>
+<h4 id="just"><a href="#just" class="headerlink" title="just"></a>just</h4><blockquote>
+<p>從參數列給值來發射</p>
+</blockquote>
+<h4 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h4><blockquote>
+<p>產生新的observable (每次訂閱就會重新產生)</p>
+</blockquote>
+<h4 id="Interval"><a href="#Interval" class="headerlink" title="Interval"></a>Interval</h4><blockquote>
+<p>值從0開始 每固定時間發射一次</p>
+</blockquote>
+<h4 id="timer"><a href="#timer" class="headerlink" title="timer"></a>timer</h4><blockquote>
+<p>在一段時間之後發射0 之後就completed</p>
+</blockquote>
+<h4 id="range"><a href="#range" class="headerlink" title="range"></a>range</h4><blockquote>
+<p>分別發射一個區間的值</p>
+</blockquote>
+<h4 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h4><blockquote>
+<p>將收到的值重複發射N次</p>
+</blockquote>
+<h2 id="操作符-Transforming-將值變形"><a href="#操作符-Transforming-將值變形" class="headerlink" title="操作符 - Transforming 將值變形"></a>操作符 - Transforming 將值變形</h2><h4 id="buffer-count"><a href="#buffer-count" class="headerlink" title="buffer(count)"></a>buffer(count)</h4><blockquote>
+<p>累積count個值 轉成array發射 </p>
+</blockquote>
+<h4 id="buffer-count-skip"><a href="#buffer-count-skip" class="headerlink" title="buffer(count, skip)"></a>buffer(count, skip)</h4><blockquote>
+<p>累積skip個值 只取count個 轉成array發射 </p>
+</blockquote>
+<h4 id="window-count-time"><a href="#window-count-time" class="headerlink" title="window(count/time)"></a>window(count/time)</h4><blockquote>
+<p>同buffer 但包裝成Observable 可用時間做buffer</p>
+</blockquote>
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><blockquote>
+<p>將值個別map成新的值 ex:1 =&gt; “1”</p>
+</blockquote>
+<h4 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h4><blockquote>
+<p>將值個別map成以Observable產生的值 ex:1 =&gt; Observable.just(“1”)</p>
+</blockquote>
+<h4 id="flatMapIterable"><a href="#flatMapIterable" class="headerlink" title="flatMapIterable"></a>flatMapIterable</h4><blockquote>
+<p>將值個別map成以Iterable產生的值 ex:1 =&gt; listOf(“1”)</p>
+</blockquote>
+<h4 id="map說明"><a href="#map說明" class="headerlink" title="map說明"></a>map說明</h4><blockquote>
+<p>以上三個map操作符輸出的都是Observable\<t> 僅只是用不同的方式建立內容</t></p>
+</blockquote>
+<h4 id="scan"><a href="#scan" class="headerlink" title="scan"></a>scan</h4><blockquote>
+<p>類似map的用法 但多一個acc的累加參數 (如若有設初始值,在subscribe時會先送初始值,無論上游是否有值)</p>
+</blockquote>
+<h4 id="groupBy"><a href="#groupBy" class="headerlink" title="groupBy"></a>groupBy</h4><blockquote>
+<p>依值建立GroupedObservable 返回Observable\&lt;GroupedObservable\&lt;K,T&gt;&gt;</p>
+</blockquote>
+<h4 id="cast"><a href="#cast" class="headerlink" title="cast"></a>cast</h4><blockquote>
+<p>轉型</p>
+</blockquote>
+<h2 id="操作符-Filtering"><a href="#操作符-Filtering" class="headerlink" title="操作符 - Filtering"></a>操作符 - Filtering</h2><h4 id="debounce"><a href="#debounce" class="headerlink" title="debounce"></a>debounce</h4><blockquote>
+<p>抗反彈 收到值後需N時間後無新值才會發射 否則用新值且N重算</p>
+</blockquote>
+<h4 id="throttleWithTimeout-同throttleLast"><a href="#throttleWithTimeout-同throttleLast" class="headerlink" title="throttleWithTimeout (同throttleLast?)"></a>throttleWithTimeout (同throttleLast?)</h4><blockquote>
+<p>同debounce 但N不會重算</p>
+</blockquote>
+<h4 id="throttleFirst"><a href="#throttleFirst" class="headerlink" title="throttleFirst"></a>throttleFirst</h4><blockquote>
+<p>同debounce 但N不會重算 且取的是最先發生的值</p>
+</blockquote>
+<h4 id="sample"><a href="#sample" class="headerlink" title="sample"></a>sample</h4><blockquote>
+<p>固定時間內取最新的一筆 時間的起點與訂閱時間有關 與資料發生時間無關</p>
+</blockquote>
+<h4 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h4><blockquote>
+<p>僅發射不同的 從未出現過的值</p>
+</blockquote>
+<h4 id="distinctUntilChanged"><a href="#distinctUntilChanged" class="headerlink" title="distinctUntilChanged"></a>distinctUntilChanged</h4><blockquote>
+<p>僅發射與前一個值不同的值</p>
+</blockquote>
+<h4 id="elementAt"><a href="#elementAt" class="headerlink" title="elementAt"></a>elementAt</h4><blockquote>
+<p>僅發射第N個值(接收到的第N個)</p>
+</blockquote>
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><blockquote>
+<p>僅發射函數返回為true的值</p>
+</blockquote>
+<h4 id="last-first"><a href="#last-first" class="headerlink" title="last / first"></a>last / first</h4><blockquote>
+<p>僅發射函數返回為true的第一或最後一個值 發射完即completed</p>
+</blockquote>
+<h4 id="take"><a href="#take" class="headerlink" title="take"></a>take</h4><blockquote>
+<p>僅發射固定筆數 發射完即completed</p>
+</blockquote>
+<h4 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h4><blockquote>
+<p>忽略前面N筆</p>
+</blockquote>
+<h4 id="blocking…"><a href="#blocking…" class="headerlink" title="blocking…"></a>blocking…</h4><blockquote>
+<p>將上游阻塞 待下游… 用途尚未確認</p>
+</blockquote>
+<h2 id="操作符-Combining"><a href="#操作符-Combining" class="headerlink" title="操作符 - Combining"></a>操作符 - Combining</h2><h4 id="Observable-combineLatest-O1-O2-combiner"><a href="#Observable-combineLatest-O1-O2-combiner" class="headerlink" title="Observable.combineLatest(O1,O2,combiner)"></a>Observable.combineLatest(O1,O2,combiner)</h4><blockquote>
+<p>當O1或O2有值時透過combiner函數決定發射的值 (傳入O1,O2的最新值) (多形用法還多)</p>
+</blockquote>
+<h4 id="join-O2-T1-T2-combiner"><a href="#join-O2-T1-T2-combiner" class="headerlink" title="join(O2,T1,T2,combiner)"></a>join(O2,T1,T2,combiner)</h4><blockquote>
+<p>將現有Observable(O1)與O2結合 T1/T2分別表示O1/O2有效的時間 兩者都在有效時間內時會呼叫combiner進行發射</p>
+</blockquote>
+<h4 id="joinGroup"><a href="#joinGroup" class="headerlink" title="joinGroup"></a>joinGroup</h4><blockquote>
+<p>…</p>
+</blockquote>
+<h4 id="Observable-merge"><a href="#Observable-merge" class="headerlink" title="Observable.merge"></a>Observable.merge</h4><blockquote>
+<p>混合兩個Observable</p>
+</blockquote>
+<h4 id="mergeWith"><a href="#mergeWith" class="headerlink" title="mergeWith"></a>mergeWith</h4><blockquote>
+<p>同merge 但沒試出結果</p>
+</blockquote>
+<h4 id="startWith"><a href="#startWith" class="headerlink" title="startWith"></a>startWith</h4><blockquote>
+<p>開頭時插入值</p>
+</blockquote>
+<h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><blockquote>
+<p>當一個O發射多個O時 切換到最新發射的O</p>
+</blockquote>
+<h4 id="Observable-zip-O1-O2-O3-zipper"><a href="#Observable-zip-O1-O2-O3-zipper" class="headerlink" title="Observable.zip(O1,O2,O3,zipper)"></a>Observable.zip(O1,O2,O3,zipper)</h4><blockquote>
+<p>… 將O1,O2,O3的值依序合併成新值</p>
+</blockquote>
+<h2 id="操作符-異常處理"><a href="#操作符-異常處理" class="headerlink" title="操作符 - 異常處理"></a>操作符 - 異常處理</h2><h4 id="onErrorReturn"><a href="#onErrorReturn" class="headerlink" title="onErrorReturn"></a>onErrorReturn</h4><blockquote>
+<p>捕捉onError異常 並補一個值 之後onCompleted</p>
+</blockquote>
+<h4 id="onErrorResume"><a href="#onErrorResume" class="headerlink" title="onErrorResume"></a>onErrorResume</h4><blockquote>
+<p>同onErrorReturn 並補一個Observable繼續運作</p>
+</blockquote>
+<h4 id="OnExceptionResumeNext"><a href="#OnExceptionResumeNext" class="headerlink" title="OnExceptionResumeNext"></a>OnExceptionResumeNext</h4><blockquote>
+<p>針對Exception處理</p>
+</blockquote>
+<h4 id="retry-retryWhen"><a href="#retry-retryWhen" class="headerlink" title="retry / retryWhen"></a>retry / retryWhen</h4><blockquote>
+<p>onError時重試 retryWhen要注意forever loop問題</p>
+</blockquote>
+<h2 id="操作符-Utility"><a href="#操作符-Utility" class="headerlink" title="操作符 - Utility"></a>操作符 - Utility</h2><h4 id="delay"><a href="#delay" class="headerlink" title="delay"></a>delay</h4><blockquote>
+<p>延遲值的發射</p>
+</blockquote>
+<h4 id="delaySubscription"><a href="#delaySubscription" class="headerlink" title="delaySubscription"></a>delaySubscription</h4><blockquote>
+<p>延遲訂閱的時間</p>
+</blockquote>
+<h4 id="doOnEach-doOnNext-doOnSubscribe-doOnUnsubscribe-doOnError-doOnCompleted-doOnTerminate-finallyDo"><a href="#doOnEach-doOnNext-doOnSubscribe-doOnUnsubscribe-doOnError-doOnCompleted-doOnTerminate-finallyDo" class="headerlink" title="doOnEach/doOnNext/doOnSubscribe/doOnUnsubscribe/doOnError/doOnCompleted/doOnTerminate/finallyDo"></a>doOnEach/doOnNext/doOnSubscribe/doOnUnsubscribe/doOnError/doOnCompleted/doOnTerminate/finallyDo</h4><blockquote>
+<p>監聽事件 直接回傳上游Observable</p>
+</blockquote>
+<h4 id="materialize"><a href="#materialize" class="headerlink" title="materialize"></a>materialize</h4><blockquote>
+<p>將事件與值封裝為Notification類型</p>
+</blockquote>
+<h4 id="dematerialize"><a href="#dematerialize" class="headerlink" title="dematerialize"></a>dematerialize</h4><blockquote>
+<p>將Notification解回事件與值</p>
+</blockquote>
+<h4 id="subscribeOn-observeOn"><a href="#subscribeOn-observeOn" class="headerlink" title="[ subscribeOn / observeOn ]"></a>[ subscribeOn / observeOn ]</h4><blockquote>
+<p>將個訂閱過程拆分”訂閱時期”與”觀察(遞值)時期” 訂閱時是由下往上(code的順序) 觀察時期是由上往下 </p>
+</blockquote>
+<h4 id="subscribeOn"><a href="#subscribeOn" class="headerlink" title="subscribeOn"></a>subscribeOn</h4><blockquote>
+<p>在訂閱時期指定thread (訂閱時期比較短 相應的函數通常只執行一次)</p>
+</blockquote>
+<h4 id="observeOn"><a href="#observeOn" class="headerlink" title="observeOn"></a>observeOn</h4><blockquote>
+<p>在觀察(遞值)時期指定thread (觀察(遞值)時期比較長 相應的函數通常反覆執行)</p>
+</blockquote>
+<h4 id="timeInterval"><a href="#timeInterval" class="headerlink" title="timeInterval"></a>timeInterval</h4><blockquote>
+<p>發射值與前一個值之間的時間差</p>
+</blockquote>
+<h4 id="timeStamp"><a href="#timeStamp" class="headerlink" title="timeStamp"></a>timeStamp</h4><blockquote>
+<p>發射值發生時的時間戳</p>
+</blockquote>
+<h4 id="timeout"><a href="#timeout" class="headerlink" title="timeout"></a>timeout</h4><blockquote>
+<p>逾時未出現值則發出onError 或發出endWith+onCompleted</p>
+</blockquote>
+<h4 id="using"><a href="#using" class="headerlink" title="using"></a>using</h4><blockquote>
+<p>有點像是建立一個與該Observable伴隨生命的物件</p>
+</blockquote>
+<h2 id="操作符-Conditional-and-Boolean"><a href="#操作符-Conditional-and-Boolean" class="headerlink" title="操作符 - Conditional and Boolean"></a>操作符 - Conditional and Boolean</h2><h4 id="all-func"><a href="#all-func" class="headerlink" title="all(func)"></a>all(func)</h4><blockquote>
+<p>根據func的回傳 如果至onCompleted都沒有false 就發射一個true 然後onCompleted</p>
+</blockquote>
+<h4 id="amb-O1-O2…"><a href="#amb-O1-O2…" class="headerlink" title="amb(O1,O2…)"></a>amb(O1,O2…)</h4><blockquote>
+<p>讓O1,O2…競賽 以最先有值或事件的O做為發射的來源</p>
+</blockquote>
+<h4 id="contains-func"><a href="#contains-func" class="headerlink" title="contains(func)"></a>contains(func)</h4><blockquote>
+<p>onCompleted前func回true則發射true 否則發射false 然後onCompleted</p>
+</blockquote>
+<h4 id="isEmpty"><a href="#isEmpty" class="headerlink" title="isEmpty"></a>isEmpty</h4><blockquote>
+<p>(true or flase) + onCompleted</p>
+</blockquote>
+<h4 id="defaultIfEmpty"><a href="#defaultIfEmpty" class="headerlink" title="defaultIfEmpty"></a>defaultIfEmpty</h4><blockquote>
+<p>empty時發射default+onCompleted</p>
+</blockquote>
+<h4 id="sequenceEqual-O1-O2"><a href="#sequenceEqual-O1-O2" class="headerlink" title="sequenceEqual(O1,O2)"></a>sequenceEqual(O1,O2)</h4><blockquote>
+<p>用來判斷O1,O2的發射值與順序是否一模一樣</p>
+</blockquote>
+<h4 id="skipUntil-O2"><a href="#skipUntil-O2" class="headerlink" title="skipUntil(O2)"></a>skipUntil(O2)</h4><blockquote>
+<p>直到O1出現O2的pattern前都skip </p>
+</blockquote>
+<h4 id="skipWhile-func"><a href="#skipWhile-func" class="headerlink" title="skipWhile(func)"></a>skipWhile(func)</h4><blockquote>
+<p>直到func回傳false前的值都skip</p>
+</blockquote>
+<h4 id="takeUntil-takeWhile"><a href="#takeUntil-takeWhile" class="headerlink" title="takeUntil / takeWhile"></a>takeUntil / takeWhile</h4><blockquote>
+<p>… 如上類似</p>
+</blockquote>
+<h2 id="操作符-合計Aggregate"><a href="#操作符-合計Aggregate" class="headerlink" title="操作符 - 合計Aggregate"></a>操作符 - 合計Aggregate</h2><h4 id="contact"><a href="#contact" class="headerlink" title="contact"></a>contact</h4><blockquote>
+<p>合併兩個O 但第一個onCompleted才能切第二個</p>
+</blockquote>
+<h4 id="count"><a href="#count" class="headerlink" title="count"></a>count</h4><blockquote>
+<p>在O結束時 發射值的數量然後onCompleted</p>
+</blockquote>
+<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><blockquote>
+<p>壘算 直到O結束才發射 然後onCompleted (類似scan 只是scan是每次壘算都發射)</p>
+</blockquote>
+<h4 id="collect-init-collector"><a href="#collect-init-collector" class="headerlink" title="collect(init,collector)"></a>collect(init,collector)</h4><blockquote>
+<p>將值收集到ArrayList之類的物件 在O結束時才發射 然後onCompleted</p>
+</blockquote>
+<h2 id="操作符-Connectable"><a href="#操作符-Connectable" class="headerlink" title="操作符 - Connectable"></a>操作符 - Connectable</h2><h4 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h4><blockquote>
+<p>將O轉成需要connect才發射的型態(Connectable) 主要用意在控制多個observer時的發射時機</p>
+</blockquote>
+<h4 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h4><blockquote>
+<p>當connect時該Connectable即已經開始訂閱上游</p>
+</blockquote>
+<h4 id="refCount"><a href="#refCount" class="headerlink" title="refCount"></a>refCount</h4><blockquote>
+<p>將Connectable轉回普通的O</p>
+</blockquote>
+<h4 id="replay"><a href="#replay" class="headerlink" title="replay"></a>replay</h4><blockquote>
+<p>轉為一個Connectable 並保留數個值或一段時間的值做新訂閱者的startWith (字面很像重播 但實際比較像buffer的效果)</p>
+</blockquote>
+<h2 id="操作符-自訂操作符"><a href="#操作符-自訂操作符" class="headerlink" title="操作符 - 自訂操作符"></a>操作符 - 自訂操作符</h2><p><a href="http://mushuichuan.com/2016/02/05/rxjava-operator-10/" target="_blank" rel="noopener">ref</a></p>
+<h4 id="compose-自定義-加工observable"><a href="#compose-自定義-加工observable" class="headerlink" title="compose (自定義/加工observable)"></a>compose (自定義/加工observable)</h4><blockquote>
+<p>Transformer 加工上游observable 再返回另一個observable 可以當成一個聚合的操作符 執行一個compose裡面藏了很多操作符</p>
+</blockquote>
+<h4 id="lift-自定義observer"><a href="#lift-自定義observer" class="headerlink" title="lift (自定義observer)"></a>lift (自定義observer)</h4><blockquote>
+<p>能插入一個Operator/Subscriber</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/RxJava.1.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1447,137 +1851,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Layout.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/home/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JimLiuXyz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Layout.html" itemprop="url">Layout</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T17:46:56+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h1 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h1><blockquote>
-<p>view跟layout定義上的差別: view是通常形容元件 layout則是容器(容器內的排版)<br>layout是view的子類</p>
-</blockquote>
-<h3 id="RelativeLayout"><a href="#RelativeLayout" class="headerlink" title="RelativeLayout"></a>RelativeLayout</h3><p>定位於 某元件 或 所處容器 的相對位置</p>
-<h3 id="FrameLayout"><a href="#FrameLayout" class="headerlink" title="FrameLayout"></a>FrameLayout</h3><p>定位於左上角 (view會重疊)</p>
-<h3 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h3><p>水平或垂直 接續排列 權重分佈</p>
-<h3 id="TableLayout"><a href="#TableLayout" class="headerlink" title="TableLayout"></a>TableLayout</h3><p>格狀排列</p>
-<h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><p>約束排列 約束元間之間的相對關係 (取代RelativeLayout)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LayoutParams.FILL_PARENT <span class="comment">//依父容器大小 填滿父容器</span></span><br><span class="line">LayoutParams.WRAP_CONTENT <span class="comment">//依內容大小 適當顯示</span></span><br></pre></td></tr></table></figure>
-<h3 id="SwipeRefreshLayout"><a href="#SwipeRefreshLayout" class="headerlink" title="SwipeRefreshLayout"></a>SwipeRefreshLayout</h3><p>有下拉Refresh功能</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">findViewById&lt;SwipeRefreshLayout&gt;(R.id.refresh_layout)?.apply &#123;</span><br><span class="line">    isRefreshing = <span class="literal">true</span> <span class="comment">//設定為正在refresh</span></span><br><span class="line">    setColorSchemeColors(</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimary),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorAccent),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimaryDark)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    setOnRefreshListener&#123;</span><br><span class="line">        println(<span class="string">"do refresh..."</span>)</span><br><span class="line"></span><br><span class="line">        postDelayed(&#123;</span><br><span class="line">            println(<span class="string">"done refresh..."</span>)</span><br><span class="line">            isRefreshing = <span class="literal">false</span> <span class="comment">//設定為沒在refresh</span></span><br><span class="line">        &#125;, <span class="number">3000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1628,7 +1901,7 @@
               
                 <a href="/home/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -1650,7 +1923,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/home/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>

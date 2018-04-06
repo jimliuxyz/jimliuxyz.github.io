@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="S7HvkrH4R_HiKK7j675QXHEjbdWWQiVyrmMeDjXxZT8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="/Users/jimliu/Library/Android/sdk/platforms/android-26/data/res/values/styles.xml 容器類型的view ListView : 列表顯示 RecyclerView : 列表顯示 更為靈活 取代ListView ScrollView : 可滑動的顯示 gridview / gallery / cardview  Layou">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="view 與 Style">
+<meta property="og:url" content="http://yoursite.com/home//Android/ViewN'Style.html">
+<meta property="og:site_name" content="JimLiuXyz">
+<meta property="og:description" content="/Users/jimliu/Library/Android/sdk/platforms/android-26/data/res/values/styles.xml 容器類型的view ListView : 列表顯示 RecyclerView : 列表顯示 更為靈活 取代ListView ScrollView : 可滑動的顯示 gridview / gallery / cardview  Layou">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="view 與 Style">
+<meta name="twitter:description" content="/Users/jimliu/Library/Android/sdk/platforms/android-26/data/res/values/styles.xml 容器類型的view ListView : 列表顯示 RecyclerView : 列表顯示 更為靈活 取代ListView ScrollView : 可滑動的顯示 gridview / gallery / cardview  Layou">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/home//Android/ViewN'Style.html"/>
+
+
+
+
+
+  <title>view 與 Style | JimLiuXyz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JimLiuXyz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/ViewN'Style.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">view 與 Style</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:37:31+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><span class="inline-path">/Users/jimliu/Library/Android/sdk/platforms/android-26/data/res/values/styles.xml</span></p>
+<h2 id="容器類型的view"><a href="#容器類型的view" class="headerlink" title="容器類型的view"></a>容器類型的view</h2><ul>
+<li>ListView : 列表顯示</li>
+<li>RecyclerView : 列表顯示 更為靈活 取代ListView</li>
+<li>ScrollView : 可滑動的顯示</li>
+<li>gridview / gallery / cardview</li>
+</ul>
+<h3 id="LayoutInflater"><a href="#LayoutInflater" class="headerlink" title="LayoutInflater"></a>LayoutInflater</h3><blockquote>
+<p>layout的實體化工具 將layout resource轉成view的實例</p>
+</blockquote>
+<h3 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h3><blockquote>
+<p>設計模式中稱作”適配器” 簡單的說就是轉換器 以view容器的應用來說 就是將’資料數據’轉換填充到’ListView裡的各個item view’上</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//以simple_list_item_1做為item view</span></span><br><span class="line">adp = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(<span class="keyword">this</span>, android.R.layout.simple_list_item_1);</span><br><span class="line"></span><br><span class="line"><span class="comment">//替adp添加兩筆資料</span></span><br><span class="line">adp.add(<span class="string">"first"</span>);</span><br><span class="line">adp.add(<span class="string">"second"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//將adp指定給listview使用</span></span><br><span class="line">lv = findViewById(R.id.listView);</span><br><span class="line">lv.setAdapter(adp);</span><br></pre></td></tr></table></figure>
+<h3 id="BaseAdapter"><a href="#BaseAdapter" class="headerlink" title="BaseAdapter"></a>BaseAdapter</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> pos, View convertView, ViewGroup parent)</span></span>&#123;</span><br><span class="line">  <span class="comment">//getView用於取得item view</span></span><br><span class="line">  <span class="comment">//convertView : 先前已建立的view,用於優化效能</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">notifyDataSetChanged(); <span class="comment">//向view通知data有變動 view才會refresh</span></span><br></pre></td></tr></table></figure>
+<h4 id="ViewHolder"><a href="#ViewHolder" class="headerlink" title="ViewHolder"></a>ViewHolder</h4><blockquote>
+<p>主要用意在復用item view時避免重複findViewById<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">v.setTag(holder);</span><br><span class="line">holder = (Holder) v.getTag();</span><br><span class="line"><span class="comment">//RecyclerView.Adapter不用這樣寫</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h2><blockquote>
+<p>有自己的ui thread 用於較佔時間繪圖應用 (VideoView/ImageView)</p>
+</blockquote>
+<h2 id="View狀態的save與restore"><a href="#View狀態的save與restore" class="headerlink" title="View狀態的save與restore"></a>View狀態的save與restore</h2><ol>
+<li>view需要設定id才能被儲存</li>
+<li>android:saveEnabled 預設已為true</li>
+</ol>
+<h2 id="自定義View-ViewGroup"><a href="#自定義View-ViewGroup" class="headerlink" title="自定義View / ViewGroup"></a>自定義View / ViewGroup</h2><blockquote>
+<p>先分清元件與佈局的角色</p>
+</blockquote>
+<h4 id="大致"><a href="#大致" class="headerlink" title="大致"></a>大致</h4><ol>
+<li>需要複寫onMeasure (父要求子做元件尺寸測量<code>measureChildren</code>) (子則量測自己) 量測完執行<code>setMeasuredDimension</code></li>
+<li>ViewGroup需複寫 onLayout (排定子的繪出位置) 逐個叫用<code>child.layout</code></li>
+<li>View需複寫 onDraw (繪製本身)</li>
+</ol>
+<h4 id="MeasureSpec定義"><a href="#MeasureSpec定義" class="headerlink" title="MeasureSpec定義"></a>MeasureSpec定義</h4><blockquote>
+<p>為一整數 前3bit做為mode 之後作為size(寬或高) 做為父要求子做尺寸量測時的參考 (由父提供spec 子做量測)</p>
+</blockquote>
+<ul>
+<li>UNSPECIFIED : 沒有任何約束</li>
+<li>EXACTLY : 約束明確的size</li>
+<li>AT_MOST : 約束上限的size</li>
+</ul>
+<h4 id="LayoutParams"><a href="#LayoutParams" class="headerlink" title="LayoutParams"></a>LayoutParams</h4><blockquote>
+<p>一個ViewGroup要遍歷所有子View的LayoutParams才知道每個子View要求被如何佈局 (所以是ViewGroup定義的 但由子View描述給其ViewGroup參照的) <code>child.getLayoutParams</code></p>
+</blockquote>
+<h2 id="Theme與Style"><a href="#Theme與Style" class="headerlink" title="Theme與Style"></a>Theme與Style</h2><blockquote>
+<p>aad:Construct a layout using XML or Java code</p>
+</blockquote>
+<blockquote>
+<p>aad:Create a custom view class and add it to a layout</p>
+</blockquote>
+<blockquote>
+<p>aad:Implement a custom application theme</p>
+</blockquote>
+<blockquote>
+<p>aad:Apply a custom style to a group of common widgets</p>
+</blockquote>
+<blockquote>
+<p>兩者僅有使用廣度上的差別 theme針對app或activity, style針對元件, 基本上都是style</p>
+</blockquote>
+<h4 id="單位"><a href="#單位" class="headerlink" title="單位"></a>單位</h4><p>dp : 1dp=160ppi的px長度 (描述元件)<br>sp : 類似dp 用於文字<br>pt : 點 用於文字<br>px : 像素<br>ppi, dpi : 像素密度 pixel per inch 每英寸像素數<br>mm : 毫米<br>in : 英吋</p>
+<h4 id="attr宣告"><a href="#attr宣告" class="headerlink" title="attr宣告"></a>attr宣告</h4><blockquote>
+<p>寫在values/attrs.xml 作為元件的屬性 (元件屬性是從xml建立的 java code僅是依資源ID取值賦予元件)</p>
+</blockquote>
+<blockquote>
+<p>attr及所有資源都會自動產生於R類中的id</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> =<span class="string">"mycolor"</span> <span class="attr">format</span>= <span class="string">"color"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>屬性名稱一多容易重複混淆 用declare-styleable可將其分類 java code也會比較好讀取</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//將多個attr並於declare-styleable有利組織化與讀取 在R類中會是一個resId的陣列</span><br><span class="line"><span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"MyStyle"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> =<span class="string">"mycolor"</span> <span class="attr">format</span>= <span class="string">"color"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">declare-styleable</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="attr的賦值"><a href="#attr的賦值" class="headerlink" title="attr的賦值"></a>attr的賦值</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//在元件標籤中賦值 (前半部需指定命名空間)</span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:</span> <span class="attr">mycolor</span>=<span class="string">"#00ff00"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:style</span>=<span class="string">"@style/MyStyle"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TextView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//在style/theme中賦值</span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"mycolor"</span>&gt;</span>#0037ff<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textViewStyle"</span>&gt;</span>@style/textviewstyle<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="元件取得attr的來源"><a href="#元件取得attr的來源" class="headerlink" title="元件取得attr的來源"></a>元件取得attr的來源</h4><blockquote>
+<p>一個元件的一個attr可能有多個來源 (大致的優先順序)</p>
+</blockquote>
+<ol>
+<li>於元件標籤中或標籤中指定的style有描述</li>
+<li>從application或activity指定的theme中有描述</li>
+<li>theme中指定的style有描述 (即指android:textViewStyle)(format=”reference”)</li>
+<li>元件hardcode裡有預設的style</li>
+</ol>
+<h4 id="元件取得attr-obtainStyledAttributes-AttributeSet-set-int-attrs-int-defStyleAttr-int-defStyleRes"><a href="#元件取得attr-obtainStyledAttributes-AttributeSet-set-int-attrs-int-defStyleAttr-int-defStyleRes" class="headerlink" title="元件取得attr obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)"></a>元件取得attr obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)</h4><ul>
+<li>AttributeSet 即元件標籤中的描述</li>
+<li>attrs 欲取得的attr</li>
+<li>defStyleAttr 預設的style的attr (在theme中經由該attr參考到確切的style)(即指android:textViewStyle) 透過這樣的機制就可在theme中複寫掉元件的整個style</li>
+<li>defStyleRes 預設的style 若沒有可丟0</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(context, attrs, defStyleAttr, <span class="number">0</span>);</span><br><span class="line">    TypedArray a = theme.obtainStyledAttributes(attrs,</span><br><span class="line">            R.styleable.MyStyle, defStyleAttr, defStyleRes);</span><br><span class="line">    <span class="keyword">int</span> color = a.getColor(R.styleable.MyStyle_mycolor, Color.BLACK);</span><br><span class="line">    a. recycle();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="可見性的設定"><a href="#可見性的設定" class="headerlink" title="可見性的設定"></a>可見性的設定</h2><p>View.visable<br>View.invisable : 看不見 但仍佔位置<br>View.gone : 消失 不佔位置</p>
+<h2 id="模糊視窗-blur"><a href="#模糊視窗-blur" class="headerlink" title="模糊視窗(blur)"></a>模糊視窗(blur)</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);</span><br></pre></td></tr></table></figure>
+<h2 id="ViewStub"><a href="#ViewStub" class="headerlink" title="ViewStub"></a>ViewStub</h2><p>一個空的view 用來延遲載入另一個view時當作佔位用</p>
+<h4 id="SpannableString"><a href="#SpannableString" class="headerlink" title="SpannableString"></a>SpannableString</h4><blockquote>
+<p>v.setText()通常傳入字串 更複雜可以傳入(html, img_getter, tag_handler) 另一種是傳入SpannableString 用途都是達到圖文混排</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/Android/Accessibility.html" rel="next" title="Accessibility">
+                <i class="fa fa-chevron-left"></i> Accessibility
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/Android/Activity.html" rel="prev" title="Activity">
+                Activity <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jim</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/zh-tw/docs/" title="Hexo" target="_blank">Hexo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://theme-next.iissnan.com/" title="NextT" target="_blank">NextT</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器類型的view"><span class="nav-number">1.</span> <span class="nav-text">容器類型的view</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LayoutInflater"><span class="nav-number">1.1.</span> <span class="nav-text">LayoutInflater</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adapter"><span class="nav-number">1.2.</span> <span class="nav-text">Adapter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BaseAdapter"><span class="nav-number">1.3.</span> <span class="nav-text">BaseAdapter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewHolder"><span class="nav-number">1.3.1.</span> <span class="nav-text">ViewHolder</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SurfaceView"><span class="nav-number">2.</span> <span class="nav-text">SurfaceView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View狀態的save與restore"><span class="nav-number">3.</span> <span class="nav-text">View狀態的save與restore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定義View-ViewGroup"><span class="nav-number">4.</span> <span class="nav-text">自定義View / ViewGroup</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#大致"><span class="nav-number">4.0.1.</span> <span class="nav-text">大致</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MeasureSpec定義"><span class="nav-number">4.0.2.</span> <span class="nav-text">MeasureSpec定義</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LayoutParams"><span class="nav-number">4.0.3.</span> <span class="nav-text">LayoutParams</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Theme與Style"><span class="nav-number">5.</span> <span class="nav-text">Theme與Style</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#單位"><span class="nav-number">5.0.1.</span> <span class="nav-text">單位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#attr宣告"><span class="nav-number">5.0.2.</span> <span class="nav-text">attr宣告</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#attr的賦值"><span class="nav-number">5.0.3.</span> <span class="nav-text">attr的賦值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元件取得attr的來源"><span class="nav-number">5.0.4.</span> <span class="nav-text">元件取得attr的來源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元件取得attr-obtainStyledAttributes-AttributeSet-set-int-attrs-int-defStyleAttr-int-defStyleRes"><span class="nav-number">5.0.5.</span> <span class="nav-text">元件取得attr obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可見性的設定"><span class="nav-number">6.</span> <span class="nav-text">可見性的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊視窗-blur"><span class="nav-number">7.</span> <span class="nav-text">模糊視窗(blur)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewStub"><span class="nav-number">8.</span> <span class="nav-text">ViewStub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SpannableString"><span class="nav-number">8.0.1.</span> <span class="nav-text">SpannableString</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jim</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

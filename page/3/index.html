@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Layout.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/ArchitectureComponent.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -304,138 +304,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Android/Layout.html" itemprop="url">Layout</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T17:46:56+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h1 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h1><blockquote>
-<p>view跟layout定義上的差別: view是通常形容元件 layout則是容器(容器內的排版)<br>layout是view的子類</p>
-</blockquote>
-<h3 id="RelativeLayout"><a href="#RelativeLayout" class="headerlink" title="RelativeLayout"></a>RelativeLayout</h3><p>定位於 某元件 或 所處容器 的相對位置</p>
-<h3 id="FrameLayout"><a href="#FrameLayout" class="headerlink" title="FrameLayout"></a>FrameLayout</h3><p>定位於左上角 (view會重疊)</p>
-<h3 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h3><p>水平或垂直 接續排列 權重分佈</p>
-<h3 id="TableLayout"><a href="#TableLayout" class="headerlink" title="TableLayout"></a>TableLayout</h3><p>格狀排列</p>
-<h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><p>約束排列 約束元間之間的相對關係 (取代RelativeLayout)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LayoutParams.FILL_PARENT <span class="comment">//依父容器大小 填滿父容器</span></span><br><span class="line">LayoutParams.WRAP_CONTENT <span class="comment">//依內容大小 適當顯示</span></span><br></pre></td></tr></table></figure>
-<h3 id="SwipeRefreshLayout"><a href="#SwipeRefreshLayout" class="headerlink" title="SwipeRefreshLayout"></a>SwipeRefreshLayout</h3><p>有下拉Refresh功能</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">findViewById&lt;SwipeRefreshLayout&gt;(R.id.refresh_layout)?.apply &#123;</span><br><span class="line">    isRefreshing = <span class="literal">true</span> <span class="comment">//設定為正在refresh</span></span><br><span class="line">    setColorSchemeColors(</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimary),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorAccent),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimaryDark)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    setOnRefreshListener&#123;</span><br><span class="line">        println(<span class="string">"do refresh..."</span>)</span><br><span class="line"></span><br><span class="line">        postDelayed(&#123;</span><br><span class="line">            println(<span class="string">"done refresh..."</span>)</span><br><span class="line">            isRefreshing = <span class="literal">false</span> <span class="comment">//設定為沒在refresh</span></span><br><span class="line">        &#125;, <span class="number">3000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/ArchitectureComponent.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JimLiuXyz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Android/ArchitectureComponent.html" itemprop="url">ArchitectureComponent</a></h1>
+                <a class="post-title-link" href="/home/Android/ArchitectureComponent.html" itemprop="url">ArchitectureComponent</a></h1>
         
 
         <div class="post-meta">
@@ -545,7 +414,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Misc.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Misc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -564,7 +433,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Android/Misc.html" itemprop="url">Misc</a></h1>
+                <a class="post-title-link" href="/home/Android/Misc.html" itemprop="url">Misc</a></h1>
         
 
         <div class="post-meta">
@@ -684,7 +553,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Widget.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Widget.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -703,7 +572,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Android/Widget.html" itemprop="url">Widget</a></h1>
+                <a class="post-title-link" href="/home/Android/Widget.html" itemprop="url">Widget</a></h1>
         
 
         <div class="post-meta">
@@ -822,7 +691,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Animation.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Animation.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -841,7 +710,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Android/Animation.html" itemprop="url">Animation</a></h1>
+                <a class="post-title-link" href="/home/Android/Animation.html" itemprop="url">Animation</a></h1>
         
 
         <div class="post-meta">
@@ -983,7 +852,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Single/Thread的各式需求.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/Thread的各式需求.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1002,7 +871,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Single/Thread的各式需求.html" itemprop="url">Thread的各式需求</a></h1>
+                <a class="post-title-link" href="/home/Single/Thread的各式需求.html" itemprop="url">Thread的各式需求</a></h1>
         
 
         <div class="post-meta">
@@ -1142,7 +1011,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Room.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Room.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1161,7 +1030,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Android/Room.html" itemprop="url">Room</a></h1>
+                <a class="post-title-link" href="/home/Android/Room.html" itemprop="url">Room</a></h1>
         
 
         <div class="post-meta">
@@ -1282,7 +1151,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/DB-MySQL.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/DB-MySQL.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1301,7 +1170,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Android/DB-MySQL.html" itemprop="url">DB-MySQL</a></h1>
+                <a class="post-title-link" href="/home/Android/DB-MySQL.html" itemprop="url">DB-MySQL</a></h1>
         
 
         <div class="post-meta">
@@ -1404,7 +1273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/Task.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Task.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1423,7 +1292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Android/Task.html" itemprop="url">Task</a></h1>
+                <a class="post-title-link" href="/home/Android/Task.html" itemprop="url">Task</a></h1>
         
 
         <div class="post-meta">
@@ -1560,7 +1429,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android/MonkeyTest.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/MonkeyTest.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -1579,7 +1448,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Android/MonkeyTest.html" itemprop="url">壓力循環測試</a></h1>
+                <a class="post-title-link" href="/home/Android/MonkeyTest.html" itemprop="url">壓力循環測試</a></h1>
         
 
         <div class="post-meta">
@@ -1677,6 +1546,148 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Linux/Single/ShellCmd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Linux/Single/ShellCmd.html" itemprop="url">ShellCmd</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:04:44+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.openfoundry.org/foss-programs/8628" target="_blank" rel="noopener">ref</a><br><a href="http://rodney2009.pixnet.net/blog/post/21465471-%E5%B7%A5%E4%BD%9C%E5%B8%B8%E7%94%A8%E5%88%B0%E7%9A%84linux%E6%8C%87%E4%BB%A4" target="_blank" rel="noopener">ref</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">find grep awk</span><br><span class="line">//資料夾中搜尋文件內容</span><br><span class="line">grep -r <span class="string">'導航'</span> ~/GoogleDrive/</span><br><span class="line"></span><br><span class="line">grep -r --include=<span class="string">"*.java"</span> <span class="string">"service"</span> .</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1727,7 +1738,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

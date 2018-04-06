@@ -229,6 +229,13 @@ h1 {
   font-size: 23px;
   background: #eee;
 }
+h1:before {
+  content: ".";
+  width: 5px;
+  margin-right: 5px;
+  background: #808080;
+  color: #808080;
+}
 @media (max-width: 767px) {
   h1 {
     font-size: 19px;
@@ -236,12 +243,6 @@ h1 {
 }
 h2 {
   font-size: 20px;
-  padding-left: 6px;
-}
-h2:before {
-  content: "";
-  color: #808080;
-  font-size: 5px;
 }
 @media (max-width: 767px) {
   h2 {
@@ -250,12 +251,6 @@ h2:before {
 }
 h3 {
   font-size: 17px;
-  padding-left: 9px;
-}
-h3:before {
-  content: "";
-  color: #808080;
-  font-size: 5px;
 }
 @media (max-width: 767px) {
   h3 {
@@ -264,12 +259,6 @@ h3:before {
 }
 h4 {
   font-size: 14px;
-  padding-left: 12px;
-}
-h4:before {
-  content: "";
-  color: #808080;
-  font-size: 5px;
 }
 @media (max-width: 767px) {
   h4 {
@@ -278,12 +267,6 @@ h4:before {
 }
 h5 {
   font-size: 11px;
-  padding-left: 15px;
-}
-h5:before {
-  content: "";
-  color: #808080;
-  font-size: 5px;
 }
 @media (max-width: 767px) {
   h5 {
@@ -292,12 +275,6 @@ h5:before {
 }
 h6 {
   font-size: 8px;
-  padding-left: 18px;
-}
-h6:before {
-  content: "";
-  color: #808080;
-  font-size: 5px;
 }
 @media (max-width: 767px) {
   h6 {
@@ -1917,7 +1894,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff041d;
+  background: #b1ffb6;
 }
 .links-of-blogroll {
   font-size: 13px;

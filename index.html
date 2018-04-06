@@ -459,7 +459,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/Java/JMM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/Java/Lock/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -478,7 +478,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/06/Java/JMM/" itemprop="url">JMM (Java Memory Model)</a></h1>
+                <a class="post-title-link" href="/2018/04/06/Java/Lock/" itemprop="url">Lock</a></h1>
         
 
         <div class="post-meta">
@@ -530,31 +530,8 @@
       
         
           
-            <p><a href="https://blog.csdn.net/qq_33689414/article/details/73527438" target="_blank" rel="noopener">ref</a> <a href="https://medium.com/@kevingyc/java-java-thread-model-memory-model-22692fc08671" target="_blank" rel="noopener">ref</a></p>
-<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a>JMM (Java Memory Model)</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png" alt=""></p>
-<p>JVM執行區分 主內存 與 本地內存</p>
-<ul>
-<li>Main : 主記憶體 (heap)</li>
-<li>Local : 各個thread獨立使用 (cache)</li>
-</ul>
-<p>thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步main的資料</p>
-<ul>
-<li>local從main讀寫資料應該是視為synchronized</li>
-</ul>
-<h2 id="可見性-visibility"><a href="#可見性-visibility" class="headerlink" title="可見性(visibility)"></a>可見性(visibility)</h2><blockquote>
-<p>指A修改變數x時 確保B能夠隨時得到最新的值 (即cache失效)<br>Java透過volatile將變數宣告為<code>易變的/易揮發的</code> 以提示其需要可見性的維護 (但並沒有原子性保護)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">x = <span class="number">0</span>;</span><br><span class="line">AB兩thread同時執行+<span class="number">3</span>與+<span class="number">5</span>,預期得到<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">volatile</span> x = <span class="number">0</span>;</span><br><span class="line">A(x=x+<span class="number">3</span>) : <span class="number">0</span>+<span class="number">3</span>=<span class="number">3</span> 將<span class="number">3</span>指定給x</span><br><span class="line">B(x=x+<span class="number">5</span>) : <span class="number">0</span>+<span class="number">5</span>=<span class="number">5</span> 此時x變為<span class="number">3</span>,但運算已結束 將<span class="number">5</span>指定給x</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>最後卻得到5,這是因為x=x+5的動作並不屬於原子操作,x+5與x=?是分別執行的,中間可以穿插,所以volatile不一定能確保變數一定是thread-safe的<br>故volatile一般都用在<code>狀態或旗標</code>變數上</p>
-</blockquote>
-<h2 id="原子操作-atomic"><a href="#原子操作-atomic" class="headerlink" title="原子操作 (atomic)"></a>原子操作 (atomic)</h2><p>原子是最小無法分割之物 用來形容操作是不能分割的 以完成i++為例 分別需要取值/運算/賦值 假若期間無法插入任何與i相關的操作 就可以確保i的正確性</p>
-<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">AtomicInteger a = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">                x = x + <span class="number">1</span>;</span><br><span class="line">                a.addAndGet(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (Thread.class)&#123;</span><br><span class="line">                    y = y + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"ans x : "</span> + x); <span class="comment">//405949 &lt;- 錯的</span></span><br><span class="line">            System.out.println(<span class="string">"ans y : "</span> + y); <span class="comment">//500000</span></span><br><span class="line">            System.out.println(<span class="string">"ans a : "</span> + a); <span class="comment">//500000</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><ul>
-<li>compareAndSet(expected, new) atomic檢查主入內存與expected是否相同,若相同表示可以賦值為new 否則回傳false</li>
-<li>猜測應該是用在<code>鎖</code>的應用上 類似CountDownLatch 但不會阻塞</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">atomicI = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">safeCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        runCount++;</span><br><span class="line">        <span class="keyword">int</span> i = atomicI.get();</span><br><span class="line">        <span class="keyword">boolean</span> suc = atomicI.compareAndSet(i, ++i);</span><br><span class="line">        <span class="keyword">if</span> (suc) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p><a href="https://www.bilibili.com/video/av15240146/" target="_blank" rel="noopener">video</a></p>
+
           
         
       
@@ -732,7 +709,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/Java/Lock/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/Java/JMM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -751,7 +728,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/06/Java/Lock/" itemprop="url">Lock</a></h1>
+                <a class="post-title-link" href="/2018/04/06/Java/JMM/" itemprop="url">JMM (Java Memory Model)</a></h1>
         
 
         <div class="post-meta">
@@ -803,8 +780,31 @@
       
         
           
-            <p><a href="https://www.bilibili.com/video/av15240146/" target="_blank" rel="noopener">video</a></p>
-
+            <p><a href="https://blog.csdn.net/qq_33689414/article/details/73527438" target="_blank" rel="noopener">ref</a> <a href="https://medium.com/@kevingyc/java-java-thread-model-memory-model-22692fc08671" target="_blank" rel="noopener">ref</a></p>
+<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a>JMM (Java Memory Model)</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png" alt=""></p>
+<p>JVM執行區分 主內存 與 本地內存</p>
+<ul>
+<li>Main : 主記憶體 (heap)</li>
+<li>Local : 各個thread獨立使用 (cache)</li>
+</ul>
+<p>thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步main的資料</p>
+<ul>
+<li>local從main讀寫資料應該是視為synchronized</li>
+</ul>
+<h2 id="可見性-visibility"><a href="#可見性-visibility" class="headerlink" title="可見性(visibility)"></a>可見性(visibility)</h2><blockquote>
+<p>指A修改變數x時 確保B能夠隨時得到最新的值 (即cache失效)<br>Java透過volatile將變數宣告為<code>易變的/易揮發的</code> 以提示其需要可見性的維護 (但並沒有原子性保護)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">x = <span class="number">0</span>;</span><br><span class="line">AB兩thread同時執行+<span class="number">3</span>與+<span class="number">5</span>,預期得到<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">volatile</span> x = <span class="number">0</span>;</span><br><span class="line">A(x=x+<span class="number">3</span>) : <span class="number">0</span>+<span class="number">3</span>=<span class="number">3</span> 將<span class="number">3</span>指定給x</span><br><span class="line">B(x=x+<span class="number">5</span>) : <span class="number">0</span>+<span class="number">5</span>=<span class="number">5</span> 此時x變為<span class="number">3</span>,但運算已結束 將<span class="number">5</span>指定給x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最後卻得到5,這是因為x=x+5的動作並不屬於原子操作,x+5與x=?是分別執行的,中間可以穿插,所以volatile不一定能確保變數一定是thread-safe的<br>故volatile一般都用在<code>狀態或旗標</code>變數上</p>
+</blockquote>
+<h2 id="原子操作-atomic"><a href="#原子操作-atomic" class="headerlink" title="原子操作 (atomic)"></a>原子操作 (atomic)</h2><p>原子是最小無法分割之物 用來形容操作是不能分割的 以完成i++為例 分別需要取值/運算/賦值 假若期間無法插入任何與i相關的操作 就可以確保i的正確性</p>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">AtomicInteger a = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">                x = x + <span class="number">1</span>;</span><br><span class="line">                a.addAndGet(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (Thread.class)&#123;</span><br><span class="line">                    y = y + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"ans x : "</span> + x); <span class="comment">//405949 &lt;- 錯的</span></span><br><span class="line">            System.out.println(<span class="string">"ans y : "</span> + y); <span class="comment">//500000</span></span><br><span class="line">            System.out.println(<span class="string">"ans a : "</span> + a); <span class="comment">//500000</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><ul>
+<li>compareAndSet(expected, new) atomic檢查主入內存與expected是否相同,若相同表示可以賦值為new 否則回傳false</li>
+<li>猜測應該是用在<code>鎖</code>的應用上 類似CountDownLatch 但不會阻塞</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">atomicI = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">safeCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        runCount++;</span><br><span class="line">        <span class="keyword">int</span> i = atomicI.get();</span><br><span class="line">        <span class="keyword">boolean</span> suc = atomicI.compareAndSet(i, ++i);</span><br><span class="line">        <span class="keyword">if</span> (suc) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       

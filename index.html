@@ -359,7 +359,25 @@
       
         
           
-            <h1 id="股票程式化分析軟體"><a href="#股票程式化分析軟體" class="headerlink" title="股票程式化分析軟體"></a>股票程式化分析軟體</h1><p><img src="https://4.bp.blogspot.com/-nePWvgXE_QI/VyR3PzM7z9I/AAAAAAAAAzg/CghM-h-4OQYg1JyCX2aAPSDR-IFB-yIKACLcB/s1600/%25E7%2595%25AB%25E9%259D%25A2%25E8%25AA%25AA%25E6%2598%258E1.png" alt=""></p>
+            <h1 id="股票程式化分析軟體"><a href="#股票程式化分析軟體" class="headerlink" title="股票程式化分析軟體"></a>股票程式化分析軟體</h1><p><a href="http://acechart.blogspot.tw/p/study.html" target="_blank" rel="noopener">官網連結</a><br><img src="https://4.bp.blogspot.com/-nePWvgXE_QI/VyR3PzM7z9I/AAAAAAAAAzg/CghM-h-4OQYg1JyCX2aAPSDR-IFB-yIKACLcB/s1600/%25E7%2595%25AB%25E9%259D%25A2%25E8%25AA%25AA%25E6%2598%258E1.png" alt=""></p>
+<blockquote>
+<p>以Java實現 能夠即時編譯腳本程式用以分析或繪圖</p>
+</blockquote>
+<h1 id="WOVO"><a href="#WOVO" class="headerlink" title="WOVO"></a>WOVO</h1><p><a href="https://github.com/jimliuxyz/wovo" target="_blank" rel="noopener">github</a> / <a href="https://marketplace.visualstudio.com/items?itemName=jimliuxyz.wovo" target="_blank" rel="noopener">marketplace</a></p>
+<p><img src="https://jimliuxyz.gallerycdn.vsassets.io/extensions/jimliuxyz/wovo/1.1.1/1507014588487/Microsoft.VisualStudio.Services.Icons.Default" width="50" height="50" alt="" align="left" style="float: none;"></p>
+<blockquote>
+<p>一個VSCode Extension</p>
+</blockquote>
+<h1 id="LangStar"><a href="#LangStar" class="headerlink" title="LangStar"></a>LangStar</h1><p><a href="https://github.com/jimliuxyz/ion-langstar" target="_blank" rel="noopener">github</a> / <a href="https://play.google.com/store/apps/details?id=tw.com.langstar.t1" target="_blank" rel="noopener">google play</a> / <a href="https://langstar-b15d9.firebaseapp.com/#/home" target="_blank" rel="noopener">web版本</a></p>
+<p><img src="/images/LangStar/icon.png" width="50" height="50" alt="" align="left" style="float: none;"></p>
+<blockquote>
+<p>Ionic寫的Hybrid App<br>後台用firebase 包含social login<br>過往操作可離線使用</p>
+</blockquote>
+<h1 id="TSNote"><a href="#TSNote" class="headerlink" title="TSNote"></a>TSNote</h1><p><a href="https://github.com/jimliuxyz/tsnote" target="_blank" rel="noopener">github</a> / <a href="https://play.google.com/store/apps/details?id=com.jimliuxyz.tsnote" target="_blank" rel="noopener">google play</a></p>
+<p><img src="/images/TsNote/icon.png" width="50" height="50" alt="" align="left" style="float: none;"></p>
+<blockquote>
+<p>native Android app</p>
+</blockquote>
 
           
         
@@ -883,6 +901,364 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Lock.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Java/Lock.html" itemprop="url">Lock</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://wiki.jikexueyuan.com/project/java-concurrent/locks-in-java.html" target="_blank" rel="noopener">ref</a></p>
+<h1 id="同步與異步"><a href="#同步與異步" class="headerlink" title="同步與異步"></a>同步與異步</h1><p><code>同步</code>二字在生活上通常都解釋成<code>同時進行/亦步亦趨</code> 但程式上不是這樣觀念</p>
+<ul>
+<li>異步 : <code>各自行動 互不等待</code> (記住異步的定義)</li>
+<li>同步 : 行動須受牽制 等待 使一致</li>
+</ul>
+<p>比喻</p>
+<ul>
+<li>異步 : 像是短跑比賽 參賽者各跑各的</li>
+<li>同步 : 像是跑接力賽 沒拿到接力棒就只能等待 (執行上依賴共享的資源)</li>
+</ul>
+<p>用途</p>
+<ul>
+<li>異步 : 增進執行效率<ul>
+<li>多執行緒 : 使用共享資源時還是要進入同步</li>
+<li>單執行緒 : 任務寫在Event Callback/Hook 由Event Loop驅動 仿效異步 (如JavaScript)</li>
+</ul>
+</li>
+<li>同步 : 保護共享資源的必要手段</li>
+</ul>
+<h2 id="異步執行"><a href="#異步執行" class="headerlink" title="異步執行"></a>異步執行</h2><blockquote>
+<p>指耗時任務交付後就可以先去做別的事情 等任務執行完再通知<br>此任務稱為異步任務 不會馬上被執行<br>架構為事件處理型(onEvent)的設計<br>異步任務(Runnable)可以用thread或handler達成</p>
+</blockquote>
+<h2 id="同步執行"><a href="#同步執行" class="headerlink" title="同步執行"></a>同步執行</h2><blockquote>
+<p>指事情必須依序處理 未完成前不能離開<br>例如從網路取得一張圖片 顯示在螢幕上 若下載圖片要10秒鐘 程式就必須等待完成後才能繼續執行<br>程式的基礎都是建立在同步執行上的 而多執行緒中的同步更強調的是<code>只有一個執行緒在執行該段程式</code><br>執行緒競爭要達到同步的代價就是<code>等</code> 等的實踐就是<code>鎖</code> 鎖的用途就是<code>保護</code></p>
+</blockquote>
+<blockquote>
+<p>對於<code>鎖或與執行緒同步</code>相關的實踐:</p>
+<ul>
+<li>synchronized</li>
+<li>lock</li>
+<li>blocking queue</li>
+<li>semaphore</li>
+</ul>
+</blockquote>
+<h2 id="需要等待的情境"><a href="#需要等待的情境" class="headerlink" title="需要等待的情境"></a>需要等待的情境</h2><ul>
+<li>等待共享資源 (用同步鎖解決)</li>
+<li>等待異步任務(一個或多個)結果 (Thread.join或更高階的手段)</li>
+</ul>
+<h1 id="鎖"><a href="#鎖" class="headerlink" title="鎖"></a>鎖</h1><ul>
+<li>臨界區(critical section) : 即被鎖住的區塊</li>
+<li>可重入性(reentrant) : 指thread可以重入相同的鎖中 即在funcA中又進入funcB</li>
+<li>線程飢餓與公平(Starvation and Fairness) : 指線程搶不到開鎖機會的狀況</li>
+<li>Busy Wait : 指while loop的等待方式 造成cpu持續忙碌而無法有效利用</li>
+</ul>
+<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><ul>
+<li>以某個物件(實例或類)做為鎖 多個thread中僅能一個thread取得鎖 也就是執行權</li>
+<li>確保僅有一個thread進入critical section</li>
+<li>確保從main memory讀入 離開時寫回</li>
+<li>thread間取得鎖的結果是不公平的 有優先權的 而不是先到先贏</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="comment">//實例鎖</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">funcA</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">funcB</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//類鎖</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> obj...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//實例鎖</span></span><br><span class="line">        <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//類鎖</span></span><br><span class="line">        <span class="keyword">synchronized</span>(obj)&#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="線程間能被安全共用的實例"><a href="#線程間能被安全共用的實例" class="headerlink" title="線程間能被安全共用的實例"></a>線程間能被安全共用的實例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyData</span></span>&#123;</span><br><span class="line">  <span class="keyword">protected</span> Object data = <span class="keyword">false</span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Object <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(Object data)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.data = data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="信號機制"><a href="#信號機制" class="headerlink" title="信號機制"></a>信號機制</h2><blockquote>
+<p>每個Object都能做為MonitorObject</p>
+<ul>
+<li>wait : 使當下thread進入等待 並監視MonitorObject的信號</li>
+<li>notify : 喚醒監視MonitorObject的thread (由系統決定喚起的thread)</li>
+<li>notifyAll : 喚醒全部監視的thread 重新競爭鎖</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Missed Signals : 指notify前沒有相應的wait先被執行 而可能造成之後的wait無人喚醒 算是設計錯誤</p>
+</blockquote>
+<h2 id="以信號機制實現鎖"><a href="#以信號機制實現鎖" class="headerlink" title="以信號機制實現鎖"></a>以信號機制實現鎖</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lock</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isLocked = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>&#123;</span><br><span class="line">        <span class="comment">//isLocked為false時 進入wait循環 thread被鎖住 等待另一個thread開鎖</span></span><br><span class="line">        <span class="comment">//若同一個thread未unlock又來lock第二次 同樣會被鎖死 造成沒有thread能解鎖</span></span><br><span class="line">        <span class="keyword">while</span>(isLocked)&#123;</span><br><span class="line">            wait();</span><br><span class="line">        &#125;</span><br><span class="line">        isLocked = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span></span>&#123;</span><br><span class="line">        isLocked = <span class="keyword">false</span>;</span><br><span class="line">        notify(); <span class="comment">//相當於觸發信號</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Lock lock = <span class="keyword">new</span> Lock();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">inc</span><span class="params">()</span></span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">int</span> newCount = ++count;</span><br><span class="line">        lock.unlock();  <span class="comment">//若臨界區會拋出異常 需使用catch finally</span></span><br><span class="line">        <span class="keyword">return</span> newCount;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>wait如同sleep 但從wait中醒來並不是一定要有notify 它僅是告知已經可以從wait中喚醒 這種不是經由notify喚醒的情形稱作<code>虛假喚醒(spurious wakeup)</code> 故wait與notify之外仍需要isLocked做為是否unlock的判斷</p>
+</blockquote>
+<blockquote>
+<p>這種while建構的鎖稱為自旋鎖</p>
+</blockquote>
+<blockquote>
+<p>實現<code>可重入性</code>要考慮:</p>
+<ul>
+<li>記住是由哪個thread上鎖 且上鎖幾次</li>
+<li>解鎖必須counter歸零</li>
+</ul>
+</blockquote>
+<h4 id="Slipped-Conditions"><a href="#Slipped-Conditions" class="headerlink" title="Slipped Conditions"></a>Slipped Conditions</h4><blockquote>
+<p>即指while(isLocked)與isLocked=true非一氣呵成(原子操作) 執行的間隙造成鎖的狀態改變</p>
+</blockquote>
+<h2 id="FairLock"><a href="#FairLock" class="headerlink" title="FairLock"></a>FairLock</h2><blockquote>
+<p>透過List將記住請求鎖的順序</p>
+</blockquote>
+<h2 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h2><blockquote>
+<p>計數信號 實作上首先要確保操作的原子性<br>當資源量為1時 可當鎖用</p>
+<ul>
+<li>SEM_VALUE_MAX 資源量</li>
+<li>P take/wait 減1操作 取得資源</li>
+<li>V release/signal 加1操作 歸還資源</li>
+</ul>
+</blockquote>
+<h2 id="BlockingQueue"><a href="#BlockingQueue" class="headerlink" title="BlockingQueue"></a>BlockingQueue</h2><blockquote>
+<p>阻塞隊列 當take時沒有元素 或put時沒有空間時阻塞線程</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/JMM.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Java/JMM.html" itemprop="url">JMM (Java Memory Model)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://wiki.jikexueyuan.com/project/java-concurrent/java-memory-model.html" target="_blank" rel="noopener">*ref</a> <a href="https://blog.csdn.net/qq_33689414/article/details/73527438" target="_blank" rel="noopener">ref</a> <a href="https://medium.com/@kevingyc/java-java-thread-model-memory-model-22692fc08671" target="_blank" rel="noopener">ref</a></p>
+<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a>JMM (Java Memory Model)</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png" alt=""></p>
+<p>JVM執行區分 主內存(共享內存) 與 本地內存</p>
+<ul>
+<li>Main : 主記憶體 (heap)</li>
+<li>Local : 各個thread獨立使用 (cache/副本)</li>
+</ul>
+<p>thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步main的資料</p>
+<ul>
+<li>local從main讀寫資料應該是視為synchronized或有cpu確保同步</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</span><br><span class="line"><span class="comment">//str為一參考 會放在stack</span></span><br><span class="line"><span class="comment">//new String會放到heap</span></span><br><span class="line"><span class="comment">//hello是字面值會放到靜態儲存區(應該也是heap)</span></span><br></pre></td></tr></table></figure>
+<h2 id="可見性-visibility"><a href="#可見性-visibility" class="headerlink" title="可見性(visibility)"></a>可見性(visibility)</h2><blockquote>
+<p>指A修改變數x時 確保B能夠隨時得到最新的值 (即cache失效)<br>Java透過volatile將變數宣告為<code>易變的/易揮發的</code> 以提示其需要可見性的維護 (但並沒有原子性保護)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">x = <span class="number">0</span>;</span><br><span class="line">AB兩thread同時執行+<span class="number">3</span>與+<span class="number">5</span>,預期得到<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">volatile</span> x = <span class="number">0</span>;</span><br><span class="line">A(x=x+<span class="number">3</span>) : <span class="number">0</span>+<span class="number">3</span>=<span class="number">3</span> 將<span class="number">3</span>指定給x</span><br><span class="line">B(x=x+<span class="number">5</span>) : <span class="number">0</span>+<span class="number">5</span>=<span class="number">5</span> 此時x變為<span class="number">3</span>,但運算已結束 將<span class="number">5</span>指定給x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最後卻得到5,這是因為x=x+5的動作並不屬於原子操作,x+5與x=?是分別執行的,中間可以穿插,所以volatile不一定能確保變數一定是thread-safe的<br>故volatile一般都用在<code>狀態或旗標</code>變數上</p>
+</blockquote>
+<h2 id="原子操作-atomic"><a href="#原子操作-atomic" class="headerlink" title="原子操作 (atomic)"></a>原子操作 (atomic)</h2><p>原子是最小無法分割之物 用來形容操作是不能分割的 以完成i++為例 分別需要取值/運算/賦值 假若期間無法插入任何與i相關的操作 就可以確保i的正確性</p>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">AtomicInteger a = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">                x = x + <span class="number">1</span>;</span><br><span class="line">                a.addAndGet(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (Thread.class)&#123;</span><br><span class="line">                    y = y + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"ans x : "</span> + x); <span class="comment">//405949 &lt;- 錯的</span></span><br><span class="line">            System.out.println(<span class="string">"ans y : "</span> + y); <span class="comment">//500000</span></span><br><span class="line">            System.out.println(<span class="string">"ans a : "</span> + a); <span class="comment">//500000</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><ul>
+<li>compareAndSet(expected, new) atomic檢查主入內存與expected是否相同,若相同表示可以賦值為new 否則回傳false</li>
+<li>猜測應該是用在<code>鎖</code>的應用上 類似CountDownLatch 但不會阻塞</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">atomicI = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">safeCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        runCount++;</span><br><span class="line">        <span class="keyword">int</span> i = atomicI.get();</span><br><span class="line">        <span class="keyword">boolean</span> suc = atomicI.compareAndSet(i, ++i);</span><br><span class="line">        <span class="keyword">if</span> (suc) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Collection.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1080,150 +1456,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/JMM.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JimLiuXyz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Java/JMM.html" itemprop="url">JMM (Java Memory Model)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
-                2018-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://wiki.jikexueyuan.com/project/java-concurrent/java-memory-model.html" target="_blank" rel="noopener">*ref</a> <a href="https://blog.csdn.net/qq_33689414/article/details/73527438" target="_blank" rel="noopener">ref</a> <a href="https://medium.com/@kevingyc/java-java-thread-model-memory-model-22692fc08671" target="_blank" rel="noopener">ref</a></p>
-<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a>JMM (Java Memory Model)</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png" alt=""></p>
-<p>JVM執行區分 主內存(共享內存) 與 本地內存</p>
-<ul>
-<li>Main : 主記憶體 (heap)</li>
-<li>Local : 各個thread獨立使用 (cache/副本)</li>
-</ul>
-<p>thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步main的資料</p>
-<ul>
-<li>local從main讀寫資料應該是視為synchronized或有cpu確保同步</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</span><br><span class="line"><span class="comment">//str為一參考 會放在stack</span></span><br><span class="line"><span class="comment">//new String會放到heap</span></span><br><span class="line"><span class="comment">//hello是字面值會放到靜態儲存區(應該也是heap)</span></span><br></pre></td></tr></table></figure>
-<h2 id="可見性-visibility"><a href="#可見性-visibility" class="headerlink" title="可見性(visibility)"></a>可見性(visibility)</h2><blockquote>
-<p>指A修改變數x時 確保B能夠隨時得到最新的值 (即cache失效)<br>Java透過volatile將變數宣告為<code>易變的/易揮發的</code> 以提示其需要可見性的維護 (但並沒有原子性保護)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">x = <span class="number">0</span>;</span><br><span class="line">AB兩thread同時執行+<span class="number">3</span>與+<span class="number">5</span>,預期得到<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">volatile</span> x = <span class="number">0</span>;</span><br><span class="line">A(x=x+<span class="number">3</span>) : <span class="number">0</span>+<span class="number">3</span>=<span class="number">3</span> 將<span class="number">3</span>指定給x</span><br><span class="line">B(x=x+<span class="number">5</span>) : <span class="number">0</span>+<span class="number">5</span>=<span class="number">5</span> 此時x變為<span class="number">3</span>,但運算已結束 將<span class="number">5</span>指定給x</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>最後卻得到5,這是因為x=x+5的動作並不屬於原子操作,x+5與x=?是分別執行的,中間可以穿插,所以volatile不一定能確保變數一定是thread-safe的<br>故volatile一般都用在<code>狀態或旗標</code>變數上</p>
-</blockquote>
-<h2 id="原子操作-atomic"><a href="#原子操作-atomic" class="headerlink" title="原子操作 (atomic)"></a>原子操作 (atomic)</h2><p>原子是最小無法分割之物 用來形容操作是不能分割的 以完成i++為例 分別需要取值/運算/賦值 假若期間無法插入任何與i相關的操作 就可以確保i的正確性</p>
-<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">AtomicInteger a = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">                x = x + <span class="number">1</span>;</span><br><span class="line">                a.addAndGet(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (Thread.class)&#123;</span><br><span class="line">                    y = y + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"ans x : "</span> + x); <span class="comment">//405949 &lt;- 錯的</span></span><br><span class="line">            System.out.println(<span class="string">"ans y : "</span> + y); <span class="comment">//500000</span></span><br><span class="line">            System.out.println(<span class="string">"ans a : "</span> + a); <span class="comment">//500000</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><ul>
-<li>compareAndSet(expected, new) atomic檢查主入內存與expected是否相同,若相同表示可以賦值為new 否則回傳false</li>
-<li>猜測應該是用在<code>鎖</code>的應用上 類似CountDownLatch 但不會阻塞</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">atomicI = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">safeCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        runCount++;</span><br><span class="line">        <span class="keyword">int</span> i = atomicI.get();</span><br><span class="line">        <span class="keyword">boolean</span> suc = atomicI.compareAndSet(i, ++i);</span><br><span class="line">        <span class="keyword">if</span> (suc) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Java8Explained.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1307,220 +1539,6 @@
 <h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p><a href="http://blog.tonycube.com/2015/10/java-java8-4-optional.html" target="_blank" rel="noopener">link</a></p>
 <p>Optional是一個新的類別 用於封裝一個傳入或回傳值 並提供一些良好的方法 讓programer養成良好的習慣</p>
 <h2 id="Data-Time方面的新類別"><a href="#Data-Time方面的新類別" class="headerlink" title="Data/Time方面的新類別"></a>Data/Time方面的新類別</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Lock.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JimLiuXyz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Java/Lock.html" itemprop="url">Lock</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
-                2018-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://wiki.jikexueyuan.com/project/java-concurrent/locks-in-java.html" target="_blank" rel="noopener">ref</a></p>
-<h1 id="同步與異步"><a href="#同步與異步" class="headerlink" title="同步與異步"></a>同步與異步</h1><p><code>同步</code>二字在生活上通常都解釋成<code>同時進行/亦步亦趨</code> 但程式上不是這樣觀念</p>
-<ul>
-<li>異步 : <code>各自行動 互不等待</code> (記住異步的定義)</li>
-<li>同步 : 行動須受牽制 等待 使一致</li>
-</ul>
-<p>比喻</p>
-<ul>
-<li>異步 : 像是短跑比賽 參賽者各跑各的</li>
-<li>同步 : 像是跑接力賽 沒拿到接力棒就只能等待 (執行上依賴共享的資源)</li>
-</ul>
-<p>用途</p>
-<ul>
-<li>異步 : 增進執行效率<ul>
-<li>多執行緒 : 使用共享資源時還是要進入同步</li>
-<li>單執行緒 : 任務寫在Event Callback/Hook 由Event Loop驅動 仿效異步 (如JavaScript)</li>
-</ul>
-</li>
-<li>同步 : 保護共享資源的必要手段</li>
-</ul>
-<h2 id="異步執行"><a href="#異步執行" class="headerlink" title="異步執行"></a>異步執行</h2><blockquote>
-<p>指耗時任務交付後就可以先去做別的事情 等任務執行完再通知<br>此任務稱為異步任務 不會馬上被執行<br>架構為事件處理型(onEvent)的設計<br>異步任務(Runnable)可以用thread或handler達成</p>
-</blockquote>
-<h2 id="同步執行"><a href="#同步執行" class="headerlink" title="同步執行"></a>同步執行</h2><blockquote>
-<p>指事情必須依序處理 未完成前不能離開<br>例如從網路取得一張圖片 顯示在螢幕上 若下載圖片要10秒鐘 程式就必須等待完成後才能繼續執行<br>程式的基礎都是建立在同步執行上的 而多執行緒中的同步更強調的是<code>只有一個執行緒在執行該段程式</code><br>執行緒競爭要達到同步的代價就是<code>等</code> 等的實踐就是<code>鎖</code> 鎖的用途就是<code>保護</code></p>
-</blockquote>
-<blockquote>
-<p>對於<code>鎖或與執行緒同步</code>相關的實踐:</p>
-<ul>
-<li>synchronized</li>
-<li>lock</li>
-<li>blocking queue</li>
-<li>semaphore</li>
-</ul>
-</blockquote>
-<h2 id="需要等待的情境"><a href="#需要等待的情境" class="headerlink" title="需要等待的情境"></a>需要等待的情境</h2><ul>
-<li>等待共享資源 (用同步鎖解決)</li>
-<li>等待異步任務(一個或多個)結果 (Thread.join或更高階的手段)</li>
-</ul>
-<h1 id="鎖"><a href="#鎖" class="headerlink" title="鎖"></a>鎖</h1><ul>
-<li>臨界區(critical section) : 即被鎖住的區塊</li>
-<li>可重入性(reentrant) : 指thread可以重入相同的鎖中 即在funcA中又進入funcB</li>
-<li>線程飢餓與公平(Starvation and Fairness) : 指線程搶不到開鎖機會的狀況</li>
-<li>Busy Wait : 指while loop的等待方式 造成cpu持續忙碌而無法有效利用</li>
-</ul>
-<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><ul>
-<li>以某個物件(實例或類)做為鎖 多個thread中僅能一個thread取得鎖 也就是執行權</li>
-<li>確保僅有一個thread進入critical section</li>
-<li>確保從main memory讀入 離開時寫回</li>
-<li>thread間取得鎖的結果是不公平的 有優先權的 而不是先到先贏</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="comment">//實例鎖</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">funcA</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">funcB</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//類鎖</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> obj...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//實例鎖</span></span><br><span class="line">        <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//類鎖</span></span><br><span class="line">        <span class="keyword">synchronized</span>(obj)&#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="線程間能被安全共用的實例"><a href="#線程間能被安全共用的實例" class="headerlink" title="線程間能被安全共用的實例"></a>線程間能被安全共用的實例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyData</span></span>&#123;</span><br><span class="line">  <span class="keyword">protected</span> Object data = <span class="keyword">false</span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Object <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(Object data)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.data = data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="信號機制"><a href="#信號機制" class="headerlink" title="信號機制"></a>信號機制</h2><blockquote>
-<p>每個Object都能做為MonitorObject</p>
-<ul>
-<li>wait : 使當下thread進入等待 並監視MonitorObject的信號</li>
-<li>notify : 喚醒監視MonitorObject的thread (由系統決定喚起的thread)</li>
-<li>notifyAll : 喚醒全部監視的thread 重新競爭鎖</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Missed Signals : 指notify前沒有相應的wait先被執行 而可能造成之後的wait無人喚醒 算是設計錯誤</p>
-</blockquote>
-<h2 id="以信號機制實現鎖"><a href="#以信號機制實現鎖" class="headerlink" title="以信號機制實現鎖"></a>以信號機制實現鎖</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lock</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isLocked = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>&#123;</span><br><span class="line">        <span class="comment">//isLocked為false時 進入wait循環 thread被鎖住 等待另一個thread開鎖</span></span><br><span class="line">        <span class="comment">//若同一個thread未unlock又來lock第二次 同樣會被鎖死 造成沒有thread能解鎖</span></span><br><span class="line">        <span class="keyword">while</span>(isLocked)&#123;</span><br><span class="line">            wait();</span><br><span class="line">        &#125;</span><br><span class="line">        isLocked = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span></span>&#123;</span><br><span class="line">        isLocked = <span class="keyword">false</span>;</span><br><span class="line">        notify(); <span class="comment">//相當於觸發信號</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Lock lock = <span class="keyword">new</span> Lock();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">inc</span><span class="params">()</span></span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">int</span> newCount = ++count;</span><br><span class="line">        lock.unlock();  <span class="comment">//若臨界區會拋出異常 需使用catch finally</span></span><br><span class="line">        <span class="keyword">return</span> newCount;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>wait如同sleep 但從wait中醒來並不是一定要有notify 它僅是告知已經可以從wait中喚醒 這種不是經由notify喚醒的情形稱作<code>虛假喚醒(spurious wakeup)</code> 故wait與notify之外仍需要isLocked做為是否unlock的判斷</p>
-</blockquote>
-<blockquote>
-<p>這種while建構的鎖稱為自旋鎖</p>
-</blockquote>
-<blockquote>
-<p>實現<code>可重入性</code>要考慮:</p>
-<ul>
-<li>記住是由哪個thread上鎖 且上鎖幾次</li>
-<li>解鎖必須counter歸零</li>
-</ul>
-</blockquote>
-<h4 id="Slipped-Conditions"><a href="#Slipped-Conditions" class="headerlink" title="Slipped Conditions"></a>Slipped Conditions</h4><blockquote>
-<p>即指while(isLocked)與isLocked=true非一氣呵成(原子操作) 執行的間隙造成鎖的狀態改變</p>
-</blockquote>
-<h2 id="FairLock"><a href="#FairLock" class="headerlink" title="FairLock"></a>FairLock</h2><blockquote>
-<p>透過List將記住請求鎖的順序</p>
-</blockquote>
-<h2 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h2><blockquote>
-<p>計數信號 實作上首先要確保操作的原子性<br>當資源量為1時 可當鎖用</p>
-<ul>
-<li>SEM_VALUE_MAX 資源量</li>
-<li>P take/wait 減1操作 取得資源</li>
-<li>V release/signal 加1操作 歸還資源</li>
-</ul>
-</blockquote>
-<h2 id="BlockingQueue"><a href="#BlockingQueue" class="headerlink" title="BlockingQueue"></a>BlockingQueue</h2><blockquote>
-<p>阻塞隊列 當take時沒有元素 或put時沒有空間時阻塞線程</p>
-</blockquote>
-
           
         
       

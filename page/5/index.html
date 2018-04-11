@@ -288,6 +288,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Activity.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Activity.html" itemprop="url">Activity</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:44:29+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://litotom.com/wp-content/uploads/2017/04/xA5401.png.pagespeed.ic.3u4LcNGfRw.webp" alt=""><br><img src="https://i.stack.imgur.com/fRxIQ.png" alt=""></p>
+<p><img src="http://frodoking.github.io/img/android/complete_android_fragment_lifecycle.png" alt=""></p>
+<h2 id="Activity重建與復用"><a href="#Activity重建與復用" class="headerlink" title="Activity重建與復用"></a>Activity重建與復用</h2><p><a href="https://www.jianshu.com/p/36124f9793fa?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
+<p>畫面旋轉 或 變更語系 造成Activity重建 連帶影響狀態或物件需要重建</p>
+</blockquote>
+<h4 id="Bundle"><a href="#Bundle" class="headerlink" title="Bundle"></a>Bundle</h4><p>與Map類似 但key必須是string 用來存放資料</p>
+<h4 id="1-Minifest-xml中抑制重建"><a href="#1-Minifest-xml中抑制重建" class="headerlink" title="1. Minifest.xml中抑制重建"></a>1. Minifest.xml中抑制重建</h4><blockquote>
+<p>在minifest加入android:configChanges提示為自行處理 使Activity不進行重建</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//android:configChanges="locale|layoutDirection"</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfigurationChanged</span><span class="params">(Configuration newConfig)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onConfigurationChanged(newConfig);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-onRetainCustomNonConfigurationInstance-與-getLastCustomNonConfigurationInstance"><a href="#2-onRetainCustomNonConfigurationInstance-與-getLastCustomNonConfigurationInstance" class="headerlink" title="2. onRetainCustomNonConfigurationInstance 與 getLastCustomNonConfigurationInstance"></a>2. onRetainCustomNonConfigurationInstance 與 getLastCustomNonConfigurationInstance</h4><blockquote>
+<p>複寫onRetain將稍後要還原內容交給系統 被重建後再取回</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">onRetainCustomNonConfigurationInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> netWorkTask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-Retain-Fragment-官方建議使用"><a href="#3-Retain-Fragment-官方建議使用" class="headerlink" title="3. Retain Fragment (官方建議使用)"></a>3. Retain Fragment (官方建議使用)</h4><blockquote>
+<p>設定setRetainInstance(true)即可讓Fragment復用不重建(app狀態須寫在Fragment中) (之後需注意activity/context的更動)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//以下code看似在復用MyFragment,但事實上MyFragment仍會在背景被建立</span></span><br><span class="line"><span class="comment">//除非fragment設定setRetainInstance(true)</span></span><br><span class="line"><span class="keyword">if</span>(getSupportFragmentManager().findFragmentByTag(ID) == <span class="keyword">null</span>) &#123;</span><br><span class="line">    getSupportFragmentManager().beginTransaction().add(<span class="keyword">new</span> MyFragment(), ID).commit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="View狀態的save與restore"><a href="#View狀態的save與restore" class="headerlink" title="View狀態的save與restore"></a>View狀態的save與restore</h2><ol>
+<li>view需要設定id才能被儲存</li>
+<li>android:saveEnabled 預設已為true</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/ViewNStyle.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -783,6 +925,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/紀錄/Single/Hexo安裝紀錄.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/紀錄/Single/Hexo安裝紀錄.html" itemprop="url">Hexo安裝紀錄</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/紀錄/" itemprop="url" rel="index">
+                    <span itemprop="name">紀錄</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">Hexo</a> 、<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
+<div class="note danger"><ul>
+<li>站內連結若用相對連結在首頁跟文章內顯示的連結路徑不同</li>
+<li>UTF-8編碼中若參雜其他編碼會讓search.xml錯誤而無法搜索</li>
+</ul></div>
+<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><p>本地端透過Hexo建立網站骨架 並將markdown文章轉為html 上傳到github做為blog網站<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/home/紀錄/Single/Hexo安裝紀錄.html#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Service.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -954,157 +1247,6 @@
 </ul>
 
           
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/紀錄/Single/Hexo安裝紀錄.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JimLiuXyz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/紀錄/Single/Hexo安裝紀錄.html" itemprop="url">Hexo安裝紀錄</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
-                2018-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/紀錄/" itemprop="url" rel="index">
-                    <span itemprop="name">紀錄</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">Hexo</a> 、<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
-<div class="note danger"><ul>
-<li>站內連結若用相對連結在首頁跟文章內顯示的連結路徑不同</li>
-<li>UTF-8編碼中若參雜其他編碼會讓search.xml錯誤而無法搜索</li>
-</ul></div>
-<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><p>本地端透過Hexo建立網站骨架 並將markdown文章轉為html 上傳到github做為blog網站<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/home/紀錄/Single/Hexo安裝紀錄.html#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1445,7 +1587,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

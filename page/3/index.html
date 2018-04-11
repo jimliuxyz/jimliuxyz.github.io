@@ -288,6 +288,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/IDE-ENV.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/IDE-ENV.html" itemprop="url">IDE_ENV</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:04:53+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="API版本"><a href="#API版本" class="headerlink" title="API版本"></a>API版本</h2><p><img src="https://i.imgur.com/m6oJ5Lu.jpg" width="50" alt=""></p>
+<h2 id="SDK-TOOL路徑"><a href="#SDK-TOOL路徑" class="headerlink" title="SDK TOOL路徑"></a>SDK TOOL路徑</h2><p>cd ~/Library/Android/sdk/tools/bin/</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=`/usr/libexec/java_home -v 1.8`</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> SDK_HOME=/Users/jimliu/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME=/Users/jimliu/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> GRADLE_HOME=/Applications/Android\ Studio.app/Contents/gradle/gradle-3.2/</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$&#123;SDK_HOME&#125;</span>/tools/bin:<span class="variable">$&#123;SDK_HOME&#125;</span>/platform-tools:<span class="variable">$GRADLE_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat &gt; ~/.bash_profile</span><br><span class="line">貼上之後ctrl+c</span><br></pre></td></tr></table></figure>
+<h2 id="添加Library"><a href="#添加Library" class="headerlink" title="添加Library"></a>添加Library</h2><ul>
+<li><p><a href="https://www.youtube.com/watch?v=TForBjArUNg" target="_blank" rel="noopener">Adding a Library Project</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/watch?v=fHEvI_G6UtI" target="_blank" rel="noopener">Adding a Jar library</a></p>
+</li>
+</ul>
+<h2 id="快速鍵"><a href="#快速鍵" class="headerlink" title="快速鍵"></a>快速鍵</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//自動完成不分大小寫</span></span><br><span class="line">editor&gt;general&gt;code completion的<span class="keyword">case</span> sensitive completion要調為none</span><br><span class="line"></span><br><span class="line"><span class="comment">//自加</span></span><br><span class="line">cmd IKJL : 上下左右</span><br><span class="line">cmd+sft J/L : to line start/end</span><br><span class="line">cmd+sft I/K : extend/shrink selection</span><br><span class="line">cmd p : parameter info</span><br><span class="line"></span><br><span class="line">cmd ;或z : Basic/ in Code Completion 函數自動完成 (api doc)</span><br><span class="line">cmd , : insert live template 插入樣板</span><br><span class="line"></span><br><span class="line"><span class="comment">//mouse</span></span><br><span class="line">cmd click : Declaration/ in Main menu Naviagte 查原始碼 (或xml)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//視窗檔案切換</span></span><br><span class="line">ctrl tab</span><br><span class="line"></span><br><span class="line"><span class="comment">//游標</span></span><br><span class="line">opt 左右 : 左右移 擴大/縮小選取</span><br><span class="line">sft opt : 上/下移動行</span><br><span class="line">sft enter : end + enter</span><br><span class="line">cmd enter : enter + 上 (游標位置不動產生一空行)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//快速產生程式碼 souf fori logi </span></span><br><span class="line">cmd j : 插入樣板</span><br><span class="line">cmd opt t : <span class="keyword">if</span> / <span class="keyword">try</span> / <span class="keyword">while</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//開啟燈泡內的選項</span></span><br><span class="line">opt enter</span><br><span class="line"></span><br><span class="line"><span class="comment">//查詢物件的method/field 或任何可能的字串</span></span><br><span class="line">ctrl space : 查詢method/field (選定後按tab!!!!) 或 提示字串自動完成</span><br><span class="line"></span><br><span class="line"><span class="comment">//建立method</span></span><br><span class="line">cmd n : 各式選單</span><br><span class="line">ctrl o : select override/implement</span><br><span class="line"></span><br><span class="line"><span class="comment">//單純查詢</span></span><br><span class="line">ctrl j : 查詢文件定義</span><br><span class="line">cmd p : 顯示參數定義 ****</span><br><span class="line">cmd b : 查原始碼 (或xml)</span><br><span class="line">cmd u : 跳到父類</span><br><span class="line"></span><br><span class="line">cmd opt L : 自動格式化</span><br><span class="line">cmd F9 : 編譯執行</span><br><span class="line"></span><br><span class="line"><span class="comment">//搜尋內容或檔案</span></span><br><span class="line">sft sft</span><br><span class="line"></span><br><span class="line">sft F6 : 變數改名</span><br><span class="line"></span><br><span class="line">cmd + d : 複製貼上一整行 或貼上已選取的內容</span><br><span class="line"></span><br><span class="line">cmd sft a : 開啟系統功能搜索</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Resource.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1604,131 +1734,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/DB-MySQL.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JimLiuXyz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/DB-MySQL.html" itemprop="url">DB-MySQL</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:30:37+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="SQLiteOpenHelper"><a href="#SQLiteOpenHelper" class="headerlink" title="SQLiteOpenHelper"></a>SQLiteOpenHelper</h2><p><a href="https://www.jianshu.com/p/8e3f294e2828" target="_blank" rel="noopener">ref</a></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBHelper</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DBHelper</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, <span class="string">"mydb.db"</span>, <span class="keyword">null</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>&#123;</span><br><span class="line">        db.execSQL(<span class="string">"CREATE TABLE IF NOT EXISTS user(\</span></span><br><span class="line"><span class="string">            _id INTEGER PRIMARY KEY AUTOINCREMENT, \</span></span><br><span class="line"><span class="string">            name TEXT)"</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dbHelper = <span class="keyword">new</span> DatabaseHelper(context);</span><br><span class="line"></span><br><span class="line">SQLiteDatabase db = dbHelper.getWritableDatabase();</span><br><span class="line">SQLiteDatabase db = dbHelper.getReadableDatabase();</span><br><span class="line">db.close();</span><br><span class="line"></span><br><span class="line"><span class="comment">//insert</span></span><br><span class="line">ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line"></span><br><span class="line">values.put(<span class="string">"id"</span>, <span class="number">1</span>);</span><br><span class="line">values.put(<span class="string">"name"</span>, <span class="string">"jim"</span>);</span><br><span class="line">db.insert(<span class="string">"user"</span>, <span class="keyword">null</span>, values);</span><br><span class="line">db.execSQL(<span class="string">"insert into user (id,name) values (1,'carson')"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">//update</span></span><br><span class="line">values.put(<span class="string">"name"</span>, <span class="string">"jim2"</span>);</span><br><span class="line">db.update(<span class="string">"user"</span>, values, <span class="string">"_id=?"</span>, <span class="keyword">new</span> String[] &#123; <span class="string">"1"</span> &#125;);</span><br><span class="line">db.execSQL(<span class="string">"update [user] set name = 'jim2' where _id=1"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//delete</span></span><br><span class="line">db.delete(<span class="string">"user"</span>, <span class="string">"_id=?"</span>, <span class="keyword">new</span> String[]&#123;<span class="string">"1"</span>&#125;);</span><br><span class="line">db.execSQL(<span class="string">"delete from user where _id=1"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//selete</span></span><br><span class="line">Cursor c = db.rawQuery(<span class="string">"select * from user where id=?"</span>,<span class="keyword">new</span> Stirng[]&#123;<span class="string">"1"</span>&#125;);</span><br><span class="line">c = db.rawQuery(<span class="string">"SELECT _id, name FROM user"</span>);</span><br><span class="line">c = db.query(<span class="string">"user"</span>, <span class="keyword">new</span> String[] &#123; <span class="string">"_id"</span>, <span class="string">"name"</span> &#125;, <span class="string">"_id=?"</span>, </span><br><span class="line">        <span class="keyword">new</span> String[] &#123; <span class="string">"1"</span> &#125;, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="Cursor"><a href="#Cursor" class="headerlink" title="Cursor"></a>Cursor</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//遍歷1</span></span><br><span class="line"><span class="keyword">while</span> (c.moveToNext()) &#123;</span><br><span class="line">    <span class="keyword">int</span> idx = c.getColumnIndex(<span class="string">"_id"</span>); <span class="comment">//取得欄位idx</span></span><br><span class="line">    <span class="keyword">int</span> id = c.getInt(idx); <span class="comment">//取得資料</span></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="comment">//遍歷2</span></span><br><span class="line">c.moveToFirst();  </span><br><span class="line"><span class="keyword">while</span>(!c.isAfterLast())&#123;  </span><br><span class="line">    <span class="comment">//dosomething  </span></span><br><span class="line">    c.moveToNext();  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//記得關閉</span></span><br><span class="line">c.close();</span><br></pre></td></tr></table></figure>
-<h4 id="將db檔預先置入apk"><a href="#將db檔預先置入apk" class="headerlink" title="將db檔預先置入apk"></a>將db檔預先置入apk</h4><blockquote>
-<p>將寫好的db放到res/raw下 在開啟db前將資源寫入android檔案系統</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">InputStream myInput = context.getResources().openRawResource(R.raw.database);</span><br><span class="line"></span><br><span class="line">File file = context.getDatabasePath(<span class="string">"mydb.db"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">      OutputStream myOutput = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">      <span class="keyword">int</span> length;</span><br><span class="line">      <span class="keyword">while</span> ((length = myInput.read(buffer))&gt;<span class="number">0</span>)&#123;</span><br><span class="line">          myOutput.write(buffer, <span class="number">0</span>, length);</span><br><span class="line">      &#125;</span><br><span class="line">      myOutput.close();</span><br><span class="line">      myInput.close();</span><br><span class="line">      mIsDBOK = <span class="keyword">true</span>;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1779,7 +1784,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

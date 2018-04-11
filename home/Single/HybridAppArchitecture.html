@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="Cordova其前身稱為PhoneGap 做為JavaScript Bridge 實現JS介接Native Libraryref  WebView 使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 應該也沒有寫NativeView的必要了   WebView有分原生的或Cordova的跨平台WebView  Plugin大致寫法類似用xml(metad">
+<meta name="description" content="Cordova其前身稱為PhoneGap 做為JavaScript Bridge 實現JS介接Native Libraryref  WebView 使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 (應該也沒有寫NativeView的必要了)   WebView有分原生的或Cordova的跨平台WebView  Plugin大致寫法類似用xml(met">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hybrid App Architecture">
 <meta property="og:url" content="http://yoursite.com/home//Single/HybridAppArchitecture.html">
 <meta property="og:site_name" content="自用筆記">
-<meta property="og:description" content="Cordova其前身稱為PhoneGap 做為JavaScript Bridge 實現JS介接Native Libraryref  WebView 使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 應該也沒有寫NativeView的必要了   WebView有分原生的或Cordova的跨平台WebView  Plugin大致寫法類似用xml(metad">
+<meta property="og:description" content="Cordova其前身稱為PhoneGap 做為JavaScript Bridge 實現JS介接Native Libraryref  WebView 使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 (應該也沒有寫NativeView的必要了)   WebView有分原生的或Cordova的跨平台WebView  Plugin大致寫法類似用xml(met">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://cordova.apache.org/static/img/guide/cordovaapparchitecture.png">
 <meta property="og:image" content="https://codebrahma.com/wp-content/uploads/2016/06/image001-e1467025274716.png">
-<meta property="og:updated_time" content="2018-04-11T07:06:27.000Z">
+<meta property="og:updated_time" content="2018-04-11T13:19:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hybrid App Architecture">
-<meta name="twitter:description" content="Cordova其前身稱為PhoneGap 做為JavaScript Bridge 實現JS介接Native Libraryref  WebView 使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 應該也沒有寫NativeView的必要了   WebView有分原生的或Cordova的跨平台WebView  Plugin大致寫法類似用xml(metad">
+<meta name="twitter:description" content="Cordova其前身稱為PhoneGap 做為JavaScript Bridge 實現JS介接Native Libraryref  WebView 使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 (應該也沒有寫NativeView的必要了)   WebView有分原生的或Cordova的跨平台WebView  Plugin大致寫法類似用xml(met">
 <meta name="twitter:image" content="https://cordova.apache.org/static/img/guide/cordovaapparchitecture.png">
 
 
@@ -361,13 +361,12 @@
         <h1 id="Cordova"><a href="#Cordova" class="headerlink" title="Cordova"></a>Cordova</h1><p>其前身稱為PhoneGap 做為JavaScript Bridge 實現JS介接Native Library<br><a href="https://dotblogs.com.tw/clark/2015/10/23/153681" target="_blank" rel="noopener">ref</a></p>
 <p><img src="https://cordova.apache.org/static/img/guide/cordovaapparchitecture.png" alt=""></p>
 <h4 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h4><blockquote>
-<p>使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 應該也沒有寫<code>NativeView</code>的必要了</p>
+<p>使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 (應該也沒有寫<code>NativeView</code>的必要了)</p>
 </blockquote>
 <blockquote>
 <p>WebView有分原生的或Cordova的跨平台WebView</p>
 </blockquote>
 <h4 id="Plugin大致寫法"><a href="#Plugin大致寫法" class="headerlink" title="Plugin大致寫法"></a>Plugin大致寫法</h4><p>類似用xml(metadata)分別設定android與ios 並分別實作api對應的native程式(繼承CordovaPlugin) 最後實作一個js object對應該api</p>
-<p>當app執行時plugin會被</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">透過WebView叫用api (之後再自行封裝成類別形式)</span><br><span class="line">cordova.exec(success_callback, error_callback, feature_classname, action_str, args);</span><br></pre></td></tr></table></figure>
 <h1 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h1><p><a href="https://ithelp.ithome.com.tw/users/20103341/ironman/1023?page=1" target="_blank" rel="noopener">React Native 航向真全端，建構雙平台 App</a> /<br><a href="https://facebook.github.io/react-native/docs/native-components-android.html" target="_blank" rel="noopener">Native UI Components</a> / <a href="https://www.jianshu.com/p/1c487ca546f1" target="_blank" rel="noopener">菜鳥窩React Native 從零到高級</a><br><img src="https://codebrahma.com/wp-content/uploads/2016/06/image001-e1467025274716.png" alt=""></p>
 <p>只有JS Engine 沒有WebView 意味著web的ui元件實現須對應到native的ui元件上 實作比較辛苦 但執行比較快</p>

@@ -3,12 +3,12 @@
   <entry>
     <title><![CDATA[作品]]></title>
     <url>%2Fhome%2F%2FSingle%2FArts.html</url>
-    <content type="text"><![CDATA[股票程式化分析軟體官網連結 以Java實現 能夠即時編譯腳本程式用以分析或繪圖 WOVOgithub / marketplace 一個VSCode Extension LangStargithub / google play / web版本 語言單字學習 Ionic寫的Hybrid App 後台用firebase 包含social login 過往操作可離線使用 TSNotegithub / google play 翻譯筆記 native Android app]]></content>
+    <content type="text"><![CDATA[股票程式化分析軟體官網連結 以Java實現 能夠即時編譯腳本程式用以分析或繪圖或執行程式交易 免安裝下載 WOVOGitHub / Marketplace 一個VSCode的Extension LangStarGitHub / Google Play / 線上web版本 語言單字學習 以Ionic開發的Hybrid App 後台用Firebase 包含social login 過往操作可離線使用 TSNoteGitHub / Google Play 多國語言有聲翻譯筆記 native Android app]]></content>
   </entry>
   <entry>
     <title><![CDATA[Hybrid App Architecture]]></title>
     <url>%2Fhome%2F%2FSingle%2FHybridAppArchitecture.html</url>
-    <content type="text"><![CDATA[Cordova其前身稱為PhoneGap 做為JavaScript Bridge 實現JS介接Native Libraryref WebView 使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 應該也沒有寫NativeView的必要了 WebView有分原生的或Cordova的跨平台WebView Plugin大致寫法類似用xml(metadata)分別設定android與ios 並分別實作api對應的native程式(繼承CordovaPlugin) 最後實作一個js object對應該api 當app執行時plugin會被 透過WebView叫用api (之後再自行封裝成類別形式)cordova.exec(success_callback, error_callback, feature_classname, action_str, args); React NativeReact Native 航向真全端，建構雙平台 App /Native UI Components / 菜鳥窩React Native 從零到高級 只有JS Engine 沒有WebView 意味著web的ui元件實現須對應到native的ui元件上 實作比較辛苦 但執行比較快]]></content>
+    <content type="text"><![CDATA[Cordova其前身稱為PhoneGap 做為JavaScript Bridge 實現JS介接Native Libraryref WebView 使用WebView意味著看到的ui元件不是native元件構建而成 而是透過webview畫出 (應該也沒有寫NativeView的必要了) WebView有分原生的或Cordova的跨平台WebView Plugin大致寫法類似用xml(metadata)分別設定android與ios 並分別實作api對應的native程式(繼承CordovaPlugin) 最後實作一個js object對應該api 透過WebView叫用api (之後再自行封裝成類別形式)cordova.exec(success_callback, error_callback, feature_classname, action_str, args); React NativeReact Native 航向真全端，建構雙平台 App /Native UI Components / 菜鳥窩React Native 從零到高級 只有JS Engine 沒有WebView 意味著web的ui元件實現須對應到native的ui元件上 實作比較辛苦 但執行比較快]]></content>
   </entry>
   <entry>
     <title></title>

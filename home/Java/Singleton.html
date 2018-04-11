@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="自用筆記">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JimLiuXyz">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+<meta name="description" content="video 建立的兩個需求:  thread safe lazy  Plainclass MySingale&amp;#123;    private MySingale()&amp;#123;&amp;#125;    public static MySingale instance = new MySingale();&amp;#125; //kotlinobject MySingale&amp;#123;&amp;#125; Lazy (">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Singleton">
+<meta property="og:url" content="http://yoursite.com/home//Java/Singleton.html">
 <meta property="og:site_name" content="JimLiuXyz">
-<meta property="og:description" content="自用筆記">
+<meta property="og:description" content="video 建立的兩個需求:  thread safe lazy  Plainclass MySingale&amp;#123;    private MySingale()&amp;#123;&amp;#125;    public static MySingale instance = new MySingale();&amp;#125; //kotlinobject MySingale&amp;#123;&amp;#125; Lazy (">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-04-10T09:17:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JimLiuXyz">
-<meta name="twitter:description" content="自用筆記">
+<meta name="twitter:title" content="Singleton">
+<meta name="twitter:description" content="video 建立的兩個需求:  thread safe lazy  Plainclass MySingale&amp;#123;    private MySingale()&amp;#123;&amp;#125;    public static MySingale instance = new MySingale();&amp;#125; //kotlinobject MySingale&amp;#123;&amp;#125; Lazy (">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/page/2/"/>
+  <link rel="canonical" href="http://yoursite.com/home//Java/Singleton.html"/>
 
 
 
 
 
-  <title>歸檔 | JimLiuXyz</title>
+  <title>Singleton | JimLiuXyz</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,410 +275,176 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共計 46 篇文章。 繼續努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Singleton.html">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JimLiuXyz">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">Singleton</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T12:21:55+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Single/Kotlin.html" itemprop="url">
-              
-                <span itemprop="name">Kotlin</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-06T12:14:55+08:00"
-              content="2018-04-06" >
-          04-06
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Single/OAuth.html" itemprop="url">
-              
-                <span itemprop="name">OAuth</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-06T12:13:59+08:00"
-              content="2018-04-06" >
-          04-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Dagger.html" itemprop="url">
-              
-                <span itemprop="name">Dagger</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-06T12:11:26+08:00"
-              content="2018-04-06" >
-          04-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p><a href="https://www.bilibili.com/video/av10771798/index_6.html#page=10" target="_blank" rel="noopener">video</a></p>
+<p>建立的兩個需求:</p>
+<ul>
+<li>thread safe</li>
+<li>lazy</li>
+</ul>
+<h2 id="Plain"><a href="#Plain" class="headerlink" title="Plain"></a>Plain</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> MySingale instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">object</span> MySingale&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Lazy-not-thread-safe"><a href="#Lazy-not-thread-safe" class="headerlink" title="Lazy (not thread safe)"></a>Lazy (not thread safe)</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MySingale instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MySingale <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="keyword">val</span> instance <span class="keyword">by</span> lazy(LazyThreadSafetyMode.NONE)&#123;</span><br><span class="line">            MySingale()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Lazy-thread-safe-synchronized"><a href="#Lazy-thread-safe-synchronized" class="headerlink" title="Lazy (thread safe)(synchronized)"></a>Lazy (thread safe)(synchronized)</h2><ul>
+<li>加synchronized</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MySingale instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> MySingale <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">var</span> instance: MySingale? = <span class="literal">null</span></span><br><span class="line">        </span><br><span class="line">        <span class="meta">@Synchronized</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">getInstance</span><span class="params">()</span></span>: MySingale&#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="literal">null</span>) instance = MySingale()</span><br><span class="line">            <span class="keyword">return</span> instance</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Lazy-thread-safe-volatile"><a href="#Lazy-thread-safe-volatile" class="headerlink" title="Lazy (thread safe) (volatile)"></a>Lazy (thread safe) (volatile)</h2><ul>
+<li>加volatile : 確保不同thread中能立即察覺變數的更動</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> MySingale instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MySingale <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;  <span class="comment">//避免持續進入synchronized</span></span><br><span class="line">            <span class="keyword">synchronized</span> (MySingale.class)&#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">object</span> MySingale&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="keyword">val</span> instance <span class="keyword">by</span> lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED)&#123;</span><br><span class="line">            MySingale()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="透過Holder-靜態內部類"><a href="#透過Holder-靜態內部類" class="headerlink" title="透過Holder (靜態內部類)"></a>透過Holder (靜態內部類)</h2><ul>
+<li>透過static Holder達到lazy</li>
+<li>new操作在java中原本也就是thread safe</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span></span>&#123;</span><br><span class="line">        <span class="keyword">static</span> MySingale instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MySingale <span class="title">getInstance</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> Holder.instance; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">object</span> MySingale&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">getInstance</span><span class="params">()</span></span> = Holder.instance</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">companion</span> Holder&#123;</span><br><span class="line">        <span class="keyword">val</span> instance = MySingale()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/RxJava.html" itemprop="url">
-              
-                <span itemprop="name">RxJava</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-06T11:49:48+08:00"
-              content="2018-04-06" >
-          04-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Broadcast.html" itemprop="url">
-              
-                <span itemprop="name">Broadcast</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:59:35+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/DevLog.html" itemprop="url">
-              
-                <span itemprop="name">Android Dev Log</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:39:45+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/RecyclerView.html" itemprop="url">
-              
-                <span itemprop="name">RecyclerView</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:36:16+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Fragment.html" itemprop="url">
-              
-                <span itemprop="name">Fragment</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:34:06+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/Gradle.html" itemprop="url">
-              
-                <span itemprop="name">Gradle</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:10:47+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/home/Android/IDE-ENV.html" itemprop="url">
-              
-                <span itemprop="name">IDE_ENV</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-04T19:04:53+08:00"
-              content="2018-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/Java/Java.html" rel="next" title="Java">
+                <i class="fa fa-chevron-left"></i> Java
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/Java/泛型.html" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -684,6 +452,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -704,8 +476,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -783,6 +564,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Plain"><span class="nav-number">1.</span> <span class="nav-text">Plain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lazy-not-thread-safe"><span class="nav-number">2.</span> <span class="nav-text">Lazy (not thread safe)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lazy-thread-safe-synchronized"><span class="nav-number">3.</span> <span class="nav-text">Lazy (thread safe)(synchronized)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lazy-thread-safe-volatile"><span class="nav-number">4.</span> <span class="nav-text">Lazy (thread safe) (volatile)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#透過Holder-靜態內部類"><span class="nav-number">5.</span> <span class="nav-text">透過Holder (靜態內部類)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -916,6 +713,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

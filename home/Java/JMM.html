@@ -81,22 +81,20 @@
 
 
 
-<meta name="description" content="相關知識  program : binary code,一段機械碼或可被執行的檔案 process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap)與thread. process間是不共用的,互相通信需特殊的機制 thread : 實際執行程式碼的單元 包含一stack儲存原生變數與參考及函數流程等執行位址 task : 任務,軟體概念,task是">
+<meta name="description" content="*ref ref ref JMM (Java Memory Model) JVM執行區分 主內存(共享內存) 與 本地內存  Main : 主記憶體 (heap) Local : 各個thread獨立使用 (cache/副本)  thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thread的各式需求">
-<meta property="og:url" content="http://yoursite.com/home//Single/Thread的各式需求.html">
+<meta property="og:title" content="JMM (Java Memory Model)">
+<meta property="og:url" content="http://yoursite.com/home//Java/JMM.html">
 <meta property="og:site_name" content="JimLiuXyz">
-<meta property="og:description" content="相關知識  program : binary code,一段機械碼或可被執行的檔案 process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap)與thread. process間是不共用的,互相通信需特殊的機制 thread : 實際執行程式碼的單元 包含一stack儲存原生變數與參考及函數流程等執行位址 task : 任務,軟體概念,task是">
+<meta property="og:description" content="*ref ref ref JMM (Java Memory Model) JVM執行區分 主內存(共享內存) 與 本地內存  Main : 主記憶體 (heap) Local : 各個thread獨立使用 (cache/副本)  thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://www.w3.org/People/Frystyk/thesis/MultiStackThread.gif">
-<meta property="og:image" content="https://equinoxrar.files.wordpress.com/2014/08/threads1.png">
-<meta property="og:image" content="http://alvinalexander.com/sites/default/files/photos/parallelism-vs-concurrency.png">
-<meta property="og:updated_time" content="2018-04-06T04:18:46.000Z">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png">
+<meta property="og:updated_time" content="2018-04-09T12:32:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Thread的各式需求">
-<meta name="twitter:description" content="相關知識  program : binary code,一段機械碼或可被執行的檔案 process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap)與thread. process間是不共用的,互相通信需特殊的機制 thread : 實際執行程式碼的單元 包含一stack儲存原生變數與參考及函數流程等執行位址 task : 任務,軟體概念,task是">
-<meta name="twitter:image" content="https://www.w3.org/People/Frystyk/thesis/MultiStackThread.gif">
+<meta name="twitter:title" content="JMM (Java Memory Model)">
+<meta name="twitter:description" content="*ref ref ref JMM (Java Memory Model) JVM執行區分 主內存(共享內存) 與 本地內存  Main : 主記憶體 (heap) Local : 各個thread獨立使用 (cache/副本)  thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png">
 
 
 
@@ -126,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/home//Single/Thread的各式需求.html"/>
+  <link rel="canonical" href="http://yoursite.com/home//Java/JMM.html"/>
 
 
 
 
 
-  <title>Thread的各式需求 | JimLiuXyz</title>
+  <title>JMM (Java Memory Model) | JimLiuXyz</title>
   
 
 
@@ -167,7 +165,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">自用筆記2</p>
       
   </div>
 
@@ -293,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/Thread的各式需求.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/JMM.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -310,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Thread的各式需求</h1>
+          <h1 class="post-title" itemprop="name headline">JMM (Java Memory Model)</h1>
         
 
         <div class="post-meta">
@@ -322,8 +320,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:41:05+08:00">
-                2018-04-04
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
+                2018-04-06
               </time>
             
 
@@ -360,47 +358,32 @@
       
 
       
-        <h2 id="相關知識"><a href="#相關知識" class="headerlink" title="相關知識"></a>相關知識</h2><p><img src="https://www.w3.org/People/Frystyk/thesis/MultiStackThread.gif" alt=""><br><img src="https://equinoxrar.files.wordpress.com/2014/08/threads1.png" alt=""></p>
+        <p><a href="http://wiki.jikexueyuan.com/project/java-concurrent/java-memory-model.html" target="_blank" rel="noopener">*ref</a> <a href="https://blog.csdn.net/qq_33689414/article/details/73527438" target="_blank" rel="noopener">ref</a> <a href="https://medium.com/@kevingyc/java-java-thread-model-memory-model-22692fc08671" target="_blank" rel="noopener">ref</a></p>
+<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a>JMM (Java Memory Model)</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png" alt=""></p>
+<p>JVM執行區分 主內存(共享內存) 與 本地內存</p>
 <ul>
-<li>program : binary code,一段機械碼或可被執行的檔案</li>
-<li>process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap)與thread. process間是不共用的,互相通信需特殊的機制</li>
-<li>thread : 實際執行程式碼的單元 包含一stack儲存原生變數與參考及函數流程等執行位址</li>
-<li>task : 任務,軟體概念,task是指派給thread執行的,類似Runnable</li>
-<li>corutine: 協程,軟體概念,由應用程式或編譯器實作的軟體架構,目的在於有效與便利運用thread與thread間的切換</li>
+<li>Main : 主記憶體 (heap)</li>
+<li>Local : 各個thread獨立使用 (cache/副本)</li>
 </ul>
-<h4 id="corutine"><a href="#corutine" class="headerlink" title="corutine"></a>corutine</h4><p>例如要完成一個取得一筆資料顯示到ui上,額外需要一個io thread避免ui thread被較慢的io thread阻塞,程式的編寫上可能需要一個func切換到io thread執行,還要一個callback func返回執行結束,以及一個組合這些流程的func,一整個流程散落各處. 協程相當於將block排程到thread中,由背景系統決定執行時機,也就是說該block成為該thread中一個異步執行的任務,我們只需透過async宣告異步任務與await等待任務,就能將前述的動作寫在一個block中. 用於單執行緒的javascript中最為顯著.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>&#123;</span><br><span class="line">    value = <span class="keyword">await</span> getData();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="concurrent-vs-parallel"><a href="#concurrent-vs-parallel" class="headerlink" title="concurrent vs parallel"></a>concurrent vs parallel</h2><p><img src="http://alvinalexander.com/sites/default/files/photos/parallelism-vs-concurrency.png" alt="concurrent vs parallel"></p>
+<p>thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步main的資料</p>
 <ul>
-<li>concurrent : 並行 N -&gt; 1 像是排程(Javascript)</li>
-<li>parallel : 平行 N -&gt; N</li>
+<li>local從main讀寫資料應該是視為synchronized或有cpu確保同步</li>
 </ul>
-<h1 id="Thread的切換"><a href="#Thread的切換" class="headerlink" title="Thread的切換"></a>Thread的切換</h1><p>一個流程中某些動作必須跳到異步執行 待執行完再切回原本的thread 這些切換thread的動作將使一個流程無法順暢的寫完</p>
-<p>舉例:</p>
-<ol>
-<li>user按下執行按鈕 (ui)</li>
-<li>下載url的內容 (network)</li>
-<li>存成本地檔案 (i/o)</li>
-<li>取得執行狀況 將內容顯示於ui (ui)</li>
-</ol>
-<h4 id="coroutine-協程"><a href="#coroutine-協程" class="headerlink" title="coroutine 協程"></a>coroutine 協程</h4><blockquote>
-<p>透過async/await讓工作不立即執行 且能夠被等待 相當於排程的概念 更有效率的使用thread</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</span><br><span class="line"><span class="comment">//str為一參考 會放在stack</span></span><br><span class="line"><span class="comment">//new String會放到heap</span></span><br><span class="line"><span class="comment">//hello是字面值會放到靜態儲存區(應該也是heap)</span></span><br></pre></td></tr></table></figure>
+<h2 id="可見性-visibility"><a href="#可見性-visibility" class="headerlink" title="可見性(visibility)"></a>可見性(visibility)</h2><blockquote>
+<p>指A修改變數x時 確保B能夠隨時得到最新的值 (即cache失效)<br>Java透過volatile將變數宣告為<code>易變的/易揮發的</code> 以提示其需要可見性的維護 (但並沒有原子性保護)</p>
 </blockquote>
-<p>例如 : 在main thread中連續執行ABC三函數</p>
-<ul>
-<li>一般情況下執行的順序是ABC</li>
-<li>若B能進入異步 順序會變為AC…B (B不確定何時執行)</li>
-<li>若B能進入異步 且C能等待B執行完 順序又變回ABC</li>
-<li>假若B在異步執行時是透過其他thread 那C等待B時main thread還能繼續其他工作</li>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">x = <span class="number">0</span>;</span><br><span class="line">AB兩thread同時執行+<span class="number">3</span>與+<span class="number">5</span>,預期得到<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">volatile</span> x = <span class="number">0</span>;</span><br><span class="line">A(x=x+<span class="number">3</span>) : <span class="number">0</span>+<span class="number">3</span>=<span class="number">3</span> 將<span class="number">3</span>指定給x</span><br><span class="line">B(x=x+<span class="number">5</span>) : <span class="number">0</span>+<span class="number">5</span>=<span class="number">5</span> 此時x變為<span class="number">3</span>,但運算已結束 將<span class="number">5</span>指定給x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最後卻得到5,這是因為x=x+5的動作並不屬於原子操作,x+5與x=?是分別執行的,中間可以穿插,所以volatile不一定能確保變數一定是thread-safe的<br>故volatile一般都用在<code>狀態或旗標</code>變數上</p>
+</blockquote>
+<h2 id="原子操作-atomic"><a href="#原子操作-atomic" class="headerlink" title="原子操作 (atomic)"></a>原子操作 (atomic)</h2><p>原子是最小無法分割之物 用來形容操作是不能分割的 以完成i++為例 分別需要取值/運算/賦值 假若期間無法插入任何與i相關的操作 就可以確保i的正確性</p>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">AtomicInteger a = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">                x = x + <span class="number">1</span>;</span><br><span class="line">                a.addAndGet(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (Thread.class)&#123;</span><br><span class="line">                    y = y + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"ans x : "</span> + x); <span class="comment">//405949 &lt;- 錯的</span></span><br><span class="line">            System.out.println(<span class="string">"ans y : "</span> + y); <span class="comment">//500000</span></span><br><span class="line">            System.out.println(<span class="string">"ans a : "</span> + a); <span class="comment">//500000</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><ul>
+<li>compareAndSet(expected, new) atomic檢查主入內存與expected是否相同,若相同表示可以賦值為new 否則回傳false</li>
+<li>猜測應該是用在<code>鎖</code>的應用上 類似CountDownLatch 但不會阻塞</li>
 </ul>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h4 id="message-handler"><a href="#message-handler" class="headerlink" title="message handler"></a>message handler</h4><p>適合簡單的切換 多個連續流程仍難以處理</p>
-<h4 id="exector"><a href="#exector" class="headerlink" title="exector"></a>exector</h4><ul>
-<li>預先做好各個thread,執行時丟入runnable</li>
-<li>切換越多次巢狀越明顯</li>
-<li>沒辦法等待(await) (等待會進入blocking)</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppExecutors</span> </span>&#123; <span class="comment">//seeu 建立Thread切換機制</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> THREAD_COUNT = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor diskIO;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor networkIO;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor mainThread;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AppExecutors</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        diskIO = Executors.newSingleThreadExecutor();</span><br><span class="line">        networkIO = Executors.newFixedThreadPool(THREAD_COUNT);</span><br><span class="line">        mainThread = <span class="keyword">new</span> MainThreadExecutor());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">diskIO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> diskIO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">networkIO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> networkIO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">mainThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mainThread;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MainThreadExecutor</span> <span class="keyword">implements</span> <span class="title">Executor</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Handler mainThreadHandler = <span class="keyword">new</span> Handler(Looper.getMainLooper());</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(@NonNull Runnable command)</span> </span>&#123;</span><br><span class="line">            mainThreadHandler.post(command);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Kotlin-透過協程"><a href="#Kotlin-透過協程" class="headerlink" title="Kotlin (透過協程)"></a>Kotlin (透過協程)</h2><h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h2><h2 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">atomicI = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">safeCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        runCount++;</span><br><span class="line">        <span class="keyword">int</span> i = atomicI.get();</span><br><span class="line">        <span class="keyword">boolean</span> suc = atomicI.compareAndSet(i, ++i);</span><br><span class="line">        <span class="keyword">if</span> (suc) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -430,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/home/Android/Room.html" rel="next" title="Room">
-                <i class="fa fa-chevron-left"></i> Room
+              <a href="/home/Java/Java8Explained.html" rel="next" title="Java 8 增訂">
+                <i class="fa fa-chevron-left"></i> Java 8 增訂
               </a>
             
           </div>
@@ -440,8 +423,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/home/Android/Animation.html" rel="prev" title="Animation">
-                Animation <i class="fa fa-chevron-right"></i>
+              <a href="/home/Java/Collection.html" rel="prev" title="Collection">
+                Collection <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -509,7 +492,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Jim</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -519,7 +502,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -541,7 +524,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -592,7 +575,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相關知識"><span class="nav-number">1.</span> <span class="nav-text">相關知識</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#corutine"><span class="nav-number">1.0.1.</span> <span class="nav-text">corutine</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concurrent-vs-parallel"><span class="nav-number">2.</span> <span class="nav-text">concurrent vs parallel</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thread的切換"><span class="nav-number"></span> <span class="nav-text">Thread的切換</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#coroutine-協程"><span class="nav-number">0.0.1.</span> <span class="nav-text">coroutine 協程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java"><span class="nav-number">1.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#message-handler"><span class="nav-number">1.0.1.</span> <span class="nav-text">message handler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exector"><span class="nav-number">1.0.2.</span> <span class="nav-text">exector</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin-透過協程"><span class="nav-number">2.</span> <span class="nav-text">Kotlin (透過協程)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava"><span class="nav-number">3.</span> <span class="nav-text">RxJava</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EventBus"><span class="nav-number">4.</span> <span class="nav-text">EventBus</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JMM-Java-Memory-Model"><span class="nav-number">1.</span> <span class="nav-text">JMM (Java Memory Model)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可見性-visibility"><span class="nav-number">2.</span> <span class="nav-text">可見性(visibility)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子操作-atomic"><span class="nav-number">3.</span> <span class="nav-text">原子操作 (atomic)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#範例"><span class="nav-number">4.</span> <span class="nav-text">範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CAS"><span class="nav-number">5.</span> <span class="nav-text">CAS</span></a></li></ol></div>
             
 
           </div>

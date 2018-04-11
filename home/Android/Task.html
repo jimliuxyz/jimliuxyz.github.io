@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="JimLiuXyz">
 <meta property="og:description" content="Activity.runOnUiThread activity內建的一方法 便於異步切回main thread  AsyncTaskref  aad : Execute a background task inside of a Service   thread pool+handler應用的再封裝 易於與main(UI) thread切換 需在main thread建立與執行 (最終記得canc">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta property="og:updated_time" content="2018-04-10T04:29:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Task">
 <meta name="twitter:description" content="Activity.runOnUiThread activity內建的一方法 便於異步切回main thread  AsyncTaskref  aad : Execute a background task inside of a Service   thread pool+handler應用的再封裝 易於與main(UI) thread切換 需在main thread建立與執行 (最終記得canc">
@@ -163,7 +163,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">自用筆記2</p>
       
   </div>
 
@@ -366,6 +366,7 @@
 <ul>
 <li>thread pool+handler應用的再封裝 易於與main(UI) thread切換</li>
 <li>需在main thread建立與執行 (最終記得cancel)</li>
+<li>如同Thread一次性使用 結束後無法重新啟動</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">String</span> , <span class="title">Integer</span> , <span class="title">Bitmap</span>&gt;</span>&#123;</span><br><span class="line"><span class="comment">//&lt;傳入型態, 進度值型態, 結果型態&gt;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bitmap <span class="title">doInBackground</span><span class="params">(String ...args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//進入異步 不要做view操作</span></span><br><span class="line">        publishProgress(...);</span><br><span class="line">        </span><br><span class="line">        activity.runOnUiThread</span><br><span class="line">    &#125;</span><br><span class="line">    onPreExecute() <span class="comment">//回main thread</span></span><br><span class="line">    onProgressUpdate(Integer... values) <span class="comment">//回main thread</span></span><br><span class="line">    onPostExecute(Bitmap bitmap) <span class="comment">//回main thread</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> MyTask().execute(<span class="string">"str"</span>);</span><br></pre></td></tr></table></figure>
 <h2 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1.設定好要count down的數量</span></span><br><span class="line"><span class="keyword">final</span> CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.在異步thread結束後countDown使其歸零</span></span><br><span class="line">countDownLatch.countDown();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.一直等到countDownLatch為0才返回</span></span><br><span class="line">countDownLatch.await();</span><br></pre></td></tr></table></figure>
@@ -502,7 +503,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Jim</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -512,7 +513,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -534,7 +535,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>

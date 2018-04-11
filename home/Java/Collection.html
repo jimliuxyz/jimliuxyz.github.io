@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="ref ref 類型Set 做為一集合 儲存物件 沒有索引 無特定排序的 不能重複的沒有get方法 因爲沒有key的概念 僅存放value(或稱element) 用iterator遍歷HashSet為常用的實現  List 以連接的方式儲存有序的 有數字索引 能get(idx)  Map 鍵值對 (Key-Value pair) (entrySet)  結論 要數字索引 : List (Array">
+<meta name="description" content="ref ref 類型 Collection 一無序物件群體的介面  Set 一無序物件群體 元素無法重複(會覆蓋) 沒有索引沒有get方法 因爲沒有key的概念 僅存放value(或稱element) 用iterator遍歷HashSet為常用的實現 或可排序的TreeSet  List 一有序物件群體 元素可重複 有數字索引 能get(idx)  Map 鍵值對 (Key-Value pair)">
 <meta name="keywords" content="Java,Collection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Collection">
 <meta property="og:url" content="http://yoursite.com/home//Java/Collection.html">
 <meta property="og:site_name" content="JimLiuXyz">
-<meta property="og:description" content="ref ref 類型Set 做為一集合 儲存物件 沒有索引 無特定排序的 不能重複的沒有get方法 因爲沒有key的概念 僅存放value(或稱element) 用iterator遍歷HashSet為常用的實現  List 以連接的方式儲存有序的 有數字索引 能get(idx)  Map 鍵值對 (Key-Value pair) (entrySet)  結論 要數字索引 : List (Array">
+<meta property="og:description" content="ref ref 類型 Collection 一無序物件群體的介面  Set 一無序物件群體 元素無法重複(會覆蓋) 沒有索引沒有get方法 因爲沒有key的概念 僅存放value(或稱element) 用iterator遍歷HashSet為常用的實現 或可排序的TreeSet  List 一有序物件群體 元素可重複 有數字索引 能get(idx)  Map 鍵值對 (Key-Value pair)">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-06T13:52:39.000Z">
+<meta property="og:image" content="https://lh3.googleusercontent.com/Zymadzpwi3aKAlI1EpBjbfudYBuZuam7d6xWRia7OZqVZya7br-b0LdeykU5db-7i6WIUxymQ_OaV7nf12y1RPv4aC_IPsIfd4Vel4qeWVpXK10Rkhm4sZxq5jVt4aLkc2CzdNyP">
+<meta property="og:updated_time" content="2018-04-09T12:20:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Collection">
-<meta name="twitter:description" content="ref ref 類型Set 做為一集合 儲存物件 沒有索引 無特定排序的 不能重複的沒有get方法 因爲沒有key的概念 僅存放value(或稱element) 用iterator遍歷HashSet為常用的實現  List 以連接的方式儲存有序的 有數字索引 能get(idx)  Map 鍵值對 (Key-Value pair) (entrySet)  結論 要數字索引 : List (Array">
+<meta name="twitter:description" content="ref ref 類型 Collection 一無序物件群體的介面  Set 一無序物件群體 元素無法重複(會覆蓋) 沒有索引沒有get方法 因爲沒有key的概念 僅存放value(或稱element) 用iterator遍歷HashSet為常用的實現 或可排序的TreeSet  List 一有序物件群體 元素可重複 有數字索引 能get(idx)  Map 鍵值對 (Key-Value pair)">
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/Zymadzpwi3aKAlI1EpBjbfudYBuZuam7d6xWRia7OZqVZya7br-b0LdeykU5db-7i6WIUxymQ_OaV7nf12y1RPv4aC_IPsIfd4Vel4qeWVpXK10Rkhm4sZxq5jVt4aLkc2CzdNyP">
 
 
 
@@ -163,7 +165,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">自用筆記2</p>
       
   </div>
 
@@ -357,11 +359,15 @@
 
       
         <p><a href="http://jax-work-archive.blogspot.tw/2015/02/java-setlistmap.html" target="_blank" rel="noopener">ref</a> <a href="http://blog.oneapm.com/apm-tech/650.html" target="_blank" rel="noopener">ref</a></p>
-<h1 id="類型"><a href="#類型" class="headerlink" title="類型"></a>類型</h1><h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><blockquote>
-<p>做為一集合 儲存物件 沒有索引 無特定排序的 不能重複的<br>沒有get方法 因爲沒有key的概念 僅存放value(或稱element) 用iterator遍歷<br>HashSet為常用的實現</p>
+<h1 id="類型"><a href="#類型" class="headerlink" title="類型"></a>類型</h1><p><img src="https://lh3.googleusercontent.com/Zymadzpwi3aKAlI1EpBjbfudYBuZuam7d6xWRia7OZqVZya7br-b0LdeykU5db-7i6WIUxymQ_OaV7nf12y1RPv4aC_IPsIfd4Vel4qeWVpXK10Rkhm4sZxq5jVt4aLkc2CzdNyP" alt=""></p>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><blockquote>
+<p>一無序物件群體的介面</p>
+</blockquote>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><blockquote>
+<p>一無序物件群體 元素無法重複(會覆蓋) 沒有索引<br>沒有get方法 因爲沒有key的概念 僅存放value(或稱element) 用iterator遍歷<br>HashSet為常用的實現 或可排序的TreeSet</p>
 </blockquote>
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><blockquote>
-<p>以連接的方式儲存<br>有序的 有數字索引 能get(idx)</p>
+<p>一有序物件群體 元素可重複 有數字索引 能get(idx)</p>
 </blockquote>
 <h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><blockquote>
 <p>鍵值對 (Key-Value pair) (entrySet)</p>
@@ -382,14 +388,15 @@
 <blockquote>
 <p>測試發現 : HashMap與Hashtable 遍歷時都是沒有規律的</p>
 </blockquote>
-<h1 id="實現類"><a href="#實現類" class="headerlink" title="實現類"></a>實現類</h1><h2 id="HashMap-ConcurrentHashMap"><a href="#HashMap-ConcurrentHashMap" class="headerlink" title="HashMap (ConcurrentHashMap)"></a>HashMap (ConcurrentHashMap)</h2><blockquote>
-<p>以hashcode為key (null也有其hashcode)<br>速度快,遍歷時無序的(非照put時機或key值排列)<br>非thread-safe, multi-thread資料可能異常,但有ConcurrentHashMap可以替代,或Collections.synchronizeMap(map)使其thread-safe<br>需要預留較大空間 資料量不多時划不來</p>
+<h1 id="實現類"><a href="#實現類" class="headerlink" title="實現類"></a>實現類</h1><p><a href="http://wiki.jikexueyuan.com/project/java-collection/" target="_blank" rel="noopener">實現解說</a></p>
+<h2 id="HashMap-ConcurrentHashMap"><a href="#HashMap-ConcurrentHashMap" class="headerlink" title="HashMap (ConcurrentHashMap)"></a>HashMap (ConcurrentHashMap)</h2><blockquote>
+<p>以hashcode為key (null也有其hashcode)<br>速度快,遍歷時無序的(非照put時機或key值排列)<br>非thread-safe, multi-thread資料可能異常,但有ConcurrentHashMap可以替代,或Collections.synchronizeMap(map)使其thread-safe<br>需要預留較大的array空間(對應每個hashCode) 資料量不多時划不來<br>以一個hash值為索引的array其每個元素對應到一個list 當list長度超過8則改為紅黑樹(自平衡二元樹)</p>
 </blockquote>
 <h2 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h2><blockquote>
 <p>thread-safe, 慢<br>繼承Dictionary<br>較早的技術 建議用HashMap取代</p>
 </blockquote>
 <h2 id="LinkedHashMap-小資料量的通常的選項"><a href="#LinkedHashMap-小資料量的通常的選項" class="headerlink" title="LinkedHashMap (小資料量的通常的選項)"></a>LinkedHashMap (小資料量的通常的選項)</h2><blockquote>
-<p>繼承HashMap<br>遍歷時是<code>依照put順序的</code><br>較慢 但啟動較省空間 在資料不多時 不見得比較慢</p>
+<p>繼承HashMap (應該是以雙向鏈取代固定size的array)<br>遍歷時是<code>依照put順序的</code><br>較慢 但啟動較省空間 在資料不多時 不見得比較慢</p>
 </blockquote>
 <h2 id="EnumMap"><a href="#EnumMap" class="headerlink" title="EnumMap"></a>EnumMap</h2><blockquote>
 <p>以enum為鍵 意即使用時就<code>已知最大容量</code> 通常會較快</p>
@@ -400,13 +407,31 @@
 <h2 id="WeakHashMap"><a href="#WeakHashMap" class="headerlink" title="WeakHashMap"></a>WeakHashMap</h2><blockquote>
 <p>弱參考 可做自動回收的快取</p>
 </blockquote>
+<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><blockquote>
+<p>以HashMap實現<br>即以Object的hashCode為key 本身為值 故同樣的hashCode無法對應兩個值 即不會重複</p>
+</blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.put(key, <span class="keyword">new</span> WeakReference(value))</span><br></pre></td></tr></table></figure>
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] ints = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">Integer[] ints2 = <span class="keyword">new</span> Integer[<span class="number">10</span>];</span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>固定長度 可放原生類型<br>透過java.util.Arrays工具類延伸操作</p>
+</blockquote>
 <h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><blockquote>
-<p>如同一串列值的array 但能動態調整大小 從左邊刪除或新增會造成比較大的開銷</p>
+<p>元素為連續排列 但能動態調整大小(會預留空間) 從刪除或插入會造成比較大的開銷<br>get/set能透過索引算出 <code>快</code><br>add/remove需要移動整個右邊元素 <code>慢</code></p>
 </blockquote>
 <h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><blockquote>
-<p>以node節點實現List</p>
+<p>以雙向鏈(node)實現List<br>get/set需透過node遍歷 <code>慢</code><br>add/remove直接調整左右節點即可 <code>快</code> (節點不在最前最後時要先遍歷找到節點)</p>
 </blockquote>
+<h1 id="Iterator-迭代器"><a href="#Iterator-迭代器" class="headerlink" title="Iterator (迭代器)"></a>Iterator (迭代器)</h1><p>用於遍歷Set與List元素 類似一個for loop (Map的遍歷透過其EntrySet)</p>
+<ul>
+<li>ListIterator : 可雙向</li>
+<li>fail-fast : 操作集合會累加modCount以示集合出現更動 若迭代時出現更動會拋出異常java.util.ConcurrentModificationException 算是一種偵錯機制</li>
+<li>fail-safe : 迭代時複製一分參考清單 該清單無人能更動 自然就能確保迭代期間是完整的 但期間若真有異動也無法即時反應</li>
+</ul>
+<h1 id="Stream-流"><a href="#Stream-流" class="headerlink" title="Stream (流)"></a>Stream (流)</h1><p>類似以loop方式每次推送一個元素到function中操作 透過各式操作符一層一層完成以往for loop的工作</p>
+<blockquote>
+<p>parallelStream : 以並行(切割任務)方式處理流</p>
+</blockquote>
+<h1 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map map = Collections.synchronizedMap(<span class="keyword">new</span> HashMap());</span><br></pre></td></tr></table></figure>
 <h1 id="JDK集合實現"><a href="#JDK集合實現" class="headerlink" title="JDK集合實現"></a>JDK集合實現</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List</span><br><span class="line"></span><br><span class="line"><span class="comment">//Single-threaded</span></span><br><span class="line">ArrayList – 基於數組的泛型</span><br><span class="line">LinkedList – 請勿使用</span><br><span class="line">Vector – 已棄用</span><br><span class="line"></span><br><span class="line"><span class="comment">//Concurrent</span></span><br><span class="line">CopyOnWriteArrayList – 極少更新，常用於遍歷</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Maps</span><br><span class="line"></span><br><span class="line"><span class="comment">//Single-threaded</span></span><br><span class="line">HashMap – 泛型映射</span><br><span class="line">EnumMap – 枚舉鍵</span><br><span class="line">Hashtable – 已棄用</span><br><span class="line">IdentityHashMap – 用== 對比的鍵</span><br><span class="line">LinkedHashMap – 保持插入次序</span><br><span class="line">TreeMap – 有序鍵</span><br><span class="line">WeakHashMap – 有益於緩存</span><br><span class="line"></span><br><span class="line"><span class="comment">//Concurrent</span></span><br><span class="line">ConcurrentHashMap – 泛型並發映射</span><br><span class="line">ConcurrentSkipListMap – 有序並發映射</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Sets</span><br><span class="line"></span><br><span class="line"><span class="comment">//Single-threaded</span></span><br><span class="line">HashSet – 泛型集合</span><br><span class="line">EnumSet – 枚舉集合</span><br><span class="line">BitSet – bits/dense 整型集合</span><br><span class="line">LinkedHashSet – 保持插入次序</span><br><span class="line">TreeSet – 有序集合</span><br><span class="line"></span><br><span class="line"><span class="comment">//Concurrent</span></span><br><span class="line">ConcurrentSkipListSet – 有序並發集合</span><br><span class="line">CopyOnWriteArraySet – 極少更新，常用於遍歷</span><br></pre></td></tr></table></figure>
@@ -443,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/home/Java/泛型.html" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/home/Java/JMM.html" rel="next" title="JMM (Java Memory Model)">
+                <i class="fa fa-chevron-left"></i> JMM (Java Memory Model)
               </a>
             
           </div>
@@ -453,8 +478,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/home/Java/Java8Explained.html" rel="prev" title="Java 8 增訂">
-                Java 8 增訂 <i class="fa fa-chevron-right"></i>
+              <a href="/home/Single/Git.html" rel="prev" title="Git">
+                Git <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -522,7 +547,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Jim</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -532,7 +557,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -554,7 +579,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -605,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#類型"><span class="nav-number">1.</span> <span class="nav-text">類型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.1.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">1.3.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結論"><span class="nav-number">1.4.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍歷"><span class="nav-number">1.5.</span> <span class="nav-text">遍歷</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#實現類"><span class="nav-number">2.</span> <span class="nav-text">實現類</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-ConcurrentHashMap"><span class="nav-number">2.1.</span> <span class="nav-text">HashMap (ConcurrentHashMap)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hashtable"><span class="nav-number">2.2.</span> <span class="nav-text">Hashtable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedHashMap-小資料量的通常的選項"><span class="nav-number">2.3.</span> <span class="nav-text">LinkedHashMap (小資料量的通常的選項)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EnumMap"><span class="nav-number">2.4.</span> <span class="nav-text">EnumMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TreeMap"><span class="nav-number">2.5.</span> <span class="nav-text">TreeMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WeakHashMap"><span class="nav-number">2.6.</span> <span class="nav-text">WeakHashMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.7.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList"><span class="nav-number">2.8.</span> <span class="nav-text">LinkedList</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDK集合實現"><span class="nav-number">3.</span> <span class="nav-text">JDK集合實現</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#類型"><span class="nav-number">1.</span> <span class="nav-text">類型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">1.1.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.2.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.3.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">1.4.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結論"><span class="nav-number">1.5.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍歷"><span class="nav-number">1.6.</span> <span class="nav-text">遍歷</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#實現類"><span class="nav-number">2.</span> <span class="nav-text">實現類</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-ConcurrentHashMap"><span class="nav-number">2.1.</span> <span class="nav-text">HashMap (ConcurrentHashMap)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hashtable"><span class="nav-number">2.2.</span> <span class="nav-text">Hashtable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedHashMap-小資料量的通常的選項"><span class="nav-number">2.3.</span> <span class="nav-text">LinkedHashMap (小資料量的通常的選項)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EnumMap"><span class="nav-number">2.4.</span> <span class="nav-text">EnumMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TreeMap"><span class="nav-number">2.5.</span> <span class="nav-text">TreeMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WeakHashMap"><span class="nav-number">2.6.</span> <span class="nav-text">WeakHashMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashSet"><span class="nav-number">2.7.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrays"><span class="nav-number">2.8.</span> <span class="nav-text">Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.9.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList"><span class="nav-number">2.10.</span> <span class="nav-text">LinkedList</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterator-迭代器"><span class="nav-number">3.</span> <span class="nav-text">Iterator (迭代器)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stream-流"><span class="nav-number">4.</span> <span class="nav-text">Stream (流)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同步"><span class="nav-number">5.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDK集合實現"><span class="nav-number">6.</span> <span class="nav-text">JDK集合實現</span></a></li></ol></div>
             
 
           </div>

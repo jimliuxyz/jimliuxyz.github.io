@@ -90,7 +90,7 @@
 <meta property="og:description" content="Service app透過startService啟動service 執行於UI Thread 不會自動被系統結束 只能自己透過stopSelf結束  onStartCommand的回傳決定Service被系統殺掉後的行為 START_STICKY : Service被殺掉, 系統會重啟, 但是Intent會是null。   START_NOT_STICKY : Service被系統殺掉, 不會">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3881353-66a45f88bedec256.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta property="og:updated_time" content="2018-04-10T13:11:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Service">
 <meta name="twitter:description" content="Service app透過startService啟動service 執行於UI Thread 不會自動被系統結束 只能自己透過stopSelf結束  onStartCommand的回傳決定Service被系統殺掉後的行為 START_STICKY : Service被殺掉, 系統會重啟, 但是Intent會是null。   START_NOT_STICKY : Service被系統殺掉, 不會">
@@ -165,7 +165,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">自用筆記2</p>
       
   </div>
 
@@ -379,16 +379,24 @@
 <li>以bindService啟動service會造成Service綁定於App的生命週期</li>
 <li>用AIDL建立共通介面</li>
 <li>內建已經做好了一個共通的binder 可以透過(Message(msg)).getBinder()建立 基本上是用handler處理message的方式傳遞訊息 (就不用建AIDL了)</li>
+<li>android:process屬性 : 可讓Service執行於自有的process上(remote service) 通常會設為:remote(這似乎屬於一個自訂的命名)</li>
 </ul>
 <h2 id="Binder"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</h2><blockquote>
 <p>在android中做process間通訊用 (底層機制應該是linux的share memory)</p>
 </blockquote>
-<h4 id="AIDL"><a href="#AIDL" class="headerlink" title="AIDL"></a>AIDL</h4><blockquote>
+<h4 id="AIDL"><a href="#AIDL" class="headerlink" title="AIDL"></a>AIDL</h4><p><a href="https://blog.csdn.net/u011240877/article/details/72765136" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
 <p>Android Interface Definition Language<br>一種程式語言 用於定義介面 用於IPC(Process間通信) 與java的interface寫法類似</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//IRemoteService.aidl</span></span><br><span class="line"><span class="keyword">package</span> com.example.service;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IRemoteService</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getData</span><span class="params">(String key)</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>存成MyDataBinder.aidl,會被自動轉譯產生一個java檔,產生.Stub類別,作為server與client間共通的介面<br>client端也必須有該.aidl檔才能編譯與正確執行.</p>
+<p>存成MyDataBinder.aidl,會被自動轉譯產生一個java檔,產生IRemoteService.Stub類別,作為server與client間共通的介面</p>
+</blockquote>
+<blockquote>
+<p>server端實做IRemoteService.Stub的method即IBinder 並在onBind時回傳</p>
+</blockquote>
+<blockquote>
+<p>client端也必須有該.aidl檔才能編譯 並透過IRemoteService.Stub.asInterface將IBinder轉為代理物件供使用</p>
 </blockquote>
 <h2 id="Remote-Service範例"><a href="#Remote-Service範例" class="headerlink" title="Remote Service範例"></a>Remote Service範例</h2><h4 id="實做介面"><a href="#實做介面" class="headerlink" title="實做介面"></a>實做介面</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//RemoteService.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoteService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Return the interface</span></span><br><span class="line">        <span class="keyword">return</span> mBinder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> IRemoteService.Stub mBinder = <span class="keyword">new</span> IRemoteService.Stub() &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getData</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
@@ -397,7 +405,7 @@
 <p>Service的子類 需在manifest中宣告</p>
 </blockquote>
 <blockquote>
-<p>Service+Handler+Looper的封裝</p>
+<p>Service+Handler+Looper的封裝 即類似一個task queue 當所有任務執行完時銷毀 有任務再重新建立</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntentServiceDemo</span> <span class="keyword">extends</span> <span class="title">IntentService</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IntentServiceDemo</span><span class="params">(String name)</span></span>&#123; <span class="comment">//name for HandlerThread</span></span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(Intent intent)</span></span>&#123;</span><br><span class="line">        <span class="comment">//進入異步</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, IntentServiceDemo.class);</span><br><span class="line">startService(intent);</span><br></pre></td></tr></table></figure>
 <h2 id="JobService-JobScheduler"><a href="#JobService-JobScheduler" class="headerlink" title="JobService / JobScheduler"></a>JobService / JobScheduler</h2><p><a href="https://blog.csdn.net/qq_33689414/article/details/54668889" target="_blank" rel="noopener">ref</a><br><a href="https://github.com/jimliuxyz/android-JobScheduler" target="_blank" rel="noopener">android-JobScheduler</a></p>
@@ -478,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/home/Android/00.index.html" rel="next" title="Android知識樹">
-                <i class="fa fa-chevron-left"></i> Android知識樹
+              <a href="/home/紀錄/Single/Hexo安裝紀錄.html" rel="next" title="Hexo安裝紀錄">
+                <i class="fa fa-chevron-left"></i> Hexo安裝紀錄
               </a>
             
           </div>
@@ -557,7 +565,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Jim</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -567,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -589,7 +597,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>

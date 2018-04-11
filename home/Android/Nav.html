@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="JimLiuXyz">
 <meta property="og:description" content="task back stack行為設定參考官方中文說明Android 深入ActivityAndroid基礎知識  launchMode intent flag minifest activity  Deep Link(App Links) 超連結啟動apprefref  aad:Implement non-standard task stack navigation (deep links)">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta property="og:updated_time" content="2018-04-10T04:08:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="頁面導航">
 <meta name="twitter:description" content="task back stack行為設定參考官方中文說明Android 深入ActivityAndroid基礎知識  launchMode intent flag minifest activity  Deep Link(App Links) 超連結啟動apprefref  aad:Implement non-standard task stack navigation (deep links)">
@@ -163,7 +163,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">自用筆記2</p>
       
   </div>
 
@@ -397,7 +397,7 @@
 <li>singleInstance - 獨佔 : 供別的app使用</li>
 </ul>
 <p>single指的是activity不新建 但會執行onNewIntent()</p>
-<h2 id="taskAffinity-allowTaskReparenting"><a href="#taskAffinity-allowTaskReparenting" class="headerlink" title="taskAffinity allowTaskReparenting"></a>taskAffinity allowTaskReparenting</h2><p>同樣與task相關 有點像是群組的概念 例如使一群activity全被退出</p>
+<h2 id="taskAffinity-allowTaskReparenting"><a href="#taskAffinity-allowTaskReparenting" class="headerlink" title="taskAffinity allowTaskReparenting"></a>taskAffinity allowTaskReparenting</h2><p>affinity類似一個groupId的概念 activity預設的affinity為package name<br>當一個activity以FLAG_ACTIVITY_NEW_TASK啟動時會以affinity去找該被加到哪個task中</p>
 <h2 id="FLAG-ACTIVITY"><a href="#FLAG-ACTIVITY" class="headerlink" title="FLAG_ACTIVITY"></a>FLAG_ACTIVITY</h2><p>透過intent開啟的activity該依循何策略進入task或操作stack</p>
 <ul>
 <li>FLAG_ACTIVITY_NEW_TASK(同singleTask) : aty會在自己的task中</li>
@@ -527,7 +527,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Jim</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -537,7 +537,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -559,7 +559,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>

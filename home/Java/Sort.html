@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,18 +81,17 @@
 
 
 
-<meta name="description" content="/Users/jimliu/Library/Android/sdk/platforms/android-26/data/res/values/styles.xml 容器類型的view ListView : 列表顯示 RecyclerView : 列表顯示 更為靈活 取代ListView ScrollView : 可滑動的顯示 gridview / gallery / cardview  Layou">
-<meta name="keywords" content="Android">
+<meta name="description" content="ref 泡沫排序 倆倆比較 將大的往後推(交換) 每一輪結束最大的一定推到最後一個(排好一個) 所以下一輪就少推一個  優化:  若其中一輪完全沒有交換 表示已經完成排序  public static void bubbleSort(final int[] nums) &amp;#123;    for (int i = nums.length - 1; i &amp;gt; 0; i--) &amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="view 與 Style">
-<meta property="og:url" content="http://yoursite.com/home//Android/ViewN'Style.html">
+<meta property="og:title" content="JimLiuXyz">
+<meta property="og:url" content="http://yoursite.com/home//Java/Sort.html">
 <meta property="og:site_name" content="JimLiuXyz">
-<meta property="og:description" content="/Users/jimliu/Library/Android/sdk/platforms/android-26/data/res/values/styles.xml 容器類型的view ListView : 列表顯示 RecyclerView : 列表顯示 更為靈活 取代ListView ScrollView : 可滑動的顯示 gridview / gallery / cardview  Layou">
+<meta property="og:description" content="ref 泡沫排序 倆倆比較 將大的往後推(交換) 每一輪結束最大的一定推到最後一個(排好一個) 所以下一輪就少推一個  優化:  若其中一輪完全沒有交換 表示已經完成排序  public static void bubbleSort(final int[] nums) &amp;#123;    for (int i = nums.length - 1; i &amp;gt; 0; i--) &amp;#123;">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta property="og:updated_time" content="2018-04-10T12:35:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="view 與 Style">
-<meta name="twitter:description" content="/Users/jimliu/Library/Android/sdk/platforms/android-26/data/res/values/styles.xml 容器類型的view ListView : 列表顯示 RecyclerView : 列表顯示 更為靈活 取代ListView ScrollView : 可滑動的顯示 gridview / gallery / cardview  Layou">
+<meta name="twitter:title" content="JimLiuXyz">
+<meta name="twitter:description" content="ref 泡沫排序 倆倆比較 將大的往後推(交換) 每一輪結束最大的一定推到最後一個(排好一個) 所以下一輪就少推一個  優化:  若其中一輪完全沒有交換 表示已經完成排序  public static void bubbleSort(final int[] nums) &amp;#123;    for (int i = nums.length - 1; i &amp;gt; 0; i--) &amp;#123;">
 
 
 
@@ -122,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/home//Android/ViewN'Style.html"/>
+  <link rel="canonical" href="http://yoursite.com/home//Java/Sort.html"/>
 
 
 
 
 
-  <title>view 與 Style | JimLiuXyz</title>
+  <title> | JimLiuXyz</title>
   
 
 
@@ -163,7 +162,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">自用筆記2</p>
       
   </div>
 
@@ -289,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/ViewN'Style.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Sort.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jim">
@@ -306,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">view 與 Style</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -318,8 +317,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:37:31+08:00">
-                2018-04-04
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-10T17:37:45+08:00">
+                2018-04-10
               </time>
             
 
@@ -356,101 +355,35 @@
       
 
       
-        <p><span class="inline-path">/Users/jimliu/Library/Android/sdk/platforms/android-26/data/res/values/styles.xml</span></p>
-<h2 id="容器類型的view"><a href="#容器類型的view" class="headerlink" title="容器類型的view"></a>容器類型的view</h2><ul>
-<li>ListView : 列表顯示</li>
-<li>RecyclerView : 列表顯示 更為靈活 取代ListView</li>
-<li>ScrollView : 可滑動的顯示</li>
-<li>gridview / gallery / cardview</li>
-</ul>
-<h3 id="LayoutInflater"><a href="#LayoutInflater" class="headerlink" title="LayoutInflater"></a>LayoutInflater</h3><blockquote>
-<p>layout的實體化工具 將layout resource轉成view的實例</p>
+        <p><a href="https://magiclen.org/sorting-algorithm/" target="_blank" rel="noopener">ref</a></p>
+<h1 id="泡沫排序"><a href="#泡沫排序" class="headerlink" title="泡沫排序"></a>泡沫排序</h1><blockquote>
+<p>倆倆比較 將大的往後推(交換) 每一輪結束最大的一定推到最後一個(排好一個) 所以下一輪就少推一個</p>
 </blockquote>
-<h3 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h3><blockquote>
-<p>設計模式中稱作”適配器” 簡單的說就是轉換器 以view容器的應用來說 就是將’資料數據’轉換填充到’ListView裡的各個item view’上</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//以simple_list_item_1做為item view</span></span><br><span class="line">adp = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(<span class="keyword">this</span>, android.R.layout.simple_list_item_1);</span><br><span class="line"></span><br><span class="line"><span class="comment">//替adp添加兩筆資料</span></span><br><span class="line">adp.add(<span class="string">"first"</span>);</span><br><span class="line">adp.add(<span class="string">"second"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//將adp指定給listview使用</span></span><br><span class="line">lv = findViewById(R.id.listView);</span><br><span class="line">lv.setAdapter(adp);</span><br></pre></td></tr></table></figure>
-<h3 id="BaseAdapter"><a href="#BaseAdapter" class="headerlink" title="BaseAdapter"></a>BaseAdapter</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> pos, View convertView, ViewGroup parent)</span></span>&#123;</span><br><span class="line">  <span class="comment">//getView用於取得item view</span></span><br><span class="line">  <span class="comment">//convertView : 先前已建立的view,用於優化效能</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">notifyDataSetChanged(); <span class="comment">//向view通知data有變動 view才會refresh</span></span><br></pre></td></tr></table></figure>
-<h4 id="ViewHolder"><a href="#ViewHolder" class="headerlink" title="ViewHolder"></a>ViewHolder</h4><blockquote>
-<p>主要用意在復用item view時避免重複findViewById<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">v.setTag(holder);</span><br><span class="line">holder = (Holder) v.getTag();</span><br><span class="line"><span class="comment">//RecyclerView.Adapter不用這樣寫</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h2><blockquote>
-<p>有自己的ui thread 用於較佔時間繪圖應用 (VideoView/ImageView)</p>
-</blockquote>
-<h2 id="View狀態的save與restore"><a href="#View狀態的save與restore" class="headerlink" title="View狀態的save與restore"></a>View狀態的save與restore</h2><ol>
-<li>view需要設定id才能被儲存</li>
-<li>android:saveEnabled 預設已為true</li>
-</ol>
-<h2 id="自定義View-ViewGroup"><a href="#自定義View-ViewGroup" class="headerlink" title="自定義View / ViewGroup"></a>自定義View / ViewGroup</h2><blockquote>
-<p>先分清元件與佈局的角色</p>
-</blockquote>
-<h4 id="大致"><a href="#大致" class="headerlink" title="大致"></a>大致</h4><ol>
-<li>需要複寫onMeasure (父要求子做元件尺寸測量<code>measureChildren</code>) (子則量測自己) 量測完執行<code>setMeasuredDimension</code></li>
-<li>ViewGroup需複寫 onLayout (排定子的繪出位置) 逐個叫用<code>child.layout</code></li>
-<li>View需複寫 onDraw (繪製本身)</li>
-</ol>
-<h4 id="MeasureSpec定義"><a href="#MeasureSpec定義" class="headerlink" title="MeasureSpec定義"></a>MeasureSpec定義</h4><blockquote>
-<p>為一整數 前3bit做為mode 之後作為size(寬或高) 做為父要求子做尺寸量測時的參考 (由父提供spec 子做量測)</p>
-</blockquote>
+<p>優化:</p>
 <ul>
-<li>UNSPECIFIED : 沒有任何約束</li>
-<li>EXACTLY : 約束明確的size</li>
-<li>AT_MOST : 約束上限的size</li>
+<li>若其中一輪完全沒有交換 表示已經完成排序</li>
 </ul>
-<h4 id="LayoutParams"><a href="#LayoutParams" class="headerlink" title="LayoutParams"></a>LayoutParams</h4><blockquote>
-<p>一個ViewGroup要遍歷所有子View的LayoutParams才知道每個子View要求被如何佈局 (所以是ViewGroup定義的 但由子View描述給其ViewGroup參照的) <code>child.getLayoutParams</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> next = j + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &gt; nums[next]) &#123;</span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">int</span> buffer = nums[j];</span><br><span class="line">                nums[j] = nums[next];</span><br><span class="line">                nums[next] = buffer;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">3</span>, <span class="number">17</span>, <span class="number">63</span>, <span class="number">27</span>, <span class="number">9</span>, <span class="number">15</span>, <span class="number">2</span>, <span class="number">6</span>&#125;;</span><br><span class="line">    System.out.println(Arrays.toString(arr));</span><br><span class="line">    bubbleSort(arr);</span><br><span class="line">    System.out.println(Arrays.toString(arr));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="交換排序"><a href="#交換排序" class="headerlink" title="交換排序"></a>交換排序</h1><blockquote>
+<p>從第一個位置開始 與之後的每個位置比較 交換出最小的 一輪比完再進行下個位置</p>
 </blockquote>
-<h2 id="Theme與Style"><a href="#Theme與Style" class="headerlink" title="Theme與Style"></a>Theme與Style</h2><blockquote>
-<p>aad:Construct a layout using XML or Java code</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exchangeSort</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length-<span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; nums[j]) &#123;</span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">int</span> buffer = nums[j];</span><br><span class="line">                nums[j] = nums[i];</span><br><span class="line">                nums[i] = buffer;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="選擇排序-交換排序法的優化"><a href="#選擇排序-交換排序法的優化" class="headerlink" title="選擇排序 (交換排序法的優化)"></a>選擇排序 (交換排序法的優化)</h1><blockquote>
+<p>如同交換排序 只是記住最小值的索引位置 於當輪結束時交換</p>
 </blockquote>
-<blockquote>
-<p>aad:Create a custom view class and add it to a layout</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length-<span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> k = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[k] &gt; nums[j]) &#123;</span><br><span class="line">                k = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (k != i) &#123;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> buffer = nums[k];</span><br><span class="line">            nums[k] = nums[i];</span><br><span class="line">            nums[i] = buffer;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><blockquote>
+<p>記住第i個位置的值(tmp) (準備把tmp往左插入到正確位置)<br>開始往左比 一路把大於tmp的值往右推 直到找小於tmp的位置 再執行下個循環</p>
 </blockquote>
-<blockquote>
-<p>aad:Implement a custom application theme</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> tmp = nums[i];</span><br><span class="line">        <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; nums[j] &gt; tmp) &#123;</span><br><span class="line">            nums[j + <span class="number">1</span>] = nums[j--];</span><br><span class="line">        &#125;</span><br><span class="line">        nums[j + <span class="number">1</span>] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><blockquote>
+<p>採分治法(Divide and Conquer) 找一個中間數(pivot)將 並使其歸於正確位置(左小又大) 左右邊再各自做一次同樣的循環</p>
 </blockquote>
-<blockquote>
-<p>aad:Apply a custom style to a group of common widgets</p>
-</blockquote>
-<blockquote>
-<p>兩者僅有使用廣度上的差別 theme針對app或activity, style針對元件, 基本上都是style</p>
-</blockquote>
-<h4 id="單位"><a href="#單位" class="headerlink" title="單位"></a>單位</h4><p>dp : 1dp=160ppi的px長度 (描述元件)<br>sp : 類似dp 用於文字<br>pt : 點 用於文字<br>px : 像素<br>ppi, dpi : 像素密度 pixel per inch 每英寸像素數<br>mm : 毫米<br>in : 英吋</p>
-<h4 id="attr宣告"><a href="#attr宣告" class="headerlink" title="attr宣告"></a>attr宣告</h4><blockquote>
-<p>寫在values/attrs.xml 作為元件的屬性 (元件屬性是從xml建立的 java code僅是依資源ID取值賦予元件)</p>
-</blockquote>
-<blockquote>
-<p>attr及所有資源都會自動產生於R類中的id</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> =<span class="string">"mycolor"</span> <span class="attr">format</span>= <span class="string">"color"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>屬性名稱一多容易重複混淆 用declare-styleable可將其分類 java code也會比較好讀取</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//將多個attr並於declare-styleable有利組織化與讀取 在R類中會是一個resId的陣列</span><br><span class="line"><span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"MyStyle"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> =<span class="string">"mycolor"</span> <span class="attr">format</span>= <span class="string">"color"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">declare-styleable</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="attr的賦值"><a href="#attr的賦值" class="headerlink" title="attr的賦值"></a>attr的賦值</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//在元件標籤中賦值 (前半部需指定命名空間)</span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:</span> <span class="attr">mycolor</span>=<span class="string">"#00ff00"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:style</span>=<span class="string">"@style/MyStyle"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TextView</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//在style/theme中賦值</span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"mycolor"</span>&gt;</span>#0037ff<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textViewStyle"</span>&gt;</span>@style/textviewstyle<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="元件取得attr的來源"><a href="#元件取得attr的來源" class="headerlink" title="元件取得attr的來源"></a>元件取得attr的來源</h4><blockquote>
-<p>一個元件的一個attr可能有多個來源 (大致的優先順序)</p>
-</blockquote>
-<ol>
-<li>於元件標籤中或標籤中指定的style有描述</li>
-<li>從application或activity指定的theme中有描述</li>
-<li>theme中指定的style有描述 (即指android:textViewStyle)(format=”reference”)</li>
-<li>元件hardcode裡有預設的style</li>
-</ol>
-<h4 id="元件取得attr-obtainStyledAttributes-AttributeSet-set-int-attrs-int-defStyleAttr-int-defStyleRes"><a href="#元件取得attr-obtainStyledAttributes-AttributeSet-set-int-attrs-int-defStyleAttr-int-defStyleRes" class="headerlink" title="元件取得attr obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)"></a>元件取得attr obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)</h4><ul>
-<li>AttributeSet 即元件標籤中的描述</li>
-<li>attrs 欲取得的attr</li>
-<li>defStyleAttr 預設的style的attr (在theme中經由該attr參考到確切的style)(即指android:textViewStyle) 透過這樣的機制就可在theme中複寫掉元件的整個style</li>
-<li>defStyleRes 預設的style 若沒有可丟0</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(context, attrs, defStyleAttr, <span class="number">0</span>);</span><br><span class="line">    TypedArray a = theme.obtainStyledAttributes(attrs,</span><br><span class="line">            R.styleable.MyStyle, defStyleAttr, defStyleRes);</span><br><span class="line">    <span class="keyword">int</span> color = a.getColor(R.styleable.MyStyle_mycolor, Color.BLACK);</span><br><span class="line">    a. recycle();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="可見性的設定"><a href="#可見性的設定" class="headerlink" title="可見性的設定"></a>可見性的設定</h2><p>View.visable<br>View.invisable : 看不見 但仍佔位置<br>View.gone : 消失 不佔位置</p>
-<h2 id="模糊視窗-blur"><a href="#模糊視窗-blur" class="headerlink" title="模糊視窗(blur)"></a>模糊視窗(blur)</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);</span><br></pre></td></tr></table></figure>
-<h2 id="ViewStub"><a href="#ViewStub" class="headerlink" title="ViewStub"></a>ViewStub</h2><p>一個空的view 用來延遲載入另一個view時當作佔位用</p>
-<h4 id="SpannableString"><a href="#SpannableString" class="headerlink" title="SpannableString"></a>SpannableString</h4><blockquote>
-<p>v.setText()通常傳入字串 更複雜可以傳入(html, img_getter, tag_handler) 另一種是傳入SpannableString 用途都是達到圖文混排</p>
-</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSortRecursive</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span>[] nums, <span class="keyword">final</span> <span class="keyword">int</span> start, <span class="keyword">final</span> <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> x = nums[start]; <span class="comment">// 將start位置的值設為pivot</span></span><br><span class="line">    <span class="keyword">int</span> l = start + <span class="number">1</span>; <span class="comment">//所以start+1是最左的元素</span></span><br><span class="line">    <span class="keyword">int</span> r = end - <span class="number">1</span>; <span class="comment">//end因為是length 所以要減1</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="comment">//從右邊往左 找到小於pivot的位置</span></span><br><span class="line">        <span class="keyword">while</span> (r &gt; start &amp;&amp; nums[r] &gt;= x) &#123;</span><br><span class="line">            --r;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//從左邊往右 找到大於pivot的位置</span></span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r &amp;&amp; nums[l] &lt;= x) &#123;</span><br><span class="line">            ++l;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//若l&lt;r表示尚未巡完整個array 就已需要交換</span></span><br><span class="line">        <span class="keyword">if</span> (l &lt; r) &#123;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> buffer = nums[l];</span><br><span class="line">            nums[l] = nums[r];</span><br><span class="line">            nums[r] = buffer;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//lr巡完表示pivot的位置就在其交會點</span></span><br><span class="line">            <span class="keyword">if</span> (r &gt; start) &#123;</span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">int</span> buffer = nums[r];</span><br><span class="line">                nums[r] = nums[start];</span><br><span class="line">                nums[start] = buffer;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> ls = start, le = r;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> rs = r + <span class="number">1</span>, re = end;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> ll = le - ls, rl = re - rs;</span><br><span class="line">    <span class="keyword">if</span> (ll &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        quickSortRecursive(nums, ls, le);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rl &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        quickSortRecursive(nums, rs, re);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">quickSortRecursive(array, <span class="number">0</span>, array.length);</span><br></pre></td></tr></table></figure>
+<h1 id="合併排序"><a href="#合併排序" class="headerlink" title="合併排序"></a>合併排序</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">排序</span><br><span class="line">======</span><br><span class="line"></span><br><span class="line">```java</span><br></pre></td></tr></table></figure>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">排序</span><br><span class="line">======</span><br><span class="line"></span><br><span class="line">```java</span><br></pre></td></tr></table></figure>
+<h1 id="排序-1"><a href="#排序-1" class="headerlink" title="排序"></a>排序</h1><pre><code class="java">
+</code></pre>
 
       
     </div>
@@ -466,12 +399,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-        </div>
-      
 
       
       
@@ -481,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/home/Android/Accessibility.html" rel="next" title="Accessibility">
-                <i class="fa fa-chevron-left"></i> Accessibility
+              <a href="/home/Single/Git.html" rel="next" title="Git">
+                <i class="fa fa-chevron-left"></i> Git
               </a>
             
           </div>
@@ -491,8 +418,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/home/Android/Activity.html" rel="prev" title="Activity">
-                Activity <i class="fa fa-chevron-right"></i>
+              <a href="/home/Single/HybridAppArchitecture.html" rel="prev" title="Hybrid App Architecture">
+                Hybrid App Architecture <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +487,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Jim</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -570,7 +497,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -592,7 +519,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -643,7 +570,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器類型的view"><span class="nav-number">1.</span> <span class="nav-text">容器類型的view</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LayoutInflater"><span class="nav-number">1.1.</span> <span class="nav-text">LayoutInflater</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adapter"><span class="nav-number">1.2.</span> <span class="nav-text">Adapter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BaseAdapter"><span class="nav-number">1.3.</span> <span class="nav-text">BaseAdapter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewHolder"><span class="nav-number">1.3.1.</span> <span class="nav-text">ViewHolder</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SurfaceView"><span class="nav-number">2.</span> <span class="nav-text">SurfaceView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View狀態的save與restore"><span class="nav-number">3.</span> <span class="nav-text">View狀態的save與restore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定義View-ViewGroup"><span class="nav-number">4.</span> <span class="nav-text">自定義View / ViewGroup</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#大致"><span class="nav-number">4.0.1.</span> <span class="nav-text">大致</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MeasureSpec定義"><span class="nav-number">4.0.2.</span> <span class="nav-text">MeasureSpec定義</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LayoutParams"><span class="nav-number">4.0.3.</span> <span class="nav-text">LayoutParams</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Theme與Style"><span class="nav-number">5.</span> <span class="nav-text">Theme與Style</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#單位"><span class="nav-number">5.0.1.</span> <span class="nav-text">單位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#attr宣告"><span class="nav-number">5.0.2.</span> <span class="nav-text">attr宣告</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#attr的賦值"><span class="nav-number">5.0.3.</span> <span class="nav-text">attr的賦值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元件取得attr的來源"><span class="nav-number">5.0.4.</span> <span class="nav-text">元件取得attr的來源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元件取得attr-obtainStyledAttributes-AttributeSet-set-int-attrs-int-defStyleAttr-int-defStyleRes"><span class="nav-number">5.0.5.</span> <span class="nav-text">元件取得attr obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可見性的設定"><span class="nav-number">6.</span> <span class="nav-text">可見性的設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊視窗-blur"><span class="nav-number">7.</span> <span class="nav-text">模糊視窗(blur)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewStub"><span class="nav-number">8.</span> <span class="nav-text">ViewStub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SpannableString"><span class="nav-number">8.0.1.</span> <span class="nav-text">SpannableString</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#泡沫排序"><span class="nav-number">1.</span> <span class="nav-text">泡沫排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交換排序"><span class="nav-number">2.</span> <span class="nav-text">交換排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#選擇排序-交換排序法的優化"><span class="nav-number">3.</span> <span class="nav-text">選擇排序 (交換排序法的優化)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插入排序"><span class="nav-number">4.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速排序"><span class="nav-number">5.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合併排序"><span class="nav-number">6.</span> <span class="nav-text">合併排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">7.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序-1"><span class="nav-number">8.</span> <span class="nav-text">排序</span></a></li></ol></div>
             
 
           </div>

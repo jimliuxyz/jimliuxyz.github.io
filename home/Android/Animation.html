@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="JimLiuXyz">
 <meta property="og:description" content="*post animation property (透過修改view實例自動產生動畫) view animation (tween) (Alpha Rotate Scale Translate Set) drawable animation (frame by frame)   單位: 數字 : px 50% : 自己寬度的50% 50p : 容器寬度的50%    //Tweenanim.set">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta property="og:updated_time" content="2018-04-10T08:16:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Animation">
 <meta name="twitter:description" content="*post animation property (透過修改view實例自動產生動畫) view animation (tween) (Alpha Rotate Scale Translate Set) drawable animation (frame by frame)   單位: 數字 : px 50% : 自己寬度的50% 50p : 容器寬度的50%    //Tweenanim.set">
@@ -163,7 +163,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">自用筆記2</p>
       
   </div>
 
@@ -376,15 +376,19 @@
 <hr>
 <p><a href="https://www.youtube.com/watch?v=cp-2Cl6OWRQ&amp;index=60&amp;list=PLHOqLxXumAI-hCYIzsnn6LCmZHzEStuuh" target="_blank" rel="noopener">youtube</a></p>
 <h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
-<li>Tweened<ul>
-<li>alpha 透明(淡入淡出)</li>
+<li>Tweened (補間動畫)<ul>
+<li>alpha 淡入淡出</li>
 <li>rotate</li>
 <li>scale</li>
 <li>translate 移動</li>
 </ul>
 </li>
 <li>Frame-by-Frame</li>
+<li>Property Animation (屬性動畫)</li>
 </ul>
+<blockquote>
+<p>Tweened與ValueAnimator的差別 Tweened僅是繪製上的調整 也就是說移動一個button 事實上只是<code>畫到別的地方</code>而其屬性仍保留在原處 而ValueAnimator則不斷的調整view的屬性</p>
+</blockquote>
 <h2 id="Tweened"><a href="#Tweened" class="headerlink" title="Tweened"></a>Tweened</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AlphaAnimation animate = <span class="keyword">new</span> AlphaAnimation(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">animate.setStartOffset(<span class="number">1000</span>);</span><br><span class="line">animate.setDuration(<span class="number">1000</span>);</span><br><span class="line">animate.setFillAfter(<span class="keyword">true</span>); <span class="comment">//動畫後停留在最後</span></span><br><span class="line">animate.setFillBefore(<span class="keyword">false</span>); <span class="comment">//動畫後回到起點</span></span><br><span class="line">animate.setRepeatCount(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">AnimationSet aset = <span class="keyword">new</span> AnimationSet(<span class="keyword">true</span>); <span class="comment">//共用interpolator</span></span><br><span class="line">aset.addAnimation(animate);</span><br><span class="line"></span><br><span class="line">imageview.startAnimation(aset);</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//rotate需定義旋轉的中心點,中心點可相對於自己或containar</span></span><br><span class="line">RotateAnimation animate = <span class="keyword">new</span> RotateAnimation(<span class="number">0</span>, <span class="number">360</span></span><br><span class="line">    Animation.RELATIVE_TO_PARENT, <span class="number">1f</span>,</span><br><span class="line">    Animation.RELATIVE_TO_PARENT, <span class="number">0f</span>);</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//scale需定義縮放的軸心,軸心可相對於自己或containar</span></span><br><span class="line">ScaleAnimation animate = <span class="keyword">new</span> ScaleAnimation(<span class="number">1</span>, <span class="number">0.1f</span>, <span class="number">1</span>, <span class="number">0.1f</span></span><br><span class="line">    Animation.RELATIVE_TO_SELF, <span class="number">0.5f</span>,</span><br><span class="line">    Animation.RELATIVE_TO_SELF, <span class="number">0.5f</span>); <span class="comment">//向中心點縮小</span></span><br></pre></td></tr></table></figure>
@@ -399,6 +403,17 @@
 <p>####從xml導入<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LayoutAnimation</span></span></span><br><span class="line"><span class="tag">    <span class="attr">delay</span>=<span class="string">"0.5"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">animationOrder</span>=<span class="string">"normal"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">animation</span>=<span class="string">"@anim/alpha"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ListView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">layoutAnimation</span> =<span class="string">"@..."</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="AnimationListener"><a href="#AnimationListener" class="headerlink" title="AnimationListener"></a>AnimationListener</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">animation.setAnimationListener(<span class="keyword">new</span> AnimationListener()&#123;</span><br><span class="line">    onAnimationStart()</span><br><span class="line">    onAnimationEnd()</span><br><span class="line">    onAnimationRepeat()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="ValueAnimator"><a href="#ValueAnimator" class="headerlink" title="ValueAnimator"></a>ValueAnimator</h1><ul>
+<li>ValueAnimator : 類似以值的變化形容動畫 類似補差值</li>
+<li>ObjectAnimator : 將ValueAnimator套用到Object上</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ObjectAnimator animator = ObjectAnimator.ofFloat(textview, <span class="string">"alpha"</span>, <span class="number">1f</span>, <span class="number">0f</span>, <span class="number">1f</span>);  </span><br><span class="line">animator.setDuration(<span class="number">5000</span>);  </span><br><span class="line">animator.start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//組合多個動畫</span></span><br><span class="line">ObjectAnimator moveIn = ObjectAnimator.ofFloat(textview, <span class="string">"translationX"</span>, -<span class="number">500f</span>, <span class="number">0f</span>);  </span><br><span class="line">ObjectAnimator rotate = ObjectAnimator.ofFloat(textview, <span class="string">"rotation"</span>, <span class="number">0f</span>, <span class="number">360f</span>);  </span><br><span class="line">ObjectAnimator fadeInOut = ObjectAnimator.ofFloat(textview, <span class="string">"alpha"</span>, <span class="number">1f</span>, <span class="number">0f</span>, <span class="number">1f</span>);  </span><br><span class="line">AnimatorSet animSet = <span class="keyword">new</span> AnimatorSet();  </span><br><span class="line">animSet.play(rotate).with(fadeInOut).after(moveIn);  </span><br><span class="line">animSet.setDuration(<span class="number">5000</span>);  </span><br><span class="line">animSet.start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在xml定義anim_file.xml</span></span><br><span class="line">Animator animator = AnimatorInflater.loadAnimator(context, R.animator.anim_file);  </span><br><span class="line">animator.setTarget(view);  </span><br><span class="line">animator.start();</span><br></pre></td></tr></table></figure>
+<h1 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h1><blockquote>
+<p>overridePendingTransition方法需要在startAtivity方法或者是finish方法調用之後立即執行</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">overridePendingTransition(R.anim.zoomin, R.anim.zoomout)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -428,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/home/Single/Thread的各式需求.html" rel="next" title="Thread的各式需求">
-                <i class="fa fa-chevron-left"></i> Thread的各式需求
+              <a href="/home/Java/Thread.html" rel="next" title="Thread">
+                <i class="fa fa-chevron-left"></i> Thread
               </a>
             
           </div>
@@ -507,7 +522,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Jim</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -517,7 +532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -539,7 +554,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -590,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#animation"><span class="nav-number">1.</span> <span class="nav-text">animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation"><span class="nav-number">2.</span> <span class="nav-text">Animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tweened"><span class="nav-number">3.</span> <span class="nav-text">Tweened</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpolator"><span class="nav-number">4.</span> <span class="nav-text">Interpolator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frame-by-Frame"><span class="nav-number">5.</span> <span class="nav-text">Frame-by-Frame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LayoutAnimationController"><span class="nav-number">6.</span> <span class="nav-text">LayoutAnimationController</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AnimationListener"><span class="nav-number">7.</span> <span class="nav-text">AnimationListener</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#animation"><span class="nav-number">1.</span> <span class="nav-text">animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation"><span class="nav-number">2.</span> <span class="nav-text">Animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tweened"><span class="nav-number">3.</span> <span class="nav-text">Tweened</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpolator"><span class="nav-number">4.</span> <span class="nav-text">Interpolator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frame-by-Frame"><span class="nav-number">5.</span> <span class="nav-text">Frame-by-Frame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LayoutAnimationController"><span class="nav-number">6.</span> <span class="nav-text">LayoutAnimationController</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AnimationListener"><span class="nav-number">7.</span> <span class="nav-text">AnimationListener</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ValueAnimator"><span class="nav-number"></span> <span class="nav-text">ValueAnimator</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Activity"><span class="nav-number"></span> <span class="nav-text">Activity</span></a></div>
             
 
           </div>

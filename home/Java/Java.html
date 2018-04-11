@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="引用 強引用(Strong)  強行使物件無法被回收   軟引用(Soft)  不置於立即回收 做cache時很適合   弱應用(Weak)  同軟引用 但更容易會被回收   虛引用(Phantom)  該回收就回收 可用於檢查物件的回收與否    person = new Person(&quot;john&quot;, 10);ref = new SoftReference&amp;lt;Person&amp;gt;(perso">
+<meta name="description" content="面試題 field修飾字    同package 子類 其他package     public ✅ ✅ ✅   protected ✅ ✅ ×   default ✅ × ×   private × × ×    引用 強引用(Strong)  強行使物件無法被回收   軟引用(Soft)  不置於立即回收 做cache時很適合   弱應用(Weak)  同軟引用 但更容易會被回收   虛引用(">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java">
 <meta property="og:url" content="http://yoursite.com/home//Java/Java.html">
 <meta property="og:site_name" content="JimLiuXyz">
-<meta property="og:description" content="引用 強引用(Strong)  強行使物件無法被回收   軟引用(Soft)  不置於立即回收 做cache時很適合   弱應用(Weak)  同軟引用 但更容易會被回收   虛引用(Phantom)  該回收就回收 可用於檢查物件的回收與否    person = new Person(&quot;john&quot;, 10);ref = new SoftReference&amp;lt;Person&amp;gt;(perso">
+<meta property="og:description" content="面試題 field修飾字    同package 子類 其他package     public ✅ ✅ ✅   protected ✅ ✅ ×   default ✅ × ×   private × × ×    引用 強引用(Strong)  強行使物件無法被回收   軟引用(Soft)  不置於立即回收 做cache時很適合   弱應用(Weak)  同軟引用 但更容易會被回收   虛引用(">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-06T14:04:29.000Z">
+<meta property="og:image" content="http://wiki.jikexueyuan.com/project/java-interview-bible/images/stream.jpg">
+<meta property="og:updated_time" content="2018-04-10T13:20:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java">
-<meta name="twitter:description" content="引用 強引用(Strong)  強行使物件無法被回收   軟引用(Soft)  不置於立即回收 做cache時很適合   弱應用(Weak)  同軟引用 但更容易會被回收   虛引用(Phantom)  該回收就回收 可用於檢查物件的回收與否    person = new Person(&quot;john&quot;, 10);ref = new SoftReference&amp;lt;Person&amp;gt;(perso">
+<meta name="twitter:description" content="面試題 field修飾字    同package 子類 其他package     public ✅ ✅ ✅   protected ✅ ✅ ×   default ✅ × ×   private × × ×    引用 強引用(Strong)  強行使物件無法被回收   軟引用(Soft)  不置於立即回收 做cache時很適合   弱應用(Weak)  同軟引用 但更容易會被回收   虛引用(">
+<meta name="twitter:image" content="http://wiki.jikexueyuan.com/project/java-interview-bible/images/stream.jpg">
 
 
 
@@ -163,7 +165,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">自用筆記2</p>
       
   </div>
 
@@ -356,7 +358,44 @@
       
 
       
-        <h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
+        <p><a href="http://wiki.jikexueyuan.com/project/java-interview-bible/" target="_blank" rel="noopener">面試題</a></p>
+<h1 id="field修飾字"><a href="#field修飾字" class="headerlink" title="field修飾字"></a>field修飾字</h1><table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">同package</th>
+<th style="text-align:center">子類</th>
+<th style="text-align:center">其他package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+</tr>
+<tr>
+<td>protected</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td>default</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td>private</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+</tr>
+</tbody>
+</table>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
 <li><p>強引用(Strong)</p>
 <blockquote>
 <p>強行使物件無法被回收</p>
@@ -379,6 +418,75 @@
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">person = <span class="keyword">new</span> Person(<span class="string">"john"</span>, <span class="number">10</span>);</span><br><span class="line">ref = <span class="keyword">new</span> SoftReference&lt;Person&gt;(person);</span><br><span class="line"></span><br><span class="line">Person p = ref.get();</span><br></pre></td></tr></table></figure>
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><p>透過<code>純字面</code>建立的string會在靜態緩衝裡建立快取 所以同樣的字串會對應到同樣的位置 但透過new String則一定是一個全新的指向<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">s1 = <span class="string">"123"</span>;</span><br><span class="line">s2 = <span class="string">"12"</span> + <span class="string">"3"</span>;</span><br><span class="line">s3 = <span class="string">"12"</span> + <span class="keyword">new</span> String(<span class="string">"3"</span>);</span><br><span class="line">s4 = <span class="keyword">new</span> String(<span class="string">"123"</span>);</span><br><span class="line"><span class="comment">// 其中只有s1==s2</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="StringBuffer-StringBuilder"><a href="#StringBuffer-StringBuilder" class="headerlink" title="StringBuffer / StringBuilder"></a>StringBuffer / StringBuilder</h1><ul>
+<li>StringBuffer : thread-safe 較慢</li>
+<li>StringBuilder : not thread-safe 較快<blockquote>
+<p>builder類通常宣告於method內做local變數 沒有共用的問題 也就不需要thread-safe</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="interface-abstract"><a href="#interface-abstract" class="headerlink" title="interface / abstract"></a>interface / abstract</h1><blockquote>
+<p>interface</p>
+<ul>
+<li>一個interface可繼承(extends)另一個interface</li>
+<li>一個class可實作(implements)多個interface</li>
+<li>可有member field 但強制成為static final</li>
+<li>method上加註default或static建立具體method (java8開始)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>abstract 無異於一個具體類(concrete class) 但無法實例化 且有抽象方法</p>
+<ul>
+<li>一個class僅能繼承一個abstract class</li>
+</ul>
+</blockquote>
+<h1 id="IOC-DI"><a href="#IOC-DI" class="headerlink" title="IOC / DI"></a>IOC / DI</h1><blockquote>
+<p>控制反轉(Inversion of Control) 等同依賴注入(Dependency Injection)<br>即指建立一物件時 其依賴並非由<code>建立者</code>或<code>建立物</code>來建立提供 而由一專屬框架負責</p>
+</blockquote>
+<h1 id="InputStream-OutputStream"><a href="#InputStream-OutputStream" class="headerlink" title="InputStream / OutputStream"></a>InputStream / OutputStream</h1><blockquote>
+<p>流操作分兩類 byte/character</p>
+<ul>
+<li>byte : 以InputStream / OutputStream結尾</li>
+<li>character : 以Reader / Writter結尾</li>
+</ul>
+</blockquote>
+<p>以InputStreamReader為例 前綴InputStream表示輸入為byte 後綴Reader表示輸出character</p>
+<p><img src="http://wiki.jikexueyuan.com/project/java-interview-bible/images/stream.jpg" alt=""></p>
+<h1 id="Proxy-代理"><a href="#Proxy-代理" class="headerlink" title="Proxy 代理"></a>Proxy 代理</h1><blockquote>
+<p>即中間人 透過中間人與物件互動 中間人即可提供一些額外的功能</p>
+</blockquote>
+<ul>
+<li>RealSubject 被代理的物件(委託對象)</li>
+<li>ProxySubject 代理對象</li>
+<li>Subject RealSubject與ProxySubject共同的介面 假設有一個request方法</li>
+</ul>
+<blockquote>
+<p>靜態代理 : 就僅是將RealSubject包到ProxySubject裡<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> ProxySubject(real);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>動態代理 : 透過反射</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProxyHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Subject subject;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProxyHandler</span><span class="params">(Subject subject)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.subject = subject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        Object result = method.invoke(subject, args);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//建立一個該subject的handler 處理對應的invoke</span></span><br><span class="line">handler = <span class="keyword">new</span> ProxyHandler(real);</span><br><span class="line"></span><br><span class="line"><span class="comment">//建立ProxySubject 給予其該有的介面與handler 會動態產生一個class</span></span><br><span class="line">proxy = (Subject)Proxy.newProxyInstance(</span><br><span class="line">    RealSubject.class.getClassLoader(), </span><br><span class="line">    RealSubject.class.getInterfaces(), handler);</span><br><span class="line">proxy.request();</span><br></pre></td></tr></table></figure>
+<h1 id="Annotation"><a href="#Annotation" class="headerlink" title="Annotation"></a>Annotation</h1><p><a href="http://puremonkey2010.blogspot.tw/2013/05/java-java-reflection-annotations.html" target="_blank" rel="noopener">ref</a><br>類似metadata 提供訊息用以描述內容 例如某個method是override的</p>
+<p>用途</p>
+<ul>
+<li>編譯檢查 如 @Override,@SuppressWarnings,@Deprecated</li>
+<li>執行期間以反射取得某物件的Annotation 以提供相應的處理</li>
+<li>編譯時搭配額外編譯工具提供自動產生代碼 如Dagger/JavaDoc</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME) <span class="comment">//使其能在runtime時保留 供反射使用</span></span><br><span class="line"><span class="meta">@Target</span>(METHOD.TYPE)    <span class="comment">//能被用在method上</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyAnnotation &#123;</span><br><span class="line">     <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> "test"</span>; <span class="comment">//宣告需要一個字串變數</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TheClass</span> </span>&#123;</span><br><span class="line">    <span class="meta">@MyAnnotation</span>(<span class="string">"unit test"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//透過反射取得其Annotation</span></span><br><span class="line">Method method = TheClass.class.getMethod(<span class="string">"doSomething"</span>);  </span><br><span class="line">Annotation[] annotations = method.getDeclaredAnnotations();</span><br><span class="line">Annotation annotation = method.getAnnotation(MyAnnotation.class);</span><br></pre></td></tr></table></figure>
+<h1 id="捕捉-UncaughtException"><a href="#捕捉-UncaughtException" class="headerlink" title="捕捉 UncaughtException"></a>捕捉 UncaughtException</h1><p>從Thread捕捉所有未能從try catch中捕捉的意外 替即將掛掉的程式安插一些處理方式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExceptionHandler</span> <span class="keyword">implements</span> <span class="title">Thread</span>.<span class="title">UncaughtExceptionHandler</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span><span class="params">(Thread t, Throwable e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line">Thread.setDefaultUncaughtExceptionHandler(<span class="keyword">new</span> ExceptionHandler());</span><br></pre></td></tr></table></figure>
+<h1 id="內部類"><a href="#內部類" class="headerlink" title="內部類"></a>內部類</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllInnerClass</span></span>&#123;</span><br><span class="line">    <span class="comment">//內部類 (嵌套類)</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//靜態內部類</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticInnerClass</span></span>&#123;</span><br><span class="line">        <span class="keyword">static</span> Object obj = <span class="keyword">new</span> Object();  <span class="comment">//靜態成員的初始化 1.懶初始化 2.保證thread-safe</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getTaske</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//局部類</span></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">LocalClass</span> <span class="keyword">extends</span> <span class="title">Object</span></span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> LocalClass();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//匿名內部類</span></span><br><span class="line">    Runnable anonymousInnerClassObject = <span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">        <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Lambda</span></span><br><span class="line">    Runnable runnbale = () -&gt; System.out.println(<span class="string">"running~"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h4 id="HttpURLConnection"><a href="#HttpURLConnection" class="headerlink" title="HttpURLConnection"></a>HttpURLConnection</h4><blockquote>
+<p>較低階</p>
+</blockquote>
+<h4 id="HttpClient"><a href="#HttpClient" class="headerlink" title="HttpClient"></a>HttpClient</h4><blockquote>
+<p>較高階 以HttpGet或HttpPost做為請求對像</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HttpClient client = <span class="keyword">new</span> DefaultHttpClient(); </span><br><span class="line">HttpGet request = <span class="keyword">new</span> HttpGet(<span class="string">"http://tw.yahoo.com"</span>); </span><br><span class="line">HttpResponse response = client.execute(request);</span><br><span class="line">    </span><br><span class="line">HttpEntity entity = response.getEntity(); </span><br><span class="line">InputStream input = entity.getContent();</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -418,7 +526,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/home/Single/Singleton.html" rel="prev" title="Singleton">
+              <a href="/home/Java/Singleton.html" rel="prev" title="Singleton">
                 Singleton <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -487,7 +595,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Jim</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -497,7 +605,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -519,7 +627,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -570,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">1.</span> <span class="nav-text">引用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#field修飾字"><span class="nav-number">1.</span> <span class="nav-text">field修飾字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String"><span class="nav-number">3.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#StringBuffer-StringBuilder"><span class="nav-number">4.</span> <span class="nav-text">StringBuffer / StringBuilder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#interface-abstract"><span class="nav-number">5.</span> <span class="nav-text">interface / abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC-DI"><span class="nav-number">6.</span> <span class="nav-text">IOC / DI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#InputStream-OutputStream"><span class="nav-number">7.</span> <span class="nav-text">InputStream / OutputStream</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Proxy-代理"><span class="nav-number">8.</span> <span class="nav-text">Proxy 代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Annotation"><span class="nav-number">9.</span> <span class="nav-text">Annotation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#捕捉-UncaughtException"><span class="nav-number">10.</span> <span class="nav-text">捕捉 UncaughtException</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#內部類"><span class="nav-number">11.</span> <span class="nav-text">內部類</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">12.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HttpURLConnection"><span class="nav-number">12.0.0.1.</span> <span class="nav-text">HttpURLConnection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HttpClient"><span class="nav-number">12.0.0.2.</span> <span class="nav-text">HttpClient</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

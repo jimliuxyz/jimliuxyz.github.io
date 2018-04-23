@@ -288,6 +288,774 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Lock.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Java/Lock.html" itemprop="url">Lock</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://wiki.jikexueyuan.com/project/java-concurrent/locks-in-java.html" target="_blank" rel="noopener">ref</a></p>
+<h1 id="同步與異步"><a href="#同步與異步" class="headerlink" title="同步與異步"></a>同步與異步</h1><p><code>同步</code>二字在生活上通常都解釋成<code>同時進行/亦步亦趨</code> 但程式上不是這樣觀念</p>
+<ul>
+<li>異步 : <code>各自行動 互不等待</code> (記住異步的定義)</li>
+<li>同步 : 行動須受牽制 等待 使一致</li>
+</ul>
+<p>比喻</p>
+<ul>
+<li>異步 : 像是短跑比賽 參賽者各跑各的</li>
+<li>同步 : 像是跑接力賽 沒拿到接力棒就只能等待 (執行上依賴共享的資源)</li>
+</ul>
+<p>用途</p>
+<ul>
+<li>異步 : 增進執行效率<ul>
+<li>多執行緒 : 使用共享資源時還是要進入同步</li>
+<li>單執行緒 : 任務寫在Event Callback/Hook 由Event Loop驅動 仿效異步 (如JavaScript)</li>
+</ul>
+</li>
+<li>同步 : 保護共享資源的必要手段</li>
+</ul>
+<h2 id="異步執行"><a href="#異步執行" class="headerlink" title="異步執行"></a>異步執行</h2><blockquote>
+<p>指耗時任務交付後就可以先去做別的事情 等任務執行完再通知<br>此任務稱為異步任務 不會馬上被執行<br>架構為事件處理型(onEvent)的設計<br>異步任務(Runnable)可以用thread或handler達成</p>
+</blockquote>
+<h2 id="同步執行"><a href="#同步執行" class="headerlink" title="同步執行"></a>同步執行</h2><blockquote>
+<p>指事情必須依序處理 未完成前不能離開<br>例如從網路取得一張圖片 顯示在螢幕上 若下載圖片要10秒鐘 程式就必須等待完成後才能繼續執行<br>程式的基礎都是建立在同步執行上的 而多執行緒中的同步更強調的是<code>只有一個執行緒在執行該段程式</code><br>執行緒競爭要達到同步的代價就是<code>等</code> 等的實踐就是<code>鎖</code> 鎖的用途就是<code>保護</code></p>
+</blockquote>
+<blockquote>
+<p>對於<code>鎖或與執行緒同步</code>相關的實踐:</p>
+<ul>
+<li>synchronized</li>
+<li>lock</li>
+<li>blocking queue</li>
+<li>semaphore</li>
+</ul>
+</blockquote>
+<h2 id="需要等待的情境"><a href="#需要等待的情境" class="headerlink" title="需要等待的情境"></a>需要等待的情境</h2><ul>
+<li>等待共享資源 (用同步鎖解決)</li>
+<li>等待異步任務(一個或多個)結果 (Thread.join或更高階的手段)</li>
+</ul>
+<h1 id="鎖"><a href="#鎖" class="headerlink" title="鎖"></a>鎖</h1><ul>
+<li>臨界區(critical section) : 即被鎖住的區塊</li>
+<li>可重入性(reentrant) : 指thread可以重入相同的鎖中 即在funcA中又進入funcB</li>
+<li>線程飢餓與公平(Starvation and Fairness) : 指線程搶不到開鎖機會的狀況</li>
+<li>Busy Wait : 指while loop的等待方式 造成cpu持續忙碌而無法有效利用</li>
+</ul>
+<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><ul>
+<li>以某個物件(實例或類)做為鎖 多個thread中僅能一個thread取得鎖 也就是執行權</li>
+<li>確保僅有一個thread進入critical section</li>
+<li>確保從main memory讀入 離開時寫回</li>
+<li>thread間取得鎖的結果是不公平的 有優先權的 而不是先到先贏</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="comment">//實例鎖</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">funcA</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">funcB</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//類鎖</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> obj...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//實例鎖</span></span><br><span class="line">        <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//類鎖</span></span><br><span class="line">        <span class="keyword">synchronized</span>(obj)&#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="線程間能被安全共用的實例"><a href="#線程間能被安全共用的實例" class="headerlink" title="線程間能被安全共用的實例"></a>線程間能被安全共用的實例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyData</span></span>&#123;</span><br><span class="line">  <span class="keyword">protected</span> Object data = <span class="keyword">false</span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Object <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(Object data)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.data = data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="信號機制"><a href="#信號機制" class="headerlink" title="信號機制"></a>信號機制</h2><blockquote>
+<p>每個Object都能做為MonitorObject</p>
+<ul>
+<li>wait : 使當下thread進入等待 並監視MonitorObject的信號</li>
+<li>notify : 喚醒監視MonitorObject的thread (由系統決定喚起的thread)</li>
+<li>notifyAll : 喚醒全部監視的thread 重新競爭鎖</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Missed Signals : 指notify前沒有相應的wait先被執行 而可能造成之後的wait無人喚醒 算是設計錯誤</p>
+</blockquote>
+<h2 id="以信號機制實現鎖"><a href="#以信號機制實現鎖" class="headerlink" title="以信號機制實現鎖"></a>以信號機制實現鎖</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lock</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isLocked = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>&#123;</span><br><span class="line">        <span class="comment">//isLocked為false時 進入wait循環 thread被鎖住 等待另一個thread開鎖</span></span><br><span class="line">        <span class="comment">//若同一個thread未unlock又來lock第二次 同樣會被鎖死 造成沒有thread能解鎖</span></span><br><span class="line">        <span class="keyword">while</span>(isLocked)&#123;</span><br><span class="line">            wait();</span><br><span class="line">        &#125;</span><br><span class="line">        isLocked = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span></span>&#123;</span><br><span class="line">        isLocked = <span class="keyword">false</span>;</span><br><span class="line">        notify(); <span class="comment">//相當於觸發信號</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Lock lock = <span class="keyword">new</span> Lock();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">inc</span><span class="params">()</span></span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">int</span> newCount = ++count;</span><br><span class="line">        lock.unlock();  <span class="comment">//若臨界區會拋出異常 需使用catch finally</span></span><br><span class="line">        <span class="keyword">return</span> newCount;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>wait如同sleep 但從wait中醒來並不是一定要有notify 它僅是告知已經可以從wait中喚醒 這種不是經由notify喚醒的情形稱作<code>虛假喚醒(spurious wakeup)</code> 故wait與notify之外仍需要isLocked做為是否unlock的判斷</p>
+</blockquote>
+<blockquote>
+<p>這種while建構的鎖稱為自旋鎖</p>
+</blockquote>
+<blockquote>
+<p>實現<code>可重入性</code>要考慮:</p>
+<ul>
+<li>記住是由哪個thread上鎖 且上鎖幾次</li>
+<li>解鎖必須counter歸零</li>
+</ul>
+</blockquote>
+<h4 id="Slipped-Conditions"><a href="#Slipped-Conditions" class="headerlink" title="Slipped Conditions"></a>Slipped Conditions</h4><blockquote>
+<p>即指while(isLocked)與isLocked=true非一氣呵成(原子操作) 執行的間隙造成鎖的狀態改變</p>
+</blockquote>
+<h2 id="FairLock"><a href="#FairLock" class="headerlink" title="FairLock"></a>FairLock</h2><blockquote>
+<p>透過List將記住請求鎖的順序</p>
+</blockquote>
+<h2 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h2><blockquote>
+<p>計數信號 實作上首先要確保操作的原子性<br>當資源量為1時 可當鎖用</p>
+<ul>
+<li>SEM_VALUE_MAX 資源量</li>
+<li>P take/wait 減1操作 取得資源</li>
+<li>V release/signal 加1操作 歸還資源</li>
+</ul>
+</blockquote>
+<h2 id="BlockingQueue"><a href="#BlockingQueue" class="headerlink" title="BlockingQueue"></a>BlockingQueue</h2><blockquote>
+<p>阻塞隊列 當take時沒有元素 或put時沒有空間時阻塞線程</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Java8Explained.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Java/Java8Explained.html" itemprop="url">Java 8 增訂</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lambda-箭頭函數"><a href="#Lambda-箭頭函數" class="headerlink" title="Lambda 箭頭函數"></a>Lambda 箭頭函數</h2><p>lambda是一個java8開始的新語法 類似於javascript的箭頭函數 因應functional programming而生</p>
+<p>可以將箭頭函數想像成一個”只有一個method的object” 就會比較容易理解 看/用起來像function但其實是一個object 因為只有一個method所以method的name就不重要了 object即等同method</p>
+<p>為什麼要這樣?因為java的method不能像變數一樣當作參數 要傳函數勢必只能整個object傳入 而箭頭函數就是為了解決這樣的困擾</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Runnable runnbale = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	System.out.println(<span class="string">"run me!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Runnable <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//將現有的method當作箭頭函數般回傳</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>::run;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//箭頭函數的形式</span></span><br><span class="line">Runnable runnbale = () -&gt; System.out.println(<span class="string">"run me!"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Collection走訪"><a href="#Collection走訪" class="headerlink" title="Collection走訪"></a>Collection走訪</h2><p>functional programming的另一個重點就是function chain與Collection(list/map/array)的走訪. 搭配<code>Collection的stream()</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//透過stream()衍生function chain</span></span><br><span class="line">list.stream().filter(s -&gt; Integer.valueOf(s) &lt; <span class="number">3</span>).forEach(s -&gt; System.out.print(s));</span><br><span class="line"></span><br><span class="line"><span class="comment">//parallelStream() : 平行處理的stream</span></span><br></pre></td></tr></table></figure>
+<h2 id="Lambda-以函數為參數"><a href="#Lambda-以函數為參數" class="headerlink" title="Lambda 以函數為參數"></a>Lambda 以函數為參數</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//格式</span></span><br><span class="line">Function&lt;input, output&gt;</span><br><span class="line">Consumer&lt;input, <span class="keyword">void</span>&gt;</span><br><span class="line">Predication&lt;input, <span class="keyword">boolean</span>&gt;</span><br><span class="line">Supplier&lt;output&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> x, Function&lt;<span class="keyword">int</span>, string&gt; fun)</span></span>&#123;</span><br><span class="line">    f.apply(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="number">99</span>, (<span class="keyword">int</span> x) -&gt; &#123;<span class="keyword">return</span> <span class="string">"99"</span>&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Interface擴展"><a href="#Interface擴展" class="headerlink" title="Interface擴展"></a>Interface擴展</h2><p>interface的method可前綴default與static的關鍵字 用以擴展interface的method</p>
+<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p><a href="http://blog.tonycube.com/2015/10/java-java8-4-optional.html" target="_blank" rel="noopener">link</a></p>
+<p>Optional是一個新的類別 用於封裝一個傳入或回傳值 並提供一些良好的方法 讓programer養成良好的習慣</p>
+<h2 id="Data-Time方面的新類別"><a href="#Data-Time方面的新類別" class="headerlink" title="Data/Time方面的新類別"></a>Data/Time方面的新類別</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/JMM.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Java/JMM.html" itemprop="url">JMM (Java Memory Model)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:42:02+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://wiki.jikexueyuan.com/project/java-concurrent/java-memory-model.html" target="_blank" rel="noopener">*ref</a> <a href="https://blog.csdn.net/qq_33689414/article/details/73527438" target="_blank" rel="noopener">ref</a> <a href="https://medium.com/@kevingyc/java-java-thread-model-memory-model-22692fc08671" target="_blank" rel="noopener">ref</a></p>
+<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a>JMM (Java Memory Model)</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*X01rfvldaQ5K0lZwQyvIFg.png" alt=""></p>
+<p>JVM執行區分 主內存(共享內存) 與 本地內存</p>
+<ul>
+<li>Main : 主記憶體 (heap)</li>
+<li>Local : 各個thread獨立使用 (cache/副本)</li>
+</ul>
+<p>thread執行時會將需要的內容從main複製到local 之後操作各自的local memory, thread彼此間是無法得知其他thread操作的結果 除非重新同步main的資料</p>
+<ul>
+<li>local從main讀寫資料應該是視為synchronized或有cpu確保同步</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</span><br><span class="line"><span class="comment">//str為一參考 會放在stack</span></span><br><span class="line"><span class="comment">//new String會放到heap</span></span><br><span class="line"><span class="comment">//hello是字面值會放到靜態儲存區(應該也是heap)</span></span><br></pre></td></tr></table></figure>
+<h2 id="可見性-visibility"><a href="#可見性-visibility" class="headerlink" title="可見性(visibility)"></a>可見性(visibility)</h2><blockquote>
+<p>指A修改變數x時 確保B能夠隨時得到最新的值 (即cache失效)<br>Java透過volatile將變數宣告為<code>易變的/易揮發的</code> 以提示其需要可見性的維護 (但並沒有原子性保護)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">x = <span class="number">0</span>;</span><br><span class="line">AB兩thread同時執行+<span class="number">3</span>與+<span class="number">5</span>,預期得到<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">volatile</span> x = <span class="number">0</span>;</span><br><span class="line">A(x=x+<span class="number">3</span>) : <span class="number">0</span>+<span class="number">3</span>=<span class="number">3</span> 將<span class="number">3</span>指定給x</span><br><span class="line">B(x=x+<span class="number">5</span>) : <span class="number">0</span>+<span class="number">5</span>=<span class="number">5</span> 此時x變為<span class="number">3</span>,但運算已結束 將<span class="number">5</span>指定給x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最後卻得到5,這是因為x=x+5的動作並不屬於原子操作,x+5與x=?是分別執行的,中間可以穿插,所以volatile不一定能確保變數一定是thread-safe的<br>故volatile一般都用在<code>狀態或旗標</code>變數上</p>
+</blockquote>
+<h2 id="原子操作-atomic"><a href="#原子操作-atomic" class="headerlink" title="原子操作 (atomic)"></a>原子操作 (atomic)</h2><p>原子是最小無法分割之物 用來形容操作是不能分割的 以完成i++為例 分別需要取值/運算/賦值 假若期間無法插入任何與i相關的操作 就可以確保i的正確性</p>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">AtomicInteger a = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">                x = x + <span class="number">1</span>;</span><br><span class="line">                a.addAndGet(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (Thread.class)&#123;</span><br><span class="line">                    y = y + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"ans x : "</span> + x); <span class="comment">//405949 &lt;- 錯的</span></span><br><span class="line">            System.out.println(<span class="string">"ans y : "</span> + y); <span class="comment">//500000</span></span><br><span class="line">            System.out.println(<span class="string">"ans a : "</span> + a); <span class="comment">//500000</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><ul>
+<li>compareAndSet(expected, new) atomic檢查主入內存與expected是否相同,若相同表示可以賦值為new 否則回傳false</li>
+<li>猜測應該是用在<code>鎖</code>的應用上 類似CountDownLatch 但不會阻塞</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">atomicI = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">safeCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        runCount++;</span><br><span class="line">        <span class="keyword">int</span> i = atomicI.get();</span><br><span class="line">        <span class="keyword">boolean</span> suc = atomicI.compareAndSet(i, ++i);</span><br><span class="line">        <span class="keyword">if</span> (suc) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/泛型.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Java/泛型.html" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T15:41:57+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.jianshu.com/p/1042ac6586ef" target="_blank" rel="noopener">*post</a></p>
+<h2 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Lev 1</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Lev 2</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> <span class="keyword">extends</span> <span class="title">Food</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> weight;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Lev 3</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">extends</span> <span class="title">Fruit</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Banana</span> <span class="keyword">extends</span> <span class="title">Fruit</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">T <span class="comment">//(或其他字母)</span></span><br><span class="line">T為一泛型可用以表示某一特定類別</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">List</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    T e</span><br><span class="line">&#125;</span><br><span class="line">List類別中有一特定類別為E</span><br><span class="line"></span><br><span class="line">區間:</span><br><span class="line">子類 &lt;- extends T <span class="keyword">super</span> -&gt; 父類 -&gt; Object</span><br></pre></td></tr></table></figure>
+<h2 id="泛型Class設計"><a href="#泛型Class設計" class="headerlink" title="泛型Class設計"></a>泛型Class設計</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">- T指是某一確切的類別 例如T為Fruit 並且可以多型轉換接受Apple或Banana</span><br><span class="line">- List&lt;T&gt;同上 但無法多型轉換 因為List&lt;Fruit&gt;並不能轉為List&lt;Apple&gt;</span><br><span class="line">- List&lt;? extends T&gt;是一個不確切的型別 兼容其子類 List&lt;Fruit&gt;與List&lt;Apple&gt;</span><br><span class="line">- <span class="keyword">super</span>與extends雷同 兼容其父類 只是需求比較少見</span><br><span class="line"> - 例如要傳入一個比較器 希望設計這個比較器時能被通用</span><br><span class="line"> - 會寫成<span class="class"><span class="keyword">class</span> <span class="title">Comparator</span>&lt;<span class="title">Furit</span>&gt;</span>&#123;&#125;而不是替每種fruit分開寫</span><br><span class="line"> - 接收比較器的介面就需讓父類能傳入 如不管T是Fruit或Apple或Banana都能用</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyList</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//在MyList中根本不會知道E將會是什麼</span></span><br><span class="line">    ArrayList&lt;T&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Fruit的子類都能傳入</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只能傳入ArrayList&lt;Fruit&gt;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addFromList1</span><span class="params">(ArrayList&lt;T&gt; list_)</span></span>&#123;</span><br><span class="line">        list.addAll(list_);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//能傳入Comparator&lt;T&gt;與E之子類</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addFromList2</span><span class="params">(ArrayList&lt;? extends T&gt; list_)</span></span>&#123;</span><br><span class="line">        list.addAll(list_);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//能傳入Comparator&lt;T&gt;與E之父類</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> T&gt; c)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="E被指定為-的副作用"><a href="#E被指定為-的副作用" class="headerlink" title="E被指定為?的副作用"></a>E被指定為?的副作用</h2><p>因為編譯時還不知道E是什麼,所以不能確定其子類或父類</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Food food = <span class="keyword">null</span>;</span><br><span class="line">Fruit fruit = <span class="keyword">null</span>;</span><br><span class="line">Apple apple = <span class="keyword">null</span>;</span><br><span class="line">Object obj = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//? extends</span></span><br><span class="line">ArrayList&lt;? extends Fruit&gt; fruitlist_ex = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">fruitlist_ex.add(food);         <span class="comment">// X : 任何型別都不能傳入</span></span><br><span class="line">fruitlist_ex.add(fruit);        <span class="comment">// X</span></span><br><span class="line">fruitlist_ex.add(apple);        <span class="comment">// X</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">原因 :</span></span><br><span class="line"><span class="comment">假若fruitlist_ex = new ArrayList&lt;Apple&gt;();</span></span><br><span class="line"><span class="comment">此時fruitlist_ex.add(new Banana())若被允許</span></span><br><span class="line"><span class="comment">表示T同時代表了具體的Apple(建構時)與Banana(函數呼叫時),這將使後續的操作難以預料</span></span><br><span class="line"><span class="comment">故無論輸入什麼類都一律拒絕,以保封裝後的安全</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">food = fruitlist_ex.get(<span class="number">0</span>);     <span class="comment">// 回傳上限型別(Fruit),很合理,後續自己轉成子類</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//? super</span></span><br><span class="line">ArrayList&lt;? <span class="keyword">super</span> Fruit&gt; fruitlist_su = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">fruitlist_su.add(fruit);         <span class="comment">// 可以傳入合理型別</span></span><br><span class="line">fruitlist_su.add(apple);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">原因 : 因為下限就是Fruit,不能fruitlist_su = new ArrayList&lt;Apple&gt;();</span></span><br><span class="line"><span class="comment">所以T無論如何至少都是Fruit容器,放fruit/apple/banana都能符合T</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">food = fruitlist_su.get(<span class="number">0</span>);     <span class="comment">// X : 無法傳出合理型別</span></span><br><span class="line">obj = fruitlist_su.get(<span class="number">0</span>);      <span class="comment">// 只能回傳Object型別</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">原因 : 上線型別是Object故唯有傳Object能涵蓋所有可能型別</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>即使你很確定轉型不會造成操作失敗,但編譯器仍會阻止你,因為至少在編譯器這一關需確保泛型所有可能性的安全,以提供語法上邏輯的正確.</li>
+</ul>
+<h2 id="簡記"><a href="#簡記" class="headerlink" title="簡記"></a>簡記</h2><ul>
+<li>extends 與其子類 僅能用於 輸出參數 out getter</li>
+<li>super 與其父類 僅能用於 輸入參數 in setter</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Singleton.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Java/Singleton.html" itemprop="url">Singleton</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-06T12:21:55+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.bilibili.com/video/av10771798/index_6.html#page=10" target="_blank" rel="noopener">video</a></p>
+<p>建立的兩個需求:</p>
+<ul>
+<li>thread safe</li>
+<li>lazy</li>
+</ul>
+<h2 id="Plain"><a href="#Plain" class="headerlink" title="Plain"></a>Plain</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> MySingale instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">object</span> MySingale&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Lazy-not-thread-safe"><a href="#Lazy-not-thread-safe" class="headerlink" title="Lazy (not thread safe)"></a>Lazy (not thread safe)</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MySingale instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MySingale <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="keyword">val</span> instance <span class="keyword">by</span> lazy(LazyThreadSafetyMode.NONE)&#123;</span><br><span class="line">            MySingale()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Lazy-thread-safe-synchronized"><a href="#Lazy-thread-safe-synchronized" class="headerlink" title="Lazy (thread safe)(synchronized)"></a>Lazy (thread safe)(synchronized)</h2><ul>
+<li>加synchronized</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MySingale instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> MySingale <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">var</span> instance: MySingale? = <span class="literal">null</span></span><br><span class="line">        </span><br><span class="line">        <span class="meta">@Synchronized</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">getInstance</span><span class="params">()</span></span>: MySingale&#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="literal">null</span>) instance = MySingale()</span><br><span class="line">            <span class="keyword">return</span> instance</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Lazy-thread-safe-volatile"><a href="#Lazy-thread-safe-volatile" class="headerlink" title="Lazy (thread safe) (volatile)"></a>Lazy (thread safe) (volatile)</h2><ul>
+<li>加volatile : 確保不同thread中能立即察覺變數的更動</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> MySingale instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MySingale <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;  <span class="comment">//避免持續進入synchronized</span></span><br><span class="line">            <span class="keyword">synchronized</span> (MySingale.class)&#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">object</span> MySingale&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="keyword">val</span> instance <span class="keyword">by</span> lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED)&#123;</span><br><span class="line">            MySingale()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="透過Holder-靜態內部類"><a href="#透過Holder-靜態內部類" class="headerlink" title="透過Holder (靜態內部類)"></a>透過Holder (靜態內部類)</h2><ul>
+<li>透過static Holder達到lazy</li>
+<li>new操作在java中原本也就是thread safe</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySingale</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MySingale</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span></span>&#123;</span><br><span class="line">        <span class="keyword">static</span> MySingale instance = <span class="keyword">new</span> MySingale();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MySingale <span class="title">getInstance</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> Holder.instance; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">object</span> MySingale&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">getInstance</span><span class="params">()</span></span> = Holder.instance</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">companion</span> Holder&#123;</span><br><span class="line">        <span class="keyword">val</span> instance = MySingale()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Java.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -360,6 +1128,11 @@
         
           
             <p><a href="http://wiki.jikexueyuan.com/project/java-interview-bible/" target="_blank" rel="noopener">面試題</a></p>
+<h1 id="資料型態"><a href="#資料型態" class="headerlink" title="資料型態"></a>資料型態</h1><ul>
+<li>short / char : 2byte (unicode)</li>
+<li>int / float : 4byte</li>
+<li>long / double : 8byte (64bit)</li>
+</ul>
 <h1 id="field修飾字"><a href="#field修飾字" class="headerlink" title="field修飾字"></a>field修飾字</h1><table>
 <thead>
 <tr>
@@ -443,15 +1216,19 @@
 </ul>
 </blockquote>
 <h1 id="IOC-DI"><a href="#IOC-DI" class="headerlink" title="IOC / DI"></a>IOC / DI</h1><blockquote>
-<p>控制反轉(Inversion of Control) 等同依賴注入(Dependency Injection)<br>即指建立一物件時 其依賴並非由<code>建立者</code>或<code>建立物</code>來建立提供 而由一專屬框架負責</p>
+<p>控制反轉(Inversion of Control) 等同依賴注入(Dependency Injection)<br>即指建立一物件時 其依賴並非由<code>建立者</code>或<code>被建立者</code>來建立提供 而由一專屬框架負責</p>
 </blockquote>
 <h1 id="InputStream-OutputStream"><a href="#InputStream-OutputStream" class="headerlink" title="InputStream / OutputStream"></a>InputStream / OutputStream</h1><blockquote>
 <p>流操作分兩類 byte/character</p>
+</blockquote>
 <ul>
-<li>byte : 以InputStream / OutputStream結尾</li>
+<li>byte : 以InputStream / OutputStream結尾<ul>
+<li>Input/Output : 讀/寫</li>
+<li>Stream : byte stream</li>
+</ul>
+</li>
 <li>character : 以Reader / Writter結尾</li>
 </ul>
-</blockquote>
 <p>以InputStreamReader為例 前綴InputStream表示輸入為byte 後綴Reader表示輸出character</p>
 <p><img src="http://wiki.jikexueyuan.com/project/java-interview-bible/images/stream.jpg" alt=""></p>
 <h1 id="Proxy-代理"><a href="#Proxy-代理" class="headerlink" title="Proxy 代理"></a>Proxy 代理</h1><blockquote>
@@ -468,7 +1245,7 @@
 <blockquote>
 <p>動態代理 : 透過反射</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProxyHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Subject subject;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProxyHandler</span><span class="params">(Subject subject)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.subject = subject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        Object result = method.invoke(subject, args);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//建立一個該subject的handler 處理對應的invoke</span></span><br><span class="line">handler = <span class="keyword">new</span> ProxyHandler(real);</span><br><span class="line"></span><br><span class="line"><span class="comment">//建立ProxySubject 給予其該有的介面與handler 會動態產生一個class</span></span><br><span class="line">proxy = (Subject)Proxy.newProxyInstance(</span><br><span class="line">    RealSubject.class.getClassLoader(), </span><br><span class="line">    RealSubject.class.getInterfaces(), handler);</span><br><span class="line">proxy.request();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProxyHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Subject subject;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProxyHandler</span><span class="params">(Subject subject)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.subject = subject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        <span class="comment">//插入代理的行為</span></span><br><span class="line">        Object result = method.invoke(subject, args);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//建立一個該subject的handler 處理對應的invoke</span></span><br><span class="line">handler = <span class="keyword">new</span> ProxyHandler(real);</span><br><span class="line"></span><br><span class="line"><span class="comment">//建立ProxySubject 給予其該有的介面與handler 會動態產生一個class</span></span><br><span class="line">proxy = (Subject)Proxy.newProxyInstance(</span><br><span class="line">    RealSubject.class.getClassLoader(), </span><br><span class="line">    RealSubject.class.getInterfaces(), handler);</span><br><span class="line">proxy.request();</span><br></pre></td></tr></table></figure>
 <h1 id="Annotation"><a href="#Annotation" class="headerlink" title="Annotation"></a>Annotation</h1><p><a href="http://puremonkey2010.blogspot.tw/2013/05/java-java-reflection-annotations.html" target="_blank" rel="noopener">ref</a><br>類似metadata 提供訊息用以描述內容 例如某個method是override的</p>
 <p>用途</p>
 <ul>
@@ -477,7 +1254,7 @@
 <li>編譯時搭配額外編譯工具提供自動產生代碼 如Dagger/JavaDoc</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME) <span class="comment">//使其能在runtime時保留 供反射使用</span></span><br><span class="line"><span class="meta">@Target</span>(METHOD.TYPE)    <span class="comment">//能被用在method上</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyAnnotation &#123;</span><br><span class="line">     <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> "test"</span>; <span class="comment">//宣告需要一個字串變數</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TheClass</span> </span>&#123;</span><br><span class="line">    <span class="meta">@MyAnnotation</span>(<span class="string">"unit test"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//透過反射取得其Annotation</span></span><br><span class="line">Method method = TheClass.class.getMethod(<span class="string">"doSomething"</span>);  </span><br><span class="line">Annotation[] annotations = method.getDeclaredAnnotations();</span><br><span class="line">Annotation annotation = method.getAnnotation(MyAnnotation.class);</span><br></pre></td></tr></table></figure>
-<h1 id="捕捉-UncaughtException"><a href="#捕捉-UncaughtException" class="headerlink" title="捕捉 UncaughtException"></a>捕捉 UncaughtException</h1><p>從Thread捕捉所有未能從try catch中捕捉的意外 替即將掛掉的程式安插一些處理方式</p>
+<h1 id="捕捉-UncaughtException"><a href="#捕捉-UncaughtException" class="headerlink" title="捕捉 UncaughtException"></a>捕捉 UncaughtException</h1><p>從Thread捕捉所有未能被try catch中捕捉的意外 替即將掛掉的程式安插一些處理方式</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExceptionHandler</span> <span class="keyword">implements</span> <span class="title">Thread</span>.<span class="title">UncaughtExceptionHandler</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span><span class="params">(Thread t, Throwable e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line">Thread.setDefaultUncaughtExceptionHandler(<span class="keyword">new</span> ExceptionHandler());</span><br></pre></td></tr></table></figure>
 <h1 id="內部類"><a href="#內部類" class="headerlink" title="內部類"></a>內部類</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllInnerClass</span></span>&#123;</span><br><span class="line">    <span class="comment">//內部類 (嵌套類)</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//靜態內部類</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticInnerClass</span></span>&#123;</span><br><span class="line">        <span class="keyword">static</span> Object obj = <span class="keyword">new</span> Object();  <span class="comment">//靜態成員的初始化 1.懶初始化 2.保證thread-safe</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getTaske</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//局部類</span></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">LocalClass</span> <span class="keyword">extends</span> <span class="title">Object</span></span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> LocalClass();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//匿名內部類</span></span><br><span class="line">    Runnable anonymousInnerClassObject = <span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">        <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Lambda</span></span><br><span class="line">    Runnable runnbale = () -&gt; System.out.println(<span class="string">"running~"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h4 id="HttpURLConnection"><a href="#HttpURLConnection" class="headerlink" title="HttpURLConnection"></a>HttpURLConnection</h4><blockquote>
@@ -1594,643 +2371,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Broadcast.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Broadcast.html" itemprop="url">Broadcast</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:59:35+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a>Broadcast</h2><blockquote>
-<p>發送或接收系統事件廣播 如低電量/簡訊<br>生命週期在onReceive()結束後終止<br>以靜態方式(manifest)註冊接收器 可以不用開app 也能接收事件</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">registerReceiver(<span class="keyword">new</span> BroadcastReceiver()&#123;&#125;, <span class="keyword">new</span> IntentFilter(<span class="string">"action..."</span>));</span><br><span class="line">unregisterReceiver(mybc);</span><br><span class="line"></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyBC.class)</span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"action..."</span>)</span><br><span class="line">intent.putExtra(<span class="string">"data"</span>, <span class="string">"mydata"</span>);</span><br><span class="line"></span><br><span class="line">sendBroiadcast(intent);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line">    onReceive(content, intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或以常駐的方式(不論app是否啟動或kill都能被執行)</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MyReceiver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.EDIT"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/DevLog.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/DevLog.html" itemprop="url">Android Dev Log</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:39:45+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="TextView行高在編輯文字時會改變"><a href="#TextView行高在編輯文字時會改變" class="headerlink" title="TextView行高在編輯文字時會改變"></a>TextView行高在編輯文字時會改變</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">addTextChangedListener(<span class="keyword">object</span>:TextWatcher&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">afterTextChanged</span><span class="params">(s: <span class="type">Editable</span>?)</span></span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">beforeTextChanged</span><span class="params">(s: <span class="type">CharSequence</span>?, start: <span class="type">Int</span>, count: <span class="type">Int</span>, after: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onTextChanged</span><span class="params">(s: <span class="type">CharSequence</span>?, start: <span class="type">Int</span>, before: <span class="type">Int</span>, count: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//每次文字更動時都在設定一次行高</span></span><br><span class="line">        setLineSpacing(<span class="number">0</span>f, <span class="number">1</span>f)</span><br><span class="line">        setLineSpacing(<span class="number">20</span>f, <span class="number">1</span>f)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/RecyclerView.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/RecyclerView.html" itemprop="url">RecyclerView</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:36:16+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="加入RecyclerView"><a href="#加入RecyclerView" class="headerlink" title="加入RecyclerView"></a>加入RecyclerView</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//0. 取得view</span></span><br><span class="line"><span class="keyword">var</span> view = findViewById&lt;RecyclerView&gt;(R.id.recyclerView)</span><br><span class="line"></span><br><span class="line"><span class="comment">//1. 設定layout</span></span><br><span class="line"><span class="keyword">val</span> layoutManager = LinearLayoutManager(<span class="keyword">this</span>, LinearLayoutManager.VERTICAL, <span class="literal">false</span>)</span><br><span class="line">view.layoutManager = layoutManager</span><br><span class="line"></span><br><span class="line"><span class="comment">//2. 設定adapter</span></span><br><span class="line">view.adapter = MyAdapter(<span class="keyword">data</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//3. 設定分隔線</span></span><br><span class="line">view.addItemDecoration(DividerItemDecoration(<span class="keyword">this</span>, DividerItemDecoration.VERTICAL));</span><br></pre></td></tr></table></figure>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> : <span class="type">RecyclerView.Adapter</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateViewHolder</span><span class="params">(parent: <span class="type">ViewGroup</span>?, viewType: <span class="type">Int</span>)</span></span>: ViewHolder &#123;</span><br><span class="line">        <span class="comment">//建立ItemView並存於ViewHolder回傳</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBindViewHolder</span><span class="params">(holder: <span class="type">ViewHolder</span>?, position: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//將欲顯示的內容抽換到holder中的view</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getItemCount</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//自訂ItemView的Holder</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span></span>(itemView: View) : RecyclerView.ViewHolder(itemView)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Fragment.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Fragment.html" itemprop="url">Fragment</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:34:06+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://i1.kknews.cc/SIG=v8aj42/16p200037qo274368116.jpg" alt=""></p>
-<h2 id="加入Fragment"><a href="#加入Fragment" class="headerlink" title="加入Fragment"></a>加入Fragment</h2><ul>
-<li>fragment要被砍入的位置 R.id.contentFrame</li>
-<li>fragment自身的佈局 R.layout.main_frag</li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fragment = supportFragmentManager.findFragmentById(R.id.contentFrame)?:MainFragment().also &#123;</span><br><span class="line">    supportFragmentManager.beginTransaction().apply &#123;</span><br><span class="line">        add(R.id.contentFrame, it)</span><br><span class="line">        commit()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainFragment</span> : <span class="type">Fragment</span></span>()&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(inflater: <span class="type">LayoutInflater</span>?, container: <span class="type">ViewGroup</span>?, savedInstanceState: <span class="type">Bundle</span>?)</span></span>: View? &#123;</span><br><span class="line">        <span class="keyword">var</span> view = inflater?.inflate(R.layout.main_frag, container, <span class="literal">false</span>)</span><br><span class="line">        <span class="keyword">return</span> view</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Gradle.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Gradle.html" itemprop="url">Gradle</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:10:47+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://cloudchen.logdown.com/posts/248361/features-of-groovy-for-gradle-beginner" target="_blank" rel="noopener">Groovy 語言特性介紹</a></p>
-<p><img src="http://cl.ly/image/2P2m0j3z3i2J/Image%202015-01-06%20at%2010.53.33%20AM.png" alt=""></p>
-<h2 id="加快編譯"><a href="#加快編譯" class="headerlink" title="加快編譯"></a>加快編譯</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//gradle.properties</span><br><span class="line">org.gradle.jvmargs=-Xmx512m</span><br><span class="line">org.gradle.daemon=true</span><br><span class="line">org.gradle.parallel=true</span><br><span class="line">org.gradle.configureondemand=true</span><br></pre></td></tr></table></figure>
-<h2 id="異常”Gradle-project-sync-failed”"><a href="#異常”Gradle-project-sync-failed”" class="headerlink" title="異常”Gradle project sync failed”"></a>異常”Gradle project sync failed”</h2><p>在android sample中加入kotlin一直不成功 但new project中卻沒問題</p>
-<p>把code移入new project中確認也沒問題 可見是環境造成</p>
-<blockquote>
-<p>rm -rf .gradle/ .idea/ build gradle</p>
-</blockquote>
-<blockquote>
-<p>最後是把src root folder從Application改名(Refacotr)為app才正常</p>
-</blockquote>
-<h2 id="buildTypes"><a href="#buildTypes" class="headerlink" title="buildTypes"></a>buildTypes</h2><blockquote>
-<p>控制編譯流程 debug / release</p>
-</blockquote>
-<h2 id="productFlavors"><a href="#productFlavors" class="headerlink" title="productFlavors"></a>productFlavors</h2><blockquote>
-<p>分歧編譯目錄 mock / prod 不同選擇即用不同目錄下的檔案編譯</p>
-</blockquote>
-<ul>
-<li>flavorDimensions : 對flavor再進行一次分類 例如platform,vertype 組合出多個目錄</li>
-</ul>
-<h2 id="BuildConfig"><a href="#BuildConfig" class="headerlink" title="BuildConfig"></a>BuildConfig</h2><p>設定會透過BuildConfig類帶入java中</p>
-<h2 id="applicationId"><a href="#applicationId" class="headerlink" title="applicationId"></a>applicationId</h2><p>作用在google play store上 用以辨識app, 不同的release要有不同的applicationId, 否則會被視為同一個app</p>
-<p>可寫在defaultConfig或個別的buildType/productFlavors中 也可用applicationIdSuffix</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2276,7 +2421,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

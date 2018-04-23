@@ -288,6 +288,638 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Broadcast.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Broadcast.html" itemprop="url">Broadcast</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:59:35+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a>Broadcast</h2><blockquote>
+<p>發送或接收系統事件廣播 如低電量/簡訊<br>生命週期在onReceive()結束後終止<br>以靜態方式(manifest)註冊接收器 可以不用開app 也能接收事件</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">registerReceiver(<span class="keyword">new</span> BroadcastReceiver()&#123;&#125;, <span class="keyword">new</span> IntentFilter(<span class="string">"action..."</span>));</span><br><span class="line">unregisterReceiver(mybc);</span><br><span class="line"></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyBC.class)</span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"action..."</span>)</span><br><span class="line">intent.putExtra(<span class="string">"data"</span>, <span class="string">"mydata"</span>);</span><br><span class="line"></span><br><span class="line">sendBroiadcast(intent);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line">    onReceive(content, intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或以常駐的方式(不論app是否啟動或kill都能被執行)</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MyReceiver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.EDIT"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/DevLog.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/DevLog.html" itemprop="url">Android Dev Log</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:39:45+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="TextView行高在編輯文字時會改變"><a href="#TextView行高在編輯文字時會改變" class="headerlink" title="TextView行高在編輯文字時會改變"></a>TextView行高在編輯文字時會改變</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">addTextChangedListener(<span class="keyword">object</span>:TextWatcher&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">afterTextChanged</span><span class="params">(s: <span class="type">Editable</span>?)</span></span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">beforeTextChanged</span><span class="params">(s: <span class="type">CharSequence</span>?, start: <span class="type">Int</span>, count: <span class="type">Int</span>, after: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onTextChanged</span><span class="params">(s: <span class="type">CharSequence</span>?, start: <span class="type">Int</span>, before: <span class="type">Int</span>, count: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//每次文字更動時都在設定一次行高</span></span><br><span class="line">        setLineSpacing(<span class="number">0</span>f, <span class="number">1</span>f)</span><br><span class="line">        setLineSpacing(<span class="number">20</span>f, <span class="number">1</span>f)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/RecyclerView.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/RecyclerView.html" itemprop="url">RecyclerView</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:36:16+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="加入RecyclerView"><a href="#加入RecyclerView" class="headerlink" title="加入RecyclerView"></a>加入RecyclerView</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//0. 取得view</span></span><br><span class="line"><span class="keyword">var</span> view = findViewById&lt;RecyclerView&gt;(R.id.recyclerView)</span><br><span class="line"></span><br><span class="line"><span class="comment">//1. 設定layout</span></span><br><span class="line"><span class="keyword">val</span> layoutManager = LinearLayoutManager(<span class="keyword">this</span>, LinearLayoutManager.VERTICAL, <span class="literal">false</span>)</span><br><span class="line">view.layoutManager = layoutManager</span><br><span class="line"></span><br><span class="line"><span class="comment">//2. 設定adapter</span></span><br><span class="line">view.adapter = MyAdapter(<span class="keyword">data</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//3. 設定分隔線</span></span><br><span class="line">view.addItemDecoration(DividerItemDecoration(<span class="keyword">this</span>, DividerItemDecoration.VERTICAL));</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> : <span class="type">RecyclerView.Adapter</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateViewHolder</span><span class="params">(parent: <span class="type">ViewGroup</span>?, viewType: <span class="type">Int</span>)</span></span>: ViewHolder &#123;</span><br><span class="line">        <span class="comment">//建立ItemView並存於ViewHolder回傳</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBindViewHolder</span><span class="params">(holder: <span class="type">ViewHolder</span>?, position: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//將欲顯示的內容抽換到holder中的view</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getItemCount</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//自訂ItemView的Holder</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span></span>(itemView: View) : RecyclerView.ViewHolder(itemView)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Fragment.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Fragment.html" itemprop="url">Fragment</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:34:06+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://i1.kknews.cc/SIG=v8aj42/16p200037qo274368116.jpg" alt=""></p>
+<h2 id="加入Fragment"><a href="#加入Fragment" class="headerlink" title="加入Fragment"></a>加入Fragment</h2><ul>
+<li>fragment要被砍入的位置 R.id.contentFrame</li>
+<li>fragment自身的佈局 R.layout.main_frag</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fragment = supportFragmentManager.findFragmentById(R.id.contentFrame)?:MainFragment().also &#123;</span><br><span class="line">    supportFragmentManager.beginTransaction().apply &#123;</span><br><span class="line">        add(R.id.contentFrame, it)</span><br><span class="line">        commit()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainFragment</span> : <span class="type">Fragment</span></span>()&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(inflater: <span class="type">LayoutInflater</span>?, container: <span class="type">ViewGroup</span>?, savedInstanceState: <span class="type">Bundle</span>?)</span></span>: View? &#123;</span><br><span class="line">        <span class="keyword">var</span> view = inflater?.inflate(R.layout.main_frag, container, <span class="literal">false</span>)</span><br><span class="line">        <span class="keyword">return</span> view</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Gradle.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Gradle.html" itemprop="url">Gradle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T19:10:47+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://cloudchen.logdown.com/posts/248361/features-of-groovy-for-gradle-beginner" target="_blank" rel="noopener">Groovy 語言特性介紹</a></p>
+<p><img src="http://cl.ly/image/2P2m0j3z3i2J/Image%202015-01-06%20at%2010.53.33%20AM.png" alt=""></p>
+<h2 id="加快編譯"><a href="#加快編譯" class="headerlink" title="加快編譯"></a>加快編譯</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//gradle.properties</span><br><span class="line">org.gradle.jvmargs=-Xmx512m</span><br><span class="line">org.gradle.daemon=true</span><br><span class="line">org.gradle.parallel=true</span><br><span class="line">org.gradle.configureondemand=true</span><br></pre></td></tr></table></figure>
+<h2 id="異常”Gradle-project-sync-failed”"><a href="#異常”Gradle-project-sync-failed”" class="headerlink" title="異常”Gradle project sync failed”"></a>異常”Gradle project sync failed”</h2><p>在android sample中加入kotlin一直不成功 但new project中卻沒問題</p>
+<p>把code移入new project中確認也沒問題 可見是環境造成</p>
+<blockquote>
+<p>rm -rf .gradle/ .idea/ build gradle</p>
+</blockquote>
+<blockquote>
+<p>最後是把src root folder從Application改名(Refacotr)為app才正常</p>
+</blockquote>
+<h2 id="buildTypes"><a href="#buildTypes" class="headerlink" title="buildTypes"></a>buildTypes</h2><blockquote>
+<p>控制編譯流程 debug / release</p>
+</blockquote>
+<h2 id="productFlavors"><a href="#productFlavors" class="headerlink" title="productFlavors"></a>productFlavors</h2><blockquote>
+<p>分歧編譯目錄 mock / prod 不同選擇即用不同目錄下的檔案編譯</p>
+</blockquote>
+<ul>
+<li>flavorDimensions : 對flavor再進行一次分類 例如platform,vertype 組合出多個目錄</li>
+</ul>
+<h2 id="BuildConfig"><a href="#BuildConfig" class="headerlink" title="BuildConfig"></a>BuildConfig</h2><p>設定會透過BuildConfig類帶入java中</p>
+<h2 id="applicationId"><a href="#applicationId" class="headerlink" title="applicationId"></a>applicationId</h2><p>作用在google play store上 用以辨識app, 不同的release要有不同的applicationId, 否則會被視為同一個app</p>
+<p>可寫在defaultConfig或個別的buildType/productFlavors中 也可用applicationIdSuffix</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/IDE-ENV.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -791,10 +1423,12 @@
 <h3 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h3><p>水平或垂直 接續排列 權重分佈</p>
 <h3 id="TableLayout"><a href="#TableLayout" class="headerlink" title="TableLayout"></a>TableLayout</h3><p>格狀排列</p>
 <h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><p>約束排列 約束元間之間的相對關係 (取代RelativeLayout)</p>
+<h3 id="StaggeredGridLayout"><a href="#StaggeredGridLayout" class="headerlink" title="StaggeredGridLayout"></a>StaggeredGridLayout</h3><p>格狀(磚塊)排列</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LayoutParams.FILL_PARENT <span class="comment">//依父容器大小 填滿父容器</span></span><br><span class="line">LayoutParams.WRAP_CONTENT <span class="comment">//依內容大小 適當顯示</span></span><br></pre></td></tr></table></figure>
 <h3 id="SwipeRefreshLayout"><a href="#SwipeRefreshLayout" class="headerlink" title="SwipeRefreshLayout"></a>SwipeRefreshLayout</h3><p>有下拉Refresh功能</p>
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">findViewById&lt;SwipeRefreshLayout&gt;(R.id.refresh_layout)?.apply &#123;</span><br><span class="line">    isRefreshing = <span class="literal">true</span> <span class="comment">//設定為正在refresh</span></span><br><span class="line">    setColorSchemeColors(</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimary),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorAccent),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimaryDark)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    setOnRefreshListener&#123;</span><br><span class="line">        println(<span class="string">"do refresh..."</span>)</span><br><span class="line"></span><br><span class="line">        postDelayed(&#123;</span><br><span class="line">            println(<span class="string">"done refresh..."</span>)</span><br><span class="line">            isRefreshing = <span class="literal">false</span> <span class="comment">//設定為沒在refresh</span></span><br><span class="line">        &#125;, <span class="number">3000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h1 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h1><p>一個view中前綴layout的屬性是給其容器看的 例如layout_gravity與gravity 以個是告訴容器把自己放在哪 另一個是自己中把內容物放在哪</p>
+<h1 id="指定layout-manager"><a href="#指定layout-manager" class="headerlink" title="指定layout manager"></a>指定layout manager</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">manager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">RecyclerView mList = (RecyclerView) findViewById(R.id.list_view);</span><br><span class="line">mList.setLayoutManager(manager);</span><br></pre></td></tr></table></figure>
           
         
       
@@ -958,787 +1592,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Misc.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Misc.html" itemprop="url">Misc</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:58:34+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Launcher"><a href="#Launcher" class="headerlink" title="Launcher"></a>Launcher</h2><blockquote>
-<p>即手機home鍵看到的畫面 以及其延伸的機制 本身同樣為activity</p>
-</blockquote>
-<ul>
-<li><p>HomeScreen</p>
-<ul>
-<li>WorkSpace 上半部的大範圍</li>
-<li>HotSeat 底下的熱連結</li>
-<li>AppList (GridView)</li>
-</ul>
-</li>
-<li><p>應用</p>
-<ul>
-<li>Shortcut 將app中某些功能結合user需求產生快捷</li>
-<li>LiveFolder 類似將一個content provider封裝</li>
-<li>AppWidget</li>
-<li>WallPaper</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Widget.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Widget.html" itemprop="url">Widget</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:52:02+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Widget"><a href="#Widget" class="headerlink" title="Widget"></a>Widget</h2><blockquote>
-<p>一個自訂的service(app)顯示且整合於WorkSpace中 整合困難的部分在於launcher與widget執行於兩個不同的process中</p>
-</blockquote>
-<ul>
-<li>AppWidget 即自訂的app</li>
-<li>AppWidgetHost 一個AppWidget的宿主 負責與AppWidget交互</li>
-<li><p>AppWidgetHostView</p>
-</li>
-<li><p>AppWidgetManager</p>
-</li>
-<li>AppWidgetProvider 提供view的更新 是一個BroadReceiver (即使是空的也無所謂)</li>
-<li>AppWidgetProviderInfo 提供資料的更新(mata-data)</li>
-</ul>
-<blockquote>
-<p>寫code只需要AppWidgetProvider與Manifest+provider_info+layout的設定即可</p>
-</blockquote>
-<h4 id="RemoteViews"><a href="#RemoteViews" class="headerlink" title="RemoteViews"></a>RemoteViews</h4><blockquote>
-<p>一個能夠對映view的投射物件(兩者都從相同的layout建立) 透過RomoteViews操作view 再將此RomoteViews丟到遠端 遠端即可知道如何更新實際的view 達到跨process的view操作</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Animation.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Animation.html" itemprop="url">Animation</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:44:01+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://wiki.jikexueyuan.com/project/android-animation/" target="_blank" rel="noopener">*post</a></p>
-<h2 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h2><ol>
-<li>property (透過修改view實例自動產生動畫)</li>
-<li>view animation (tween) (Alpha Rotate Scale Translate Set)</li>
-<li>drawable animation (frame by frame)</li>
-</ol>
-<ul>
-<li>單位:<ol>
-<li>數字 : px</li>
-<li>50% : 自己寬度的50%</li>
-<li>50p : 容器寬度的50%</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Tween</span></span><br><span class="line"></span><br><span class="line">anim.setDuration</span><br><span class="line">anim.repeatMode <span class="comment">// 重頭再開始 / 倒退再開始</span></span><br><span class="line"></span><br><span class="line">anim.fillAfter <span class="comment">// 停在結束</span></span><br><span class="line"></span><br><span class="line">anim_set.add(anim)</span><br><span class="line"></span><br><span class="line">view.startAnimation(...)</span><br><span class="line"></span><br><span class="line">anim = animationUtils.loadAnimation(R.id....) <span class="comment">// from xml</span></span><br><span class="line"></span><br><span class="line">aty.overridePendingTransition() <span class="comment">//過場動畫</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//viewFlipper</span></span><br><span class="line">filper.setInAnimation(...)</span><br><span class="line">filper.setOutAnimation(...)</span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">android:activityOpenEnterAnimation</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ViewAnimator</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:inAnimation</span>=<span class="string">"@android:anim/slide_in_left"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">ViewAnimator</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><a href="https://www.youtube.com/watch?v=cp-2Cl6OWRQ&amp;index=60&amp;list=PLHOqLxXumAI-hCYIzsnn6LCmZHzEStuuh" target="_blank" rel="noopener">youtube</a></p>
-<h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
-<li>Tweened (補間動畫)<ul>
-<li>alpha 淡入淡出</li>
-<li>rotate</li>
-<li>scale</li>
-<li>translate 移動</li>
-</ul>
-</li>
-<li>Frame-by-Frame</li>
-<li>Property Animation (屬性動畫)</li>
-</ul>
-<blockquote>
-<p>Tweened與ValueAnimator的差別 Tweened僅是繪製上的調整 也就是說移動一個button 事實上只是<code>畫到別的地方</code>而其屬性仍保留在原處 而ValueAnimator則不斷的調整view的屬性</p>
-</blockquote>
-<h2 id="Tweened"><a href="#Tweened" class="headerlink" title="Tweened"></a>Tweened</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AlphaAnimation animate = <span class="keyword">new</span> AlphaAnimation(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">animate.setStartOffset(<span class="number">1000</span>);</span><br><span class="line">animate.setDuration(<span class="number">1000</span>);</span><br><span class="line">animate.setFillAfter(<span class="keyword">true</span>); <span class="comment">//動畫後停留在最後</span></span><br><span class="line">animate.setFillBefore(<span class="keyword">false</span>); <span class="comment">//動畫後回到起點</span></span><br><span class="line">animate.setRepeatCount(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">AnimationSet aset = <span class="keyword">new</span> AnimationSet(<span class="keyword">true</span>); <span class="comment">//共用interpolator</span></span><br><span class="line">aset.addAnimation(animate);</span><br><span class="line"></span><br><span class="line">imageview.startAnimation(aset);</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//rotate需定義旋轉的中心點,中心點可相對於自己或containar</span></span><br><span class="line">RotateAnimation animate = <span class="keyword">new</span> RotateAnimation(<span class="number">0</span>, <span class="number">360</span></span><br><span class="line">    Animation.RELATIVE_TO_PARENT, <span class="number">1f</span>,</span><br><span class="line">    Animation.RELATIVE_TO_PARENT, <span class="number">0f</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//scale需定義縮放的軸心,軸心可相對於自己或containar</span></span><br><span class="line">ScaleAnimation animate = <span class="keyword">new</span> ScaleAnimation(<span class="number">1</span>, <span class="number">0.1f</span>, <span class="number">1</span>, <span class="number">0.1f</span></span><br><span class="line">    Animation.RELATIVE_TO_SELF, <span class="number">0.5f</span>,</span><br><span class="line">    Animation.RELATIVE_TO_SELF, <span class="number">0.5f</span>); <span class="comment">//向中心點縮小</span></span><br></pre></td></tr></table></figure>
-<p>####用xml建動畫流程<br>建res/anim目錄,寫alpha.xml,android studio會自動產生對應的code在gen/R.java</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">...</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">alpha</span> <span class="attr">...</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Animation animate = AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.alpha);</span><br></pre></td></tr></table></figure>
-<h2 id="Interpolator"><a href="#Interpolator" class="headerlink" title="Interpolator"></a>Interpolator</h2><p><a href="https://www.youtube.com/watch?v=kNx83ejQLlY" target="_blank" rel="noopener">用途示範</a><br>插值器 補插動畫效果</p>
-<h2 id="Frame-by-Frame"><a href="#Frame-by-Frame" class="headerlink" title="Frame-by-Frame"></a>Frame-by-Frame</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">animation-list</span> <span class="attr">...</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"..."</span> <span class="attr">android:duration</span>=<span class="string">"500"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">animation-list</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">imageview.setBackgroundResource(R.drawable.animff);</span><br><span class="line">AnimationDrawable ad = (AnimationDrawable)imageview.getBackground();</span><br><span class="line">ad = AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.alpha);</span><br></pre></td></tr></table></figure>
-<h2 id="LayoutAnimationController"><a href="#LayoutAnimationController" class="headerlink" title="LayoutAnimationController"></a>LayoutAnimationController</h2><p>控制layout group中動畫的順序</p>
-<p>####從java建立<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Animation animate = AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.alpha);</span><br><span class="line">LayoutAnimationController lac = <span class="keyword">new</span> LayoutAnimationController(animate);</span><br><span class="line">lac.setDelay(<span class="number">0.5f</span>);</span><br><span class="line">lac.setOrder(LayoutAnimationController.ORDER_NORMAL);</span><br><span class="line">listview.setLayoutAnimation(lac);</span><br></pre></td></tr></table></figure></p>
-<p>####從xml導入<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LayoutAnimation</span></span></span><br><span class="line"><span class="tag">    <span class="attr">delay</span>=<span class="string">"0.5"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">animationOrder</span>=<span class="string">"normal"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">animation</span>=<span class="string">"@anim/alpha"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ListView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">layoutAnimation</span> =<span class="string">"@..."</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="AnimationListener"><a href="#AnimationListener" class="headerlink" title="AnimationListener"></a>AnimationListener</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">animation.setAnimationListener(<span class="keyword">new</span> AnimationListener()&#123;</span><br><span class="line">    onAnimationStart()</span><br><span class="line">    onAnimationEnd()</span><br><span class="line">    onAnimationRepeat()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="ValueAnimator"><a href="#ValueAnimator" class="headerlink" title="ValueAnimator"></a>ValueAnimator</h1><ul>
-<li>ValueAnimator : 類似以值的變化形容動畫 類似補差值</li>
-<li>ObjectAnimator : 將ValueAnimator套用到Object上</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ObjectAnimator animator = ObjectAnimator.ofFloat(textview, <span class="string">"alpha"</span>, <span class="number">1f</span>, <span class="number">0f</span>, <span class="number">1f</span>);  </span><br><span class="line">animator.setDuration(<span class="number">5000</span>);  </span><br><span class="line">animator.start();</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//組合多個動畫</span></span><br><span class="line">ObjectAnimator moveIn = ObjectAnimator.ofFloat(textview, <span class="string">"translationX"</span>, -<span class="number">500f</span>, <span class="number">0f</span>);  </span><br><span class="line">ObjectAnimator rotate = ObjectAnimator.ofFloat(textview, <span class="string">"rotation"</span>, <span class="number">0f</span>, <span class="number">360f</span>);  </span><br><span class="line">ObjectAnimator fadeInOut = ObjectAnimator.ofFloat(textview, <span class="string">"alpha"</span>, <span class="number">1f</span>, <span class="number">0f</span>, <span class="number">1f</span>);  </span><br><span class="line">AnimatorSet animSet = <span class="keyword">new</span> AnimatorSet();  </span><br><span class="line">animSet.play(rotate).with(fadeInOut).after(moveIn);  </span><br><span class="line">animSet.setDuration(<span class="number">5000</span>);  </span><br><span class="line">animSet.start();</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在xml定義anim_file.xml</span></span><br><span class="line">Animator animator = AnimatorInflater.loadAnimator(context, R.animator.anim_file);  </span><br><span class="line">animator.setTarget(view);  </span><br><span class="line">animator.start();</span><br></pre></td></tr></table></figure>
-<h1 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h1><blockquote>
-<p>overridePendingTransition方法需要在startAtivity方法或者是finish方法調用之後立即執行</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">overridePendingTransition(R.anim.zoomin, R.anim.zoomout)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Java/Thread.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Java/Thread.html" itemprop="url">Thread</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:41:05+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="相關知識"><a href="#相關知識" class="headerlink" title="相關知識"></a>相關知識</h1><ul>
-<li>program : binary code,一段機械碼或可被執行的檔案</li>
-<li>process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap). process間是不共用的,互相通信需特殊的機制</li>
-<li>thread : 實際執行程式碼的單元 包含stack與cache儲存變數與參考</li>
-<li>task : 任務,軟體概念,如同Runnable介面</li>
-<li>yield : 類似sleep 但不能指定時間 目的在於讓出cpu時間給<code>同優先級</code>的執行緒 (針對非timeslicing作業系統)</li>
-</ul>
-<h1 id="Concurrency-並發-vs-Parallelism-並行"><a href="#Concurrency-並發-vs-Parallelism-並行" class="headerlink" title="Concurrency(並發) vs Parallelism(並行)"></a>Concurrency(並發) vs Parallelism(並行)</h1><blockquote>
-<p>與thread數量無絕對關連 與資源共用有關<br>資源可以指<code>時間</code>或<code>執行緒</code>或<code>資料物件</code><br>例如javascript中共享執行緒的<code>異步執行(協程)(Promise)</code>就屬於併發的應用</p>
-</blockquote>
-<p><img src="https://cdn-images-1.medium.com/max/409/1*_4B2PKsJn9pUz3jbTnBnYw.png" alt="Concurrency vs Parallelism"></p>
-<p><img src="https://pic1.zhimg.com/80/4733c03cd0e126b9a500d5912bf9b581_hd.jpg" alt=""></p>
-<ul>
-<li>並發 : 一個資源 輪流供應多個人使用 (共用需要使用<code>鎖</code>)(有能力處理一起發生的事件,但未必一起執行)</li>
-<li>並行 : 每個人有各自的資源 雖同時進行 但互不相干</li>
-</ul>
-<h1 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h1><p><img src="http://wiki.jikexueyuan.com/project/java-interview-bible/images/thread.jpg" alt=""></p>
-<blockquote>
-<p>其應用通常與Lock息息相關</p>
-</blockquote>
-<h4 id="Daemon-Thread"><a href="#Daemon-Thread" class="headerlink" title="Daemon Thread"></a>Daemon Thread</h4><blockquote>
-<p>守護線程 又稱background thread 其生命週期中斷於程式的其他thread全部結束 例如GC線程<br>setDaemon(true)</p>
-</blockquote>
-<h1 id="corutine"><a href="#corutine" class="headerlink" title="corutine"></a>corutine</h1><blockquote>
-<p>協程 由編譯技術實現 被視為輕量級thread 應該是依附在thread 用於異步執行</p>
-</blockquote>
-<blockquote>
-<p>透過async/await讓工作不立即執行 且能夠被等待 相當於排程的概念 更有效率的使用thread</p>
-</blockquote>
-<p>例如 : 在main thread中連續執行ABC三函數</p>
-<ul>
-<li>一般情況下執行的順序是ABC</li>
-<li>若B能進入異步 順序會變為AC…B (B不確定何時執行)</li>
-<li>若B能進入異步 且C能等待B執行完 順序又變回ABC</li>
-<li>假若B在異步執行時是透過其他thread 那C等待B時main thread還能繼續其他工作</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>&#123;</span><br><span class="line">    value = <span class="keyword">await</span> getData();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Thread-Pool"><a href="#Thread-Pool" class="headerlink" title="Thread Pool"></a>Thread Pool</h1><p><a href="http://wiki.jikexueyuan.com/project/java-concurrent/thread-pools.html" target="_blank" rel="noopener">ref</a></p>
-<ul>
-<li>ExecutorService 即thread pool的實現</li>
-<li>Executor介面類 即execute() 供ExecutorService實現</li>
-<li>Executors工具類 便於產生ExecutorService</li>
-<li>內部有一個BlockingQueue存放任務</li>
-<li>每個thread如同一個looper等待取得task</li>
-</ul>
-<h1 id="Thread的切換"><a href="#Thread的切換" class="headerlink" title="Thread的切換"></a>Thread的切換</h1><p>一個流程中某些動作必須跳到異步執行 待執行完再切回原本的thread 這些切換thread的動作將使一個流程無法順暢的寫完</p>
-<p>舉例:</p>
-<ol>
-<li>user按下執行按鈕 (ui)</li>
-<li>下載url的內容 (network)</li>
-<li>存成本地檔案 (i/o)</li>
-<li>取得執行狀況 將內容顯示於ui (ui)</li>
-</ol>
-<h2 id="message-handler"><a href="#message-handler" class="headerlink" title="message handler"></a>message handler</h2><blockquote>
-<p>適合簡單的切換 多個連續流程仍難以處理</p>
-</blockquote>
-<h4 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h4><ul>
-<li>切換越多次巢狀越明顯</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppExecutors</span> </span>&#123; <span class="comment">//seeu 建立Thread切換機制</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> THREAD_COUNT = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor diskIO;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor networkIO;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor mainThread;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AppExecutors</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        diskIO = Executors.newSingleThreadExecutor();</span><br><span class="line">        networkIO = Executors.newFixedThreadPool(THREAD_COUNT);</span><br><span class="line">        mainThread = <span class="keyword">new</span> MainThreadExecutor());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">diskIO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> diskIO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">networkIO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> networkIO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">mainThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mainThread;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MainThreadExecutor</span> <span class="keyword">implements</span> <span class="title">Executor</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Handler mainThreadHandler = <span class="keyword">new</span> Handler(Looper.getMainLooper());</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(@NonNull Runnable command)</span> </span>&#123;</span><br><span class="line">            mainThreadHandler.post(command);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="ForkJoinPool"><a href="#ForkJoinPool" class="headerlink" title="ForkJoinPool"></a>ForkJoinPool</h1><p>專處理可併行的任務 將任務(ForkJoinTask)切割執行於pool中</p>
-<blockquote>
-<p>運用於Collection.ParallelStreams中</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//ForkJoinTask大致寫法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> Integer <span class="title">compute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(needSplit)&#123;</span><br><span class="line">        <span class="keyword">return</span> sum();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> middle = (start + end) / <span class="number">2</span>;</span><br><span class="line">        CountTask task1 = <span class="keyword">new</span> SumTask(start, middle);</span><br><span class="line">        CountTask task2 = <span class="keyword">new</span> SumTask(middle+<span class="number">1</span>, end);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//執行分割任務</span></span><br><span class="line">        task1.fork();</span><br><span class="line">        task2.fork();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> task1.join() + task2.join();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Room.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Room.html" itemprop="url">Room</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:31:06+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="TypeConverter"><a href="#TypeConverter" class="headerlink" title="TypeConverter"></a>TypeConverter</h2><blockquote>
-<p>建立物件與database primitive type的轉換</p>
-</blockquote>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Word</span></span>(</span><br><span class="line">        <span class="meta">@SerializedName(<span class="meta-string">"naText"</span>)</span></span><br><span class="line">        <span class="keyword">var</span> naText: String,</span><br><span class="line">        <span class="meta">@SerializedName(<span class="meta-string">"taText"</span>)</span></span><br><span class="line">        <span class="keyword">var</span> taText: String</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//透過TypeConverter建立object與json字串的轉換</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordConverter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@TypeConverter</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">word2Json</span><span class="params">(words: <span class="type">ArrayList</span>&lt;<span class="type">Word</span>&gt;)</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">val</span> json = Gson().toJson(words)</span><br><span class="line">        <span class="keyword">return</span> json</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TypeConverter</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">json2Word</span><span class="params">(json: <span class="type">String</span>)</span></span>: ArrayList&lt;Word&gt; &#123;</span><br><span class="line">        <span class="keyword">val</span> turnsType = <span class="keyword">object</span> : TypeToken&lt;ArrayList&lt;Word&gt;&gt;() &#123;&#125;.type</span><br><span class="line">        <span class="keyword">val</span> list = Gson().fromJson&lt;ArrayList&lt;Word&gt;&gt;(json, turnsType)</span><br><span class="line">        <span class="keyword">return</span> list</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entity(foreignKeys = [ForeignKey(entity = BookInfo::class,</span></span><br><span class="line"><span class="meta">        parentColumns = [<span class="meta-string">"id"</span>],</span></span><br><span class="line"><span class="meta">        childColumns = [<span class="meta-string">"bookId"</span>],</span></span><br><span class="line"><span class="meta">        onDelete = CASCADE)</span>])</span><br><span class="line"><span class="meta">@TypeConverters(WordConverter::class)</span> <span class="comment">//加入需要的TypeConverter</span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">BookContent</span></span>(<span class="meta">@PrimaryKey(autoGenerate = true)</span> <span class="keyword">var</span> id: <span class="built_in">Long</span>,</span><br><span class="line">                       <span class="keyword">var</span> bookId: <span class="built_in">Long</span>,</span><br><span class="line">                       <span class="keyword">var</span> words: ArrayList&lt;Word&gt; = ArrayList&lt;Word&gt;()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="ForeignKey-外鍵"><a href="#ForeignKey-外鍵" class="headerlink" title="ForeignKey (外鍵)"></a>ForeignKey (外鍵)</h2><blockquote>
-<p>使該table(child)與外界的table(parent)連動 例如一起被刪除</p>
-</blockquote>
-<h2 id="Embedded"><a href="#Embedded" class="headerlink" title="Embedded"></a>Embedded</h2><blockquote>
-<p>在table中坎入其他table或pojo class 避免宣告裡必須攤平所有欄位失去結構 可作為查詢時暫用的表</p>
-</blockquote>
-<blockquote>
-<p>實際的解析上有點像是將Embedded表的欄位名(變數名)平面化 所以各個表中的欄位名還不能重複 若重複還要加prefix將整個表的欄位名加前綴</p>
-</blockquote>
-<blockquote>
-<p>select語句針對prefix的部分必須一一列出(太麻煩了)</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *, tbl_b.id <span class="keyword">as</span> prefix_id <span class="keyword">FROM</span> tbl_a <span class="keyword">INNER</span> <span class="keyword">JOIN</span> tbl_b <span class="keyword">ON</span> tbl_a.id=tbl_b.id <span class="keyword">WHERE</span> ...</span><br></pre></td></tr></table></figure>
-<h2 id="Relation"><a href="#Relation" class="headerlink" title="Relation"></a>Relation</h2><blockquote>
-<p>可以建立一個連動的查詢 整合到一個table中 (用起來方便但要多建一個class)</p>
-</blockquote>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">BookSet</span></span>(</span><br><span class="line">        <span class="meta">@Embedded</span></span><br><span class="line">        <span class="keyword">var</span> info: BookInfo?=<span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//BookContent.bookId對映BookInfo.id</span></span><br><span class="line"><span class="comment">//查詢的結果必須是List或Set</span></span><br><span class="line">        <span class="meta">@Relation(parentColumn = <span class="meta-string">"id"</span>,</span></span><br><span class="line"><span class="meta">                entityColumn = <span class="meta-string">"bookId"</span>)</span> <span class="keyword">var</span> content: List&lt;BookContent&gt;?=<span class="literal">null</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="Migration-升級"><a href="#Migration-升級" class="headerlink" title="Migration 升級"></a>Migration 升級</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1784,7 +1642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

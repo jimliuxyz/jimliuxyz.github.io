@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="S7HvkrH4R_HiKK7j675QXHEjbdWWQiVyrmMeDjXxZT8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="玩兒轉Swift（第一季） 玩兒轉Swift（第二季） 玩兒轉Swift（第三季） 玩兒轉Swift（第四季） ref android轉ios Android與Swift iOS開發：語言與框架對照 線上 swift 讀書會 委託模式（Delegate） java的interface宣告在ios中稱為protocol 而delegate用來形容一個protocol是一個用以委託的介面 例如實作UI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自用筆記">
+<meta property="og:url" content="http://yoursite.com/home//Single/Swift.html">
+<meta property="og:site_name" content="自用筆記">
+<meta property="og:description" content="玩兒轉Swift（第一季） 玩兒轉Swift（第二季） 玩兒轉Swift（第三季） 玩兒轉Swift（第四季） ref android轉ios Android與Swift iOS開發：語言與框架對照 線上 swift 讀書會 委託模式（Delegate） java的interface宣告在ios中稱為protocol 而delegate用來形容一個protocol是一個用以委託的介面 例如實作UI">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://img-blog.csdn.net/20151007123409731">
+<meta property="og:updated_time" content="2018-04-16T00:20:15.285Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自用筆記">
+<meta name="twitter:description" content="玩兒轉Swift（第一季） 玩兒轉Swift（第二季） 玩兒轉Swift（第三季） 玩兒轉Swift（第四季） ref android轉ios Android與Swift iOS開發：語言與框架對照 線上 swift 讀書會 委託模式（Delegate） java的interface宣告在ios中稱為protocol 而delegate用來形容一個protocol是一個用以委託的介面 例如實作UI">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20151007123409731">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/home//Single/Swift.html"/>
+
+
+
+
+
+  <title> | 自用筆記</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">自用筆記</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">自用筆記</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/Swift.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-13T21:09:17+08:00">
+                2018-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.youtube.com/watch?v=zAlkgZvhWZk&amp;list=PLO5e_-yXpYLCqoOt0KVo4YWFzkehy0PfJ" target="_blank" rel="noopener">玩兒轉Swift（第一季）</a></p>
+<p><a href="https://www.youtube.com/watch?v=D4-h4LUtBcM&amp;list=PLO5e_-yXpYLBWgld0d2tJpyXT_lmhoXHR" target="_blank" rel="noopener">玩兒轉Swift（第二季）</a></p>
+<p><a href="https://www.youtube.com/watch?v=d4jP5WJUpx8&amp;list=PLO5e_-yXpYLD7rG4dMFYdLOfGtvAk3_ub" target="_blank" rel="noopener">玩兒轉Swift（第三季）</a></p>
+<p><a href="https://www.youtube.com/playlist?list=PLO5e_-yXpYLDX4Ebf13rfFpun74bJ8ps7" target="_blank" rel="noopener">玩兒轉Swift（第四季）</a></p>
+<p><a href="https://hugolu.gitbooks.io/learn-swift/content/Advanced/CollectionTypes.html" target="_blank" rel="noopener">ref</a></p>
+<p><a href="http://wetest.qq.com/lab/view/311.html" target="_blank" rel="noopener">android轉ios</a></p>
+<p><a href="http://m.myexception.cn/swift/2099382.html" target="_blank" rel="noopener">Android與Swift iOS開發：語言與框架對照</a></p>
+<p><a href="https://www.youtube.com/watch?v=50Tovse_O84&amp;list=PLSebY0Ugo-ze8m_75XXv_hisVqX8vsWk2" target="_blank" rel="noopener">線上 swift 讀書會</a></p>
+<h1 id="委託模式（Delegate）"><a href="#委託模式（Delegate）" class="headerlink" title="委託模式（Delegate）"></a>委託模式（Delegate）</h1><ul>
+<li>java的interface宣告在ios中稱為protocol</li>
+<li>而delegate用來形容一個protocol是一個用以委託的介面</li>
+<li>例如實作UIApplicationDelegate這個protocol者 就能被UIApplication委任一些工作</li>
+<li>其實就是interface的應用 只是觀點比較高 形容一種設計模式</li>
+</ul>
+<h1 id="啟動"><a href="#啟動" class="headerlink" title="啟動"></a>啟動</h1><p><a href="https://www.youtube.com/watch?v=22OBf1gvBrA" target="_blank" rel="noopener">Runloop</a></p>
+<blockquote>
+<p>static mian<br>UIApplication 通常使用預設(nil) 會建為單例 如同android中的context<br>AppDelegate 生命週期的委託處理 如同android中的application<br><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">UIApplicationMain(argc, argv, UIApplicationClassName, AppDelegateClassName)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><img src="https://img-blog.csdn.net/20151007123409731" alt=""></p>
+<h1 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h1><ul>
+<li>用_(underline)忽略宣告或值</li>
+<li>nil是一個特殊的類 不能當作0或false</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> x=<span class="number">0</span>  <span class="comment">//宣告常數</span></span><br><span class="line"><span class="keyword">var</span> x:<span class="type">Int</span>?  <span class="comment">//宣告變數</span></span><br><span class="line"><span class="keyword">var</span> x:<span class="type">Int</span> &#123; <span class="keyword">return</span> <span class="number">0</span> &#125; <span class="comment">//lazy loading</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//tuples</span></span><br><span class="line"><span class="keyword">var</span> x = (a:<span class="number">1</span>, b:<span class="number">2</span>)</span><br><span class="line"><span class="keyword">var</span> x:(<span class="type">Int</span>,<span class="type">Int</span>) = (<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="keyword">var</span> (a,b) = x   <span class="comment">//解構</span></span><br><span class="line"><span class="keyword">var</span> (a,b) = (<span class="number">1</span>,<span class="number">2</span>)   <span class="comment">//解構</span></span><br><span class="line"><span class="keyword">var</span> (<span class="number">_</span>,b) = (<span class="number">1</span>,<span class="number">2</span>)   <span class="comment">//忽略某部分</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//native array</span></span><br><span class="line"><span class="keyword">var</span> array1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> array2: [<span class="type">Int</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> array3: <span class="type">Array</span>&lt;<span class="type">Int</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="type">String</span>]()</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="type">Int</span>](<span class="number">10</span>,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="typealias-類型別名"><a href="#typealias-類型別名" class="headerlink" title="typealias 類型別名"></a>typealias 類型別名</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef int MyInt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typealias</span> <span class="type">MyInt</span> = <span class="type">Int</span></span><br></pre></td></tr></table></figure>
+<h4 id="amp-安全溢出"><a href="#amp-安全溢出" class="headerlink" title="&amp; 安全溢出"></a>&amp; 安全溢出</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="type">Int</span>.<span class="built_in">max</span> &amp;+ <span class="number">1</span> <span class="comment">//overflow不會報錯</span></span><br></pre></td></tr></table></figure>
+<h4 id="Range"><a href="#Range" class="headerlink" title="Range"></a>Range</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> r: <span class="type">Range</span> = a...b</span><br><span class="line"><span class="keyword">in</span> a...b <span class="comment">//閉合 包含ab</span></span><br><span class="line"><span class="keyword">in</span> a..&lt;b <span class="comment">//半閉合 包含a不包含b</span></span><br><span class="line"><span class="keyword">in</span> arr[<span class="number">0</span>..&lt;arr.<span class="built_in">count</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="賦值運算沒有返回值"><a href="#賦值運算沒有返回值" class="headerlink" title="賦值運算沒有返回值"></a>賦值運算沒有返回值</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Objective-C</span></span><br><span class="line"><span class="keyword">int</span> a = b = <span class="number">10</span> <span class="comment">//10指派給b 再把b(左邊運算元)指派給a</span></span><br><span class="line"><span class="comment">//swift不能這樣寫</span></span><br></pre></td></tr></table></figure>
+<h1 id="可選型-Optional"><a href="#可選型-Optional" class="headerlink" title="可選型(Optional)"></a>可選型(Optional)</h1><p>沒有可選型前 所以變數參考都可以指到null 有可選型後 預設是禁止變數指到null的 若一定要指到null則表示該變數是不穩定的 不是一定有值的 該變數就需要宣告為可選型</p>
+<ul>
+<li>宣告變數時用!的時機 : 該變數無法立即被初始化 但之後(被讀之前)一定會初始化</li>
+<li>使用變數時用!的時機 : 肯定該變數不會是空值 但若仍出現空值就該拋出異常</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str:<span class="type">Int</span>? = <span class="string">"str"</span> <span class="comment">//可選型</span></span><br><span class="line"><span class="keyword">var</span> str:<span class="type">Int</span>! <span class="comment">//隱性可選型 即該變數在使用前一定會賦值 通常用在建構時的變數</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">"what "</span> + str! <span class="comment">//強制對可選型解包</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> str = str, strN = strN <span class="keyword">where</span> strN=<span class="string">"N"</span>&#123; <span class="comment">//可以解包</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;&#125; <span class="comment">//無法解包</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//optional chaining</span></span><br><span class="line">str?.uppercaseString <span class="comment">//安全導航</span></span><br><span class="line">str!.uppercaseString <span class="comment">//強制導航 (kotlin用!!.)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = getStr() ?? <span class="string">""</span> <span class="comment">//如同kotlin的Elvis Operator :?</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">try</span>? getNum()   <span class="comment">//使getNum()不報Exception 但x可能是null</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">try</span>! getNum()   <span class="comment">//使getNum()不報Exception 且一定能得到回傳</span></span><br></pre></td></tr></table></figure>
+<h1 id="String-Index"><a href="#String-Index" class="headerlink" title="String.Index"></a>String.Index</h1><blockquote>
+<p>以Unicode算字數(即所見字數) str.count<br>str[idx]其中idx必須為String.Index類型 不能用整數當索引<br>操作string通常搭配String.Index與Range</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sIdx:<span class="type">String</span>.<span class="type">Index</span> = str.startIndex</span><br><span class="line"><span class="keyword">let</span> sIdx:<span class="type">String</span>.<span class="type">Index</span> = str.endIndex <span class="comment">//(值相當於 是str.count)</span></span><br><span class="line"></span><br><span class="line"><span class="type">String</span>.advencedBy(offset) <span class="comment">// 移動</span></span><br><span class="line"><span class="type">String</span>.<span class="type">Index</span>.predecessor() <span class="comment">// 前一個</span></span><br><span class="line"><span class="type">String</span>.<span class="type">Index</span>.successor() <span class="comment">// 後一個</span></span><br><span class="line"></span><br><span class="line">str_ = str[sIdx..&gt;eIdx]</span><br></pre></td></tr></table></figure>
+<h1 id="NSString"><a href="#NSString" class="headerlink" title="NSString"></a>NSString</h1><blockquote>
+<p>物件型的String<br>以byte算字數str.length</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="type">NSString</span>(format: <span class="string">"ttt %.2f"</span>. <span class="number">1.0</span>/<span class="number">3.0</span>) <span class="keyword">as</span> <span class="type">String</span></span><br></pre></td></tr></table></figure>
+<h1 id="變數觀察者"><a href="#變數觀察者" class="headerlink" title="變數觀察者"></a>變數觀察者</h1><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span> &#123;</span><br><span class="line">    <span class="keyword">willSet</span>(newX) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">didSet</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> x &gt; oldValue ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="型態"><a href="#型態" class="headerlink" title="型態"></a>型態</h1><h4 id="基本資料型態"><a href="#基本資料型態" class="headerlink" title="基本資料型態"></a>基本資料型態</h4><blockquote>
+<p>除一般來說primitive type外enum/struct/String/Array/Set/Dictionary都是基本資料型態<br>大都以struct實作<br>其賦值操作時是以值得複製進行 而非參考位置的複製</p>
+</blockquote>
+<h4 id="物件參考型態"><a href="#物件參考型態" class="headerlink" title="物件參考型態"></a>物件參考型態</h4><blockquote>
+<p>一般的物件 或大部分NS開頭的物件</p>
+</blockquote>
+<h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><ul>
+<li>一定要有花括號</li>
+<li>if中必須為bool值 (不會自動轉bool)(1/0不會轉true/false)</li>
+<li>switch case間會自動break 或用fallthrougt才能接到下個case</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//條件式不用小括號</span></span><br><span class="line"><span class="keyword">if</span> <span class="literal">true</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> x=getSome() <span class="keyword">as</span>? <span class="type">String</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//類似if 但語意更清楚</span></span><br><span class="line"><span class="keyword">guard</span> <span class="keyword">let</span> x=getSome() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> value = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> value = (<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"><span class="keyword">switch</span> value &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>,<span class="number">3</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>...<span class="number">10</span>:</span><br><span class="line">    <span class="keyword">case</span> (<span class="number">0</span>,<span class="number">1</span>...<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">case</span> (<span class="number">_</span>,<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">case</span> (<span class="keyword">let</span> x,<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span>(x,y):</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span>(x,y) <span class="keyword">where</span> x==y:</span><br><span class="line">        <span class="keyword">fallthrough</span> <span class="comment">//後面的case不能再有let定義變數</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//if case where</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">case</span> <span class="number">1</span>...<span class="number">10</span> = age <span class="keyword">where</span> age&gt;<span class="number">5</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//for case</span></span><br><span class="line"><span class="keyword">for</span> <span class="keyword">case</span> <span class="keyword">let</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">10</span> <span class="keyword">where</span> i%<span class="number">2</span>==<span class="number">0</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定退出的for迴圈</span></span><br><span class="line">tag : <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">10</span>&#123;</span><br><span class="line">    <span class="keyword">break</span> tag</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="函數"><a href="#函數" class="headerlink" title="函數"></a>函數</h1><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sayHi</span><span class="params">(name:String, arr:[Int])</span></span> -&gt; <span class="type">Int</span>&#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">"Hi, \(name)"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fun = sayHi <span class="comment">//函數可當變數</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值可用tuples</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">point</span><span class="params">(name:String)</span></span> -&gt; (a:<span class="type">Int</span>,b:<span class="type">Int</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//外部參數 (供caller辨識參數定義)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">who</span><span class="params">(student_name name:String, <span class="number">_</span> age:Int=<span class="number">20</span>)</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">who(student_name:<span class="string">"Jim"</span>) <span class="comment">//若有定義外部參數則一定要寫</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//內外部共用參數名</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">who</span><span class="params">(#name:String)</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//inout 傳reference</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">(<span class="keyword">let</span> v1:Int, <span class="keyword">var</span> v2:Int, v3:<span class="keyword">inout</span> Int)</span></span>&#123;</span><br><span class="line">    <span class="comment">//v1:預設用法</span></span><br><span class="line">    v2 = <span class="number">1</span></span><br><span class="line">    v3 = <span class="number">1</span> <span class="comment">//改變caller變數</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> v1=<span class="number">0</span>,v2=<span class="number">0</span>,v3=<span class="number">0</span></span><br><span class="line">test(v1, v2, &amp;v3) <span class="comment">//v3會被改變</span></span><br></pre></td></tr></table></figure>
+<h4 id="swap技巧"><a href="#swap技巧" class="headerlink" title="swap技巧"></a>swap技巧</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap</span><span class="params">(a:<span class="keyword">inout</span> Int, b:<span class="keyword">inout</span> Int)</span></span>&#123;</span><br><span class="line">    a = a + b</span><br><span class="line">    b = a - b</span><br><span class="line">    a = a - b</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap</span><span class="params">(a:<span class="keyword">inout</span> Int, b:<span class="keyword">inout</span> Int)</span></span>&#123;</span><br><span class="line">    a = a ^ b</span><br><span class="line">    b = a ^ b</span><br><span class="line">    a = a ^ b</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//xor : 不一樣時為1 可想像成取沒重疊的部分</span></span><br><span class="line"><span class="comment">// 3 ^ 4 : 0011 ^ 0100 = 0111 = 7...a</span></span><br><span class="line"><span class="comment">// 7 ^ 3 : 0111 ^ 0011 = 0100 = 4...b</span></span><br><span class="line"><span class="comment">// 7 ^ 3 : 0111 ^ 0100 = 0011 = 3...a</span></span><br></pre></td></tr></table></figure>
+<h1 id="類別"><a href="#類別" class="headerlink" title="類別"></a>類別</h1><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">desc</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">println</span>(<span class="string">"..."</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span>:<span class="title">Fruit</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name:<span class="type">String</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//constructor</span></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">init</span>(name:<span class="type">String</span>)&#123;</span><br><span class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>()</span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使能建構一個可能為nil的物件</span></span><br><span class="line">    <span class="keyword">init</span>?(type:<span class="type">Int</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> type==<span class="number">0</span> &#123; <span class="keyword">return</span> nul &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">desc</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">println</span>(<span class="string">"..."</span>)</span><br><span class="line">        <span class="number">10</span>.times &#123; <span class="comment">//Trailing Closure (尾端型態是block/lambda)</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"."</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//延伸類別的method</span></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Int</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">times</span><span class="params">(block:<span class="params">()</span></span></span>-&gt;())&#123; <span class="comment">// Trailing Closure</span></span><br><span class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">1</span>...<span class="keyword">self</span>&#123;</span><br><span class="line">            block()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Designated initializers : 指<code>子類</code>自己的init() 可以有多個(即多載) (通常前綴override複寫父類) 也只有這裡能super.init()</p>
+</li>
+<li><p>Convenience initializers : 指次要的init() 其內部一定要叫用Designated initializers</p>
+</li>
+</ul>
+<h1 id="enum-struct"><a href="#enum-struct" class="headerlink" title="enum / struct"></a>enum / struct</h1><h4 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h4><ul>
+<li>可以有field 與 method</li>
+<li>沒有繼承 沒有型別轉換 沒有init/deinit函數</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Cmd</span> : <span class="title">String</span></span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Add</span> = <span class="string">"add"</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Sub</span> = <span class="string">"sub"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cmd = .<span class="type">Add</span> <span class="comment">//自動搭配cmd.Add</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Res</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> width = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> height = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//加mutating後此func才能更動結構成員</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//struct的使用上如同原生型態 如</span></span><br><span class="line">a = <span class="number">3</span></span><br><span class="line">b = a   <span class="comment">//a的值複製給b, a與b雖然相等但各自有各自的值 (struct也是如此狀況)</span></span><br><span class="line">b = <span class="number">10</span></span><br><span class="line"><span class="comment">// a=3 b=10</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/Single/日誌.html" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/ios/Thread.html" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JimLiuXyz</p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/zh-tw/docs/" title="Hexo" target="_blank">Hexo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://theme-next.iissnan.com/" title="NextT" target="_blank">NextT</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#委託模式（Delegate）"><span class="nav-number">1.</span> <span class="nav-text">委託模式（Delegate）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#啟動"><span class="nav-number">2.</span> <span class="nav-text">啟動</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#變數"><span class="nav-number">3.</span> <span class="nav-text">變數</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#typealias-類型別名"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">typealias 類型別名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#amp-安全溢出"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">&amp; 安全溢出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Range"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">Range</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#賦值運算沒有返回值"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">賦值運算沒有返回值</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可選型-Optional"><span class="nav-number">4.</span> <span class="nav-text">可選型(Optional)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-Index"><span class="nav-number">5.</span> <span class="nav-text">String.Index</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSString"><span class="nav-number">6.</span> <span class="nav-text">NSString</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#變數觀察者"><span class="nav-number">7.</span> <span class="nav-text">變數觀察者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#型態"><span class="nav-number">8.</span> <span class="nav-text">型態</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本資料型態"><span class="nav-number">8.0.0.1.</span> <span class="nav-text">基本資料型態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物件參考型態"><span class="nav-number">8.0.0.2.</span> <span class="nav-text">物件參考型態</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程控制"><span class="nav-number">9.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函數"><span class="nav-number">10.</span> <span class="nav-text">函數</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#swap技巧"><span class="nav-number">10.0.0.1.</span> <span class="nav-text">swap技巧</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#類別"><span class="nav-number">11.</span> <span class="nav-text">類別</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#enum-struct"><span class="nav-number">12.</span> <span class="nav-text">enum / struct</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#struct"><span class="nav-number">12.0.0.1.</span> <span class="nav-text">struct</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JimLiuXyz</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

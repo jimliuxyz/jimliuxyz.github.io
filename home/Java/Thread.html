@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/409/1*_4B2PKsJn9pUz3jbTnBnYw.png">
 <meta property="og:image" content="https://pic1.zhimg.com/80/4733c03cd0e126b9a500d5912bf9b581_hd.jpg">
 <meta property="og:image" content="http://wiki.jikexueyuan.com/project/java-interview-bible/images/thread.jpg">
-<meta property="og:updated_time" content="2018-04-09T14:20:13.000Z">
+<meta property="og:updated_time" content="2018-04-15T12:13:21.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thread">
 <meta name="twitter:description" content="相關知識 program : binary code,一段機械碼或可被執行的檔案 process : 執行一個program後形成一個process,其中包含一塊記憶體空間(code/heap). process間是不共用的,互相通信需特殊的機制 thread : 實際執行程式碼的單元 包含stack與cache儲存變數與參考 task : 任務,軟體概念,如同Runnable介面 yield :">
@@ -424,7 +424,7 @@
 <blockquote>
 <p>運用於Collection.ParallelStreams中</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//ForkJoinTask大致寫法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> Integer <span class="title">compute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(needSplit)&#123;</span><br><span class="line">        <span class="keyword">return</span> sum();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> middle = (start + end) / <span class="number">2</span>;</span><br><span class="line">        CountTask task1 = <span class="keyword">new</span> SumTask(start, middle);</span><br><span class="line">        CountTask task2 = <span class="keyword">new</span> SumTask(middle+<span class="number">1</span>, end);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//執行分割任務</span></span><br><span class="line">        task1.fork();</span><br><span class="line">        task2.fork();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> task1.join() + task2.join();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//ForkJoinTask大致寫法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> Integer <span class="title">compute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!needSplit)&#123;</span><br><span class="line">        <span class="keyword">return</span> sum();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> middle = (start + end) / <span class="number">2</span>;</span><br><span class="line">        CountTask task1 = <span class="keyword">new</span> SumTask(start, middle);</span><br><span class="line">        CountTask task2 = <span class="keyword">new</span> SumTask(middle+<span class="number">1</span>, end);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//執行分割任務</span></span><br><span class="line">        task1.fork();</span><br><span class="line">        task2.fork();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> task1.join() + task2.join();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -543,7 +543,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

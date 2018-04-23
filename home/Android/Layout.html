@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="自用筆記">
 <meta property="og:description" content="Layout view跟layout定義上的差別: view是通常形容元件 layout則是容器(容器內的排版)layout是view的子類  RelativeLayout定位於 某元件 或 所處容器 的相對位置 FrameLayout定位於左上角 (view會重疊) LinearLayout水平或垂直 接續排列 權重分佈 TableLayout格狀排列 ConstraintLayout約束排列">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-06T05:10:31.000Z">
+<meta property="og:updated_time" content="2018-04-15T11:29:06.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Layout">
 <meta name="twitter:description" content="Layout view跟layout定義上的差別: view是通常形容元件 layout則是容器(容器內的排版)layout是view的子類  RelativeLayout定位於 某元件 或 所處容器 的相對位置 FrameLayout定位於左上角 (view會重疊) LinearLayout水平或垂直 接續排列 權重分佈 TableLayout格狀排列 ConstraintLayout約束排列">
@@ -365,10 +365,12 @@
 <h3 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h3><p>水平或垂直 接續排列 權重分佈</p>
 <h3 id="TableLayout"><a href="#TableLayout" class="headerlink" title="TableLayout"></a>TableLayout</h3><p>格狀排列</p>
 <h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><p>約束排列 約束元間之間的相對關係 (取代RelativeLayout)</p>
+<h3 id="StaggeredGridLayout"><a href="#StaggeredGridLayout" class="headerlink" title="StaggeredGridLayout"></a>StaggeredGridLayout</h3><p>格狀(磚塊)排列</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LayoutParams.FILL_PARENT <span class="comment">//依父容器大小 填滿父容器</span></span><br><span class="line">LayoutParams.WRAP_CONTENT <span class="comment">//依內容大小 適當顯示</span></span><br></pre></td></tr></table></figure>
 <h3 id="SwipeRefreshLayout"><a href="#SwipeRefreshLayout" class="headerlink" title="SwipeRefreshLayout"></a>SwipeRefreshLayout</h3><p>有下拉Refresh功能</p>
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">findViewById&lt;SwipeRefreshLayout&gt;(R.id.refresh_layout)?.apply &#123;</span><br><span class="line">    isRefreshing = <span class="literal">true</span> <span class="comment">//設定為正在refresh</span></span><br><span class="line">    setColorSchemeColors(</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimary),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorAccent),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimaryDark)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    setOnRefreshListener&#123;</span><br><span class="line">        println(<span class="string">"do refresh..."</span>)</span><br><span class="line"></span><br><span class="line">        postDelayed(&#123;</span><br><span class="line">            println(<span class="string">"done refresh..."</span>)</span><br><span class="line">            isRefreshing = <span class="literal">false</span> <span class="comment">//設定為沒在refresh</span></span><br><span class="line">        &#125;, <span class="number">3000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h1 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h1><p>一個view中前綴layout的屬性是給其容器看的 例如layout_gravity與gravity 以個是告訴容器把自己放在哪 另一個是自己中把內容物放在哪</p>
+<h1 id="指定layout-manager"><a href="#指定layout-manager" class="headerlink" title="指定layout manager"></a>指定layout manager</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">manager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">RecyclerView mList = (RecyclerView) findViewById(R.id.list_view);</span><br><span class="line">mList.setLayoutManager(manager);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -487,7 +489,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -560,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Layout"><span class="nav-number">1.</span> <span class="nav-text">Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RelativeLayout"><span class="nav-number">1.0.1.</span> <span class="nav-text">RelativeLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FrameLayout"><span class="nav-number">1.0.2.</span> <span class="nav-text">FrameLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinearLayout"><span class="nav-number">1.0.3.</span> <span class="nav-text">LinearLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TableLayout"><span class="nav-number">1.0.4.</span> <span class="nav-text">TableLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConstraintLayout"><span class="nav-number">1.0.5.</span> <span class="nav-text">ConstraintLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SwipeRefreshLayout"><span class="nav-number">1.0.6.</span> <span class="nav-text">SwipeRefreshLayout</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Layout"><span class="nav-number">1.</span> <span class="nav-text">Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RelativeLayout"><span class="nav-number">1.0.1.</span> <span class="nav-text">RelativeLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FrameLayout"><span class="nav-number">1.0.2.</span> <span class="nav-text">FrameLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinearLayout"><span class="nav-number">1.0.3.</span> <span class="nav-text">LinearLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TableLayout"><span class="nav-number">1.0.4.</span> <span class="nav-text">TableLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConstraintLayout"><span class="nav-number">1.0.5.</span> <span class="nav-text">ConstraintLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StaggeredGridLayout"><span class="nav-number">1.0.6.</span> <span class="nav-text">StaggeredGridLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SwipeRefreshLayout"><span class="nav-number">1.0.7.</span> <span class="nav-text">SwipeRefreshLayout</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#屬性"><span class="nav-number">2.</span> <span class="nav-text">屬性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指定layout-manager"><span class="nav-number">3.</span> <span class="nav-text">指定layout manager</span></a></li></ol></div>
             
 
           </div>

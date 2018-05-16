@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="S7HvkrH4R_HiKK7j675QXHEjbdWWQiVyrmMeDjXxZT8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="節點軟體 節點的核心是geth  MacOs安裝 安裝(以Ubuntu為例)#ppa源 : 非Ubuntu官方上架的軟體安裝來源(Personal Package Archive)#software-properties-common為add-apt-repository的依賴sudo apt-get install software-properties-commonsudo add-apt-r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ethereum">
+<meta property="og:url" content="http://yoursite.com/home//FinTech/ethereum.html">
+<meta property="og:site_name" content="自用筆記">
+<meta property="og:description" content="節點軟體 節點的核心是geth  MacOs安裝 安裝(以Ubuntu為例)#ppa源 : 非Ubuntu官方上架的軟體安裝來源(Personal Package Archive)#software-properties-common為add-apt-repository的依賴sudo apt-get install software-properties-commonsudo add-apt-r">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-05-08T03:36:14.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ethereum">
+<meta name="twitter:description" content="節點軟體 節點的核心是geth  MacOs安裝 安裝(以Ubuntu為例)#ppa源 : 非Ubuntu官方上架的軟體安裝來源(Personal Package Archive)#software-properties-common為add-apt-repository的依賴sudo apt-get install software-properties-commonsudo add-apt-r">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/home//FinTech/ethereum.html"/>
+
+
+
+
+
+  <title>Ethereum | 自用筆記</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">自用筆記</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">自用筆記</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/FinTech/ethereum.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ethereum</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-26T19:31:09+08:00">
+                2018-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="節點軟體"><a href="#節點軟體" class="headerlink" title="節點軟體"></a>節點軟體</h1><blockquote>
+<p>節點的核心是geth</p>
+</blockquote>
+<p><a href="https://luren5.gitbooks.io/dapp-develop/content/22-mac-os%E4%B8%8B%E5%AE%89%E8%A3%85.html" target="_blank" rel="noopener">MacOs安裝</a></p>
+<h4 id="安裝-以Ubuntu為例"><a href="#安裝-以Ubuntu為例" class="headerlink" title="安裝(以Ubuntu為例)"></a>安裝(以Ubuntu為例)</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#ppa源 : 非Ubuntu官方上架的軟體安裝來源(Personal Package Archive)</span></span><br><span class="line"><span class="comment">#software-properties-common為add-apt-repository的依賴</span></span><br><span class="line"></span><br><span class="line">sudo apt-get install software-properties-common</span><br><span class="line">sudo add-apt-repository -y ppa:ethereum/ethereum</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install ethereum</span><br></pre></td></tr></table></figure>
+<h4 id="簡易安裝"><a href="#簡易安裝" class="headerlink" title="簡易安裝"></a>簡易安裝</h4><p>缺bootnode, evm, disasm, rlpdump, ethtest…</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">apt-get install geth</span><br></pre></td></tr></table></figure>
+<h4 id="編譯"><a href="#編譯" class="headerlink" title="編譯"></a>編譯</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安裝golang編譯器</span></span><br><span class="line">sudo apt-get install -y build-essential golang</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> go-ethereum</span><br><span class="line">make geth</span><br></pre></td></tr></table></figure>
+<p>官方還有提供Docker Image在Hub上</p>
+<h1 id="合約結構"><a href="#合約結構" class="headerlink" title="合約結構"></a>合約結構</h1><ul>
+<li>合約也有自己的一個account <code>把他當人看</code> (這個觀念很重要!!!!!!)</li>
+<li>transaction為一個動作(交易)的執行 例如轉帳/建合約/呼叫合約 就是一個transaction</li>
+<li>任何帳號都能發起transaction呼叫合約函數 且不能確定會有幾個節點同時執行合約 但最終只會有一個勝出</li>
+<li>solidity仍在演化中 語法或結構隨時都會進化</li>
+<li>只要有寫入操作都會消耗gas 若是在不允許消耗gas的函數(宣告為constant或fallback函數)中做寫入操作將導致失敗難以察覺</li>
+</ul>
+<p><a href="https://www.slideshare.net/NicholasLin15/ss-69279815" target="_blank" rel="noopener">solidity中文簡介</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">pragma solidity ^<span class="number">0.4</span><span class="number">.2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用其他合約</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"Another.sol"</span></span><br><span class="line"></span><br><span class="line">contract Test &#123;</span><br><span class="line">    <span class="comment">//狀態變數(state)</span></span><br><span class="line">    <span class="comment">//int/uint/byte/bool/string/struct/address/mapping</span></span><br><span class="line">    <span class="comment">//基本上允許不初始化 即'零態' 但array會報錯</span></span><br><span class="line">    <span class="comment">//var:賦值後才確定型別(棄用)</span></span><br><span class="line">    address public owner; <span class="comment">//相當於uint160 (20byte)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//事件 (會將參數寫到transaction receipt作為收據紀錄)</span></span><br><span class="line">    <span class="comment">//客戶端可以訂閱(watch)這個event (當transaction被放到blockchain後)</span></span><br><span class="line">    event Becalled(address indexed caller, bytes message);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//枚舉 (值為uint)</span></span><br><span class="line">    enum State &#123;Ready, Doing, Done&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//key value pair (初值為0)(不需初始化)</span></span><br><span class="line">    mapping (<span class="function"><span class="params">address</span> =&gt;</span> userInfo) public users;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//array (初值為0,可動態,有維度,刪除元素時會shift)</span></span><br><span class="line">    uint[] best; <span class="comment">//動態陣列類似於arraylist 用push新增</span></span><br><span class="line">    uint[<span class="number">5</span>] top5;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        uint[<span class="number">3</span>] memory a = [uint(<span class="number">1</span>), <span class="number">2</span>, <span class="number">3</span>]; <span class="comment">//左右必須對稱; uint(1)為顯式轉型</span></span><br><span class="line">        best = a;</span><br><span class="line">        best = <span class="keyword">new</span> uint[](<span class="number">2</span>); <span class="comment">//用new初始化陣列; 宣告2個元素的陣列</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    string str = <span class="string">'123'</span> <span class="comment">// ascii 非 unicode</span></span><br><span class="line">    bytes(str)[<span class="number">2</span>] <span class="comment">//string操作通常要轉為bytes</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">0</span>; i&lt;<span class="number">2000</span>; i++)&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//hex字串轉bytes</span></span><br><span class="line">    bytes memory signedString =hex<span class="string">"f4128988cbe7df8...."</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//結構 (如同原生型態 賦值於變數時會被拷貝) (只有internal函數能回傳struct)</span></span><br><span class="line">    struct Member &#123;</span><br><span class="line">        string name;</span><br><span class="line">        uint age;</span><br><span class="line">        bytes12 phone;</span><br><span class="line">        address addr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//建構子</span></span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="comment">//不能用this 不能做自己的external call</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//呼叫函數時用於檢查狀態 類似處理assertion</span></span><br><span class="line">    <span class="comment">//一個函數可以有多個modifier 也可以覆寫父合約的modifier</span></span><br><span class="line">    modifier beforeCall &#123;</span><br><span class="line">        <span class="keyword">if</span>(msg.sender != owner) <span class="keyword">throw</span>;</span><br><span class="line">        <span class="comment">//原函數尚未執行</span></span><br><span class="line">        _; <span class="comment">//&lt;-表示暫時返回原函數執行</span></span><br><span class="line">        <span class="comment">//原函數執行完畢</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//函數 (函數內任何變數其作用域為整個函數 沒有block概念)</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">testFunc</span>(<span class="params"></span>) <span class="title">beforeCall</span> </span>&#123;</span><br><span class="line">        Member memory s = Member(&#123;</span><br><span class="line">            age : <span class="number">10</span>,</span><br><span class="line">            name : <span class="string">"Jack"</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">        Member memory s = Member(<span class="string">"Test"</span>, <span class="number">10</span>,...);</span><br><span class="line">        Becalled(msg.sender, msg.data);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//storage修飾傳入的是一個field(status) (僅能internal或private)</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">modifyX</span>(<span class="params">uint[] storage _x</span>) <span class="title">internal</span> </span>&#123;...&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//fallback function 當找不到叫用的函數(例如有人轉帳到合約中)或寫錯函數名則會呼叫這個函數</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">throw</span>; <span class="comment">//避免合約被當成一般帳戶被入帳 而之後無法出帳</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="memory-storage"><a href="#memory-storage" class="headerlink" title="memory / storage"></a>memory / storage</h4><blockquote>
+<p>僅針對struct與array設計</p>
+</blockquote>
+<ul>
+<li>memory : 記憶體變數 如同一般程式語言 不能宣告做為field</li>
+<li><p>storage : 永久儲存體變數 將寫入區塊</p>
+</li>
+<li><p>兩者轉換都是以copy的方式 (賦值 或 經由函數傳遞時)</p>
+</li>
+<li>memory變數丟到另一個函數參數也是memory 兩個會是同一塊memory (其他程式語言處理struct與array也大致如此)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">contract SimpleAssign&#123;</span><br><span class="line">    //field(status)一律為storage變數</span><br><span class="line">    struct S&#123;</span><br><span class="line">        string a;</span><br><span class="line">        uint b;</span><br><span class="line">    &#125;</span><br><span class="line">    uint x;</span><br><span class="line">    </span><br><span class="line">    function assign(S s) internal&#123; //參數變數(s)預設是memory(即一份copy)</span><br><span class="line">        //struct區域變數(tmp)預設是storage [為何要預設為storage???]</span><br><span class="line">        S tmp = s;  //報錯</span><br><span class="line">        //1.必須強制將傳入參數設為storage (該函數必須為internal)</span><br><span class="line">        //2.或將tmp設為memory</span><br><span class="line">        </span><br><span class="line">        S memory tmp2 = S(&quot;memory&quot;, 0); //在記憶體中使用struct</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //struct宣告該為memory或storage跟宣告的地方與使用的方式有關</span><br><span class="line">    //1.丟進函數前是什麼 2.進入函數時是什麼 3.進入函數後是什麼</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="合約產生合約"><a href="#合約產生合約" class="headerlink" title="合約產生合約"></a>合約產生合約</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &quot;./MyCont.sol&quot;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">address caddr = new MyCont()    //部署合約 先取得address</span><br><span class="line">MyCont cont = MyCont(caddr)     //才能建立實體叫用</span><br></pre></td></tr></table></figure>
+<h4 id="fallback函數"><a href="#fallback函數" class="headerlink" title="fallback函數"></a>fallback函數</h4><blockquote>
+<p>當呼叫一個合約中沒有的函數 會執行fallback<br>當執行address.send()時固定會執行fallback<br>fallback有2300gas的限制 故大致用於事件紀錄</p>
+</blockquote>
+<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><blockquote>
+<p>每次交易可以紀錄receipt(收據) 取回時為json格式<br>每次交易可以觸發多次event 產生多個log<br>參數預設存到data欄位 例如event(A,B) 造成 {data:’AB’} 無分隔符號<br>如果參數前綴indexed可將參數存到topic欄位(有分隔符號) 預設第一個是event的識別字 剩下3個可以用<br>事件在客戶端可被監聽(event callback)</p>
+</blockquote>
+<h4 id="this"><a href="#this" class="headerlink" title="this"></a>this</h4><blockquote>
+<p>合約的執行環境 等同合約的address<br>this不同 表示storage不同 讀寫出的東西就不同</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Contract A&#123;</span><br><span class="line">    function func2() internal &#123;&#125;</span><br><span class="line">    function func1()&#123;</span><br><span class="line">        #func2被以internal的方式呼叫</span><br><span class="line">        func2();</span><br><span class="line">        </span><br><span class="line">        #func2被以external的方式呼叫 (若func2強制宣告為internal則會報錯)</span><br><span class="line">        this.func2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="send-與transfer"><a href="#send-與transfer" class="headerlink" title="send()與transfer()"></a>send()與transfer()</h4><blockquote>
+<p>都用於傳送eth 有2300gas限制</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">send() 失敗回傳false</span><br><span class="line">transfer() 失敗直接throw(建議使用)</span><br><span class="line"></span><br><span class="line">#msg.sender傳送1wei給addr</span><br><span class="line">addr.send(1)</span><br></pre></td></tr></table></figure>
+<h4 id="assert與require與throw"><a href="#assert與require與throw" class="headerlink" title="assert與require與throw"></a>assert與require與throw</h4><blockquote>
+<p>都是assertion的處理<br>throw偏向<code>意外</code>會被取走等同gasLimit的手續費 (正常是gasUsed)<br>assert與throw一樣 (應注意而未注意)<br>require為gasUsed (需求不符)(可傳錯誤訊息)<br>revert() 同require 只是沒有輸入參數(可傳錯誤訊息)</p>
+</blockquote>
+<h4 id="call-與delagatecall"><a href="#call-與delagatecall" class="headerlink" title="call()與delagatecall()"></a>call()與delagatecall()</h4><p><a href="https://vomtom.at/address-call-vs-delegatecall-vs-libraries/" target="_blank" rel="noopener">示例</a><br>除了用send()與transfer()做tx外 call也可以達成</p>
+<p>A為caller B為someone</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">caller執行someone.call(&quot;somefunc&quot;)</span><br><span class="line">&gt; 在somefunc中 : this為someone ; msg.sender為caller</span><br><span class="line">&gt; 兩合約各自安全</span><br><span class="line">&gt; 可以串addr.gas().value().call(...) 指定gas與value</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">caller執行someone.callcode(&quot;somefunc&quot;)</span><br><span class="line">&gt; 在somefunc中 : this為caller 等同於caller將somefunc嵌入自己的函數中</span><br><span class="line">&gt; caller的變數有被覆寫的風險 `somefunc中沒有msg訪問權` (已納入棄用)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">caller執行someone.delagatecall(&quot;somefunc&quot;)</span><br><span class="line">&gt; 同callcode 差別在有msg訪問權 (msg持續是caller中的msg)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#increaseAge為合約內的一個函數</span><br><span class="line">bytes4 methodId = bytes4(keccak256(&quot;increaseAge(string,uint256)&quot;));</span><br><span class="line">#addr為合約帳戶 固定返回bool表示成敗</span><br><span class="line">bool res = addr.call(methodId,&quot;jack&quot;, 1);</span><br><span class="line"></span><br><span class="line">addr.call(&quot;myfunc&quot;, &quot;str&quot;);</span><br><span class="line">#設定gas limit與傳輸的eth值</span><br><span class="line">addr.call.gas(1000000).value(1 ether)(&quot;myfunc&quot;, &quot;str&quot;);</span><br><span class="line"></span><br><span class="line">addr.delagatecall.gas(1000000)(&quot;register&quot;, &quot;MyName&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="函數可見性-visibility"><a href="#函數可見性-visibility" class="headerlink" title="函數可見性(visibility)"></a>函數可見性(visibility)</h4><p><a href="http://me.tryblockchain.org/solidity-function-advanced1.html" target="_blank" rel="noopener">參考</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public 可被外界使用(預設)(是internal也是external)</span><br><span class="line">private 合約內部使用</span><br><span class="line">internal - 自己與其繼承合約</span><br><span class="line">external 僅供外部合約使用 (內部硬要呼叫要用this.)</span><br><span class="line"></span><br><span class="line">public用於field可讓編譯器建立訪問器(getter) (array一次僅能get一個元素)(mapping要看key/value的型別)(struct也是看型別)</span><br><span class="line"></span><br><span class="line">合約內回傳的資料型態較不受限 合約外(external call)通常是基本型沒問題 其他最好使用時測試 因為solidity變化太快</span><br></pre></td></tr></table></figure>
+<h4 id="函數屬性標示"><a href="#函數屬性標示" class="headerlink" title="函數屬性標示"></a>函數屬性標示</h4><ul>
+<li>payable<ul>
+<li>只要函數涉及msg.value 就要加payable</li>
+</ul>
+</li>
+<li>constant<ul>
+<li>宣告該函數不需寫資料到區塊鏈 不需身份識別與gas</li>
+<li>原本storage變數也不會寫入!!!!</li>
+<li>在remix控制台可以看到return值</li>
+</ul>
+</li>
+<li>非constant<ul>
+<li>即可能需要寫入資料的函數</li>
+<li>必須透過event寫receipt 再讀receipt才能debug</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">payable : </span><br><span class="line">constant : 宣告該函數不需寫資料到區塊鏈 不需身份識別與gas (或呼叫時加.call()也行)</span><br></pre></td></tr></table></figure>
+<h4 id="物件"><a href="#物件" class="headerlink" title="物件"></a>物件</h4><blockquote>
+<p>單位 : ether finney wei<br>時間 : seconds weeks years now (base on block)<br>msg : 與transaction相關的訊息 (sender:發起人 value:交易的ether)<br>address : 一個帳號地址 (用=0x0來歸零)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">msg : 呼叫函數時以msg帶入呼叫者與一個ehter value</span><br><span class="line">msg.sender : 代表執行函數的人(在建構函數時就是部署合約的人)</span><br><span class="line">msg.vlaue : msg被傳入的ether</span><br><span class="line"></span><br><span class="line">this.balance : 合約餘額</span><br><span class="line"></span><br><span class="line">address.balance : 帳號餘額</span><br><span class="line">address.send(amount) : msg.sender送錢到address (方向邏輯有點相反 特別注意)</span><br><span class="line"></span><br><span class="line">selfdestruct(addr) : 終結合約(結帳) 將合約balance轉到addr</span><br></pre></td></tr></table></figure>
+<h4 id="web3-js內部如何包裝交易訊息到節點上執行"><a href="#web3-js內部如何包裝交易訊息到節點上執行" class="headerlink" title="web3.js內部如何包裝交易訊息到節點上執行"></a>web3.js內部如何包裝交易訊息到節點上執行</h4><p><a href="https://huangwenwei.com/blogs/life-cycle-of-an-ethereum-transaction" target="_blank" rel="noopener">參考</a><br><a href="https://medium.com/@mvmurthy/full-stack-hello-world-voting-ethereum-dapp-tutorial-part-1-40d2d0d807c2" target="_blank" rel="noopener">參考</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//以呼叫此合約函數為例</span></span><br><span class="line">contractInstance.voteForCandidate(<span class="string">'Rama'</span>, &#123;<span class="attr">from</span>: web3.eth.accounts[<span class="number">0</span>]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//建立交易訊息</span></span><br><span class="line"><span class="keyword">var</span> rawTxn = &#123;</span><br><span class="line">    nonce: web3.toHex(txnCount),    <span class="comment">//txnCount可以是當下的交易總筆數</span></span><br><span class="line">    gasPrice: web3.toHex(<span class="number">100000000000</span>),</span><br><span class="line">    gasLimit: web3.toHex(<span class="number">140000</span>),</span><br><span class="line">    to: <span class="string">'0x633296baebc20f33ac2e1c1b105d7cd1f6a0718b'</span>, <span class="comment">//合約帳號</span></span><br><span class="line">    value: web3.toHex(<span class="number">0</span>),   <span class="comment">//交易金額</span></span><br><span class="line">    data: <span class="string">'0xc7ed0149'</span>+<span class="string">'52616d61....'</span>  <span class="comment">//合約函數的hash值的前4byte與參數</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//合約函數的hash值</span></span><br><span class="line">web3.sha3(<span class="string">'voteForCandidate(bytes32 candidate)'</span>)</span><br><span class="line">=<span class="string">'0xc7ed014922ff9493a686391b70ca0e8bb7e80f91c98a5cd3d285778ab2e245b3'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//合約參數被串接為每個32byte的字串</span></span><br><span class="line"><span class="number">0x52616d610000000000</span>....</span><br><span class="line"></span><br><span class="line"><span class="comment">//將privateKey從字串轉為bytes</span></span><br><span class="line"><span class="keyword">const</span> privateKey = Buffer.from(<span class="string">'e331b6d69882b4ab4ea581s88e0b6s4039a3de5967d88dfdcffdd2270c0fd109'</span>, <span class="string">'hex'</span>)</span><br><span class="line"><span class="comment">//產生交易物件</span></span><br><span class="line"><span class="keyword">const</span> txn = <span class="keyword">new</span> EthereumTx(rawTxn)</span><br><span class="line"><span class="comment">//簽名該交易</span></span><br><span class="line">txn.sign(privateKey)</span><br><span class="line"><span class="comment">//序列化</span></span><br><span class="line"><span class="keyword">const</span> serializedTxn = txn.serialize()</span><br><span class="line"><span class="comment">//取得交易id (往後以此id查找交易訊息/狀態)</span></span><br><span class="line">transactionId = sha3(serializedTxn)</span><br><span class="line"><span class="comment">//將serializedTxn傳到任何一個節點即可 (傳到json-rpc??)</span></span><br></pre></td></tr></table></figure>
+<h1 id="模組"><a href="#模組" class="headerlink" title="模組"></a>模組</h1><p><a href="https://kknews.cc/news/vkabnby.html" target="_blank" rel="noopener">安全性防禦建議</a></p>
+<ul>
+<li>eth：交易與區塊</li>
+<li>net：p2p網絡狀態</li>
+<li>admin：管理節點 &lt;危險權限&gt;</li>
+<li>miner：挖礦</li>
+<li>personal：帳戶管理 &lt;危險權限&gt;</li>
+<li>txpool：交易內存池</li>
+<li>web3：包含以上 幣值單位轉換</li>
+</ul>
+<h1 id="私有鏈"><a href="#私有鏈" class="headerlink" title="私有鏈"></a>私有鏈</h1><p><a href="https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8-go-ethereum-1-6-clique-poa-consensus-%E5%BB%BA%E7%AB%8B-private-chain-1-4d359f28feff" target="_blank" rel="noopener">ref</a></p>
+<h4 id="步驟簡述"><a href="#步驟簡述" class="headerlink" title="步驟簡述"></a>步驟簡述</h4><ul>
+<li>安裝節點軟體 geth</li>
+<li>建立account (keystore)</li>
+<li>建立創世區塊 custom_genesis.json</li>
+<li>以創世區塊初始化節點</li>
+<li>啟動節點</li>
+</ul>
+<h4 id="建立node"><a href="#建立node" class="headerlink" title="建立node"></a>建立node</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /mychain</span><br><span class="line"></span><br><span class="line">mkdir node1</span><br><span class="line"><span class="built_in">cd</span> node1</span><br><span class="line"></span><br><span class="line"><span class="comment">#以data目錄做為資料與keystore目錄</span></span><br><span class="line"><span class="comment">#產生新帳號(HASH)表示這個node的account(address)(通常會前綴0X)</span></span><br><span class="line"><span class="comment">#帳號需要搭配一組密碼</span></span><br><span class="line">geth --datadir ./data account new</span><br></pre></td></tr></table></figure>
+<h4 id="建立genesis-block的設定"><a href="#建立genesis-block的設定" class="headerlink" title="建立genesis block的設定"></a>建立genesis block的設定</h4><blockquote>
+<p>初始化時Clique模式需將授權節點的相關資訊放在Block Header中<br>透過puppeth(CLI)按步驟設定</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#回到/mychain目錄</span></span><br><span class="line">puppeth</span><br><span class="line"></span><br><span class="line"><span class="comment">#設定network name為mynet 最後會產生mynet.json</span></span><br><span class="line"><span class="comment">#至少先需要設定一個節點(account)做為授權seal的節點</span></span><br></pre></td></tr></table></figure>
+<h4 id="初始化節點"><a href="#初始化節點" class="headerlink" title="初始化節點"></a>初始化節點</h4><blockquote>
+<p>用同一個設定檔init各個節點</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">geth --datadir node1/data init mynet.json</span><br></pre></td></tr></table></figure>
+<h4 id="啟動節點"><a href="#啟動節點" class="headerlink" title="啟動節點"></a>啟動節點</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> node1</span><br><span class="line">geth --datadir ./data --networkid 55661 --port 2000 console</span><br><span class="line"></span><br><span class="line"><span class="comment">#networkid : 節點間要有共同的id才能互通(1:主網 2:測試)(預設會進到ether主網絡)</span></span><br><span class="line"><span class="comment">#port : 即該節點export出的port 做為入口讓其他節點連結 (非rpc-api的port)(預設30303)</span></span><br><span class="line"><span class="comment">#console : 表示啟動進入javascript console提示符號 可進行geth內部的控制</span></span><br><span class="line"><span class="comment">#rpcapi 'module' : 開啟某module的rpcapi 允許外部連入(預設僅開eth,net,web3)</span></span><br><span class="line"><span class="comment">#rpcaddr : localhost或0.0.0.0表示完全對外開放</span></span><br><span class="line"><span class="comment">#rpccorsdomain : 指定rpc僅接受某domain</span></span><br><span class="line"><span class="comment">#nodiscover : 取消p2p自動搜尋節點</span></span><br><span class="line"><span class="comment">#netrestrict : 限制與之連線的節點在某個子網域</span></span><br><span class="line"><span class="comment">#bootnodes : 指定啟動時直接連接某些節點</span></span><br><span class="line"><span class="comment">#unlock : 解鎖</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>所有節點都可以miner.start() 但要先unlock</li>
+</ul>
+<h4 id="與其他節點連接"><a href="#與其他節點連接" class="headerlink" title="與其他節點連接"></a>與其他節點連接</h4><ol start="0">
+<li>執行geth時帶bootnodes參數</li>
+<li>進節點console執行admin.addPeer()</li>
+<li>設定./data/static-nodes.json</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#節點格式 enode://&lt;id&gt;@&lt;ip&gt;:&lt;port&gt;</span></span><br><span class="line"><span class="comment">#[::]為IPv6的寫法 可能表示localhost或全零</span></span><br><span class="line">enode://e92fd77c6b2df9daff7ac54473c40d1eef18f63eddbd6fadc2d5fd79a5d957e522348314d6bd63c6919e09bd6b2b5e5616d9b8169ab898946a21d0e06abe08ad@61.66.218.xxx:30303</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Kademlia(Kad) : P2P技術 NodeID裡包含路由訊息</li>
+</ul>
+<h4 id="節點的分類"><a href="#節點的分類" class="headerlink" title="節點的分類"></a>節點的分類</h4><p>僅是應用上的定義 實際上每個節點都是一個平等的Account Address</p>
+<ul>
+<li>eth : 一般的用戶端 例如使用電子錢包的人</li>
+<li>miner : 礦工</li>
+<li>bootstrap 用來形容一個固定節點 當有新節點加入時就找bootstrap</li>
+</ul>
+<h4 id="console"><a href="#console" class="headerlink" title="console"></a>console</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#取得node資訊</span></span><br><span class="line">admin.nodeInfo</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入節點 (表示可以去連別的節點)</span></span><br><span class="line">admin.addPeer</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看連接的節點</span></span><br><span class="line">admin.peers</span><br><span class="line"></span><br><span class="line"><span class="comment">#開始挖礦 初次啟動會產生dag檔</span></span><br><span class="line">miner.start()</span><br><span class="line"></span><br><span class="line"><span class="comment">#設定挖礦入帳的地址</span></span><br><span class="line">miner.setEtherbase(eth.accounts[0])</span><br><span class="line">eth.coinbase <span class="comment">#對應到setEtherbase</span></span><br><span class="line"><span class="comment">#第三方client通常會以miner(節點)的coinbase的地址做為from進行操作 所以需要時必須對該節點unlock</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查詢餘額</span></span><br><span class="line">eth.getBalance(<span class="string">"&lt;Address&gt;"</span>)</span><br><span class="line"></span><br><span class="line">eth.sendTransaction <span class="comment">#回傳transaction的hash 合約回傳值要用event寫到收據中</span></span><br><span class="line">eth.getTransaction</span><br><span class="line">eth.pendingTransactions</span><br><span class="line">eth.getTransactionReceipt</span><br><span class="line">eth.estimateGas <span class="comment">#估算交易花費</span></span><br><span class="line">eth.getCode(<span class="string">"&lt;Address&gt;"</span>) <span class="comment">#智能合約編譯後會有一個CODE欄位 如果Account能得到code表示他能執行合約內容</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#建立合約 (之後還需要用new來deploy)</span></span><br><span class="line">eth.contract(abi);</span><br><span class="line"><span class="comment">#編譯合約?</span></span><br><span class="line">eth.compile.solidity(source_text)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#透過node可以做任何事 (某些要解鎖)</span></span><br><span class="line">personal.newAccount()</span><br><span class="line">personal.listAccounts</span><br><span class="line"></span><br><span class="line"><span class="comment">#PoA機制中 授權某節點做為miner</span></span><br><span class="line">clique.propose</span><br></pre></td></tr></table></figure>
+<h4 id="personal-unlockAccount"><a href="#personal-unlockAccount" class="headerlink" title="personal.unlockAccount"></a>personal.unlockAccount</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#將某帳號解鎖 privateKey+passphrese</span></span><br><span class="line"><span class="comment">#即輸入密碼從keystore中提取private key 解鎖狀態默認是300秒</span></span><br><span class="line"><span class="comment">#駭客只要亂槍打鳥 碰巧遇上解鎖的帳號 就不用密碼也可以下達sendTransaction</span></span><br><span class="line">personal.unlockAccount(<span class="string">"&lt;Address&gt;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#經測試truffle做部署時 可經由remix的網頁(rpc)做解鎖 也可經由節點本地端(ipc) 也就是說只要節點把account解鎖了 就算不同的client進去也能視同該account已解鎖</span></span><br></pre></td></tr></table></figure>
+<h4 id="eth-getBalance"><a href="#eth-getBalance" class="headerlink" title="eth.getBalance"></a>eth.getBalance</h4><p>Balance在區塊鏈中預設就是存在的 除字面上作為財產餘額外 Balance也做為買gas驅動節點運作的籌碼</p>
+<h4 id="DAG檔"><a href="#DAG檔" class="headerlink" title="DAG檔"></a>DAG檔</h4><blockquote>
+<p>跟挖礦PoW演算法相關的資料集 據說會越漲越大 到GB等級</p>
+</blockquote>
+<h4 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h4><blockquote>
+<p>用pipefile實現 讀寫這個檔猶如console打字與畫面輸出結果</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/FinTech/區塊鏈.html" rel="next" title="區塊鏈">
+                <i class="fa fa-chevron-left"></i> 區塊鏈
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/FinTech/CoinPocket/開發紀錄.html" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JimLiuXyz</p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/zh-tw/docs/" title="Hexo" target="_blank">Hexo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://theme-next.iissnan.com/" title="NextT" target="_blank">NextT</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#節點軟體"><span class="nav-number">1.</span> <span class="nav-text">節點軟體</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝-以Ubuntu為例"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">安裝(以Ubuntu為例)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#簡易安裝"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">簡易安裝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#編譯"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">編譯</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合約結構"><span class="nav-number">2.</span> <span class="nav-text">合約結構</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#memory-storage"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">memory / storage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合約產生合約"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">合約產生合約</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fallback函數"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">fallback函數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this"><span class="nav-number">2.0.0.5.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#send-與transfer"><span class="nav-number">2.0.0.6.</span> <span class="nav-text">send()與transfer()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assert與require與throw"><span class="nav-number">2.0.0.7.</span> <span class="nav-text">assert與require與throw</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call-與delagatecall"><span class="nav-number">2.0.0.8.</span> <span class="nav-text">call()與delagatecall()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函數可見性-visibility"><span class="nav-number">2.0.0.9.</span> <span class="nav-text">函數可見性(visibility)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函數屬性標示"><span class="nav-number">2.0.0.10.</span> <span class="nav-text">函數屬性標示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物件"><span class="nav-number">2.0.0.11.</span> <span class="nav-text">物件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#web3-js內部如何包裝交易訊息到節點上執行"><span class="nav-number">2.0.0.12.</span> <span class="nav-text">web3.js內部如何包裝交易訊息到節點上執行</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模組"><span class="nav-number">3.</span> <span class="nav-text">模組</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#私有鏈"><span class="nav-number">4.</span> <span class="nav-text">私有鏈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步驟簡述"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">步驟簡述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立node"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">建立node</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立genesis-block的設定"><span class="nav-number">4.0.0.3.</span> <span class="nav-text">建立genesis block的設定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化節點"><span class="nav-number">4.0.0.4.</span> <span class="nav-text">初始化節點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#啟動節點"><span class="nav-number">4.0.0.5.</span> <span class="nav-text">啟動節點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#與其他節點連接"><span class="nav-number">4.0.0.6.</span> <span class="nav-text">與其他節點連接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#節點的分類"><span class="nav-number">4.0.0.7.</span> <span class="nav-text">節點的分類</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#console"><span class="nav-number">4.0.0.8.</span> <span class="nav-text">console</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#personal-unlockAccount"><span class="nav-number">4.0.0.9.</span> <span class="nav-text">personal.unlockAccount</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eth-getBalance"><span class="nav-number">4.0.0.10.</span> <span class="nav-text">eth.getBalance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DAG檔"><span class="nav-number">4.0.0.11.</span> <span class="nav-text">DAG檔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPC"><span class="nav-number">4.0.0.12.</span> <span class="nav-text">IPC</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JimLiuXyz</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

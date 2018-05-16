@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="S7HvkrH4R_HiKK7j675QXHEjbdWWQiVyrmMeDjXxZT8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="十分鐘數位加密貨幣課程 Ethereum Wallet 以太幣錢包 區塊鏈代幣平台WAVES區塊鏈原理 ICO(Initial Coin Offering) 以某計畫為基礎 向大眾發起虛擬貨幣的融資 (模仿IPO發股票改發幣)因為區塊鏈的興起 建立虛擬貨幣太容易  加密貨幣 指貨幣機制是經由密碼學等演算法維護  Nonce 一個數挖礦尋找出的一個隨機數可稱為nonce交易時也有一個參數稱nonce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="區塊鏈">
+<meta property="og:url" content="http://yoursite.com/home//FinTech/區塊鏈.html">
+<meta property="og:site_name" content="自用筆記">
+<meta property="og:description" content="十分鐘數位加密貨幣課程 Ethereum Wallet 以太幣錢包 區塊鏈代幣平台WAVES區塊鏈原理 ICO(Initial Coin Offering) 以某計畫為基礎 向大眾發起虛擬貨幣的融資 (模仿IPO發股票改發幣)因為區塊鏈的興起 建立虛擬貨幣太容易  加密貨幣 指貨幣機制是經由密碼學等演算法維護  Nonce 一個數挖礦尋找出的一個隨機數可稱為nonce交易時也有一個參數稱nonce">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://i1.read01.com/SIG=n4pddp/30455244466b694e736f.jpg">
+<meta property="og:updated_time" content="2018-05-03T15:56:41.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="區塊鏈">
+<meta name="twitter:description" content="十分鐘數位加密貨幣課程 Ethereum Wallet 以太幣錢包 區塊鏈代幣平台WAVES區塊鏈原理 ICO(Initial Coin Offering) 以某計畫為基礎 向大眾發起虛擬貨幣的融資 (模仿IPO發股票改發幣)因為區塊鏈的興起 建立虛擬貨幣太容易  加密貨幣 指貨幣機制是經由密碼學等演算法維護  Nonce 一個數挖礦尋找出的一個隨機數可稱為nonce交易時也有一個參數稱nonce">
+<meta name="twitter:image" content="https://i1.read01.com/SIG=n4pddp/30455244466b694e736f.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/home//FinTech/區塊鏈.html"/>
+
+
+
+
+
+  <title>區塊鏈 | 自用筆記</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">自用筆記</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">自用筆記</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/FinTech/區塊鏈.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">區塊鏈</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-24T21:36:15+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.youtube.com/watch?v=a3EuW8NT39I" target="_blank" rel="noopener">十分鐘數位加密貨幣課程 Ethereum Wallet 以太幣錢包</a></p>
+<p><a href="https://wavesplatform.com/" target="_blank" rel="noopener">區塊鏈代幣平台WAVES</a><br><a href="https://www.youtube.com/watch?v=obRzfcvMshM" target="_blank" rel="noopener">區塊鏈原理</a></p>
+<h4 id="ICO-Initial-Coin-Offering"><a href="#ICO-Initial-Coin-Offering" class="headerlink" title="ICO(Initial Coin Offering)"></a>ICO(Initial Coin Offering)</h4><blockquote>
+<p>以某計畫為基礎 向大眾發起虛擬貨幣的融資 (模仿IPO發股票改發幣)<br>因為區塊鏈的興起 建立虛擬貨幣太容易</p>
+</blockquote>
+<h4 id="加密貨幣"><a href="#加密貨幣" class="headerlink" title="加密貨幣"></a>加密貨幣</h4><blockquote>
+<p>指貨幣機制是經由密碼學等演算法維護</p>
+</blockquote>
+<h4 id="Nonce"><a href="#Nonce" class="headerlink" title="Nonce"></a>Nonce</h4><blockquote>
+<p>一個<code>數</code><br>挖礦尋找出的一個隨機數可稱為nonce<br>交易時也有一個參數稱nonce 做為總交易的流水號</p>
+</blockquote>
+<h4 id="挖礦難度"><a href="#挖礦難度" class="headerlink" title="挖礦難度"></a>挖礦難度</h4><blockquote>
+<p>尋找一個Nonce能產生HASH值前面產生N個0 (0越多越難找)</p>
+</blockquote>
+<h4 id="Hash值通常用SHA-256計算"><a href="#Hash值通常用SHA-256計算" class="headerlink" title="Hash值通常用SHA-256計算"></a>Hash值通常用SHA-256計算</h4><blockquote>
+<p>包含 index+previous block hash+timestamp+data+nonce<br>礦工要找到一個nonce滿足產生的Hash值前N個位數為0</p>
+</blockquote>
+<h4 id="礦池"><a href="#礦池" class="headerlink" title="礦池"></a>礦池</h4><blockquote>
+<p>集結礦工算力</p>
+</blockquote>
+<h4 id="礦場"><a href="#礦場" class="headerlink" title="礦場"></a>礦場</h4><blockquote>
+<p>電費低廉的地方架設礦機</p>
+</blockquote>
+<h4 id="創世區塊-Genesis-block"><a href="#創世區塊-Genesis-block" class="headerlink" title="創世區塊(Genesis block)"></a>創世區塊(Genesis block)</h4><blockquote>
+<p>即第一個區塊</p>
+</blockquote>
+<h4 id="資料"><a href="#資料" class="headerlink" title="資料"></a>資料</h4><blockquote>
+<p>N筆交易-&gt;1筆區塊<br>全部的區塊形成一個帳本(Ledger)</p>
+</blockquote>
+<h4 id="Peer節點"><a href="#Peer節點" class="headerlink" title="Peer節點"></a>Peer節點</h4><blockquote>
+<p>一個礦工就是一個節點</p>
+</blockquote>
+<h4 id="主鏈"><a href="#主鏈" class="headerlink" title="主鏈"></a>主鏈</h4><blockquote>
+<p>最長鏈<br>正確性比對大於50%</p>
+</blockquote>
+<h4 id="network-name"><a href="#network-name" class="headerlink" title="network name"></a>network name</h4><blockquote>
+<p>節點網絡名稱 不要跟ip網路搞混</p>
+</blockquote>
+<h4 id="chain-network-ID"><a href="#chain-network-ID" class="headerlink" title="chain/network ID"></a>chain/network ID</h4><blockquote>
+<p>不明 預設為random</p>
+</blockquote>
+<h1 id="共識機制-勞動證明機制"><a href="#共識機制-勞動證明機制" class="headerlink" title="共識機制(勞動證明機制)"></a>共識機制(勞動證明機制)</h1><p>無論何種共識機制都可能有一個以上的node同時產生block 同時被接到前一block下 出現分歧</p>
+<h4 id="挖礦"><a href="#挖礦" class="headerlink" title="挖礦"></a>挖礦</h4><blockquote>
+<p>用來形容以某演算法產生新區塊 (算得慢的node等於做白工)</p>
+</blockquote>
+<h4 id="PoW-Proof-of-work"><a href="#PoW-Proof-of-work" class="headerlink" title="PoW (Proof of work)"></a>PoW (Proof of work)</h4><blockquote>
+<p>即挖礦認證機制/以工作搶快為主<br>耗電<br>ethereum稱為Ethash</p>
+</blockquote>
+<h4 id="PoS-Proof-of-steak"><a href="#PoS-Proof-of-steak" class="headerlink" title="PoS (Proof of steak)"></a>PoS (Proof of steak)</h4><blockquote>
+<p>另一種挖礦認證機制<br>為解決pow耗電不環保的問題</p>
+</blockquote>
+<h4 id="PoA-Proof-of-Authority"><a href="#PoA-Proof-of-Authority" class="headerlink" title="PoA (Proof of Authority)"></a>PoA (Proof of Authority)</h4><blockquote>
+<p>指定授權某個節點能夠挖礦<br>用seal關鍵字代替挖礦<br>ethereum稱為Clique</p>
+</blockquote>
+<h4 id="分歧導致的問題"><a href="#分歧導致的問題" class="headerlink" title="分歧導致的問題"></a>分歧導致的問題</h4><blockquote>
+<p>使node挖礦效率下降 若分歧持續等量延長 可能表示算法難度或亂數不夠複雜<br>同時挖礦得到的兩個block雖長相不一樣 但內容結果是等效的<br>等待某一分支長過另一分之變成主鏈</p>
+</blockquote>
+<h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><p><a href="https://www.youtube.com/watch?v=Pz5RKVoUrrI" target="_blank" rel="noopener">參考</a></p>
+<h4 id="公有鏈"><a href="#公有鏈" class="headerlink" title="公有鏈"></a>公有鏈</h4><blockquote>
+<p>bitcoin ethereum<br>完全去中心化 透過獎勵機制記帳(PoW)</p>
+</blockquote>
+<h4 id="私有鏈"><a href="#私有鏈" class="headerlink" title="私有鏈"></a>私有鏈</h4><blockquote>
+<p>完全內部節點 但無法竄改資料<br>既然是私有就應該能完全信任 不一定非用上區塊鏈做紀錄 也許分散式資料庫即可</p>
+</blockquote>
+<h4 id="聯盟鏈"><a href="#聯盟鏈" class="headerlink" title="聯盟鏈"></a>聯盟鏈</h4><blockquote>
+<p>適合於機構與機構間 (Proof of Authority)<br>允許更快產生Block</p>
+</blockquote>
+<h4 id="許可鏈"><a href="#許可鏈" class="headerlink" title="許可鏈"></a>許可鏈</h4><blockquote>
+<p>私有鏈 聯盟鏈 都屬於許可鏈 加入的節點 要得到許可</p>
+</blockquote>
+<h4 id="混合鏈"><a href="#混合鏈" class="headerlink" title="混合鏈"></a>混合鏈</h4><blockquote>
+<p>…</p>
+</blockquote>
+<h1 id="電子錢包"><a href="#電子錢包" class="headerlink" title="電子錢包"></a>電子錢包</h1><h4 id="Mist"><a href="#Mist" class="headerlink" title="Mist"></a>Mist</h4><blockquote>
+<p>是Ethereum的Dapp瀏覽器 也能作為官方的Wallet</p>
+</blockquote>
+<h4 id="Ethereum-Wallet"><a href="#Ethereum-Wallet" class="headerlink" title="Ethereum Wallet"></a>Ethereum Wallet</h4><blockquote>
+<p>同樣是官方Wallet 但就僅是Wallet (Dapp)</p>
+</blockquote>
+<h4 id="MEW-MyEtherWallet-網頁版"><a href="#MEW-MyEtherWallet-網頁版" class="headerlink" title="MEW (MyEtherWallet) 網頁版"></a>MEW (MyEtherWallet) 網頁版</h4><blockquote>
+<p><a href="https://www.myetherwallet.com/" target="_blank" rel="noopener">https://www.myetherwallet.com/</a></p>
+</blockquote>
+<h4 id="MetaMask"><a href="#MetaMask" class="headerlink" title="MetaMask"></a>MetaMask</h4><blockquote>
+<p>除了是一個簡單的錢包外，它可以使得Chrome瀏覽器變身成以太坊瀏覽器，讓使用者通過瀏覽器和智慧合約互動<br>情境是:你有一個Dapp網頁供用戶登入錢包 該Dapp無法成為節點操作區塊鏈 所以有兩種方式幫助它</p>
+</blockquote>
+<ol start="0">
+<li>網頁後端有動態伺服器(託管密鑰)像是Truffle(node.js) 對映出api即可</li>
+<li>透過MetaMask(託管密鑰)外掛在Chrome上進行登入 網頁js只需應對MetaMask給出的api</li>
+</ol>
+<h4 id="Parity"><a href="#Parity" class="headerlink" title="Parity"></a>Parity</h4><h1 id="Ethereum-以太坊-念itSeeRin"><a href="#Ethereum-以太坊-念itSeeRin" class="headerlink" title="Ethereum (以太坊)(念itSeeRin)"></a>Ethereum (以太坊)(念itSeeRin)</h1><p><a href="http://yutianx.info/2017/10/07/2017-10-07-docker-ethereum/" target="_blank" rel="noopener">用Docker搭建Ethereum網路</a></p>
+<blockquote>
+<p>一個建立<code>智能合約</code>的平台 同時也是<code>以太幣ETH</code>對應的Project (想像Ethereum是一家公司 以太幣是他發行的股票)<br>智能合約能幫助web或app加入區塊鏈應用 達到Dapp 做出類似區塊鏈的投票機</p>
+</blockquote>
+<h4 id="智能合約"><a href="#智能合約" class="headerlink" title="智能合約"></a>智能合約</h4><blockquote>
+<p>取名有點混淆視聽 其實就是一段程式碼 部署到區塊鏈上 在peer產生實體物件 以該物件作為合約(例如金融帳戶) 可進行合約提供的method(例如轉帳)<br>通常由第三方提供區塊鏈平台(例如Ethereum) 並提供上傳智能合約的機制 便於客製化合約的應用<br>每個peer都能驗證其他peer產生的資料是否依照合約進行<br>執行合約是需要付費給peer的<br>一般合約程式碼需要公開 使參與者知道公平性與共識<br>用Solidity編寫 (類似js)<br>智能合約也視同為一筆Transaction</p>
+</blockquote>
+<h4 id="智能合約開發語言"><a href="#智能合約開發語言" class="headerlink" title="智能合約開發語言"></a>智能合約開發語言</h4><p>Solidity (類JavaScript)<br>Serpent (類Python)<br>Mutan (類Go)<br>LLL (類Lisp)</p>
+<h4 id="Account分兩類"><a href="#Account分兩類" class="headerlink" title="Account分兩類"></a>Account分兩類</h4><blockquote>
+<p>Externally Owned Accounts(EOA) : 即人類交易帳號 (Ethereum Account) 主要紀錄的就是balance(餘額)<br>Contract Account : 部署一個合約如同產生一個帳號 該帳號除了balance外 依合約還有了自定義的狀態</p>
+</blockquote>
+<ul>
+<li>由於Account是Hash出來的 重複機率微乎其微 只要有公私鑰就如同有帳戶地址 故能跨不同ethereum網絡使用 但Contract Account不行(why?)</li>
+</ul>
+<h4 id="EVM-Ethereum虛擬機"><a href="#EVM-Ethereum虛擬機" class="headerlink" title="EVM (Ethereum虛擬機)"></a>EVM (Ethereum虛擬機)</h4><blockquote>
+<p>在node上運行 用以執行智能合約的bytecode</p>
+</blockquote>
+<h4 id="Transaction-Tx-交易"><a href="#Transaction-Tx-交易" class="headerlink" title="Transaction (Tx)(交易)"></a>Transaction (Tx)(交易)</h4><blockquote>
+<p>交易一詞由來於設計時以金融交易做為假想 用以表示執行的動作猶如交易機制<br>交易一詞也表示金融交易時需要做<code>同步鎖</code>的機制 與<code>區塊鏈多數認證結果</code> 與失敗的回滾<br>區塊鏈中所有會導致<code>寫入區塊鏈</code>的動作 都稱為交易<br>交易通常帶有一個<code>value值</code> 表示要轉出的金額</p>
+</blockquote>
+<h4 id="Gas"><a href="#Gas" class="headerlink" title="Gas"></a>Gas</h4><blockquote>
+<p>汽油 是一個單位 指node上執行Transaction或智能合約所需的成本<br>gasPrice則是每單位成本 wei/gas<br>願付出多少gas執行可由用戶決定 但可能有out of gas的狀況 (狀態會被回滾)</p>
+</blockquote>
+<h4 id="Gas-Limit"><a href="#Gas-Limit" class="headerlink" title="Gas Limit"></a>Gas Limit</h4><blockquote>
+<p>限制執行合約交易消耗的gas 若達限制交易將失敗<br>用於客戶端節點 : 表示願意付出的gas上限(預扣) 太低會導致沒有節點願意幫忙執行<br>用於執行端節點 : 節點自己控制自己能夠處理事務 避免接到耗時操作<br>用於fallback函數 : 固定有2300gas限制 避免難以結束交易<br>區塊也有一個經由節點共識產生的gas limit用來限制區塊中交易的數量 (即何時開始打包區塊)</p>
+</blockquote>
+<h4 id="DApp（decentralized-applications）"><a href="#DApp（decentralized-applications）" class="headerlink" title="DApp（decentralized applications）"></a>DApp（decentralized applications）</h4><blockquote>
+<p>去中心化應用<br>泛指區塊鏈應用的app 如透過Ethereum平台建立<code>智能合約</code>應用在自己的app上</p>
+</blockquote>
+<h4 id="架構"><a href="#架構" class="headerlink" title="架構"></a>架構</h4><blockquote>
+<p>底層的geth、用solidity寫智能合約、合約在線瀏覽器browser-solidity(remix)、合約錢包Mist/wallet、以太坊的前端開發框架Truffle<br>RPC 遠程呼叫 基於socket 與node連接通常是透過rpc 所以都要有ip:port</p>
+</blockquote>
+<p><img src="https://i1.read01.com/SIG=n4pddp/30455244466b694e736f.jpg" width="500" style="margin:0px;padding:0px;"></p>
+<h4 id="Geth-節點核心-念Gets"><a href="#Geth-節點核心-念Gets" class="headerlink" title="Geth (節點核心)(念Gets)"></a>Geth (節點核心)(念Gets)</h4><p><a href="https://github.com/ethereum/go-ethereum/wiki/geth" target="_blank" rel="noopener">Geth</a></p>
+<blockquote>
+<p>由Go語言開發的CLI 用以安裝客戶端RPC API (客戶端應該就是指節點)<br>需要node.js<br>可安裝於多種OS上</p>
+</blockquote>
+<h4 id="Go-Ethereum"><a href="#Go-Ethereum" class="headerlink" title="Go-Ethereum"></a>Go-Ethereum</h4><blockquote>
+<p>Geth的project name<br>簡稱Geth因為Geth最核心 事實上還包含其他工具</p>
+</blockquote>
+<h4 id="執行節點-Geth-提供的函數"><a href="#執行節點-Geth-提供的函數" class="headerlink" title="執行節點(Geth)提供的函數"></a>執行節點(Geth)提供的函數</h4><ol>
+<li>透過Geth console (本地端適用 不能coding)</li>
+<li>透過web3.js (均適用) (走WebSocket) (port:8545)</li>
+<li>透過jsonrpc (遠端 無法執行web3.js時) (走TCP基於http?) (port:8545)</li>
+<li>透過WebService-RPC (文件規範比較複雜) (port:8546)</li>
+</ol>
+<h4 id="Truffle（松露）"><a href="#Truffle（松露）" class="headerlink" title="Truffle（松露）"></a>Truffle（松露）</h4><blockquote>
+<p>是以太坊（Ethereum）最受歡迎的一個開發框架<br>一個npm上的cli程式 用來開發自己的錢包(Dapp)<br>包含web3與solc<br>客戶端(web browser)預設有一個react-box的樣板<br>客戶端沒有登入認證系統 需藉由MetaMask</p>
+</blockquote>
+<h4 id="Web3-js"><a href="#Web3-js" class="headerlink" title="Web3.js"></a>Web3.js</h4><blockquote>
+<p>以太坊提供的js api, 執行於node.js上<br>js =&gt; Geth RPC (本地端為一個節點 用RPC連本地端節點)</p>
+</blockquote>
+<h4 id="Ganache-念甘納許"><a href="#Ganache-念甘納許" class="headerlink" title="Ganache (念甘納許)"></a>Ganache (念甘納許)</h4><blockquote>
+<p>前身叫TestRPC<br>用於模擬區塊鏈 生成假的node 有UI畫面<br>預設的port:8545 (示例多用7545)<br>有助記符號(Mnemonic)輔助 (12個單字)(又叫seed phrase) 能替代private key與address</p>
+</blockquote>
+<h4 id="remix"><a href="#remix" class="headerlink" title="remix"></a>remix</h4><blockquote>
+<p>官方提供的IDE <a href="http://remix.ethereum.org/" target="_blank" rel="noopener">remix</a><br>便於編寫智能和約 與呼叫合約方法</p>
+</blockquote>
+<h4 id="abi-Application-Binary-Interface"><a href="#abi-Application-Binary-Interface" class="headerlink" title="abi(Application Binary Interface)"></a>abi(Application Binary Interface)</h4><blockquote>
+<p>一個.json文件 做為smart contract的介面描述 (裡面有個欄位紀錄bytecode)<br>編譯.sol檔後產生 (npm install solc)</p>
+</blockquote>
+<h4 id="Ether"><a href="#Ether" class="headerlink" title="Ether"></a>Ether</h4><blockquote>
+<p>乙太幣有幣值單位 類似K/M/G/T 但以類似人名來表示<br><a href="https://bitshuo.com/public/upload/fb03ee3abeffd808c3c1fdf46c4ee419.png" target="_blank" rel="noopener">單位</a></p>
+</blockquote>
+<h1 id="節點"><a href="#節點" class="headerlink" title="節點"></a>節點</h1><h4 id="運作概述"><a href="#運作概述" class="headerlink" title="運作概述"></a>運作概述</h4><blockquote>
+<p>每個比特幣錢包都是一個節點,除此之外還有一些是全節點(full node). 全節點負責交易紀錄與驗證及擴散資料. 交易發生時,節點會將交易擴散到節點網路中進行紀錄,待區塊滿載(或??)則開始挖礦產生新區塊.</p>
+</blockquote>
+<p>通常還是要有一些永久性的節點(seed node list) 尤其是初期 待複製出更多節點後 才慢慢式微</p>
+<p>節點通常包含四大部分:</p>
+<ol>
+<li>Network : 找到其他節點 與傳輸接收</li>
+<li>Blockchain : 即帳本</li>
+<li>Mining : 產生新區塊</li>
+<li>Wallet : 保管key與address(帳號)</li>
+</ol>
+<blockquote>
+<p>分兩類 一類必須有完整帳本(full node) 在交易時能確認比對 另一類沒有稱為 SPV nodes 需依靠附近node提供資訊</p>
+</blockquote>
+<blockquote>
+<p>用戶(Wallet)也是一個node</p>
+</blockquote>
+<h1 id="疑慮"><a href="#疑慮" class="headerlink" title="疑慮"></a>疑慮</h1><p><a href="https://medium.com/taipei-ethereum-meetup/mastering-bitcoin-ch6-the-bitcoin-network-93d09e36d9e" target="_blank" rel="noopener">節點</a></p>
+<blockquote>
+<p>一般超過兩個區塊 則成為主鏈</p>
+</blockquote>
+<blockquote>
+<p>節點上原本就記錄有</p>
+</blockquote>
+<h4 id="持續長大的帳本"><a href="#持續長大的帳本" class="headerlink" title="持續長大的帳本"></a>持續長大的帳本</h4><p><a href="https://www.getit01.com/p20171230639067000/" target="_blank" rel="noopener">參考</a></p>
+<blockquote>
+<p>PSV node : 一個非全節點<br>建立一個乙太幣主鏈(MainChain)的全節點 下載與驗證可能要超過半天</p>
+</blockquote>
+<h4 id="為什麼10分鐘才能產生一個區塊"><a href="#為什麼10分鐘才能產生一個區塊" class="headerlink" title="為什麼10分鐘才能產生一個區塊"></a>為什麼10分鐘才能產生一個區塊</h4><blockquote>
+<p>區塊若同時產生 就會產生另一個分支的鏈 分支中僅有一個能成為最後的主鏈 也就是被刪去的分支上的區塊都是做白工<br>為避免太輕易發生這樣的問題 所以規劃10分鐘產生一個新區塊<br>節點網路需要時間來擴散資料進行比對<br>10分鐘是基於一個數學運算的難度 例如算出前N位為0的hash值 平均算出時間約10分鐘</p>
+</blockquote>
+<h4 id="區塊的產生"><a href="#區塊的產生" class="headerlink" title="區塊的產生"></a>區塊的產生</h4><blockquote>
+<p>規定每10分鐘僅能產生一個區塊<br>規定每個區塊約1MB<br>bitcoin每筆交易約300byte 每秒平均能交易7筆 (tps/transaction per second)</p>
+</blockquote>
+<h4 id="區塊確認"><a href="#區塊確認" class="headerlink" title="區塊確認"></a>區塊確認</h4><blockquote>
+<p>即資料確認寫入半數節點網絡</p>
+</blockquote>
+<h4 id="需要時間確認交易已寫入主鏈"><a href="#需要時間確認交易已寫入主鏈" class="headerlink" title="需要時間確認交易已寫入主鏈"></a>需要時間確認交易已寫入主鏈</h4><blockquote>
+<p>通常以6個區塊做為界定 分支超過6個區塊的機率微乎其微<br>通常提幣系統都會要求6個區塊做保護 也就是60分鐘<br>以Bito來說每筆交易會有一個狀態區分(有入帳但未打勾)</p>
+</blockquote>
+<h4 id="自創貨幣中誰來挖礦"><a href="#自創貨幣中誰來挖礦" class="headerlink" title="自創貨幣中誰來挖礦?"></a>自創貨幣中誰來挖礦?</h4><blockquote>
+<p>透過ethereum的主網付Ether幣 或其測試網路<br>真實環境裡自己透過geth</p>
+</blockquote>
+<h4 id="總要有一台伺服器傳達工作給礦工吧"><a href="#總要有一台伺服器傳達工作給礦工吧" class="headerlink" title="總要有一台伺服器傳達工作給礦工吧?"></a>總要有一台伺服器傳達工作給礦工吧?</h4><blockquote>
+<p>欲執行任何動作都需要加入節點網路中成為一個節點<br>執行geth即可成為節點產生rpc介面 工作就可以從這裡散播</p>
+</blockquote>
+<h4 id="鏈跟鏈不會衝突嗎"><a href="#鏈跟鏈不會衝突嗎" class="headerlink" title="鏈跟鏈不會衝突嗎?"></a>鏈跟鏈不會衝突嗎?</h4><blockquote>
+<p>會 node間分辨彼此所處的鏈(網絡)是依照network id和genesis_hash 誰都可以建<br>只要這兩個一模一樣即表示節點處於同一個鏈 而區塊鏈短的會被更新掉<br>那如果做一個比Ether更長的鏈 放到公眾網路上是否就能覆蓋其他節點的區塊鏈???</p>
+</blockquote>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h4 id="p2p的UDP打洞"><a href="#p2p的UDP打洞" class="headerlink" title="p2p的UDP打洞"></a>p2p的UDP打洞</h4><ol start="0">
+<li>AB兩節點若在NAT下沒有export對外的port號 則無法互相連接</li>
+<li>AB先都連上S 連接的過程NAT會分配port讓AB對外做請求 此時AB都有特定的port了 但對象都是S</li>
+<li>S得知雙方ip:port 由S仿冒A:port向B:port騙過NAT 之後A就能連B了</li>
+</ol>
+<h4 id="FileCoin"><a href="#FileCoin" class="headerlink" title="FileCoin"></a>FileCoin</h4><ul>
+<li>一家公司 以區塊鏈技術為基礎儲存檔案(切割小份)</li>
+<li>IPFS : 欲取代http中對於檔案通訊協定</li>
+</ul>
+<h4 id="歷代p2p"><a href="#歷代p2p" class="headerlink" title="歷代p2p"></a>歷代p2p</h4><ul>
+<li>NodeServer : 所有節點必須透過NodeServer登記與取得其他節點位置 單點故障就斷鏈</li>
+<li>Boradcast : 造成廣播風暴</li>
+<li>DHT : 分散式HashTable 去中心化 NodeID裡包含路由訊息</li>
+</ul>
+<h4 id="歷代區塊鏈"><a href="#歷代區塊鏈" class="headerlink" title="歷代區塊鏈"></a>歷代區塊鏈</h4><ul>
+<li>比特幣</li>
+<li>乙特幣</li>
+<li>超級帳本 Fabric</li>
+</ul>
+<h4 id="冷錢包"><a href="#冷錢包" class="headerlink" title="冷錢包"></a>冷錢包</h4><blockquote>
+<p>即硬體錢包 將私鑰匯出到硬體(usb)裝置上 完全移除網路上的私鑰</p>
+</blockquote>
+<h4 id="BitoEx-幣託-比特幣錢包"><a href="#BitoEx-幣託-比特幣錢包" class="headerlink" title="BitoEx 幣託-比特幣錢包"></a>BitoEx 幣託-比特幣錢包</h4><p><a href="https://www.bitoex.com/" target="_blank" rel="noopener">BitoEx</a></p>
+<blockquote>
+<p>台灣廠商 用email申請一個帳號 透過web/phone介面查詢<br>台灣可透過FamiPort繳費&gt;虛擬帳號&gt;廠商代號&gt;輸入手機號碼&gt;買多少台幣的BTC 現金結帳取得收據與手機簡訊 回BitoEx介面&gt;超商兌換<br>可綁定信用卡/銀行帳號(可出帳)<br>等於私鑰託管給BitoEx</p>
+</blockquote>
+<p><a href="https://www.bitoex.com/" target="_blank" rel="noopener">https://www.bitoex.com/</a></p>
+<h4 id="MaiCoin"><a href="#MaiCoin" class="headerlink" title="MaiCoin"></a>MaiCoin</h4><p><a href="https://www.maicoin.com/" target="_blank" rel="noopener">MaiCoin</a></p>
+<blockquote>
+<p>同BitoEx 台灣廠商</p>
+</blockquote>
+<h4 id="Coinbase"><a href="#Coinbase" class="headerlink" title="Coinbase"></a>Coinbase</h4><blockquote>
+<p>同BitoEx 但更大更全球化<br>可綁定信用卡/銀行帳號/paypal 或用wire transfer</p>
+</blockquote>
+<h4 id="圖靈完備"><a href="#圖靈完備" class="headerlink" title="圖靈完備"></a>圖靈完備</h4><blockquote>
+<p>圖靈機(Turing machine)是早期的一種紀錄資料的機器 可以無限紀錄與擦除<br>在程式語言上通常指擁有if/for/recursive功能 能達成任何演算法</p>
+</blockquote>
+<h4 id="公私鑰-RSA"><a href="#公私鑰-RSA" class="headerlink" title="公私鑰 RSA"></a>公私鑰 RSA</h4><blockquote>
+<p>公鑰加密私鑰(收) 或 私鑰加密公鑰(送)<br>被公鑰加密的東西 通常是給自己看的 只有自己能用私鑰解<br>被私鑰加密的東西 通常是用來給別人驗證自己身份的 任何人拿我公鑰解出特定的內容 表示內容肯定是我的 <code>數字簽名</code></p>
+</blockquote>
+<p>Docker</p>
+<p>AWS | Amazon Elastic Container Service</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/FinTech/電子支付.html" rel="next" title="電子支付">
+                <i class="fa fa-chevron-left"></i> 電子支付
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/FinTech/ethereum.html" rel="prev" title="Ethereum">
+                Ethereum <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JimLiuXyz</p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/zh-tw/docs/" title="Hexo" target="_blank">Hexo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://theme-next.iissnan.com/" title="NextT" target="_blank">NextT</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ICO-Initial-Coin-Offering"><span class="nav-number">1.</span> <span class="nav-text">ICO(Initial Coin Offering)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加密貨幣"><span class="nav-number">2.</span> <span class="nav-text">加密貨幣</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nonce"><span class="nav-number">3.</span> <span class="nav-text">Nonce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挖礦難度"><span class="nav-number">4.</span> <span class="nav-text">挖礦難度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hash值通常用SHA-256計算"><span class="nav-number">5.</span> <span class="nav-text">Hash值通常用SHA-256計算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#礦池"><span class="nav-number">6.</span> <span class="nav-text">礦池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#礦場"><span class="nav-number">7.</span> <span class="nav-text">礦場</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#創世區塊-Genesis-block"><span class="nav-number">8.</span> <span class="nav-text">創世區塊(Genesis block)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#資料"><span class="nav-number">9.</span> <span class="nav-text">資料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Peer節點"><span class="nav-number">10.</span> <span class="nav-text">Peer節點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主鏈"><span class="nav-number">11.</span> <span class="nav-text">主鏈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#network-name"><span class="nav-number">12.</span> <span class="nav-text">network name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chain-network-ID"><span class="nav-number">13.</span> <span class="nav-text">chain/network ID</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#共識機制-勞動證明機制"><span class="nav-number"></span> <span class="nav-text">共識機制(勞動證明機制)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#挖礦"><span class="nav-number">1.</span> <span class="nav-text">挖礦</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PoW-Proof-of-work"><span class="nav-number">2.</span> <span class="nav-text">PoW (Proof of work)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PoS-Proof-of-steak"><span class="nav-number">3.</span> <span class="nav-text">PoS (Proof of steak)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PoA-Proof-of-Authority"><span class="nav-number">4.</span> <span class="nav-text">PoA (Proof of Authority)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分歧導致的問題"><span class="nav-number">5.</span> <span class="nav-text">分歧導致的問題</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模式"><span class="nav-number"></span> <span class="nav-text">模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#公有鏈"><span class="nav-number">1.</span> <span class="nav-text">公有鏈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#私有鏈"><span class="nav-number">2.</span> <span class="nav-text">私有鏈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聯盟鏈"><span class="nav-number">3.</span> <span class="nav-text">聯盟鏈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#許可鏈"><span class="nav-number">4.</span> <span class="nav-text">許可鏈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合鏈"><span class="nav-number">5.</span> <span class="nav-text">混合鏈</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#電子錢包"><span class="nav-number"></span> <span class="nav-text">電子錢包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mist"><span class="nav-number">1.</span> <span class="nav-text">Mist</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ethereum-Wallet"><span class="nav-number">2.</span> <span class="nav-text">Ethereum Wallet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MEW-MyEtherWallet-網頁版"><span class="nav-number">3.</span> <span class="nav-text">MEW (MyEtherWallet) 網頁版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MetaMask"><span class="nav-number">4.</span> <span class="nav-text">MetaMask</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parity"><span class="nav-number">5.</span> <span class="nav-text">Parity</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ethereum-以太坊-念itSeeRin"><span class="nav-number"></span> <span class="nav-text">Ethereum (以太坊)(念itSeeRin)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#智能合約"><span class="nav-number">1.</span> <span class="nav-text">智能合約</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智能合約開發語言"><span class="nav-number">2.</span> <span class="nav-text">智能合約開發語言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Account分兩類"><span class="nav-number">3.</span> <span class="nav-text">Account分兩類</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EVM-Ethereum虛擬機"><span class="nav-number">4.</span> <span class="nav-text">EVM (Ethereum虛擬機)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Transaction-Tx-交易"><span class="nav-number">5.</span> <span class="nav-text">Transaction (Tx)(交易)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gas"><span class="nav-number">6.</span> <span class="nav-text">Gas</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gas-Limit"><span class="nav-number">7.</span> <span class="nav-text">Gas Limit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DApp（decentralized-applications）"><span class="nav-number">8.</span> <span class="nav-text">DApp（decentralized applications）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#架構"><span class="nav-number">9.</span> <span class="nav-text">架構</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Geth-節點核心-念Gets"><span class="nav-number">10.</span> <span class="nav-text">Geth (節點核心)(念Gets)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Go-Ethereum"><span class="nav-number">11.</span> <span class="nav-text">Go-Ethereum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#執行節點-Geth-提供的函數"><span class="nav-number">12.</span> <span class="nav-text">執行節點(Geth)提供的函數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Truffle（松露）"><span class="nav-number">13.</span> <span class="nav-text">Truffle（松露）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web3-js"><span class="nav-number">14.</span> <span class="nav-text">Web3.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ganache-念甘納許"><span class="nav-number">15.</span> <span class="nav-text">Ganache (念甘納許)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remix"><span class="nav-number">16.</span> <span class="nav-text">remix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#abi-Application-Binary-Interface"><span class="nav-number">17.</span> <span class="nav-text">abi(Application Binary Interface)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ether"><span class="nav-number">18.</span> <span class="nav-text">Ether</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#節點"><span class="nav-number"></span> <span class="nav-text">節點</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#運作概述"><span class="nav-number">1.</span> <span class="nav-text">運作概述</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#疑慮"><span class="nav-number"></span> <span class="nav-text">疑慮</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#持續長大的帳本"><span class="nav-number">1.</span> <span class="nav-text">持續長大的帳本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#為什麼10分鐘才能產生一個區塊"><span class="nav-number">2.</span> <span class="nav-text">為什麼10分鐘才能產生一個區塊</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#區塊的產生"><span class="nav-number">3.</span> <span class="nav-text">區塊的產生</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#區塊確認"><span class="nav-number">4.</span> <span class="nav-text">區塊確認</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要時間確認交易已寫入主鏈"><span class="nav-number">5.</span> <span class="nav-text">需要時間確認交易已寫入主鏈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自創貨幣中誰來挖礦"><span class="nav-number">6.</span> <span class="nav-text">自創貨幣中誰來挖礦?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#總要有一台伺服器傳達工作給礦工吧"><span class="nav-number">7.</span> <span class="nav-text">總要有一台伺服器傳達工作給礦工吧?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#鏈跟鏈不會衝突嗎"><span class="nav-number">8.</span> <span class="nav-text">鏈跟鏈不會衝突嗎?</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number"></span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#p2p的UDP打洞"><span class="nav-number">1.</span> <span class="nav-text">p2p的UDP打洞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FileCoin"><span class="nav-number">2.</span> <span class="nav-text">FileCoin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#歷代p2p"><span class="nav-number">3.</span> <span class="nav-text">歷代p2p</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#歷代區塊鏈"><span class="nav-number">4.</span> <span class="nav-text">歷代區塊鏈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冷錢包"><span class="nav-number">5.</span> <span class="nav-text">冷錢包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BitoEx-幣託-比特幣錢包"><span class="nav-number">6.</span> <span class="nav-text">BitoEx 幣託-比特幣錢包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MaiCoin"><span class="nav-number">7.</span> <span class="nav-text">MaiCoin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Coinbase"><span class="nav-number">8.</span> <span class="nav-text">Coinbase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#圖靈完備"><span class="nav-number">9.</span> <span class="nav-text">圖靈完備</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公私鑰-RSA"><span class="nav-number">10.</span> <span class="nav-text">公私鑰 RSA</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JimLiuXyz</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

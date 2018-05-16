@@ -288,6 +288,842 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/angular深入.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/angular深入.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-26T22:49:45+08:00">
+                2017-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="髒檢測觸發"><a href="#髒檢測觸發" class="headerlink" title="髒檢測觸發"></a>髒檢測觸發</h2><p><a href="https://segmentfault.com/a/1190000008747225" target="_blank" rel="noopener">Angular 2 Change Detection-1</a></p>
+<ol>
+<li>Events：click, mouseover, keyup …</li>
+<li>Timers：setInterval、setTimeout</li>
+<li>XHRs：Ajax(GET、POST …)</li>
+</ol>
+<ul>
+<li>zone.js : 它是用於攔截和跟蹤異步工作</li>
+<li>Monkey-patched : 覆寫預設method</li>
+</ul>
+<h2 id="Change-Detection提高效率"><a href="#Change-Detection提高效率" class="headerlink" title="Change Detection提高效率"></a>Change Detection提高效率</h2><p><a href="https://segmentfault.com/a/1190000008754052" target="_blank" rel="noopener">Angular 2 Change Detection-2</a></p>
+<p><a href="https://blog.kevinyang.net/2017/01/23/angular2-change-detection/" target="_blank" rel="noopener">Change Detection</a></p>
+<p><a href="https://blog.kevinyang.net/2017/08/09/angular-changedetector-markforcheck/" target="_blank" rel="noopener">markForCheck</a></p>
+<ol>
+<li>input需要改變時採immuteable策略,用Object.assign({}, person, {name: ‘new name’});複製物件再整個assign到input,避免ng做深層的髒檢測</li>
+<li>改為手動策略changeDetection: ChangeDetectionStrategy.OnPush,改用ChangeDetectorRef.markForCheck()的方式推動髒檢測</li>
+</ol>
+<h2 id="ngZone"><a href="#ngZone" class="headerlink" title="ngZone"></a>ngZone</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Ionic/Ionic.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Ionic/Ionic.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-23T11:21:57+08:00">
+                2017-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="release-APK"><a href="#release-APK" class="headerlink" title="release APK"></a>release APK</h3><p><a href="http://xyz.cinc.biz/2013/06/android-app.html" target="_blank" rel="noopener">參考</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 產生private key (alias_name可自訂)</span></span><br><span class="line">keytool -genkey -v -keystore mykey.keystore -alias alias_name -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 檢視private key</span></span><br><span class="line">keytool -list -v -keystore mykey.keystore</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cd ~<span class="regexp">/.android/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//for langstar / pw:9xxxxx</span></span><br><span class="line">keytool -genkey -v -keystore langstar.keystore -alias langstar -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></span><br><span class="line"></span><br><span class="line">keytool -exportcert -list -v -keystore langstar.keystore -alias langstar</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//自建build.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"android"</span>: &#123;</span><br><span class="line">    <span class="string">"release"</span>: &#123;</span><br><span class="line">      <span class="string">"keystore"</span>: <span class="string">"android.keystore"</span>,</span><br><span class="line">      <span class="string">"storePassword"</span>: <span class="string">"storepassword"</span>,</span><br><span class="line">      <span class="string">"alias"</span>: <span class="string">"mykey"</span>,</span><br><span class="line">      <span class="string">"password"</span> : <span class="string">"password"</span>,</span><br><span class="line">      <span class="string">"keystoreType"</span>: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="IonicPage的問題"><a href="#IonicPage的問題" class="headerlink" title="IonicPage的問題"></a>IonicPage的問題</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//讓url能正常運作的兩種方式</span></span><br><span class="line">nav.push(<span class="string">'pagename'</span>);</span><br><span class="line">&lt;ion-item navPush=<span class="string">"pagename"</span>&gt;link&lt;<span class="regexp">/ion-item&gt;</span></span><br></pre></td></tr></table></figure>
+<p>page的載入由ionic背景執行,在其載入之前只有透過ionViewCanEnter回傳promise阻止,用以檢查異步的custom init ready狀態.</p>
+<h3 id="編譯環境"><a href="#編譯環境" class="headerlink" title="編譯環境"></a>編譯環境</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//.bash_profile</span><br><span class="line">//jdk must &lt;= 1.8</span><br><span class="line">export JAVA_HOME=`/usr/libexec/java_home -v 1.8`</span><br><span class="line"></span><br><span class="line">export SDK_HOME=/Users/jimliu/Library/Android/sdk</span><br><span class="line">export ANDROID_HOME=/Users/jimliu/Library/Android/sdk</span><br><span class="line"></span><br><span class="line">export PATH=$JAVA_HOME/bin:$&#123;SDK_HOME&#125;/tools/bin:$&#123;SDK_HOME&#125;/platform-tools:$PATH</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source .bash_profile</span><br><span class="line"></span><br><span class="line">//install sdk dependence</span><br><span class="line">sdkmanager &quot;system-images;android-25;google_apis;x86&quot;</span><br><span class="line">//create virtual device</span><br><span class="line">avdmanager create avd -n mydevice -k &quot;system-images;android-25;google_apis;x86&quot;</span><br><span class="line"></span><br><span class="line">cordova platform add android</span><br><span class="line">cordova platform add android@6.2.3 --save</span><br><span class="line"></span><br><span class="line">//run on local browser</span><br><span class="line">ionic serve</span><br><span class="line"></span><br><span class="line">//run on avd</span><br><span class="line">ionic cordova run android --livereload</span><br><span class="line"></span><br><span class="line">//build .apk</span><br><span class="line">ionic cordova build --release android</span><br><span class="line"></span><br><span class="line">cordova emulate android</span><br></pre></td></tr></table></figure>
+<p>cordova run android失敗可以嘗試移除./platforms/android/.gradle目錄</p>
+<h3 id="real-device-The-connection-to-the-server-was-unsuccessful-http-140-254-160-122-8100"><a href="#real-device-The-connection-to-the-server-was-unsuccessful-http-140-254-160-122-8100" class="headerlink" title="real device : The connection to the server was unsuccessful. (http://140.254.160.122:8100)"></a>real device : The connection to the server was unsuccessful. (<a href="http://140.254.160.122:8100" target="_blank" rel="noopener">http://140.254.160.122:8100</a>)</h3><ul>
+<li>ionic cordova run android –prod –livereload</li>
+<li>似乎與Splashscreen有關</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//config.xml</span><br><span class="line">    &lt;platform name=&quot;android&quot;&gt;</span><br><span class="line">        &lt;preference name=&quot;loadUrlTimeoutValue&quot; value=&quot;700000&quot; /&gt;</span><br><span class="line">    &lt;/platform&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="real-device-PLUGIN-NOT-INSTALLED"><a href="#real-device-PLUGIN-NOT-INSTALLED" class="headerlink" title="real device : PLUGIN_NOT_INSTALLED"></a>real device : PLUGIN_NOT_INSTALLED</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Platform &#125; <span class="keyword">from</span> <span class="string">'ionic-angular'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AndroidPermissions &#125; <span class="keyword">from</span> <span class="string">'@ionic-native/android-permissions'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; SpeechRecognition &#125; <span class="keyword">from</span> <span class="string">'@ionic-native/speech-recognition'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.platform.ready().then(<span class="function">(<span class="params">readySource</span>) =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">'Platform ready from'</span>+readySource);</span><br><span class="line">    <span class="comment">// Platform now ready, execute any required native code</span></span><br><span class="line">          </span><br><span class="line">    <span class="keyword">this</span>.androidPermissions.checkPermission(<span class="keyword">this</span>.androidPermissions.PERMISSION.RECORD_AUDIO).then(</span><br><span class="line">        success =&gt; alert(<span class="string">'Permission granted'</span>),</span><br><span class="line">        err =&gt; alert(<span class="string">'Permission not granted'</span>)</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">this</span>.speechRecognition.isRecognitionAvailable()</span><br><span class="line">        .then(<span class="function">(<span class="params">available: boolean</span>) =&gt;</span> alert(<span class="string">'1?'</span>+available))</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">this</span>.speechRecognition.startListening(&#123;&#125;)</span><br><span class="line">        .subscribe(</span><br><span class="line">            (matches: <span class="built_in">Array</span>&lt;string&gt;) =&gt; alert(<span class="string">'2?'</span>+matches),</span><br><span class="line">            (onerror) =&gt; alert(<span class="string">'error:'</span>+ onerror)</span><br><span class="line">        )      </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="實測裝置"><a href="#實測裝置" class="headerlink" title="實測裝置"></a>實測裝置</h3><ul>
+<li>device要開啟開發人員模式 與 usb debug 與 wifi(與server同網域)</li>
+</ul>
+<h3 id="app-nav-tab-view"><a href="#app-nav-tab-view" class="headerlink" title="app nav tab view"></a>app nav tab view</h3><p>app 本身有一預設的nav<br>tab也算一個nav (但tabs不是)</p>
+<h3 id="ion-tab"><a href="#ion-tab" class="headerlink" title="ion-tab"></a>ion-tab</h3><p>本身算一個可nav元件,url名稱為tag上的<strong>tab-Title</strong>,不設定會變tab-0</p>
+<h3 id="IonicPage"><a href="#IonicPage" class="headerlink" title="IonicPage"></a>IonicPage</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">@IonicPage(&#123;</span><br><span class="line">  name: <span class="string">'my-page'</span>,      <span class="comment">//ion-nav [root]=...對應的字串 (預設為元件名稱)</span></span><br><span class="line">  segment: <span class="string">'some-path'</span>  <span class="comment">//僅url顯示 與程式碼沒有連結 (預設為檔名)</span></span><br><span class="line"></span><br><span class="line">  defaultHistory: [<span class="string">'my-page'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//linkpage.module.ts 與 linkpage.ts 檔名需一致,其檔名為預設的segment字串</span></span><br></pre></td></tr></table></figure>
+<h3 id="route"><a href="#route" class="headerlink" title="route"></a>route</h3><p>IonicPage與Componet類似,大概差在deeplink,但好像有bug</p>
+<ul>
+<li>IonicPage可用其component name的字串做nav (name:? segment:?)</li>
+<li>tab url路徑的目錄名稱是來自”tabComponentFilename/ion-tab的tabTitle/ComponentFilename”</li>
+<li>IonicPage url路徑名稱覆寫</li>
+<li>url還是會穿插一些內部的nav路徑 像是nav/n4/tabs/t0 <a href="https://github.com/ionic-team/ionic/releases" target="_blank" rel="noopener">更新到3.6可以解決</a></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//ionic-app-scripts</span></span><br><span class="line">cd node_modules/@ionic/app-scripts/dist</span><br><span class="line"></span><br><span class="line">providers: [</span><br><span class="line">    &#123;<span class="attr">provide</span>: APP_BASE_HREF, <span class="attr">useValue</span>: <span class="string">"/"</span>&#125;,</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">locationStrategy: <span class="string">'path'</span><span class="comment">//url上不使用#,但server要配合導向index.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//page stack會保留,back不會reload,但url不會跳到pageurl</span></span><br><span class="line">nav.push(<span class="string">'...'</span>)</span><br><span class="line"><span class="comment">//每次back都會reload,但url會跳到pageurl</span></span><br><span class="line">nav.setRoot(<span class="string">'...'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="調整slide"><a href="#調整slide" class="headerlink" title="調整slide"></a>調整slide</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.scroll-content</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slide-zoom</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">overflow-y</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/npm/toollist.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/npm/toollist.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-19T14:30:58+08:00">
+                2017-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><ul>
+<li>一個讓本地端能夠執行javascript的環境,搭配express(外部的library)能實現http server.</li>
+<li>同時也被開發成了一個模組管理的平台(npm)</li>
+</ul>
+<h2 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h2><ul>
+<li>能讓透過偵測檔案更新自動重啟node server</li>
+<li>–inspect參數能將node對應到chrome做debug</li>
+</ul>
+<h2 id="browserSync"><a href="#browserSync" class="headerlink" title="browserSync"></a>browserSync</h2><ul>
+<li>偵測檔案更新能讓browser自動重新整理</li>
+<li>原理browser -&gt; proxy(browserSync) -&gt; server,透過proxy代轉並插入程式碼.</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/Angular(ts) 02.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/Angular(ts) 02.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-18T17:26:48+08:00">
+                2017-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="plugin"><a href="#plugin" class="headerlink" title="plugin"></a>plugin</h2><p>autoimport</p>
+<h2 id="ts區分script與module"><a href="#ts區分script與module" class="headerlink" title=".ts區分script與module"></a>.ts區分script與module</h2><p>與轉譯編譯有關</p>
+<ul>
+<li>script : 變數宣告會直接到global(window)下,或說不是被import而執行的<ul>
+<li>angulre.cli.json的scripts會以script執行</li>
+</ul>
+</li>
+<li>module : 有用到export的script就會變成一個module,變數宣告會在某個namespace下<ul>
+<li>此時定義window下的global變數要用<code>declare global</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>簡單說module是存在於global(window)內的另一個scope</strong></p>
+<p>vscode在type的hint方面整合很不錯,幾乎可以預先分析所有的狀況</p>
+<h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><p>若import的不是ts則沒有types可以參考除錯.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// your.ts</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> objectHash <span class="keyword">from</span> <span class="string">'object-hash'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(objectHash.MD5(<span class="string">'str'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>同一個module多次import也只會被執行一次(export出來的物件是共享的)</li>
+</ul>
+<h2 id="什麼適合放到angular-cli-json的scripts"><a href="#什麼適合放到angular-cli-json的scripts" class="headerlink" title="什麼適合放到angular.cli.json的scripts"></a>什麼適合放到angular.cli.json的scripts</h2><p>當js/ts被放到angulare.cli.json的scripts下其實就已經相當於html的&lt; script src=…&gt;的global執行情境(相對於import module),已經放在scripts中的就不需要再被import了,若再import會變成在另一個namespace再建立一次.</p>
+<ul>
+<li>與module無關的,自己可以運作的,例如bootstrap.js</li>
+<li>有@types像JQuery,放進去後就不用再import了</li>
+<li>沒有@types,直接把type定義成any (像是object-hash)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//angular.cli.json</span></span><br><span class="line">scripts : <span class="string">"...object-hash.js"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// yourmodule.ts, no need to import * from 'object-hash'</span></span><br><span class="line"><span class="comment">// but you got to know the global name of it, is 'objectHash'</span></span><br><span class="line"><span class="comment">// you can also check it by console.dir(window)</span></span><br><span class="line"><span class="comment">// decleare沒有執行順序(僅供編譯器與lint識別)</span></span><br><span class="line">declare global&#123; <span class="comment">//在module裡定義script(global)的變數</span></span><br><span class="line">  <span class="keyword">let</span> objectHash: any;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(objectHash(<span class="string">'str'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//或將定義寫到d.ts</span></span><br><span class="line"><span class="comment">//typings.d.ts</span></span><br><span class="line">declare <span class="keyword">let</span> objectHash: any; <span class="comment">//不加global,因為是script執行不是module</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>3rd party extension (透過import方式則無法在前期執行完畢)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//angular.cli.json</span></span><br><span class="line">scripts : <span class="string">"... extension.ts"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//extension.ts</span></span><br><span class="line">interface JQuery &#123;</span><br><span class="line">  removeClassRegex(regex: <span class="built_in">RegExp</span>): JQuery;</span><br><span class="line">&#125;</span><br><span class="line">$.fn.removeClassRegex = <span class="function"><span class="keyword">function</span>(<span class="params">regex</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> $(<span class="keyword">this</span>).removeClass(<span class="function"><span class="keyword">function</span>(<span class="params">index, classes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> classes.split(<span class="regexp">/\s+/</span>).filter(<span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(c + <span class="string">" ? "</span> + regex.test(c))</span><br><span class="line">  <span class="keyword">return</span> regex.test(c);</span><br><span class="line">  &#125;).join(<span class="string">' '</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="extend-3rd-party-function"><a href="#extend-3rd-party-function" class="headerlink" title="extend 3rd party function"></a>extend 3rd party function</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//entry.ts (import any object of extends.ts to make compiler link it)</span></span><br><span class="line"><span class="keyword">import</span> &#123; Empty &#125; <span class="keyword">from</span> <span class="string">'./mods/pure/global'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//extends.ts (module)</span></span><br><span class="line">declare global &#123;</span><br><span class="line">  interface JQuery &#123;</span><br><span class="line">    removeClassRegex(regex: <span class="built_in">RegExp</span>): JQuery;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$.fn.removeClassRegex = <span class="function"><span class="keyword">function</span>(<span class="params">regex</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> $(<span class="keyword">this</span>).removeClass(<span class="function"><span class="keyword">function</span>(<span class="params">index, classes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> classes.split(<span class="regexp">/\s+/</span>).filter(<span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(c + <span class="string">" ? "</span> + regex.test(c))</span><br><span class="line">  <span class="keyword">return</span> regex.test(c);</span><br><span class="line">  &#125;).join(<span class="string">' '</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Empty</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="取得html元件"><a href="#取得html元件" class="headerlink" title="取得html元件"></a>取得html元件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">template:<span class="string">`&lt;div #mychild&gt;&lt;/div&gt;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; ViewChild &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@ViewChild(<span class="string">'mychild'</span>) elem; </span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.elem.nativeElement;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/css/scss.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/css/scss.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-18T12:26:57+08:00">
+                2017-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://blog.kdchang.cc/2016/10/11/sass-scss-tutorial-introduction/" target="_blank" rel="noopener">參考</a></p>
+<p><a href="https://www.sassmeister.com/" target="_blank" rel="noopener">SCSS to CSS online</a></p>
+<p><a href="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank" rel="noopener">內建函數</a></p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//變數宣告</span></span><br><span class="line"><span class="variable">$tag</span>:body;</span><br><span class="line"><span class="variable">$resizer-size</span>:<span class="number">15px</span>;</span><br><span class="line"><span class="variable">$list</span>: (orange, purple, teal);</span><br><span class="line"><span class="variable">$font-style</span>:(</span><br><span class="line">    family: sans-serif,</span><br><span class="line">    size: <span class="number">15px</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//載入外部scss</span></span><br><span class="line">@<span class="keyword">import</span> <span class="string">"../node_modules/bootstrap-4.0.0-beta/scss/bootstrap"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在selector使用變數 #&#123;...&#125;</span></span><br><span class="line">#&#123;<span class="variable">$tag</span>&#125; &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//maps變數讀取</span></span><br><span class="line"><span class="selector-tag">map</span>-get(<span class="variable">$font-style</span>, size);</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//函數</span></span><br><span class="line">@function func(<span class="variable">$var</span>) &#123;</span><br><span class="line">  @return 10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//混入 用法類似函數 沒有回傳值 而是混入css</span></span><br><span class="line">@<span class="keyword">mixin</span> mixfont(<span class="variable">$family</span>, <span class="variable">$size</span>:<span class="number">10px</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    @<span class="keyword">include</span> mixfont(sans-serif, 10px);</span><br><span class="line">    @<span class="keyword">include</span> mixfont(<span class="variable">$font-style</span>...);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//運算元 + - * /</span></span><br><span class="line">@<span class="keyword">each</span> <span class="variable">$item</span> in <span class="variable">$list</span> &#123;...&#125;</span><br><span class="line">@<span class="keyword">for</span> <span class="variable">$i</span> from 1 through <span class="variable">$total</span> &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//巢狀</span></span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="selector-class">.child</span> &#123;  <span class="comment">// .parent .child&#123;&#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="attribute">font</span> : &#123;</span><br><span class="line">  </span><br><span class="line">    family: sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.parent</span> &#123; </span><br><span class="line">  &amp;:hover &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  &amp;:dialog &#123; // .parent.dialog&#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//繼承</span></span><br><span class="line"><span class="selector-class">.A</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.A1</span>&#123;</span><br><span class="line">    @<span class="keyword">extend</span> .A;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//placeholder</span></span><br><span class="line"><span class="selector-tag">div</span>%<span class="selector-tag">B</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.test</span> &#123;</span><br><span class="line">	@<span class="keyword">extend</span> %B;    <span class="comment">//產生div.test</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/css/04-Selector.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/css/04-Selector.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-18T11:21:06+08:00">
+                2017-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line">// OR |</span><br><span class="line">img, a       =&gt; &lt;img&gt; &lt;a&gt;</span><br><span class="line"></span><br><span class="line">// AND &amp;</span><br><span class="line">div.cls      =&gt; &lt;div class='cls'&gt;</span><br><span class="line">.cls1.cls2   =&gt; &lt;div class='cls1 cls2'&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Attribute-Selector"><a href="#Attribute-Selector" class="headerlink" title="Attribute Selector"></a>Attribute Selector</h2><ul>
+<li>= 完全匹配</li>
+<li>^= 字串開頭匹配</li>
+<li>|= 類似^但更精準,例如btn只能匹配’btn’與’btn-‘,如果是’btn1’就不行</li>
+<li>~= 字串以空白切割後完全匹配</li>
+<li>*= 有出現即可匹配</li>
+<li>$= 字串結尾匹配</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">//匹配div中有status-開頭的class</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-attr">[class^="status-"]</span>, <span class="selector-tag">div</span><span class="selector-attr">[class*=" status-"]</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://codepen.io/terkel/pen/ywEth" target="_blank" rel="noopener">測試頁</a></p>
+<p>## </p>
+<h2 id="Combinator"><a href="#Combinator" class="headerlink" title="Combinator"></a>Combinator</h2><ul>
+<li>.cls + * : 選到cls的nextSibling (僅next一次)</li>
+<li><p>.cls ~ * : 選到cls的all nextSibling (next全部)</p>
+</li>
+<li><p>.cls * : 選到cls的所有後代 (遞迴多層)</p>
+</li>
+<li>.cls &gt; * : 選到cls的子層 (僅一層)</li>
+</ul>
+<h2 id="Form-Selectors"><a href="#Form-Selectors" class="headerlink" title="Form Selectors"></a>Form Selectors</h2><h2 id="偽元素選擇器"><a href="#偽元素選擇器" class="headerlink" title="偽元素選擇器"></a>偽元素選擇器</h2><p>一個依附在某元素的假元素</p>
+<h2 id="偽類選擇器"><a href="#偽類選擇器" class="headerlink" title="偽類選擇器"></a>偽類選擇器</h2><p>一個依屬性產生的css class</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/css/02-Basic.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -962,807 +1798,6 @@ x.innerText='哈哈';
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/WorkingNotes/layout-css.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/WorkingNotes/layout-css.html" itemprop="url">layout css</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-12T20:22:00+08:00">
-                2017-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="佔滿整頁的設計"><a href="#佔滿整頁的設計" class="headerlink" title="佔滿整頁的設計"></a>佔滿整頁的設計</h1><ul>
-<li>body height:100%</li>
-<li>body padding-bottom:?? (非百分比的高度和,手動計算)</li>
-</ul>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/WorkingNotes/starbook.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/WorkingNotes/starbook.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-11T14:06:56+08:00">
-                2017-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1+2=3 \<br>1+3=4</p>
-<h4 id="以下何者大於10"><a href="#以下何者大於10" class="headerlink" title="?以下何者大於10?"></a>?以下何者大於10?</h4><ul>
-<li>敘述1</li>
-<li>敘述2</li>
-</ul>
-<ol>
-<li>=14</li>
-<li>1</li>
-<li>-3</li>
-</ol>
-<p>解題</p>
-<hr>
-<p>//<a href="https://translate.google.com.tw/translate_a/single?client=t&amp;sl=en&amp;tl=zh-TW&amp;dt=t&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=who%20are%20you" target="_blank" rel="noopener">https://translate.google.com.tw/translate_a/single?client=t&amp;sl=en&amp;tl=zh-TW&amp;dt=t&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=who%20are%20you</a><br>//<a href="https://ctrlq.org/code/19899-google-translate-languages#languages" target="_blank" rel="noopener">https://ctrlq.org/code/19899-google-translate-languages#languages</a><br>//<a href="https://translate.google.com/translate_tts?ie=UTF-8&amp;client=tw-ob&amp;tl=zh-TW&amp;q=測試" target="_blank" rel="noopener">https://translate.google.com/translate_tts?ie=UTF-8&amp;client=tw-ob&amp;tl=zh-TW&amp;q=測試</a></p>
-<p>console.clear();</p>
-<p>var sourceLang=”zh-TW”<br>var targetLang=”en”<br>var sourceText=”我愛妳”<br>  var url = “<a href="https://translate.googleapis.com/translate_a/single?client=gtx&amp;sl=&quot;" target="_blank" rel="noopener">https://translate.googleapis.com/translate_a/single?client=gtx&amp;sl=&quot;</a> </p>
-<pre><code>+ sourceLang + &quot;&amp;tl=&quot; + targetLang + &quot;&amp;dt=t&amp;q=&quot; + encodeURI(sourceText);
-</code></pre><p> // var result = JSON.parse(fetch(url).getContentText());</p>
-<p>//console.log(result);</p>
-<p>fetch(url).then(res=&gt;{<br>//   console.log(res.json())<br>      res.json().then(function(data) {<br>      console.log(data);<br>    });<br>})</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/WorkingNotes/nodejs.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/WorkingNotes/nodejs.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-30T11:04:45+08:00">
-                2017-08-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>npm init<br>//create package.json</p>
-<hr>
-<p>npm install g live-server</p>
-<p>npm install<br>//install dependences</p>
-<hr>
-<p>Live-server</p>
-<p>npm start<br>npm app<br>//app.js</p>
-<p>editor : install ESLint</p>
-<hr>
-<p>debug</p>
-<p>Node.js V8 –inspector Manager (NiM)<br><a href="https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj/related?hl=en-US" target="_blank" rel="noopener">https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj/related?hl=en-US</a></p>
-<p>chrome://inspect/#devices</p>
-<p>node -inspect server.js<br>node -inspect=9229 –debug-brk server.js<br>ts-node ….</p>
-<p>node –inspect ./node_modules/.bin/gulp test</p>
-<p>Unable to open devtools socket: address already in use<br>lsof -i tcp:9229<br>kill -9 [PID]</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/WorkingNotes/vscode.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/WorkingNotes/vscode.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-28T14:11:35+08:00">
-                2017-08-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>workbench.action.togglePanel<br>“cmd+j”<br>換cmd enter</p>
-<p>cursorWordEndRight<br>opt 右<br>換:cmd L</p>
-<p>cursorWordEndRightSelect<br>opt sft 右<br>換:cmd sft L</p>
-<p>上下左右<br>cmd opt 上下左右<br>換:cmd opt IKJL</p>
-<h1 id="comment"><a href="#comment" class="headerlink" title="comment"></a>comment</h1><p>cmd /</p>
-<h1 id="toggle-terminal-window"><a href="#toggle-terminal-window" class="headerlink" title="toggle terminal window"></a>toggle terminal window</h1><p>cmd J</p>
-<h1 id="new-terminal"><a href="#new-terminal" class="headerlink" title="new terminal"></a>new terminal</h1><p>ctrl `</p>
-<h1 id="show-termainl"><a href="#show-termainl" class="headerlink" title="show termainl"></a>show termainl</h1><p>ctrl ` sft</p>
-<h1 id="beautify"><a href="#beautify" class="headerlink" title="beautify"></a>beautify</h1><p>sft opt F</p>
-<p>1.檔案需要固定route,加到.angular-cli.json</p>
-<p>let mydiv=document.getElementById(“mydiv”)</p>
-<p>el=mydiv;<br>i=0;</p>
-<p>while (el) {<br>  console.log(i + ‘. ‘ + el.nodeName);<br>  if (el.nodeName==”SCRIPT”)<br>     break;</p>
-<p>  //if(el.nodeType==3)<br>  //   console.log(el.childNodes)<br>  el.childNodes.forEach((v,i)=&gt;{<br>    //console.dir(v)<br>    v.style=”border:1px solid red”<br>        console.log(“ “+v.nodeName + “ “ + v.textContent)<br>  })</p>
-<p>  el = el.nextSibling;<br>  i++;<br>}</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/WorkingNotes/angular.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/WorkingNotes/angular.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-27T17:21:16+08:00">
-                2017-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>angular會自動剔除不需要被編譯的ts檔案<br>angular universal做server render會在server也跑一次client的js code,要用isPlatformServer做路徑分離</p>
-<hr>
-<p>npm install -g @angular/cli</p>
-<p>npm install bootstrap -save</p>
-<p>angular-cli.json : app.styles<br>    “./../node_modules/bootstrap/dist/css/bootstrap.min.css”</p>
-<p>ng new myApp<br>ng new My_New_Project –style=scss</p>
-<hr>
-<p>tsconfig.json : “allowJs”: true</p>
-<hr>
-<p>ng g c ‘mods/mod-nodereader’ –module app.module</p>
-<p>–skip-import</p>
-<hr>
-<p>gulp server<br>ng build -w</p>
-<hr>
-<p>npm install bootstrap<br>npm install jquery</p>
-<p>add path to angular.cli.json “style/script”<br>           “../node_modules/bootstrap/dist/css/bootstrap.min.css”<br>           “../node_modules/jquery/dist/jquery.min.js”</p>
-<p>npm install @types/jquery</p>
-<p>add ‘jquery’ to tsconfig.js “types”<br>=&gt; not really needed, depending on versions of Typescript</p>
-<p>import * as $ from ‘jquery’;</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/RxJS/02.Scheduler.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/RxJS/02.Scheduler.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-24T17:44:53+08:00">
-                2017-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h1><p>主要用來控制Obs的發送機制,基本上有…</p>
-<ul>
-<li>queue : 多用於never complete的op (repeat)</li>
-<li>asap : 異步, =&gt; setTimeout(0)</li>
-<li>async : 異步, =&gt; setInterval  多用於timer相關的op</li>
-<li>animationFrame : </li>
-</ul>
-<p>scheduler的設定可以接在creation operators的最後一個參數<br>或是用obs的方法observeOn()</p>
-<hr>
-<p>obs.observeOn(Rx.Scheduler.async)<br>//讓obs的next()變成非同步執行<br>//內部的動作比較像是buffer住資料,再用setTimeout做next()</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1813,7 +1848,7 @@ x.innerText='哈哈';
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

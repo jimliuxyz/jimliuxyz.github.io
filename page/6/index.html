@@ -288,6 +288,784 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Nav.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Nav.html" itemprop="url">頁面導航</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:01:31+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="task-back-stack行為設定參考"><a href="#task-back-stack行為設定參考" class="headerlink" title="task back stack行為設定參考"></a>task back stack行為設定參考</h2><p><a href="https://developer.android.com/guide/components/tasks-and-back-stack.html?hl=zh-tw" target="_blank" rel="noopener">官方中文說明</a><br><a href="https://www.youtube.com/playlist?list=PLO5e_-yXpYLCQNdl6G8RIZLrlBPRQDCWR" target="_blank" rel="noopener">Android 深入Activity</a><br><a href="https://www.bilibili.com/video/av11208065/index_11.html#page=1" target="_blank" rel="noopener">Android基礎知識</a></p>
+<ol>
+<li>launchMode</li>
+<li>intent flag</li>
+<li>minifest activity</li>
+</ol>
+<h2 id="Deep-Link-App-Links-超連結啟動app"><a href="#Deep-Link-App-Links-超連結啟動app" class="headerlink" title="Deep Link(App Links) 超連結啟動app"></a>Deep Link(App Links) 超連結啟動app</h2><p><a href="https://developer.android.com/training/app-links/deep-linking.html" target="_blank" rel="noopener">ref</a><br><a href="https://developer.android.com/studio/write/app-link-indexing.html" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
+<p>aad:Implement non-standard task stack navigation (deep links)</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span> <span class="comment">&lt;!--從adb啟動--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.BROWSABLE"</span> /&gt;</span> <span class="comment">&lt;!--從browser啟動--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"app"</span> <span class="attr">android:host</span>=<span class="string">"jimliuxyz.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">adb shell am start -W -a android.intent.action.VIEW -d <span class="string">"app://jimliuxyz.com"</span> com.jimliuxyz.tsnote</span><br><span class="line"></span><br><span class="line">am : activity maneger</span><br><span class="line">-W : <span class="built_in">wait</span> <span class="keyword">for</span> launch to complete</span><br><span class="line">[-a &lt;ACTION&gt;] [-d &lt;DATA_URI&gt;]</span><br><span class="line">package不一定要</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果要用override fun onNewIntent()處理 activity要為<code>singleTop</code>之類</p>
+</blockquote>
+<h2 id="TaskStackBuilder"><a href="#TaskStackBuilder" class="headerlink" title="TaskStackBuilder"></a>TaskStackBuilder</h2><p><a href="https://www.youtube.com/watch?v=MvIlVsXxXmY" target="_blank" rel="noopener">ref</a><br><a href="https://developer.android.com/training/implementing-navigation/ancestral.html" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
+<p>用於憑空建立parent activity於TaskStack中<br>當MsgActivity是從其他app(intent或deep link)啟動時 並沒有自己的back stack 所以按下back按鈕時 無法回到MainActivity 此時就需要NavUtils工具</p>
+</blockquote>
+<h4 id="Minifest"><a href="#Minifest" class="headerlink" title="Minifest"></a>Minifest</h4><blockquote>
+<p>指定android:parentActivityName為欲返回的MainActivity</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"com.example.myfirstapp.MsgActivity"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:label</span>=<span class="string">"display_message"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:parentActivityName</span>=<span class="string">"com.example.myfirstapp.MainActivity"</span> &gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Parent activity meta-data to support 4.0 and lower --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">"android.support.PARENT_ACTIVITY"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:value</span>=<span class="string">"com.example.myfirstapp.MainActivity"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//通常都經由ActionBar左上角的箭頭驅動返回事件(android.R.id.home)</span></span><br><span class="line">getActionBar().setDisplayHomeAsUpEnabled(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//測試不ok</span></span><br><span class="line">Intent upIntent = NavUtils.getParentActivityIntent(<span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">if</span> (NavUtils.shouldUpRecreateTask(<span class="keyword">this</span>, upIntent)) &#123;</span><br><span class="line">    <span class="comment">//非處於自己app的back stack中時</span></span><br><span class="line">    TaskStackBuilder.create(<span class="keyword">this</span>)</span><br><span class="line">        .addNextIntentWithParentStack(upIntent)</span><br><span class="line">        .startActivities();</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    NavUtils.navigateUpTo(<span class="keyword">this</span>, upIntent);</span><br></pre></td></tr></table></figure>
+<h4 id="透過PendingIntent預先設定好-測試ok"><a href="#透過PendingIntent預先設定好-測試ok" class="headerlink" title="透過PendingIntent預先設定好(測試ok)"></a>透過PendingIntent預先設定好(測試ok)</h4><p><a href="https://developer.android.com/training/notify-user/navigation.html" target="_blank" rel="noopener">notify-user</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MsgActivity.class);</span><br><span class="line"></span><br><span class="line">TaskStackBuilder stackBuilder = TaskStackBuilder.create(<span class="keyword">this</span>);</span><br><span class="line">stackBuilder.addNextIntentWithParentStack(intent); <span class="comment">//依manifest設定的android:parentActivityName</span></span><br><span class="line"></span><br><span class="line">pi = stackBuilder.getPendingIntent(<span class="number">0</span>, PendingIntent.FLAG_UPDATE_CURRENT);</span><br></pre></td></tr></table></figure>
+<h2 id="launchMode"><a href="#launchMode" class="headerlink" title="launchMode"></a>launchMode</h2><blockquote>
+<p>manifest可設定activity的android:launchMode</p>
+</blockquote>
+<h4 id="standard-不斷新建堆疊"><a href="#standard-不斷新建堆疊" class="headerlink" title="standard : 不斷新建堆疊"></a>standard : 不斷新建堆疊</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a - a&apos; - a&apos;&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="singleTop-同standard-但當該activity已處於stack-top時不會再新建"><a href="#singleTop-同standard-但當該activity已處於stack-top時不會再新建" class="headerlink" title="singleTop : 同standard,但當該activity已處於stack top時不會再新建"></a>singleTop : 同standard,但當該activity已處於stack top時不會再新建</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a - a - a - b - a&apos; - a&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="singleTask-不會重開-該activity出現時勢必將task中其他task全部拋掉"><a href="#singleTask-不會重開-該activity出現時勢必將task中其他task全部拋掉" class="headerlink" title="singleTask : 不會重開,該activity出現時勢必將task中其他task全部拋掉"></a>singleTask : 不會重開,該activity出現時勢必將task中其他task全部拋掉</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a - a - b - c - d - a [back]離開app</span><br></pre></td></tr></table></figure>
+<h4 id="singleInstance-不會新建-該activity的task僅允許自己使用"><a href="#singleInstance-不會新建-該activity的task僅允許自己使用" class="headerlink" title="singleInstance : 不會新建,該activity的task僅允許自己使用"></a>singleInstance : 不會新建,該activity的task僅允許自己使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a - a -     a [back]離開a回到b</span><br><span class="line">        b -                  [back]離開b回到home</span><br></pre></td></tr></table></figure>
+<h2 id="簡述"><a href="#簡述" class="headerlink" title="簡述"></a>簡述</h2><ul>
+<li>standard - 不斷重開堆疊 : 預設 (可能有多個aty重複)</li>
+<li>singleTop - 頂端不新建 : 合理避免重複 (可能有多個aty重複)</li>
+<li>singleTask - 頂端排他 task pop all : Home</li>
+<li>singleInstance - 獨佔 : 供別的app使用</li>
+</ul>
+<p>single指的是activity不新建 但會執行onNewIntent()</p>
+<h2 id="taskAffinity-allowTaskReparenting"><a href="#taskAffinity-allowTaskReparenting" class="headerlink" title="taskAffinity allowTaskReparenting"></a>taskAffinity allowTaskReparenting</h2><p>affinity類似一個groupId的概念 activity預設的affinity為package name<br>當一個activity以FLAG_ACTIVITY_NEW_TASK啟動時會以affinity去找該被加到哪個task中</p>
+<h2 id="FLAG-ACTIVITY"><a href="#FLAG-ACTIVITY" class="headerlink" title="FLAG_ACTIVITY"></a>FLAG_ACTIVITY</h2><p>透過intent開啟的activity該依循何策略進入task或操作stack</p>
+<ul>
+<li>FLAG_ACTIVITY_NEW_TASK(同singleTask) : aty會在自己的task中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new aty : 為aty新增task</span><br><span class="line">new aty : push進aty原屬的task</span><br><span class="line">old aty : 顯示task但aty不會到top (怪怪的)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>FLAG_ACTIVITY_CLEAR_TOP : pop出原本在其上者</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b是FLAG_ACTIVITY_CLEAR_TOP</span><br><span class="line">a - b - c - d - b (此時cd會被pop出,剩下ab)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>FLAG_ACTIVITY_BROUGHT_TO_FRONT : activity會to front</p>
+</li>
+<li><p>FLAG_ACTIVITY_MULTIPLE_TASK : 能以另一個task啟動(act實體個別存在不同的task)</p>
+</li>
+<li><p>FLAG_ACTIVITY_SINGLE_TOP(同singleTop)</p>
+</li>
+<li><p>FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET與FLAG_ACTIVITY_RESET_TASK_IF_NEEDED : 1.設定清除點 2.pop掉清除點與之後的</p>
+</li>
+</ul>
+<p>還有很多…</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Intent.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Intent.html" itemprop="url">Intent</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:59:41+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p>一個意圖/命令的容器<br>putExtra僅能傳遞native type,或序列化物件(Serializable或Parcelable)</p>
+</blockquote>
+<ul>
+<li>顯示 : 指定元件的類別</li>
+<li>隱式 : 僅提供ACTION/CATEGORY/URI 不指定元件的類別</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">intent.setDataAndType(Uri.fromFile(file), <span class="string">"image/*"</span>);</span><br><span class="line">startActivity(intent);</span><br><span class="line"></span><br><span class="line">intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"http://..."</span>));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<h2 id="Intent導航與返航"><a href="#Intent導航與返航" class="headerlink" title="Intent導航與返航"></a>Intent導航與返航</h2><p>####導航</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//啟動</span></span><br><span class="line">startActivity(intent)</span><br><span class="line">startActivityForResult(intent, req_id) <span class="comment">//透過activity或fragment呼叫</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//被啟動</span></span><br><span class="line"><span class="function">override fun <span class="title">onCreate</span><span class="params">(savedInstanceState: Bundle?)</span>  <span class="comment">//首次啟動</span></span></span><br><span class="line"><span class="function">override fun <span class="title">onNewIntent</span><span class="params">(intent: Intent?)</span>   <span class="comment">//已啟動 但有新intent</span></span></span><br></pre></td></tr></table></figure>
+<p>####返航</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">setResult() <span class="comment">//均透過activity</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityResult</span><span class="params">(int requestCode, int resultCode, Intent <span class="keyword">data</span>)</span></span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>fragment有startActivityForResult與onActivityResult,但沒有setResult</p>
+</blockquote>
+<h4 id="PendingIntent"><a href="#PendingIntent" class="headerlink" title="PendingIntent"></a>PendingIntent</h4><blockquote>
+<p>封裝執行intent的機制 類似於將startActive/startService與intent封裝起來 丟給系統 透過系統機制讓user觸發intent此外尚有些flag策略 通常就是和Notification合用</p>
+</blockquote>
+<h4 id="Notification"><a href="#Notification" class="headerlink" title="Notification"></a>Notification</h4><blockquote>
+<p>位於手機上方的通知欄 可作為service的ui使其能顯示狀態與被使用者操作</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//NotificationManager</span></span><br><span class="line">nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Intent</span></span><br><span class="line">intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class);</span><br><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);</span><br><span class="line"></span><br><span class="line"><span class="comment">//PendingIntent</span></span><br><span class="line">pi = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, intent, PendingIntent.FLAG_ONE_SHOT);</span><br><span class="line"></span><br><span class="line"><span class="comment">//NotificationCompat.Builder</span></span><br><span class="line">builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>, <span class="string">"practice_channel"</span>)</span><br><span class="line">        .setSmallIcon(android.R.drawable.ic_dialog_info)</span><br><span class="line">        .setContentTitle(getString(R.string.time_to_practice))</span><br><span class="line">        .setContentText(getString(R.string.it_is_time_to_practice))</span><br><span class="line">        .setAutoCancel(<span class="keyword">true</span>)</span><br><span class="line">        .setContentIntent(pi);</span><br><span class="line"></span><br><span class="line"><span class="comment">//產生與取消</span></span><br><span class="line">nm.notify(NOTIFICATION_ID, builder.build());</span><br><span class="line"></span><br><span class="line">nm.cancel(NOTIFICATION_ID);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/CheatSheet.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/CheatSheet.html" itemprop="url">Android CheatSheet</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:58:09+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//下載圖片</span></span><br><span class="line">img = Drawable.createFromStream(<span class="keyword">new</span> URL(url).openStream(), <span class="string">""</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//顯示短暫訊息</span></span><br><span class="line">Toast.makeText(<span class="keyword">this</span>, <span class="string">"..."</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line">getResources().getStringArray(R....);</span><br><span class="line">getResources().getXml(R....); <span class="comment">//XmlResourcesParser</span></span><br><span class="line">getAssets().open(<span class="string">"..."</span>)</span><br><span class="line">getSystemService(Service...)</span><br><span class="line"></span><br><span class="line"><span class="comment">//URI</span></span><br><span class="line">MediaStore.Images.Media.INTERNAL_CONTENT_URI</span><br></pre></td></tr></table></figure>
+<h2 id="查看activity-back-stack"><a href="#查看activity-back-stack" class="headerlink" title="查看activity back stack"></a>查看activity back stack</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">adb shell dumpsys activity activities | sed -En -e <span class="string">'/Running activities/,/Run #0/p'</span> | sed -En -e <span class="string">'/com.jimliuxyz/p'</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/HelpingTools.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/HelpingTools.html" itemprop="url">協助工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:55:53+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="uiautomatorviewer"><a href="#uiautomatorviewer" class="headerlink" title="uiautomatorviewer"></a>uiautomatorviewer</h2><blockquote>
+<p>檢視View階層 (方面找ID)</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Library/Android/sdk/tools/bin/ uiautomatorviewer</span><br></pre></td></tr></table></figure>
+<h2 id="draw9patch"><a href="#draw9patch" class="headerlink" title="draw9patch"></a>draw9patch</h2><blockquote>
+<p>製作不受縮放影響畫質的按鈕外框圖樣 (避免四角被伸縮)</p>
+</blockquote>
+<h2 id="查詢TaskStack"><a href="#查詢TaskStack" class="headerlink" title="查詢TaskStack"></a>查詢TaskStack</h2><p><a href="https://www.jianshu.com/p/d859480613a4" target="_blank" rel="noopener">adb shell dumpsys</a><br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">adb shell dumpsys</span><br></pre></td></tr></table></figure></p>
+<h2 id="Android-Debug-Database"><a href="#Android-Debug-Database" class="headerlink" title="Android-Debug-Database"></a>Android-Debug-Database</h2><p><a href="https://github.com/amitshekhariitbhu/Android-Debug-Database" target="_blank" rel="noopener">ref</a>, <a href="http://localhost:8080/#" target="_blank" rel="noopener">本地端連結</a></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Working with emulator</span></span><br><span class="line"><span class="built_in">cd</span> /Users/jimliu/Library/Android/sdk/platform-tools</span><br><span class="line">./adb forward tcp:8080 tcp:8080</span><br></pre></td></tr></table></figure>
+<h2 id="LeakCanary"><a href="#LeakCanary" class="headerlink" title="LeakCanary"></a>LeakCanary</h2><p><a href="https://github.com/jimliuxyz/leakcanary" target="_blank" rel="noopener">LeakCanary</a></p>
+<blockquote>
+<p>檢測記憶體洩漏 (針對activity生命週期)</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'</span><br><span class="line">  releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate();</span><br><span class="line">    <span class="keyword">if</span> (LeakCanary.isInAnalyzerProcess(<span class="keyword">this</span>))</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    LeakCanary.install(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Testing.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Testing.html" itemprop="url">功能測試</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:51:42+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h2><blockquote>
+<p>僅於本地JVM上測試 又稱單元測試(函數功能測試) 不依靠android環境</p>
+</blockquote>
+<blockquote>
+<p>以滑鼠右鍵選單”Go To&gt;Test”快速建立test class</p>
+</blockquote>
+<h4 id="Annotation"><a href="#Annotation" class="headerlink" title="Annotation"></a>Annotation</h4><ul>
+<li>@Test 註解一函數為 測試使用</li>
+<li>@Test(expected = Exception.class) 使符合預期時拋出異常</li>
+<li>@Test(timeout=100) 指定測試需在100ms內完成</li>
+<li>@Before 註解一函數為 每個測試函數執行要先執行的函數</li>
+<li>@After 邏輯同上</li>
+<li>@BeforeClass @AfterClass 邏輯同上 但僅為整個class執行一次</li>
+<li>@Mock 宣告一個<code>假物件</code></li>
+<li>@Captor 宣告一個<code>叫用參數捕捉器</code>(以取得叫用參數)</li>
+<li>@Spy 監視一個真物件</li>
+<li>@Rule 修飾TestRule</li>
+</ul>
+<h4 id="Matchers"><a href="#Matchers" class="headerlink" title="Matchers"></a>Matchers</h4><blockquote>
+<p>比對器 類似過濾行為 能以廣義的形容區別物件</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">eq</span><br><span class="line">is 是某個object</span><br><span class="line">isA 是某個class</span><br><span class="line">not</span><br><span class="line">anyInt</span><br><span class="line">hasItem</span><br></pre></td></tr></table></figure>
+<h4 id="Assert"><a href="#Assert" class="headerlink" title="Assert"></a>Assert</h4><blockquote>
+<p>斷言結果 <code>判斷值是否符合預期</code> 若不符合斷言即為測試失敗</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//斷言結果需為true</span></span><br><span class="line">assertTrue(<span class="string">"test failure"</span>, mockins.func() == <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//斷言instance.func()執行回傳為1</span></span><br><span class="line">assertThat(<span class="string">"test failure"</span>, mockins.func(), is(<span class="number">1</span>)); <span class="comment">//用Matcher判斷</span></span><br><span class="line">assertThat(mockins.getList(), not(hasItem(not_expected));</span><br><span class="line"></span><br><span class="line"><span class="comment">//assertEquals</span></span><br></pre></td></tr></table></figure>
+<h4 id="mockito-製作假物件"><a href="#mockito-製作假物件" class="headerlink" title="mockito 製作假物件"></a>mockito 製作假物件</h4><p><a href="https://blog.csdn.net/shensky711/article/details/52771493" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
+<p>通過製作假物件與指定其反應回傳 來驗證該假物件<code>是否被呼叫?以何參數呼叫?</code></p>
+</blockquote>
+<blockquote>
+<p>通常被測物需為真物件(因為要測試他的邏輯) 其依賴物為假物件(不著重邏輯是否正確或回傳什麼 僅著重是否被真物件正確叫用)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 產生mock物件</span></span><br><span class="line"><span class="meta">@Mock</span> MyClass mockIns; <span class="comment">//不需要new</span></span><br><span class="line">MockitoAnnotations.initMocks(<span class="keyword">this</span>); <span class="comment">//但之後要做init使class內的@Mock生效</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1. 產生mock物件</span></span><br><span class="line">LinkedList mockList = mock(LinkedList.class);</span><br><span class="line">LinkedList mockList = mock(LinkedList.class, Mockito.RETURNS_SMART_NULLS); <span class="comment">//指定預設的回傳</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2. 指定mock物件的反應 (此動作稱為Stubbing)</span></span><br><span class="line">when(mockList.get(<span class="number">0</span>)).thenReturn(<span class="string">"it's a mock string"</span>);</span><br><span class="line">when(mockList.get(<span class="number">1</span>)).thenThrow(<span class="keyword">new</span> RuntimeException());</span><br><span class="line">when(mockList.get(anyInt())).thenReturn(<span class="string">"element"</span>);</span><br><span class="line">when(mockList.size()).thenReturn(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">//每次回傳都不同</span></span><br><span class="line"><span class="comment">//doReturn, doThrow, doAnswer, doNothing, doCallRealMethod</span></span><br><span class="line">doThrow(<span class="keyword">new</span> RuntimeException()).when(mockList).clear();</span><br><span class="line">reset(mockList); <span class="comment">//清除所有Stubbing</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3. 經過某些動作操作後...即可進入驗證</span></span><br><span class="line">mockedList.add(<span class="string">"once"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//驗證1. 驗證mock物件的方法是否被呼叫(times, atLeast, atMost, atLeastOnce, never, timeout)</span></span><br><span class="line">verify(mockedList).add(<span class="string">"once"</span>);   </span><br><span class="line">verify(mockedList, times(<span class="number">1</span>)).add(<span class="string">"once"</span>); </span><br><span class="line">verify(mockedList).set(anyInt(), eq(<span class="string">"element"</span>)); <span class="comment">//用Matchers便於廣義的驗證</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//驗證2. 連帶驗證呼叫順序</span></span><br><span class="line">InOrder inOrder = inOrder(mockedList);</span><br><span class="line">inOrder.verify(mockedList).add(<span class="string">"first"</span>);</span><br><span class="line">inOrder.verify(mockedList).add(<span class="string">"second"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//驗證3. 捕捉呼叫參數</span></span><br><span class="line">ArgumentCaptor&lt;String&gt; args = ArgumentCaptor.forClass(String.class);</span><br><span class="line">mockedList.add(<span class="string">"John"</span>);</span><br><span class="line">verify(mockedList).add(args.capture()); <span class="comment">//驗證add的叫用 同時捕捉叫用的參數</span></span><br><span class="line">assertEquals(<span class="string">"John"</span>, args.getValue());</span><br></pre></td></tr></table></figure>
+<h4 id="spy監視真物件"><a href="#spy監視真物件" class="headerlink" title="spy監視真物件"></a>spy監視真物件</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> LinkedList();</span><br><span class="line">List spy = spy(list);</span><br><span class="line"><span class="comment">//之後spy即類似mockito的操作</span></span><br></pre></td></tr></table></figure>
+<h4 id="TestRule"><a href="#TestRule" class="headerlink" title="TestRule"></a>TestRule</h4><blockquote>
+<p>能在測試函數前後插入動作 例如偵測測試函數的執行時間</p>
+</blockquote>
+<blockquote>
+<p>加入TestRule時需用@Rule註解才能與JUnit掛鉤</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRule</span> <span class="keyword">implements</span> <span class="title">TestRule</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Statement <span class="title">apply</span><span class="params">(<span class="keyword">final</span> Statement base, <span class="keyword">final</span> Description description)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//base : 一個能夠驅使測試函數被執行的物件</span></span><br><span class="line">        <span class="comment">//description : 一個相關於測試函數環境的描述</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Statement() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">evaluate</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                <span class="comment">//即測試前</span></span><br><span class="line">                base.evaluate();</span><br><span class="line">                <span class="comment">//即測試後</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Rule</span></span><br><span class="line">MyRule rule = <span class="keyword">new</span> MyRule()</span><br></pre></td></tr></table></figure>
+<h2 id="Espresso"><a href="#Espresso" class="headerlink" title="Espresso"></a>Espresso</h2><p><a href="https://github.com/googlesamples/android-testing" target="_blank" rel="noopener">Android testing samples</a></p>
+<blockquote>
+<p>依賴於JUnit的一個測試框架</p>
+</blockquote>
+<blockquote>
+<p>UI測試 依靠android環境執行 針對view元件進行驗證</p>
+</blockquote>
+<h4 id="基本三步驟"><a href="#基本三步驟" class="headerlink" title="基本三步驟"></a>基本三步驟</h4><ul>
+<li>取得view或data的互動 onView / onData</li>
+<li>執行動作 perform</li>
+<li>檢查驗證 check</li>
+</ul>
+<h4 id="大致動作"><a href="#大致動作" class="headerlink" title="大致動作"></a>大致動作</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//操作view</span></span><br><span class="line">onView(withId(R.id.fab_add_task)).perform(click());</span><br><span class="line"><span class="comment">//檢查view</span></span><br><span class="line">onView(withId(R.id.add_task_title)).check(matches(isDisplayed()));</span><br></pre></td></tr></table></figure>
+<h4 id="onView"><a href="#onView" class="headerlink" title="onView"></a>onView</h4><blockquote>
+<p>ViewInteraction onView(Matcher<view> viewMatcher)</view></p>
+</blockquote>
+<blockquote>
+<p>透過matcher取得view的控制</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Matcher&lt;View&gt;</span></span><br><span class="line">allOf 合併多個matcher</span><br><span class="line">withId</span><br><span class="line">withText</span><br><span class="line">isDisplayed</span><br><span class="line"></span><br><span class="line"><span class="comment">//其父view的id為R.id.recyclerView</span></span><br><span class="line">isDescendantOfA(withId(R.id.recyclerView))</span><br><span class="line"></span><br><span class="line"><span class="comment">//其父view為ListView.class</span></span><br><span class="line">isDescendantOfA(isAssignableFrom(ListView.class))</span><br><span class="line"></span><br><span class="line">hasDescendant</span><br><span class="line">hasSibling</span><br></pre></td></tr></table></figure>
+<h4 id="perform"><a href="#perform" class="headerlink" title="perform"></a>perform</h4><blockquote>
+<p>ViewInteraction perform(final ViewAction… viewActions)</p>
+</blockquote>
+<blockquote>
+<p>執行動作</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//ViewAction</span></span><br><span class="line">click()</span><br><span class="line">LongClick()</span><br><span class="line">clearText()</span><br><span class="line">replaceText(<span class="string">""</span>)</span><br><span class="line">typeText(<span class="string">""</span>)</span><br><span class="line">closeSoftKeyboard()</span><br><span class="line"></span><br><span class="line"><span class="comment">//專為RecyclerView設計(actionOnItem)</span></span><br><span class="line">onView(allOf(withId(R.id.recyclerView)))</span><br><span class="line">    .perform(actionOnItem(hasDescendant(withText(<span class="string">"title"</span>)), click()));</span><br></pre></td></tr></table></figure>
+<h4 id="check"><a href="#check" class="headerlink" title="check"></a>check</h4><blockquote>
+<p>ViewInteraction check(final ViewAssertion viewAssert)</p>
+</blockquote>
+<blockquote>
+<p>斷言</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//ViewAssertion</span></span><br><span class="line">matches(isDisplayed()) <span class="comment">//使用view matcher來斷言</span></span><br><span class="line">doesNotExist()</span><br><span class="line">isChecked()</span><br></pre></td></tr></table></figure>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">pressBack() <span class="comment">//按下返回鍵</span></span><br><span class="line">TestUtils.rotateXXX() <span class="comment">//控制手機旋轉</span></span><br><span class="line">TestUtils.getCurrentActivity()</span><br></pre></td></tr></table></figure>
+<h4 id="TestUtils"><a href="#TestUtils" class="headerlink" title="TestUtils"></a>TestUtils</h4><blockquote>
+<p>一個工具類 提供靜態方法控制手機裝置 rotate / getCurrentActivity</p>
+</blockquote>
+<h4 id="自訂Matcher"><a href="#自訂Matcher" class="headerlink" title="自訂Matcher"></a>自訂Matcher</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//一個回傳Matcher的function</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Matcher&lt;View&gt; <span class="title">withItemText</span><span class="params">(<span class="keyword">final</span> String itemText)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> TypeSafeMatcher&lt;View&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matchesSafely</span><span class="params">(View item)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> allOf(</span><br><span class="line">                    <span class="comment">//其父view為ListView.class</span></span><br><span class="line">                    isDescendantOfA(isAssignableFrom(ListView.class)),</span><br><span class="line">                    <span class="comment">//且text為itemText</span></span><br><span class="line">                    withText(itemText)</span><br><span class="line">                ).matches(item);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">describeTo</span><span class="params">(Description description)</span> </span>&#123;</span><br><span class="line">            description.appendText(<span class="string">"is isDescendantOfA LV with text "</span> + itemText);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/ContentProvider.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1114,984 +1892,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/00.index.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/00.index.html" itemprop="url">Android知識樹</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
-                2018-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p><a href="/home/Android/DevLog.html">開發紀錄</a> <a href="/home/Android/CheatSheet.html">Cheat Sheet</a></p>
-<h1 id="入門知識"><a href="#入門知識" class="headerlink" title="入門知識"></a><a href="/home/Android/basic.html">入門知識</a></h1><h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a><a href="/home/Android/IDE-ENV.html">IDE</a></h2><h2 id="編譯流程"><a href="#編譯流程" class="headerlink" title="編譯流程"></a><a href="/home/Android/basic.html#編譯流程">編譯流程</a></h2><h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a><a href="/home/Android/Gradle.html">Gradle</a></h2><h2 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h2><blockquote>
-<p>供Android系統得知此app包含的組件內容與設定</p>
-</blockquote>
-<h2 id="class-Context"><a href="#class-Context" class="headerlink" title="class Context"></a><a href="/home/Android/basic.html#Context">class Context</a></h2><blockquote>
-<p>可視為app執行環境(上下文) 許多操作都是需要有執行環境才能完成<br>Application/Activity/Service都有各自的Context 但生命週期不同</p>
-</blockquote>
-<h2 id="class-Application"><a href="#class-Application" class="headerlink" title="class Application"></a><a href="/home/Android/basic.html#Application">class Application</a></h2><blockquote>
-<p>做為app的single instance 相當於app的母生命週期</p>
-</blockquote>
-<h2 id="SharedPreference"><a href="#SharedPreference" class="headerlink" title="SharedPreference"></a><a href="/home/Android/basic.html#SharedPreference">SharedPreference</a></h2><h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><blockquote>
-<p>一段已載入記憶體執行的程式碼 例如一個執行中的app就是一個process</p>
-</blockquote>
-<h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><blockquote>
-<p>實質執行程式碼的單元<br>app中起始的thread稱為main thread又稱為ui thread 其最主要的工作為在每個16ms繪製一次畫面 若沒辦法如期執行就會造成畫面lag</p>
-</blockquote>
-<h1 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a><a href="/home/Android/Resource.html">Resource</a></h1><h1 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a><a href="/home/Android/Intent.html">Intent</a></h1><p>每個app都是獨立的process 無法直接互動 Intent則做為之間互動的<code>意圖/訊息內容</code>. 透過intent描述欲執行的動作 交由android系統執行. 通常執行動作都是啟動某個app或service.</p>
-<h2 id="PendingIntent"><a href="#PendingIntent" class="headerlink" title="PendingIntent"></a><a href="/home/Android/Intent.html#PendingIntent">PendingIntent</a></h2><blockquote>
-<p>PendingIntent會持有一個intent 交給android系統保留 如同委託系統代為於特定時機執行 (此時intent的執行與否已與建立該intent的app無關了)</p>
-</blockquote>
-<h2 id="IntentFilter"><a href="#IntentFilter" class="headerlink" title="IntentFilter"></a><a href="/home/Android/Intent.html#IntentFilter">IntentFilter</a></h2><blockquote>
-<p>對於能被intent啟動的對象來說(例如Service) 需要過濾不相干的意圖 (即需預先描述相關的意圖於Filter中)</p>
-</blockquote>
-<h2 id="Notification"><a href="#Notification" class="headerlink" title="Notification"></a><a href="/home/Android/Intent.html#Notification">Notification</a></h2><blockquote>
-<p>位於手機上方的通知欄</p>
-</blockquote>
-<h1 id="四大組件"><a href="#四大組件" class="headerlink" title="四大組件"></a>四大組件</h1><p>即Activity/Service/ContentProvider/Broadcast 這些組件的共通點就是能被別的app透過intent啟動或間接存取</p>
-<p>四大組件生命週期互不相同 但都是經由系統實例化誕生 或依系統機制結束 我們僅能發送intent告知意圖</p>
-<h1 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a><a href="/home/Android/Activity.html">Activity</a></h1><p>可視為一個<code>頁面</code>的持有者</p>
-<h2 id="Activity重建與復用"><a href="#Activity重建與復用" class="headerlink" title="Activity重建與復用"></a><a href="/home/Android/Activity.html#Activity重建與復用">Activity重建與復用</a></h2><blockquote>
-<p>Activity常有機會被系統重建 例如螢幕翻轉或語系更動 重建後可能造成狀態的喪失</p>
-</blockquote>
-<h1 id="Activity導航"><a href="#Activity導航" class="headerlink" title="Activity導航"></a><a href="/home/Android/Nav.html">Activity導航</a></h1><h2 id="Deep-Link"><a href="#Deep-Link" class="headerlink" title="Deep Link"></a>Deep Link</h2><blockquote>
-<p>使app能透過超連結方式被開啟</p>
-</blockquote>
-<h2 id="TaskStack"><a href="#TaskStack" class="headerlink" title="TaskStack"></a>TaskStack</h2><blockquote>
-<p>相關於頁面的堆疊 即<code>上一頁</code>的功能</p>
-</blockquote>
-<h2 id="launchMode"><a href="#launchMode" class="headerlink" title="launchMode"></a><a href="/home/Android/Nav.html#launchMode">launchMode</a></h2><blockquote>
-<p>指定TaskStack堆疊的策略</p>
-</blockquote>
-<h2 id="FLAG-ACTIVITY"><a href="#FLAG-ACTIVITY" class="headerlink" title="FLAG_ACTIVITY"></a><a href="/home/Android/Nav.html#FLAG-ACTIVITY">FLAG_ACTIVITY</a></h2><blockquote>
-<p>用Intent開啟Activity的堆疊策略</p>
-</blockquote>
-<h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a><a href="/home/Android/Service.html">Service</a></h1><p>可視為一個<code>服務</code> 服務能提供給自己或別的app 或常態的在背景默默執行<br>Service衍生出了許多不同的類別 用以達到特定的需求</p>
-<h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2><blockquote>
-<p>Service執行於main thread 但IntentService會切到worker thread佇列執行</p>
-</blockquote>
-<h2 id="JobService-與-JobScheduler"><a href="#JobService-與-JobScheduler" class="headerlink" title="JobService 與 JobScheduler"></a>JobService 與 JobScheduler</h2><blockquote>
-<p>能依系統狀態約定任務的執行 例如有網路時才執行 使更有效率的驅動任務 節約電力</p>
-</blockquote>
-<h1 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a><a href="/home/Android/ContentProvider.html">ContentProvider</a></h1><p>可視為一個<code>資料提供者</code> 提供資料給自己或別的app 透過特定的uri即可存取特定的ContentProvider 例如’電話簿聯絡人’等資訊就是透過ContentProvider運作</p>
-<h2 id="Cursor"><a href="#Cursor" class="headerlink" title="Cursor"></a>Cursor</h2><blockquote>
-<p>可以理解為資料指針 其持有一群資料 透過指定cursor的位置即可取得某一筆資料</p>
-</blockquote>
-<h2 id="CursorLoader"><a href="#CursorLoader" class="headerlink" title="CursorLoader"></a>CursorLoader</h2><h1 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a><a href="/home/Android/Broadcast.html">Broadcast</a></h1><p>發送或接收廣播 例如系統電力不足時會發送廣播給有註冊的接收器</p>
-<h1 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a><a href="/home/Android/Fragment.html">Fragment</a></h1><p>可視為一個<code>頁面中的一小部分</code>的持有者 用意在將整個頁面拆散 其生命週期基本上是依附Activity上 或由FragmentManager管理</p>
-<h1 id="Database-MySQL"><a href="#Database-MySQL" class="headerlink" title="Database MySQL"></a><a href="/home/Android/DB-MySQL.html">Database MySQL</a></h1><p>Android內建的Database</p>
-<h1 id="Thread-Task"><a href="#Thread-Task" class="headerlink" title="Thread / Task"></a><a href="/home/Android/Task.html">Thread / Task</a></h1><p>為了順利與容易的協調各式工作 各種衍生的類別孕育而生</p>
-<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><blockquote>
-<p>一個透過<code>當下執行緒</code>建立的<code>message handler</code> 其目的在使工作能透過該執行緒<code>佇列的被執行</code> 可以作為執行時切換執行緒的手段 或當佇列安插異步工作於執行緒</p>
-</blockquote>
-<h2 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h2><blockquote>
-<p>一個透過<code>當下執行緒</code>建立的訊息接收器 其內部包含一個<code>message queue</code> 是促成Handler運作的背後推手</p>
-</blockquote>
-<h2 id="AsyncTask"><a href="#AsyncTask" class="headerlink" title="AsyncTask"></a>AsyncTask</h2><blockquote>
-<p>建立一個異步工作 執行於worker thread 且提供機制與main thread互動</p>
-</blockquote>
-<h2 id="AlarmManager"><a href="#AlarmManager" class="headerlink" title="AlarmManager"></a>AlarmManager</h2><blockquote>
-<p>安排定時任務(如鬧鐘般) 用PendingIntent設定 時間到開啟Activity或Service<br>能夠喚醒Android系統</p>
-</blockquote>
-<h1 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a><a href="/home/Android/RecyclerView.html">RecyclerView</a></h1><h1 id="View-amp-Style"><a href="#View-amp-Style" class="headerlink" title="View &amp; Style"></a><a href="/home/Android/ViewNStyle.html">View &amp; Style</a></h1><h1 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a><a href="/home/Android/Layout.html">Layout</a></h1><h1 id="Widget"><a href="#Widget" class="headerlink" title="Widget"></a><a href="/home/Android/Widget.html">Widget</a></h1><blockquote>
-<p>app widget 手機HomeScreen上的小工具</p>
-</blockquote>
-<h1 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h1><h2 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a><a href="/home/Android/Testing.html#JUnit">JUnit</a></h2><blockquote>
-</blockquote>
-<h2 id="Espresso"><a href="#Espresso" class="headerlink" title="Espresso"></a><a href="/home/Android/Testing.html#Espresso">Espresso</a></h2><blockquote>
-</blockquote>
-<h2 id="Monkey"><a href="#Monkey" class="headerlink" title="Monkey"></a><a href="/home/Android/MonkeyTest.html">Monkey</a></h2><blockquote>
-<p>壓力循環測試</p>
-</blockquote>
-<h1 id="3rd-Party-Library"><a href="#3rd-Party-Library" class="headerlink" title="3rd Party Library"></a>3rd Party Library</h1><h2 id="Dagger"><a href="#Dagger" class="headerlink" title="Dagger"></a><a href="/home/Android/Dagger.html">Dagger</a></h2><blockquote>
-<p>依賴注入工具 何謂依賴? A物件需要B物件才能運作 B即為A的依賴物 將依賴物帶進A的實現方式即稱為依賴注入<br>將各個<code>物件實體的建立或獲取</code>寫成函數方法 Dagger會建立其之間的依賴關係 並將依賴注入到物件中</p>
-</blockquote>
-<h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a><a href="/home/Android/RxJava.html">RxJava</a></h2><blockquote>
-<p>ReactiveX 響應式編程 將數據流轉化為事件觸發 例如[1,2,3]會分別產生3個事件<br>流之間可經由運算符號(即鏈式函數)加工產生新的流</p>
-</blockquote>
-<h2 id="Gson"><a href="#Gson" class="headerlink" title="Gson"></a>Gson</h2><blockquote>
-<p>Json文件的解析</p>
-</blockquote>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a><a href="/home/Android/HelpingTools.html">工具</a></h1><h2 id="uiautomatorviewer"><a href="#uiautomatorviewer" class="headerlink" title="uiautomatorviewer"></a>uiautomatorviewer</h2><blockquote>
-<p>檢視View階層 (方面找ID)</p>
-</blockquote>
-<h2 id="draw9patch"><a href="#draw9patch" class="headerlink" title="draw9patch"></a>draw9patch</h2><blockquote>
-<p>製作不受縮放影響畫質的按鈕外框圖樣 (避免四角被伸縮)</p>
-</blockquote>
-<h2 id="查詢TaskStack"><a href="#查詢TaskStack" class="headerlink" title="查詢TaskStack"></a>查詢TaskStack</h2><blockquote>
-<p>adb shell dumpsys</p>
-</blockquote>
-<h2 id="Android-Debug-Database"><a href="#Android-Debug-Database" class="headerlink" title="Android-Debug-Database"></a>Android-Debug-Database</h2><blockquote>
-<p>mysql網頁伺服器介面</p>
-</blockquote>
-<h2 id="LeakCanary"><a href="#LeakCanary" class="headerlink" title="LeakCanary"></a>LeakCanary</h2><blockquote>
-<p>記憶體洩漏偵測</p>
-</blockquote>
-<hr>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="LruCache"><a href="#LruCache" class="headerlink" title="LruCache"></a><a href="https://www.youtube.com/watch?v=R5ON3iwx78M" target="_blank" rel="noopener">LruCache</a></h2><blockquote>
-<p>快取 當空間吃緊時能首先移除掉<code>近期最少使用的(Least recent used)</code><br>三級快取(緩存)策略 即 <code>記憶體中快取-&gt;本地端資料-&gt;網路資料</code> 依其優先順序取得資料 以得到最快速度</p>
-</blockquote>
-<h2 id="Accessibility"><a href="#Accessibility" class="headerlink" title="Accessibility"></a><a href="/home/Android/Accessibility.html">Accessibility</a></h2><blockquote>
-<p>輔助殘疾人士 使其便於操作app</p>
-</blockquote>
-<h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a><a href="/home/Android/Animation.html">Animation</a></h2><blockquote>
-<p>動畫</p>
-</blockquote>
-<h2 id="序列化Serializable-Parcelable"><a href="#序列化Serializable-Parcelable" class="headerlink" title="序列化Serializable / Parcelable"></a>序列化Serializable / Parcelable</h2><h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><blockquote>
-<p>對於javaBean類只要implements Serializable 不用額外實現方法即可對primitive type序列化 特殊物件則須額外實現<br>用<code>反射</code>實現 所以速度慢</p>
-</blockquote>
-<h4 id="Parcelable"><a href="#Parcelable" class="headerlink" title="Parcelable"></a>Parcelable</h4><blockquote>
-<p>要有一個名為CREATOR的靜態變數實現Creator 用以從序列還原物件<br>要實現writeToParcel與createFromParcel (寫讀順序要對應)<br>因為hard coding所以速度快</p>
-</blockquote>
-<h2 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a><a href="/home/Android/Storage.html">Storage</a></h2><h2 id="Room"><a href="#Room" class="headerlink" title="Room"></a><a href="/home/Android/Room.html">Room</a></h2><blockquote>
-<p>MySql的另一種操作方式</p>
-</blockquote>
-<h2 id="ArchitectureComponent"><a href="#ArchitectureComponent" class="headerlink" title="ArchitectureComponent"></a><a href="/home/Android/ArchitectureComponent.html">ArchitectureComponent</a></h2><blockquote>
-<p>LifeCycle與Observable的整合 使其產生LiveData 套用MVVM架構</p>
-</blockquote>
-<h2 id="debug過程"><a href="#debug過程" class="headerlink" title="debug過程"></a><a href="https://www.youtube.com/watch?v=Hgtq3yXiOas" target="_blank" rel="noopener">debug過程</a></h2><blockquote>
-<p>操作內建的debug工具</p>
-</blockquote>
-<h2 id="懸浮視窗"><a href="#懸浮視窗" class="headerlink" title="懸浮視窗"></a>懸浮視窗</h2><p><a href="https://github.com/henrychuangtw/Android-ChatHead" target="_blank" rel="noopener">ref</a></p>
-<blockquote>
-<p>即將view依LayoutParams加到WindowManager做為remote view處理</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);</span><br><span class="line">removeView = (RelativeLayout)inflater.inflate(R.layout.remove, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);</span><br><span class="line">windowManager.addView(removeView, layoutParam);</span><br></pre></td></tr></table></figure>
-<h2 id="雜項"><a href="#雜項" class="headerlink" title="雜項"></a><a href="/home/Android/MISC.html">雜項</a></h2><blockquote>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Service.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Service.html" itemprop="url">Service</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
-                2018-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://upload-images.jianshu.io/upload_images/3881353-66a45f88bedec256.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><ul>
-<li>app透過startService啟動service</li>
-<li>執行於UI Thread</li>
-<li>不會自動被系統結束 只能自己透過stopSelf結束</li>
-</ul>
-<h4 id="onStartCommand的回傳決定Service被系統殺掉後的行為"><a href="#onStartCommand的回傳決定Service被系統殺掉後的行為" class="headerlink" title="onStartCommand的回傳決定Service被系統殺掉後的行為"></a>onStartCommand的回傳決定Service被系統殺掉後的行為</h4><blockquote>
-<p>START_STICKY : Service被殺掉, 系統會重啟, 但是Intent會是null。</p>
-</blockquote>
-<blockquote>
-<p>START_NOT_STICKY : Service被系統殺掉, 不會重啟。</p>
-</blockquote>
-<blockquote>
-<p>START_REDELIVER_INTENT : Service被系統殺掉, 重啟且Intent會重傳。 </p>
-</blockquote>
-<h2 id="Remote-Service"><a href="#Remote-Service" class="headerlink" title="Remote Service"></a>Remote Service</h2><ul>
-<li>同為Service僅是啟動/取得方式不同 主要用於跨process的應用</li>
-<li>即透過bindService(intent, conn, BIND_AUTO_CREATE)取得binder實例操控service</li>
-<li>以bindService啟動service會造成Service綁定於App的生命週期</li>
-<li>用AIDL建立共通介面</li>
-<li>內建已經做好了一個共通的binder 可以透過(Message(msg)).getBinder()建立 基本上是用handler處理message的方式傳遞訊息 (就不用建AIDL了)</li>
-<li>android:process屬性 : 可讓Service執行於自有的process上(remote service) 通常會設為:remote(這似乎屬於一個自訂的命名)</li>
-</ul>
-<h2 id="Binder"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</h2><blockquote>
-<p>在android中做process間通訊用 (底層機制應該是linux的share memory)</p>
-</blockquote>
-<h4 id="AIDL"><a href="#AIDL" class="headerlink" title="AIDL"></a>AIDL</h4><p><a href="https://blog.csdn.net/u011240877/article/details/72765136" target="_blank" rel="noopener">ref</a></p>
-<blockquote>
-<p>Android Interface Definition Language<br>一種程式語言 用於定義介面 用於IPC(Process間通信) 與java的interface寫法類似</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//IRemoteService.aidl</span></span><br><span class="line"><span class="keyword">package</span> com.example.service;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IRemoteService</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getData</span><span class="params">(String key)</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>存成MyDataBinder.aidl,會被自動轉譯產生一個java檔,產生IRemoteService.Stub類別,作為server與client間共通的介面</p>
-</blockquote>
-<blockquote>
-<p>server端實做IRemoteService.Stub的method即IBinder 並在onBind時回傳</p>
-</blockquote>
-<blockquote>
-<p>client端也必須有該.aidl檔才能編譯 並透過IRemoteService.Stub.asInterface將IBinder轉為代理物件供使用</p>
-</blockquote>
-<h2 id="Remote-Service範例"><a href="#Remote-Service範例" class="headerlink" title="Remote Service範例"></a>Remote Service範例</h2><h4 id="實做介面"><a href="#實做介面" class="headerlink" title="實做介面"></a>實做介面</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//RemoteService.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoteService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Return the interface</span></span><br><span class="line">        <span class="keyword">return</span> mBinder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> IRemoteService.Stub mBinder = <span class="keyword">new</span> IRemoteService.Stub() &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getData</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="start-service-amp-bind"><a href="#start-service-amp-bind" class="headerlink" title="start service &amp; bind"></a>start service &amp; bind</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Activity.java</span></span><br><span class="line">&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(Binding.<span class="keyword">this</span>, RemoteService.class);</span><br><span class="line">    intent.setAction(IRemoteService.class.getName());</span><br><span class="line">    bindService(intent, mConnection, Context.BIND_AUTO_CREATE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">IRemoteService mIRemoteService;</span><br><span class="line">ServiceConnection mConnection = <span class="keyword">new</span> ServiceConnection() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName className, IBinder service)</span> </span>&#123;</span><br><span class="line">        mIRemoteService = IRemoteService.Stub.asInterface(service);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName className)</span> </span>&#123;</span><br><span class="line">        mIRemoteService = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2><blockquote>
-<p>Service的子類 需在manifest中宣告</p>
-</blockquote>
-<blockquote>
-<p>Service+Handler+Looper的封裝 即類似一個task queue 當所有任務執行完時銷毀 有任務再重新建立</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntentServiceDemo</span> <span class="keyword">extends</span> <span class="title">IntentService</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IntentServiceDemo</span><span class="params">(String name)</span></span>&#123; <span class="comment">//name for HandlerThread</span></span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(Intent intent)</span></span>&#123;</span><br><span class="line">        <span class="comment">//進入異步</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, IntentServiceDemo.class);</span><br><span class="line">startService(intent);</span><br></pre></td></tr></table></figure>
-<h2 id="JobService-JobScheduler"><a href="#JobService-JobScheduler" class="headerlink" title="JobService / JobScheduler"></a>JobService / JobScheduler</h2><p><a href="https://blog.csdn.net/qq_33689414/article/details/54668889" target="_blank" rel="noopener">ref</a><br><a href="https://github.com/jimliuxyz/android-JobScheduler" target="_blank" rel="noopener">android-JobScheduler</a></p>
-<blockquote>
-<p>aad:Schedule a background task using JobScheduler</p>
-</blockquote>
-<blockquote>
-<p>Service的子類 排程不緊急或與設備狀態有關的任務(受系統牽制) 以優化系統電力消耗</p>
-</blockquote>
-<blockquote>
-<p>在(&gt;=Build.VERSION_CODES.N)中限制了interval最小為15m flex最小為5m 比較適合惰性的任務 (時間不會準確)</p>
-</blockquote>
-<ul>
-<li>JobScheduler : 整個app僅有一個JobScheduler實體用來排程任務(丟入JobInfo)</li>
-<li>ComponentName : 一個pkg+cls用以描述元件 Component泛指四大組件 常用於Intent</li>
-<li>JobInfo : 指定任務執行模式 依時間/網路/Idel/充電 (透過Builder模式構建) 儲存extras當param給JobService執行</li>
-<li>JobService : 當onStartJob時得到任務 回傳false表示任務已執行結束 回傳true表示任務進入異步執行 完成後須自行呼叫jobFinished</li>
-</ul>
-<h4 id="意象"><a href="#意象" class="headerlink" title="意象:"></a>意象:</h4><blockquote>
-<p>JobService如同Service般執行 經由JobInfo建立不同任務的參數 由JobScheduler指派執行時機 呼叫JobService.onStartJob執行</p>
-</blockquote>
-<blockquote>
-<p>執行於ui thread,耗時任務仍需另使用AsyncTask</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">service</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">".service.MyJobService"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:permission</span>=<span class="string">"android.permission.BIND_JOB_SERVICE"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">JobScheduler tm = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>onStopJob僅在系統強制要停止任務時呼叫</p>
-</blockquote>
-<h2 id="AlarmManager"><a href="#AlarmManager" class="headerlink" title="AlarmManager"></a>AlarmManager</h2><p><a href="https://www.jianshu.com/p/fdb4e8c009b7" target="_blank" rel="noopener">ref</a></p>
-<blockquote>
-<p>aad:Schedule a time-sensitive task using alarms</p>
-</blockquote>
-<blockquote>
-<p>安排定時任務(time-sensitive task) 時間到用PendingIntent開啟服務或Activity</p>
-</blockquote>
-<blockquote>
-<p>比起Java SE的Timer, AlarmManager能夠喚醒休眠的Android系統(透過PendingIntent)</p>
-</blockquote>
-<blockquote>
-<p>被限制了interval最小為60s (時間不會準確)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">val intent = Intent(<span class="keyword">this</span>, AlarmReceiver::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line"><span class="class"><span class="title">val</span> <span class="title">pi</span> </span>= PendingIntent.getBroadcast(context, <span class="number">0</span>, intent, PendingIntent.FLAG_UPDATE_CURRENT);</span><br><span class="line"></span><br><span class="line">val am = getSystemService(Context.ALARM_SERVICE) as AlarmManager</span><br><span class="line"></span><br><span class="line">am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pi)</span><br><span class="line">am.setRepeating(RTC_WAKEUP, System.currentTimeMillis() + <span class="number">5</span> * <span class="number">1000</span>, <span class="number">3</span> * <span class="number">1000</span>, pi);</span><br><span class="line">am.setRepeating(ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + <span class="number">1000</span> , <span class="number">5</span> * <span class="number">1000</span> , pi);</span><br><span class="line"></span><br><span class="line">class AlarmReceiver : BroadcastReceiver() &#123;</span><br><span class="line">    <span class="function">override fun <span class="title">onReceive</span><span class="params">(context: Context, intent: Intent)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">".AlarmReceiver"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="type-組合"><a href="#type-組合" class="headerlink" title="type(組合)"></a>type(組合)</h4><ul>
-<li>RTC : 以系統時間判斷 (也就是說系統時間更改將立即反應到鬧鐘上)</li>
-<li>ELAPSED_REALTIME : 以系統流逝的時間差判斷</li>
-<li>WAKEUP : 能於睡眠中喚醒</li>
-<li>POWER_OFF_WAKEUP : 能於關機中喚醒</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/紀錄/Single/Hexo安裝紀錄.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/紀錄/Single/Hexo安裝紀錄.html" itemprop="url">Hexo安裝紀錄</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
-                2018-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/紀錄/" itemprop="url" rel="index">
-                    <span itemprop="name">紀錄</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">Hexo</a> 、<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
-<div class="note danger"><ul>
-<li>站內連結若用相對連結在首頁跟文章內顯示的連結路徑不同</li>
-<li>UTF-8編碼中若參雜其他編碼會讓search.xml錯誤而無法搜索</li>
-<li>md檔案若有尖括號未置入code tag 可能造成解析錯誤</li>
-</ul></div>
-<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><p>本地端透過Hexo建立網站骨架 並將markdown文章轉為html 上傳到github做為blog網站<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/home/紀錄/Single/Hexo安裝紀錄.html#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/git/Git.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/git/Git.html" itemprop="url">Git</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
-                2018-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://az787680.vo.msecnd.net/user/chris%20chen/007d76f8-8773-444a-858f-608b6ef2fa2e/1461940246_55914.png" alt=""></p>
-<ul>
-<li>working space : 工作區 即源碼開發的目錄</li>
-<li>commit history(repo) : 即提交歷史紀錄區</li>
-<li><p>stage(index) : 緩存區 介於工作區與歷史區之間 add進了stage之後commit才會進repo 而不是讓工作區所有檔案都進repo</p>
-</li>
-<li><p>patch : 即commit產生的紀錄點</p>
-</li>
-<li>master : git最初預設的分支</li>
-<li><p>origin : 慣用的預設的遠端別名 用來表示某一個遠端的路徑</p>
-</li>
-<li><p>HEAD : 指向當下所處的base patch (可以用@符號)</p>
-</li>
-<li>HEAD^ : 指HEAD的前一個patch 等同HEAD~或HEAD~1</li>
-<li>HEAD@{2} : 歷史紀錄(reflog)的指向簡寫</li>
-<li>detached HEAD : 脫離的HEAD(斷頭) 即HEAD未處於分支的末端(git checkout HEAD^) 之後若再建新的patch將難以合併回分支</li>
-<li>ORIG_HEAD : 當merge或rebase時會留下的一個記錄點 用於合併出錯時的返回點</li>
-</ul>
-<h1 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h1><p><a href="https://ithelp.ithome.com.tw/articles/10138150" target="_blank" rel="noopener">git reflog</a></p>
-<h1 id="查詢"><a href="#查詢" class="headerlink" title="查詢"></a>查詢</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出設定</span></span><br><span class="line">git config -l</span><br><span class="line">git config --global -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查訊patch</span></span><br><span class="line">git show HEAD</span><br><span class="line">git <span class="built_in">log</span> --oneline	<span class="comment"># 當下repo版本的歷史</span></span><br><span class="line">git reflog			<span class="comment"># 所有操作歷史 (不會進遠端)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 比對</span></span><br><span class="line">git diff	<span class="comment"># 比對工作區not staged的檔案</span></span><br><span class="line">git diff --cached	<span class="comment"># 比對工作區與repo</span></span><br><span class="line"></span><br><span class="line">git status</span><br><span class="line">git branch</span><br></pre></td></tr></table></figure>
-<h1 id="程式碼還原"><a href="#程式碼還原" class="headerlink" title="程式碼還原"></a>程式碼還原</h1><p><a href="https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9" target="_blank" rel="noopener">ref</a><br>還原前須注意當下工作區與緩存區是否有工作尚未commit 可以先commit或stash做暫存patch</p>
-<h2 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h2><blockquote>
-<p>切換patch(branch) 直接影響working space/stage/repo</p>
-</blockquote>
-<blockquote>
-<p>在任何動前 最好都先知道自己在哪個branch下作業 或直接用checkout確保一定在某個branch下<br>可針對個別檔案還原</p>
-</blockquote>
-<h2 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h2><p><a href="https://dotblogs.com.tw/wasichris/2016/04/29/225157" target="_blank" rel="noopener">ref</a></p>
-<blockquote>
-<p>重置回某patch版本<br>可針對個別檔案還原</p>
-</blockquote>
-<blockquote>
-<p>commit流程 : 修改檔案 -&gt; add進stage -&gt; commit進repo<br>reset流程  : <code>(hard)</code>還原檔案 &lt;- <code>(mixed)</code>stage重置回未add &lt;- <code>(soft)</code>repo重置回某版本</p>
-</blockquote>
-<ul>
-<li>將HEAD移到某patch(即變更repo的版本) 且之後的patch將於數十天後被GC刪除</li>
-<li>reset的所有操作都被記錄在reflog中 最算reset沒有起任何作用</li>
-<li>最好只在<code>私有的本地分支</code>進行 不要影響到遠端及其他開發者的base</li>
-<li>模式<ul>
-<li>soft : 保留當下的stage與working space</li>
-<li>mixed(預設) : 保留當下的working space 但stage退回(如同未add)</li>
-<li>hard : 完全重置</li>
-</ul>
-</li>
-</ul>
-<h2 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h2><blockquote>
-<p>將某個patch逆向重做後當成一個新的patch 如同撤銷某個patch 雖會多一個patch但不會影響既有的history</p>
-</blockquote>
-<h1 id="暫存patch"><a href="#暫存patch" class="headerlink" title="暫存patch"></a>暫存patch</h1><p>當工作到一半若要切換到其他patch或branch 但又不想commit當下的修改時 可以此法暫存之後再取回</p>
-<h2 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h2><blockquote>
-<p>將<code>工作區與緩存區</code>暫存起來 再硬重置回HEAD<br>pop動作如同cherry-pick也會有conflict 所以要先回到正確的patch再pop<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash	<span class="comment"># 暫存</span></span><br><span class="line">git stash save <span class="string">"mywork"</span>	<span class="comment"># 給定暫存訊息	</span></span><br><span class="line">git stash list</span><br><span class="line">git stash pop stash@&#123;1&#125; <span class="comment"># pop出來後就移出list了</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h1 id="合併"><a href="#合併" class="headerlink" title="合併"></a>合併</h1><p><a href="https://zlargon.gitbooks.io/git-tutorial/content/branch/rebase.html" target="_blank" rel="noopener">ref</a><br>首先要切到要進行合併的分支</p>
-<h2 id="cherry-pick"><a href="#cherry-pick" class="headerlink" title="cherry-pick"></a>cherry-pick</h2><blockquote>
-<p>將其他分支中想要的patch<code>複製</code>成新的patch加到當下分支</p>
-</blockquote>
-<h2 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h2><blockquote>
-<p>將該分支的起點(交叉點)換到新的patch或branch (以cherry-pick實現)<br>達人推薦的合併方式</p>
-</blockquote>
-<h2 id="merge-–no-ff"><a href="#merge-–no-ff" class="headerlink" title="merge –no-ff"></a>merge –no-ff</h2><blockquote>
-<p>將兩個分支合併產生一個merge patch<br>被併的分支仍能保留末端節點</p>
-</blockquote>
-<h4 id="Fast-Forward"><a href="#Fast-Forward" class="headerlink" title="Fast-Forward"></a>Fast-Forward</h4><p>指合併的兩個分支原本就重疊在一起 此時合併不需產生merge patch (就看不出分支的起點了)</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rebase或merge出錯時 可以此返回合併前狀態</span></span><br><span class="line">git reset --hard ORIG_HEAD</span><br></pre></td></tr></table></figure>
-<h1 id="解衝突"><a href="#解衝突" class="headerlink" title="解衝突"></a>解衝突</h1><p><a href="https://zlargon.gitbooks.io/git-tutorial/content/patch/cherry_pick_conflict.html" target="_blank" rel="noopener">ref</a></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 完成解衝突</span></span><br><span class="line">git cherry-pick --<span class="built_in">continue</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消pick</span></span><br><span class="line">git cherry-pick --abort</span><br></pre></td></tr></table></figure>
-<h1 id="同步遠端分支"><a href="#同步遠端分支" class="headerlink" title="同步遠端分支"></a>同步遠端分支</h1><p>要push前或每日工作前先pull確保本地端base與遠端相同 一方面及時察覺新版本的變動 二方面確保push時順利</p>
-<h2 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h2><blockquote>
-<p>下載</p>
-</blockquote>
-<h2 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h2><blockquote>
-<p>下載並merge</p>
-</blockquote>
-<h2 id="pull-–rebase"><a href="#pull-–rebase" class="headerlink" title="pull –rebase"></a>pull –rebase</h2><blockquote>
-<p>下載並以rebase合併</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/00.others/MVC MVP.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/00.others/MVC MVP.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-13T14:23:05+08:00">
-                2018-02-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.youtube.com/watch?v=RTmhBLc6B-U" target="_blank" rel="noopener">video</a><br><a href="https://cg2010studio.com/2016/06/02/mvc%E8%88%87mvp/" target="_blank" rel="noopener">ref</a></p>
-<p><img src="https://cg2010studio.files.wordpress.com/2016/05/mvce88887mvp.gif?w=540&amp;zoom=2" alt=""></p>
-<p><img src="https://cg2010studio.files.wordpress.com/2016/05/mvc-original.png" alt=""><br><img src="https://cg2010studio.files.wordpress.com/2016/05/mvc-apple.png" alt=""><br><img src="https://cg2010studio.files.wordpress.com/2016/05/mvp.png?w=1080" alt=""></p>
-<ul>
-<li>M : Model : 資料</li>
-<li>V : View : 畫面</li>
-<li>C : Controller</li>
-<li>P : Presenter</li>
-</ul>
-<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><blockquote>
-<p>C僅負責接收V的要求 並安排後續處理流程 但M處理的結果不再經由C回給V</p>
-</blockquote>
-<p>V -&gt; C -&gt; M….-&gt; V</p>
-<h2 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h2><blockquote>
-<p>V與M互動完全需要透過P 與MVC的差別主要在M到V的部分是完全分離的</p>
-</blockquote>
-<p>V <-> P <-> M</-></-></p>
-<p>MVP的架構會比較好 因為MVC中M回給V的資料畢竟最後透過V顯示 而M有必要替V預處理好便於顯示的資料嗎? 還是V自己再處理資料? 不管哪種好像都有些超出他們該負責的業務</p>
-<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><blockquote>
-<p>將P調換為VM</p>
-</blockquote>
-<h2 id="Coding"><a href="#Coding" class="headerlink" title="Coding"></a>Coding</h2><ul>
-<li>View與Model的部分建議用interface隔開實際類別 一來乾淨 二來不至於讓自己打亂架構</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">MainView</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">MainView</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Presenter</span></span>&#123;</span><br><span class="line">    Presenter(MainView v)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>盡量使用依賴注入 一來便於解偶 二來便於測試時抽換</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Presenter</span></span>&#123;</span><br><span class="line">    Presenter(MainView v, Model m)&#123; <span class="comment">//&lt;---依賴的部分來自外部</span></span><br><span class="line">    &#125;</span><br><span class="line">    Presenter(MainView v)&#123;</span><br><span class="line">        m = <span class="keyword">new</span> ModelDemo(); <span class="comment">//&lt;--- 外部無法抽換Model</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ul>
-<li>先建interface / data class</li>
-<li>建view</li>
-<li>架構骨幹簡易畫面</li>
-<li>稍加測試</li>
-<li>實現interface</li>
-</ul>
-<h2 id="資料流情境"><a href="#資料流情境" class="headerlink" title="資料流情境"></a>資料流情境</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">data <span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>&#123;</span><br><span class="line">    author: String</span><br><span class="line">    bigText: String</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">View</span></span>&#123;</span><br><span class="line">    h = Handler() <span class="comment">//Android Handler (main thread execution queue)</span></span><br><span class="line">    p = Presenter()</span><br><span class="line">    </span><br><span class="line">    onUserClick()&#123;</span><br><span class="line">        <span class="comment">//同步</span></span><br><span class="line">        p = p.cmd(arg); <span class="comment">// set value / do things</span></span><br><span class="line">        rv = p.get(arg);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//異步</span></span><br><span class="line">        rv = p.getWithCallback(arg, <span class="keyword">this</span>);</span><br><span class="line">        rv = p.getWithCallback(arg, &#123; println(<span class="string">"done"</span>) &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    onPresenterCallback()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">changeViewComponent</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//must run at main thread</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2142,7 +1942,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

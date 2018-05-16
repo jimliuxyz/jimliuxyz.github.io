@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="S7HvkrH4R_HiKK7j675QXHEjbdWWQiVyrmMeDjXxZT8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="區塊鏈技術變化太快 文件 API 最好參考官方的 不然會吃屎 dockerfile範例 nodejs多執行緒cluster/pm2 nodejs事件迴圈/同步異步/耗時任務 怪事remix執行tx只要設Value都會有gas不足的問題 (所以不好測payable?/聽說跟連接方式有關)ganache的gas limit似乎是指節點執行tx的最大油耗 若太小很容易執行失敗//best兩行assign">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自用筆記">
+<meta property="og:url" content="http://yoursite.com/home//FinTech/CoinPocket/開發紀錄.html">
+<meta property="og:site_name" content="自用筆記">
+<meta property="og:description" content="區塊鏈技術變化太快 文件 API 最好參考官方的 不然會吃屎 dockerfile範例 nodejs多執行緒cluster/pm2 nodejs事件迴圈/同步異步/耗時任務 怪事remix執行tx只要設Value都會有gas不足的問題 (所以不好測payable?/聽說跟連接方式有關)ganache的gas limit似乎是指節點執行tx的最大油耗 若太小很容易執行失敗//best兩行assign">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-05-10T03:36:35.987Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自用筆記">
+<meta name="twitter:description" content="區塊鏈技術變化太快 文件 API 最好參考官方的 不然會吃屎 dockerfile範例 nodejs多執行緒cluster/pm2 nodejs事件迴圈/同步異步/耗時任務 怪事remix執行tx只要設Value都會有gas不足的問題 (所以不好測payable?/聽說跟連接方式有關)ganache的gas limit似乎是指節點執行tx的最大油耗 若太小很容易執行失敗//best兩行assign">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/home//FinTech/CoinPocket/開發紀錄.html"/>
+
+
+
+
+
+  <title> | 自用筆記</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">自用筆記</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">自用筆記</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/FinTech/CoinPocket/開發紀錄.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-28T22:44:49+08:00">
+                2018-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>區塊鏈技術變化太快 文件 API 最好參考官方的 不然會吃屎</p>
+<p><a href="https://github.com/cubedro/eth-net-intelligence-api/blob/master/Dockerfile" target="_blank" rel="noopener">dockerfile範例</a></p>
+<p><a href="https://larrylu.blog/nodejs-pm2-cluster-455ffbd7671" target="_blank" rel="noopener">nodejs多執行緒cluster/pm2</a></p>
+<p><a href="https://www.youtube.com/watch?v=ouuRKq6tZsI" target="_blank" rel="noopener">nodejs事件迴圈/同步異步/耗時任務</a></p>
+<h1 id="怪事"><a href="#怪事" class="headerlink" title="怪事"></a>怪事</h1><h4 id="remix執行tx只要設Value都會有gas不足的問題-所以不好測payable-聽說跟連接方式有關"><a href="#remix執行tx只要設Value都會有gas不足的問題-所以不好測payable-聽說跟連接方式有關" class="headerlink" title="remix執行tx只要設Value都會有gas不足的問題 (所以不好測payable?/聽說跟連接方式有關)"></a>remix執行tx只要設Value都會有gas不足的問題 (所以不好測payable?/聽說跟連接方式有關)</h4><h4 id="ganache的gas-limit似乎是指節點執行tx的最大油耗-若太小很容易執行失敗"><a href="#ganache的gas-limit似乎是指節點執行tx的最大油耗-若太小很容易執行失敗" class="headerlink" title="ganache的gas limit似乎是指節點執行tx的最大油耗 若太小很容易執行失敗"></a>ganache的gas limit似乎是指節點執行tx的最大油耗 若太小很容易執行失敗</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//best兩行assign對調將出現&quot;out of gas&quot; (用法上沒有邏輯 純粹好奇)</span><br><span class="line">uint[] best;</span><br><span class="line">function func()&#123;</span><br><span class="line">    uint[3] memory a = [uint(1), 2, 3];</span><br><span class="line">    best = new uint[](2);</span><br><span class="line">    best = a;</span><br><span class="line">    report(best);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="vscode的intellisense沒反應"><a href="#vscode的intellisense沒反應" class="headerlink" title="vscode的intellisense沒反應?"></a>vscode的intellisense沒反應?</h4><blockquote>
+<p>require來源不是node_module中的一定要加<code>.</code></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">"server/test.js"</span>) <span class="comment">//錯誤!!!</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"./server/test.js"</span>) <span class="comment">//正確</span></span><br></pre></td></tr></table></figure>
+<h4 id="The-path-etc-localtime-is-not-shared-from-OS-X-and-is-not-known-to-Docker"><a href="#The-path-etc-localtime-is-not-shared-from-OS-X-and-is-not-known-to-Docker" class="headerlink" title="The path /etc/localtime is not shared from OS X and is not known to Docker"></a>The path /etc/localtime is not shared from OS X and is not known to Docker</h4><blockquote>
+<p>Add -e TZ=<code>ls -la /etc/localtime | cut -d/ -f8-9</code> to the docker run command line</p>
+</blockquote>
+<h4 id="vscode的intellisense與JsDoc搭配"><a href="#vscode的intellisense與JsDoc搭配" class="headerlink" title="vscode的intellisense與JsDoc搭配"></a>vscode的intellisense與JsDoc搭配</h4><p><a href="https://stackoverflow.com/questions/6460604/how-to-describe-object-arguments-in-jsdoc" target="_blank" rel="noopener">ref</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param userInfo - Information about the user.</span></span><br><span class="line"><span class="comment"> * @param userInfo.name - The name of the user.</span></span><br><span class="line"><span class="comment"> * @param userInfo.email - The email of the user.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">userInfo</span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @typedef  &#123;object&#125; TestConfig</span></span><br><span class="line"><span class="comment"> * @property &#123;string&#125; name</span></span><br><span class="line"><span class="comment"> * @property &#123;number&#125; gold</span></span><br><span class="line"><span class="comment"> * @typedef  &#123;object&#125; TestConfig2</span></span><br><span class="line"><span class="comment"> * @property &#123;string&#125; name2</span></span><br><span class="line"><span class="comment"> * @property &#123;number&#125; gold2</span></span><br><span class="line"><span class="comment"> * @param    &#123;TestConfig&#125; config - 註解1</span></span><br><span class="line"><span class="comment"> * @param    &#123;TestConfig2&#125; config2 - 註解2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">config, config2</span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@param &#123;number|<span class="literal">undefined</span>&#125; ...</span><br><span class="line">@param &#123;<span class="built_in">Object</span>.&lt;string, number&gt;&#125; dict ...</span><br><span class="line"></span><br><span class="line">@type &#123;string&#125; ... <span class="comment">//for one var</span></span><br></pre></td></tr></table></figure>
+<h1 id="自創加密貨幣-TutorialToken"><a href="#自創加密貨幣-TutorialToken" class="headerlink" title="自創加密貨幣 (TutorialToken)"></a>自創加密貨幣 (TutorialToken)</h1><p><a href="https://github.com/truffle-box/tutorialtoken-box" target="_blank" rel="noopener">truffle範例 tutorialtoken-box</a></p>
+<p><a href="http://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin" target="_blank" rel="noopener">openzeppelin完整步驟</a></p>
+<p>架構 : 本地端網頁透過websocket連本地MetaMask再連到Ganache的測試環境(節點)上<br>本地端網頁 : 由truffle產生 主要機制在於連接MetaMask 加載合約.json<br>truffle : 網頁上線前 還可幫忙編譯合約與佈建<br>openzeppelin : 合約lib 提供標準加密貨幣的規格讓使用者繼承</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//下載套用tutorialtoken</span><br><span class="line">truffle unbox tutorialtoken</span><br><span class="line"></span><br><span class="line">//編譯合約與發佈</span><br><span class="line">truffle migrate --reset</span><br><span class="line"></span><br><span class="line">//執行本地端網頁伺服器</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<h4 id="CoinPocket範例"><a href="#CoinPocket範例" class="headerlink" title="CoinPocket範例"></a>CoinPocket範例</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pragma solidity ^0.4.7;</span><br><span class="line"></span><br><span class="line">contract CoinPocket &#123;</span><br><span class="line">    </span><br><span class="line">    event txlog(string dtypes, string action, uint amount);</span><br><span class="line"></span><br><span class="line">    uint constant DTYPELEN = 2;</span><br><span class="line">    string[] dtypes = [&quot;TWD&quot;, &quot;USD&quot;];</span><br><span class="line">    enum DollarType&#123;</span><br><span class="line">        TWD, USD, _END</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    struct Account &#123;</span><br><span class="line">        uint[DTYPELEN] dollar;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    constructor() public&#123;</span><br><span class="line">        users[this].dollar[uint(DollarType.TWD)] = 5000;</span><br><span class="line">        users[this].dollar[uint(DollarType.USD)] = 3000;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    mapping (address =&gt; Account) users;</span><br><span class="line">    </span><br><span class="line">    modifier checkType(uint dtype)&#123;</span><br><span class="line">        require(dtype&gt;=0 &amp;&amp; dtype&lt;dtypes.length</span><br><span class="line">            &amp;&amp; DTYPELEN == dtypes.length</span><br><span class="line">            &amp;&amp; DTYPELEN == uint(DollarType._END)-1</span><br><span class="line">            , &quot;dtype error!&quot;);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    modifier enought(uint dtype, uint amount)&#123;</span><br><span class="line">        require(users[msg.sender].dollar[dtype]&gt;=amount</span><br><span class="line">            , &quot;insufficient balance!&quot;);</span><br><span class="line">        require(users[this].dollar[dtype]&gt;=amount</span><br><span class="line">            , &quot;insufficient balance of contract!!!&quot;);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function deposit(uint dtype, uint amount) checkType(dtype) public&#123;</span><br><span class="line">        users[msg.sender].dollar[dtype] += amount;</span><br><span class="line">        users[this].dollar[dtype] += amount;</span><br><span class="line">        emit txlog(dtypes[dtype], &quot;deposit&quot;, amount);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function withdraw(uint dtype, uint amount) checkType(dtype) enought(dtype, amount) public&#123;</span><br><span class="line">        users[msg.sender].dollar[dtype] -= amount;</span><br><span class="line">        users[this].dollar[dtype] -= amount;</span><br><span class="line">        emit txlog(dtypes[dtype], &quot;withdraw&quot;, amount);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function detail() constant public returns(uint[DTYPELEN])&#123;</span><br><span class="line">        return users[msg.sender].dollar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function detail_pool() constant public returns(uint[DTYPELEN])&#123;</span><br><span class="line">        return users[this].dollar;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function test1() pure public returns(string)&#123;</span><br><span class="line">        return &quot;~~It&apos;s CoinPocket!!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="truffle-migrate失敗"><a href="#truffle-migrate失敗" class="headerlink" title="truffle migrate失敗"></a>truffle migrate失敗</h4><blockquote>
+<p>has not been deployed to detected network (network/artifact mismatch)</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.Remove the build folder</span></span><br><span class="line">rm -r build/</span><br><span class="line">truffle compile</span><br><span class="line">truffle migrate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.Use</span></span><br><span class="line">truffle migrate --reset --all</span><br></pre></td></tr></table></figure>
+<h4 id="直接用web3建立合約"><a href="#直接用web3建立合約" class="headerlink" title="直接用web3建立合約"></a>直接用web3建立合約</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> solc = <span class="built_in">require</span>(<span class="string">'solc'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Web3 = <span class="built_in">require</span>(<span class="string">'web3'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * prepare build folder</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">fs.existsSync(<span class="string">'./build'</span>) || fs.mkdirSync(<span class="string">'./build'</span>)</span><br><span class="line">fs.existsSync(<span class="string">'./build/contracts'</span>) || fs.mkdirSync(<span class="string">'./build/contracts'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * connect to ethereum node</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> ethereumUri = <span class="string">'http://localhost:8545'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> web3 = <span class="keyword">new</span> Web3();</span><br><span class="line">web3.setProvider(<span class="keyword">new</span> web3.providers.HttpProvider(ethereumUri));</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!web3.isConnected())</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'unable to connect to ethereum node at '</span> + ethereumUri);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> address = web3.eth.coinbase</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Compile Contract and Fetch ABI, bytecode</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> source = fs.readFileSync(<span class="string">"./contracts/CoinPocket.sol"</span>, <span class="string">'utf8'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'compiling contract...'</span>);</span><br><span class="line"><span class="keyword">let</span> compiledContract = solc.compile(source);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'done'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> contractName <span class="keyword">in</span> compiledContract.contracts) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> bytecode = compiledContract.contracts[contractName].bytecode;</span><br><span class="line">  <span class="keyword">var</span> abi = <span class="built_in">JSON</span>.parse(compiledContract.contracts[contractName].interface);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//write to local fs</span></span><br><span class="line">  <span class="keyword">let</span> data = &#123;contractName, abi, bytecode&#125;</span><br><span class="line">  fs.writeFileSync(<span class="string">'./build/contracts/'</span> + contractName + <span class="string">'.json'</span></span><br><span class="line">    , <span class="built_in">JSON</span>.stringify(data, <span class="literal">undefined</span>, <span class="number">2</span>)</span><br><span class="line">    , &#123;<span class="attr">encoding</span>: <span class="string">'utf-8'</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Doploy to blockchain network</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> gasEstimate = web3.eth.estimateGas(&#123;<span class="attr">data</span>: <span class="string">'0x'</span> + bytecode&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'gasEstimate = '</span> + gasEstimate);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> MyContract = web3.eth.contract(abi);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'deploying contract...'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myContractReturned = MyContract.new([], &#123;</span><br><span class="line">    <span class="keyword">from</span>: address,</span><br><span class="line">    data: <span class="string">'0x'</span>+ bytecode,</span><br><span class="line">    gas: gasEstimate + <span class="number">50000</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, myContract</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!err) &#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">NOTE:</span> The callback will fire twice!</span></span><br><span class="line">        <span class="comment">// Once the contract has the transactionHash property set and once its deployed on an address.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// e.g. check tx hash on the first call (transaction send)</span></span><br><span class="line">        <span class="keyword">if</span> (!myContract.address) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`myContract.transactionHash = <span class="subst">$&#123;myContract.transactionHash&#125;</span>`</span>); <span class="comment">// The hash of the transaction, which deploys the contract</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// check address on the second call (contract deployed)</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`myContract.address = <span class="subst">$&#123;myContract.address&#125;</span>`</span>); <span class="comment">// the contract address</span></span><br><span class="line">            global.contractAddress = myContract.address;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Note that the returned "myContractReturned" === "myContract",</span></span><br><span class="line">        <span class="comment">// so the returned "myContractReturned" object will also get the address set.</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">wait</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    setTimeout(wait, <span class="number">1000</span>);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="brew安裝舊版軟體"><a href="#brew安裝舊版軟體" class="headerlink" title="brew安裝舊版軟體"></a>brew安裝舊版軟體</h1><p>以安裝舊版docker為例</p>
+<ul>
+<li>Formula : 指可安裝軟體的名稱</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#找到Formula的rb檔案的git連結</span></span><br><span class="line">brew cask info docker</span><br><span class="line"></span><br><span class="line"><span class="comment">#連入該git連結 按history找到自己要的版本 按view瀏覽並複製下整份code</span></span><br><span class="line"><span class="comment">#https://github.com/caskroom/homebrew-cask/blob/master/Casks/docker.rb</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#在本機裡自建一個.rb檔 把複製的code貼上(cask 'docker' do改為'docker_old')</span></span><br><span class="line">cat &gt; /usr/<span class="built_in">local</span>/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/docker_old.rb</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定rb路徑做安裝</span></span><br><span class="line">brew cask install /usr/<span class="built_in">local</span>/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/docker_old.rb</span><br></pre></td></tr></table></figure>
+<p>#安裝mongodb<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#官網下載安裝</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#主程式移動到/usr/local/下</span></span><br><span class="line">sudo mv mongodb-osx-x86_64-3.6.4/ /usr/<span class="built_in">local</span>/mongodb</span><br><span class="line"></span><br><span class="line"><span class="comment">#建立db目錄</span></span><br><span class="line">sudo mkdir -p /data/db</span><br><span class="line"></span><br><span class="line"><span class="comment">#編輯.bash_profile</span></span><br><span class="line">code .bash_profile</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加內容</span></span><br><span class="line"><span class="built_in">export</span> MONGO_PATH=/usr/<span class="built_in">local</span>/mongodb</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$MONGO_PATH</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="comment">#啟動daemon程式</span></span><br><span class="line"><span class="built_in">source</span> .bash_profile</span><br><span class="line">mongod</span><br><span class="line"></span><br><span class="line"><span class="comment">#預設port:27017</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/FinTech/ethereum.html" rel="next" title="Ethereum">
+                <i class="fa fa-chevron-left"></i> Ethereum
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/Single/web3.html" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JimLiuXyz</p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/zh-tw/docs/" title="Hexo" target="_blank">Hexo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://theme-next.iissnan.com/" title="NextT" target="_blank">NextT</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#怪事"><span class="nav-number">1.</span> <span class="nav-text">怪事</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#remix執行tx只要設Value都會有gas不足的問題-所以不好測payable-聽說跟連接方式有關"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">remix執行tx只要設Value都會有gas不足的問題 (所以不好測payable?/聽說跟連接方式有關)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ganache的gas-limit似乎是指節點執行tx的最大油耗-若太小很容易執行失敗"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">ganache的gas limit似乎是指節點執行tx的最大油耗 若太小很容易執行失敗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode的intellisense沒反應"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">vscode的intellisense沒反應?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-path-etc-localtime-is-not-shared-from-OS-X-and-is-not-known-to-Docker"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">The path /etc/localtime is not shared from OS X and is not known to Docker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode的intellisense與JsDoc搭配"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">vscode的intellisense與JsDoc搭配</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自創加密貨幣-TutorialToken"><span class="nav-number">2.</span> <span class="nav-text">自創加密貨幣 (TutorialToken)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CoinPocket範例"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">CoinPocket範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#truffle-migrate失敗"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">truffle migrate失敗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接用web3建立合約"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">直接用web3建立合約</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#brew安裝舊版軟體"><span class="nav-number">3.</span> <span class="nav-text">brew安裝舊版軟體</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JimLiuXyz</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

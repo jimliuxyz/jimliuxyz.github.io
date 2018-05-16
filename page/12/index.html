@@ -288,6 +288,887 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/00.Promise & async & await.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/javascript/00.Promise & async & await.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-20T16:05:47+08:00">
+                2017-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Promise</p>
+<p>解決3個問題</p>
+<ol>
+<li>callback hell (循序執行)<br>通常處理非同步問題都是用callback做handle函數,有些事件可能是循序N次才處理完<br>就變成一個很多層的callback function擠在一起</li>
+</ol>
+<p>getAsyncData1(function (){<br>    getAsyncData2(function (){<br>        //…<br>    }<br>})</p>
+<p>getAsyncData().then(…)<br>.then(…)</p>
+<ol start="2">
+<li>併發執行 與 比快執行<br>Promise.all([getUser, getArticle]).then(success);<br>Promise.race([getUser, getArticle]).then(success);</li>
+</ol>
+<p>3.一個catch能處理所有的reject<br>promise1.then(data=&gt;promise2).then(data=&gt;{…}).catch(ason=&gt;{…})</p>
+<hr>
+<p>Promise的組成</p>
+<p>1.建立異步事務(executor function)<br>var promise=new Promise((resolve, reject) =&gt;{<br>        setTimeout(function() {<br>           resolve(‘DATA’) // for ok data<br>       //reject(‘X’) // for rejection reason<br>        }, 3000);<br>    })</p>
+<p>異步事務的resolve(…) 對應 接收結果的then(func1)<br>異步事務的reject(…) 對應 接收結果的catch(func)或then(func1,func2)的func2<br>executor function的return似乎沒有什麼意義</p>
+<p>2.接收事務執行結果<br>promise.then(data=&gt;{…}, reason=&gt;{…});</p>
+<hr>
+<p>狀態<br>[[PromiseStatus]]：pending(待定) | resolved(已解決) | rejected(已拒絕)</p>
+<hr>
+<p>promise.then()的回傳<br>同一個promise每次then()都匯回傳一個新的實體,但對應到同樣的結果,不能reuse<br>也不能retry,retry機制必須寫到事務函數中</p>
+<p>不管then()多少次,回傳的都是第一個promise,then裡面只是放異步處理的函數宣告<br>多個promise時,所有的promise都由第一個promise替我們傳遞執行結果</p>
+<hr>
+<p>promise.then()的執行<br>promise1.then(data1=&gt;{console.log(data1)})</p>
+<p>返回另一個promise<br>promise1.then(data1=&gt;{console.log(data1);return promise2})<br>.then(data2=&gt;console.log(data2)) //data2 = promise2’s resolve</p>
+<p>返回資料 (當filter)<br>promise1.then(data1=&gt;{console.log(data1);return 123})<br>.then(data2=&gt;console.log(data2)) //data2 = 123</p>
+<p>(then內的function基本上可以回傳三種類型,value/promise/thenable)<br>也可以在事務函數中寫resolve(nextPromise),nextPromise會自動被循序執行,不需要寫then</p>
+<hr>
+<p>靜態方法 Promise.resolve Promise.reject<br>同樣用來傳遞value/promise/thenable</p>
+<p>Promise.resolve(‘data’)<br>相當於<br>new Promise((resolve, reject)=&gt;{resolve(‘data’)});</p>
+<p>沒看出來特別意義</p>
+<hr>
+<p>async / await</p>
+<p>async:做為function宣告的前綴字,表示這個function是異步執行<br>await:做為Promise執行的前綴字,表示等待Promise完成,並使該Promise的回傳變成傳入resolve()的值</p>
+<p>await的使用一定要在異步函數中</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/ObjectClone.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/javascript/ObjectClone.html" itemprop="url">ObjectClone</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-19T15:58:16+08:00">
+                2017-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>shallow copy:<br>拷貝Object:只能拷貝Primitive Type,其他object類( array function date regx )都只能reference<br>拷貝Array:只能拷貝一維中的Primitive Type.</p>
+<p>//slice func<br>var copyarr = arr.slice(0);</p>
+<p>//spread op (拆解再置入)<br>var copyarr = […arr];</p>
+<p>//assign (也可做合併)<br>var copyarr = Object.assign([], arr);<br>var copyobj = Object.assign({}, obj);</p>
+<hr>
+<p>deep copy:</p>
+<p>//純資料複製,function會變成undefined<br>var copyarr = JSON.parse(JSON.stringify(deepArray))</p>
+<p>//jquery<br>var copyarr = $.extend(true, [], arr);</p>
+<p>//lodash<br>var copyarr = _.cloneDeep(arr);</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/decorators.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/decorators.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-16T16:50:18+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>@input<br>mytype:number=1;<br>component中變數加上@input即可對應HTML tag上的props</p>
+<p>可以用別名對應外部的props name<br>@input(‘propsColor’) color:string;</p>
+<hr>
+<p>@output<br>myclick = new EventEmitter<number>();<br>…myclick.emit(value)<br>component中變數加上@input即可對應HTML tag上的事件</number></p>
+<mycom (myclick)="myclickhandle($event)"><br></mycom>
+
+<p>其中$event是ng的保留字,必須這樣寫<br>在JS框架中很中很多對應都是字串解析對應到程式碼宣告,對應關係從字面會很難理解,需要透過手動試驗才比較好搞懂</p>
+<hr>
+<p>***自訂two way binding要做兩件事</p>
+<p><mycom [(myvalue)]="parentvar"><mycom></mycom></mycom></p>
+<p>@Input() myvalue: number;<br>@Output() myvalueChange: EventEmitter<number> = new EventEmitter<number>();</number></number></p>
+<p>1.output前綴字為input+Change<br>2.必須要自己發emit<br>3.如果只用[myvalue]的方式binding,必須再寫(myvalueChange)=”…”自己處理</p>
+<hr>
+<p>@ContentChild與@ViewChild  (@ContentChildren / @ViewChildren)<br>兩者同為取得child component,但取得的時機與component所處的</p>
+<p>@ContentChild(ChildComponent) child:ChildComponent;<br>@ContentChildren(ChildComponent) childs:QueryList<childcomponent>;</childcomponent></p>
+<p>1.<br>ContentChild取得的child是透過<ng-content>引入的child<br>ViewChild取得的是自己template裡加上的child</ng-content></p>
+<p>2.<br>ContentChild是在ngAfterContentInit時取得<br>ViewChild是在ngAfterViewInit時取得</p>
+<p>這也是因為ContentChild的建立比ViewChild的建立早</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/component互動.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/component互動.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-16T15:55:56+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>data binding<br>@input<br>@output<br>[(ngModule)]</p>
+<hr>
+<p>Template中可透過#做互動</p>
+<p><button (click)="timer.stop()">Stop</button></p>
+<p><div class="seconds"></div></p>
+<p><countdown-timer #timer=""></countdown-timer></p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/01-Architecture.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/01-Architecture.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-16T15:49:06+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>程式進入點通常為main.ts</p>
+<p>(這裡的module與js中import/export的module是不同的層級的觀點,一個是js檔案結構,一個是ng的應用結構)</p>
+<p>function call前有加@,表示前置函數,其後接的class宣告將一起被帶入該函數,ng用這樣的方式把custom classes與ng系統結合</p>
+<hr>
+<p>1.modules</p>
+<p>@NgModule({METADATA})<br>export class AppModule{}</p>
+<p>基本上都會有一個root module(即AppModule),視需要在加入其他feature module<br>root module : 一定會import’BrowserModule’,因為與網頁瀏覽(view/route)相關<br>feature module : 一定會import’CommonModule’</p>
+<p>[METADATA]<br>declarations: 宣告module裡需要用到的’view classes’,包含components,directives,pipe<br>eports ? 將自己declarations中的feature module開放<br>import : 引入feature module供component使用(自動注入?)<br>providers : 宣告共用的DI services,供其他部件<br>bootstrap : 指定root component,相當於指定view的初始畫面. 只有root module需要指定bootstrap<br>directives : 使用<subcom [props]="value">將value傳給subcom的props時,需將subcomp列為direvtives</subcom></p>
+<hr>
+<p>2.components</p>
+<p>@Component({METADATA})<br>export class HeroListComponent{}</p>
+<p>類似MVC中的control角色,負責UI流程</p>
+<p>[METADATA]<br>moduleId: module.id,指定後Url的部分可以設定為相對路徑<br>selector: 連接該元件的HTML tag名稱<br>providers: 宣告元件私有的DI services<br>templateUrl: 該元件的template位址<br>style/styleUrls:css style,其style不會擴散到component外,也不會到sub component,完全只在自己的template中套用<br>inputs: 用法同@input</p>
+<hr>
+<p>3.templates</p>
+<p>即HTML模板</p>
+<p>Angular’s template syntax<br><a href="https://angular.io/guide/template-syntax" target="_blank" rel="noopener">https://angular.io/guide/template-syntax</a></p>
+<hr>
+<p>4.data binding</p>
+<p>bind的用途1.顯示資料 2.傳遞資料(透過props)<br>除了bind字串數字外,也可以bind物件</p>
+<p>(-&gt;為bind to,資料流向之意)</p>
+<p>interpolation (component value -&gt; DOM)</p>
+<li></li>
+
+<p>property binding (component value -&gt; DOM)</p>
+<p><hero-detail [hero]="selectedHero"></hero-detail></p>
+<p>event binding (DOM event -&gt; component)</p>
+<li (click)="selectHero(hero)"></li>
+
+<p>Two-way data binding (component value <-> DOM)</-></p>
+<input [(ngmodel)]="hero.name">
+
+<p>-</p>
+<p>parent.value -&gt; subcom.props</p>
+<subcom [props]="value"></subcom><br>&lt;subcom props=&gt;
+
+<p>parent.value <-> subcom.props</-></p>
+<subcom [(props)]="value"></subcom>
+
+<p>parent.value &lt;- subcom.props<br>???</p>
+<hr>
+<p>5.directives</p>
+<p>諸如<em>ngFor與</em>ngIf甚至做two way binding的[(ngModel)]都是directive<br>連component都是一個繼承了template導向的directive</p>
+<p>import { Directive, ElementRef, Renderer } from ‘@angular/core’;<br>@Directive({ selector: ‘[myHidden]’ })<br>export class HiddenDirective {<br>    constructor(el: ElementRef, renderer: Renderer) {<br>       renderer.setElementStyle(el.nativeElement, ‘display’, ‘none’);<br>    }<br>}</p>
+<p>一個Html tag中可能有多個directive,每個各自都會被執行<br>若有兩個directive的selector的名字是一樣時,就看該元件declarations中加入directive的順序,依序執行</p>
+<hr>
+<p>6.Services</p>
+<p>任何物件都可以成為Service,不需要extends或implements任何類別<br>可以當作是一個MVC中module的概念,或任何的運用<br>主要是service加到METADATA中的provider後能提供依賴注入(DI)</p>
+<hr>
+<p>7.dependency injection<br>依賴注入,簡單說就是一個分工的概念,將模組依某特性劃分開,以利重複使用與管理.<br>在程式碼上的實踐就是將其依賴的模組從參數列傳入.</p>
+<p>宣告方式:<br>METADATA…providers:[HeroService]</p>
+<p>注入方式:<br>constructor(private service: HeroService) { }</p>
+<p>module providers:所有component共用一個實體的service<br>component providers:每個實體的component都有自己一個實體的service</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/Directives.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/Directives.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-16T11:52:39+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://dotblogs.com.tw/wellwind/2017/02/14/angular2-directive-intro" target="_blank" rel="noopener">https://dotblogs.com.tw/wellwind/2017/02/14/angular2-directive-intro</a></p>
+<p>分三種<br>Components:即DOM element<br>Structural:改變DOM element結構,像是ngIf與ngFor<br>Attribute:改變DOM element的顯示或行為,可以當作一種擴充與重複利用的概念</p>
+<hr>
+<p>ng-content<br>將HTML_CONTENT傳送給component</p>
+<p>mytpl:</p>
+<subcomp><br>    HTML_CONTENT<br></subcomp>
+
+<p>subcomp-tpl:</p>
+<div><br>    <!-- HTML_CONTENT會被插入到這裡 --><br>    <ng-content><ng-content><br></ng-content></ng-content></div>
+
+<hr>
+<p>用select指定要插入的component(類似css的selector)</p>
+<pre><code>  &lt;my-component&gt;
+    &lt;div mycardtype1&gt;
+      A
+    &lt;/div&gt;
+    &lt;div class=&quot;mycardtype2&quot; style=&apos;color:red&apos;&gt;
+      B
+    &lt;/div&gt;
+    &lt;div mycardtype3=1&gt;
+      C
+    &lt;/div&gt;
+  &lt;/my-component&gt;
+
+
+
+
+&lt;div class=&quot;my-component&quot;&gt;
+  &lt;div&gt;
+    Title:
+    &lt;ng-content select=&quot;[mycardtype1]&quot;&gt;&lt;/ng-content&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    Content:
+    &lt;ng-content select=&quot;.mycardtype2&quot;&gt;&lt;/ng-content&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    Content:
+    &lt;ng-content select=&quot;[mycardtype3=1]&quot;&gt;&lt;/ng-content&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>Title:<br>A<br>Content:<br>B<br>Content:<br>C</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/RxJS.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -810,790 +1691,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/seo/readme.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/seo/readme.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-06T14:04:41+08:00">
-                2017-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>title<br>meta keyword/description</p>
-<p>h1 / h2</p>
-<p>img-alt</p>
-<hr>
-<p>goggle trends</p>
-<hr>
-<p>robots.txt<br>規範搜尋引擎<br>$用來結尾,否則路徑後可能被視為*<br>指定Sitemap路徑</p>
-<hr>
-<p>sitemap.xml<br>主動提交sitemap給各大搜尋引擎,要求搜尋引擎建立檢索<br>內容包含各個url,及其更新頻率/日期/重要程度等</p>
-<p>其內容可靠軟體自動產生</p>
-<p><a href="http://www.google.com/webmasters" target="_blank" rel="noopener">http://www.google.com/webmasters</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/JQuery/05.AJAX.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/javascript/JQuery/05.AJAX.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-04T14:50:59+08:00">
-                2017-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>$(‘#result’).load(‘url…’)</p>
-<p>$(‘#result’).load(‘url…’, function(respTxt, statusTxt, xhr){})<br>$.get(‘url…’, function(respTxt, statusTxt, xhr){})</p>
-<p>statusTxt為’success’或’error’</p>
-<p>load基本上與get相同,但會將get回的內容置於selector中</p>
-<p>load / get /getJSON</p>
-<hr>
-<p>$.ajax({<br>    method: ‘GET’,<br>    url: ‘’,<br>    dataType: ‘json’<br>}).done(function(data){})</p>
-<hr>
-<p>$.post(url, {title:’A’, body:’B’}).done(function(data){})</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/JQuery/03.dom manipulation.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/javascript/JQuery/03.dom manipulation.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-04T11:10:09+08:00">
-                2017-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>$(‘p’).css(‘color’,’red’)<br>$(‘p’).css({color:’red’, background:’white’})</p>
-<p>$(‘p’).addClass(‘css1’)<br>$(‘p’).removeClass(‘css1’)<br>$(‘p’).toggleClass(‘css1’)</p>
-<hr>
-<p>$(‘p’).text(‘plain text’)<br>$(‘p’).html(‘html text’)</p>
-<p>$(‘p’).append(‘html text’)<br>$(‘p’).preappend(‘html text’)</p>
-<p>$(‘p’).appendTo($(‘p’))<br>$(‘p’).preappendTo($(‘p’))</p>
-<p>$(‘p’).before(‘html text’)<br>$(‘p’).after(‘html text’)</p>
-<p>$(‘p’).empty()<br>$(‘p’).detach()</p>
-<p>//get text back<br>$(‘p’).text()</p>
-<p>$(‘p’).wrap(‘</p><h1>‘);    //每個p外個包一個h1<br>$(‘p’).wrapAll(‘<h1>‘);    //所有的p包一個h1 (在p跟p中間但不在p裡的元素會被移出到下面,或是說只有p被搬出來)<p></p>
-<hr>
-<p>$(‘a’).attr(‘target’);            //get<br>$(‘a’).attr(‘target’, ‘_blank’);    //set<br>$(‘a’).removeAttr(‘target’);</p>
-<hr>
-<p>$.each([‘Brad’,’Kelley’],function(idx,val){})</p>
-<p>var newObjArr = $(‘ul#list li’).toArray()</p>
-</h1></h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/JQuery/04.effects and animaion.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/javascript/JQuery/04.effects and animaion.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-04T10:20:31+08:00">
-                2017-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>$(‘#box’).fadeOut()<br>$(‘#box’).fadeIn()<br>$(‘#box’).fadeToggle()</p>
-<p>$(‘#box’).slideDown()<br>$(‘#box’).slideUp()<br>$(‘#box’).slideToggle()</p>
-<p>$(‘#box’).stop()</p>
-<p>$(‘#box’).fadeOut(‘fast’) // fast slow 3000<br>$(‘#box’).fadeOut(3000, fadeDoneFunc)</p>
-<hr>
-<p>$(‘#box’).animate()({    //css<br>    left:500<br>})<br>可以連續執行animate,內部會自動依序動作</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/JQuery/02.event.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/javascript/JQuery/02.event.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-04T09:57:36+08:00">
-                2017-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>$(document).ready(function(){….})</p>
-<hr>
-<p>$(‘#btn1’).click(function(e){})</p>
-<p>$(‘#btn1’).on(‘click’, function(e){})</p>
-<p>click / dbclick / hover / focus / blur / keyup / change / submit …</p>
-<p>for on()<br>click / mouseenter / mouseleave / mousemove / mousedown / mouseup …</p>
-<hr>
-<p>show() hide() toggle()<br>元素顯示隱藏</p>
-<hr>
-<p>$(this) 便於在callback中取得發出事件的元件</p>
-<p>$(this).css(‘background’, ‘pink’)<br>$(this).text(‘x’+e.clientX)</p>
-<h2 id="this-text-‘key’-e-which"><a href="#this-text-‘key’-e-which" class="headerlink" title="$(this).text(‘key’+e.which)"></a>$(this).text(‘key’+e.which)</h2><p>e.preventDefault 阻止事件向上回報(冒泡)</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/JQuery/01.selector.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/javascript/JQuery/01.selector.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-03T17:05:46+08:00">
-                2017-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>$ = JQuery</p>
-<hr>
-<p>$(‘dom_element_name’)<br>選擇物件,回傳可能是0個到1個以上的element</p>
-<hr>
-<p>p.class<br>p#id</p>
-<hr>
-<p>$(‘p span’)<br>選擇p元素下的所有span元素</p>
-<hr>
-<p>:first<br>:last<br>:even :odd :nth-child(3n)</p>
-<p>$(‘p span:first’)<br>第一個在p元素下的span</p>
-<hr>
-<p>$(‘:text’).hide()<br>選取參數type為text的元素</p>
-<hr>
-<p>$(‘[type]’).hide()<br>選取有type參數的元素</p>
-<hr>
-<p>$(‘[herf=”<a href="http://www.google.com&quot;]&#39;" target="_blank" rel="noopener">http://www.google.com&quot;]&#39;</a>)</p>
-<p>選取herf參數為指定字串的元素</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1644,7 +1741,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

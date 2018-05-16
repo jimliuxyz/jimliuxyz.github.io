@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[區塊鏈]]></title>
+    <title></title>
     <url>%2Fhome%2F%2FFinTech%2FCoinPocket%2FDemo%E6%9E%B6%E6%A7%8B.html</url>
-    <content type="text"><![CDATA[test… 基本知識區塊鏈節點 礦工節點 主要負責區塊鏈資料的維護 私有節點 用以介接應用程式與區塊鏈 (建立帳號(keystore)/執行交易/取得資訊) 應用程式接入區塊鏈的方法 1.自建私有節點加入區塊網絡 2.透過第三方節點開放的rpc介面 智能合約 如同一個可程式化的資料表(資料庫) 在區塊鏈裡如一個’公證人’帳號 該帳號如同一記帳人(帳本) 與該帳號的交易行為就如同執行合約一般 其執行結果同樣寫入區塊鏈 私有鏈優點 所有節點都自己安插 安全 缺點 大致行為無異於分散式資料庫 區塊鏈形同虛設 公有鏈優點 可使用乙太坊公共網絡 與第三方應用的結合較為多元 缺點 在乙太坊公共網絡執行交易須支付額外的費用 Demo 原始碼私鏈(PoA)Docker用戶服務器Android用戶端 附錄電子錢包應用BitoEx 台廠 幣託 以email申請一個帳號 透過web/phone介面查詢 台灣可透過FamiPort繳費&gt;虛擬帳號&gt;廠商代號&gt;輸入手機號碼&gt;買多少台幣的BTC 現金結帳取得收據與手機簡訊 回BitoEx介面&gt;超商兌換 可綁定信用卡/銀行帳號(可出帳) 等於私鑰託管給BitoEx MaiCoin 台廠Coinbase 美加密貨幣交易所 可綁定信用卡/銀行帳號/paypal/wire transfer 台灣第三方金流服務台景達TaiPay智付通Spgateway綠界ECPay]]></content>
+    <content type="text"><![CDATA[基本知識區塊鏈節點 礦工節點 主要負責區塊鏈資料的維護 私有節點 用以介接應用程式與區塊鏈 (建立帳號(keystore)/執行交易/取得資訊) 應用程式接入區塊鏈的方法 1.自建私有節點加入區塊網絡 2.透過第三方節點開放的rpc介面 智能合約 如同一個可程式化的資料表(資料庫) 在區塊鏈裡如一個’公證人’帳號 該帳號如同一記帳人(帳本) 與該帳號的交易行為就如同執行合約一般 其執行結果同樣寫入區塊鏈 私有鏈優點 所有節點都自己安插 安全 缺點 大致行為無異於分散式資料庫 區塊鏈形同虛設 公有鏈優點 可使用乙太坊公共網絡 與第三方應用的結合較為多元 缺點 在乙太坊公共網絡執行交易須支付額外的費用 Demo 原始碼私鏈(PoA)Docker用戶服務器Android用戶端 附錄電子錢包應用BitoEx 台廠 幣託 以email申請一個帳號 透過web/phone介面查詢 台灣可透過FamiPort繳費&gt;虛擬帳號&gt;廠商代號&gt;輸入手機號碼&gt;買多少台幣的BTC 現金結帳取得收據與手機簡訊 回BitoEx介面&gt;超商兌換 可綁定信用卡/銀行帳號(可出帳) 等於私鑰託管給BitoEx MaiCoin 台廠Coinbase 美加密貨幣交易所 可綁定信用卡/銀行帳號/paypal/wire transfer 台灣第三方金流服務台景達TaiPay智付通Spgateway綠界ECPay]]></content>
   </entry>
   <entry>
     <title></title>

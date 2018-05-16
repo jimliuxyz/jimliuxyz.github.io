@@ -288,6 +288,284 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Ionic/langstar-資料流架構.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Ionic/langstar-資料流架構.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-06T17:18:00+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>View</p>
+<p> <-> DataService(ServiceCache)</-></p>
+<p> <-> DataServer(DataAccess/DBCache/DBAccess)</-></p>
+<blockquote>
+<p>主要分成DataService與DataServer兩大塊</p>
+</blockquote>
+<h1 id="DataService"><a href="#DataService" class="headerlink" title="DataService"></a>DataService</h1><blockquote>
+<p>提供資料服務</p>
+</blockquote>
+<ul>
+<li>向View或任何需要資料者提供資料服務</li>
+<li>貼近應用的資料結構</li>
+<li>提供有邏輯功能性的操作 (例如新增使用者)</li>
+</ul>
+<h2 id="ServiceCache"><a href="#ServiceCache" class="headerlink" title="ServiceCache"></a>ServiceCache</h2><blockquote>
+<p>存放使用中的DataService 避免資料服務四散各處</p>
+</blockquote>
+<ul>
+<li>透過ServiceCache存取已建立的資料服務 確保同一來源的資料僅有一個服務 便於資料同步</li>
+<li>避免無限制的cache可用WeakRef(weak value)控制 但js只有WeakMap.<br>  只能用 counter 或 時間+數量來workaround</li>
+</ul>
+<h1 id="DataServer"><a href="#DataServer" class="headerlink" title="DataServer"></a>DataServer</h1><blockquote>
+<p>處理資料讀寫 (僅是一個目錄)</p>
+</blockquote>
+<h2 id="DataAccess"><a href="#DataAccess" class="headerlink" title="DataAccess"></a>DataAccess</h2><blockquote>
+<p>提供資料讀寫介面 處裡讀寫機制(本地/遠端)</p>
+</blockquote>
+<h2 id="DBCache"><a href="#DBCache" class="headerlink" title="DBCache"></a>DBCache</h2><blockquote>
+<p>本地資料快取 用於離線操作</p>
+</blockquote>
+<h2 id="DBAccess"><a href="#DBAccess" class="headerlink" title="DBAccess"></a>DBAccess</h2><blockquote>
+<p>遠端資料庫讀寫</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/DevOps CICD/持續性整合與發佈(CI:CD).html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/DevOps CICD/持續性整合與發佈(CI:CD).html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-03T14:21:30+08:00">
+                2018-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://blog.91app.com/continuous-integration-delivery/" target="_blank" rel="noopener">持續性整合與發佈</a></p>
+<p>這部分屬於整個”開發到佈建”過程的自動化 包含版本控制/編譯/測試/發佈 等等</p>
+<p>DevOps:泛指開發與營運的集合</p>
+<p>這些工具通常都是以website的形式在雲端運作 也有能自行架設的</p>
+<p><img src="https://alln-extcloud-storage.cisco.com/gblogs/sites/35/Screenshot-2017-06-09-15.50.53.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BitBucket</span><br><span class="line">Github / Travis CI</span><br><span class="line">GitLab</span><br><span class="line">GiTea</span><br><span class="line"></span><br><span class="line">Jenkins</span><br><span class="line"></span><br><span class="line">codeship</span><br><span class="line">drone</span><br><span class="line">wercker</span><br><span class="line"></span><br><span class="line">//CD</span><br><span class="line">heroku</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.youtube.com/watch?v=CCEY1BSP9pU" target="_blank" rel="noopener">使用 Jenkins 持續集成與發佈 Android 應用程式</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/docker/docker-readme.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1694,279 +1972,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Ionic/ionic-oauth.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Ionic/ionic-oauth.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-10-10T15:04:43+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="從web登入"><a href="#從web登入" class="headerlink" title="從web登入"></a>從web登入</h3><p>彈出視窗方式<br>申請clientID(即webClientId)通常只需要鎖網域</p>
-<h3 id="從app登入"><a href="#從app登入" class="headerlink" title="從app登入"></a>從app登入</h3><p>透過app內建的widget程式登入. (client端主要是驗證apk的signed資訊,似乎與程式碼無關.)<br>申請登錄clientID需要:</p>
-<ul>
-<li>app id (widget id of config.xml)</li>
-<li>app SHA-1</li>
-</ul>
-<p>登入時若沒有加webClientId只會回傳少數文字資料,所以透過app.登入若需要進一步操作用戶資料就同時也需要web client id.</p>
-<h3 id="Android-Studio預設的debug-keystore設定"><a href="#Android-Studio預設的debug-keystore設定" class="headerlink" title="Android Studio預設的debug.keystore設定"></a>Android Studio預設的debug.keystore設定</h3><p><a href="https://stackoverflow.com/questions/18589694/i-have-never-set-any-passwords-to-my-keystore-and-alias-so-how-are-they-created" target="_blank" rel="noopener">參考</a></p>
-<p>android開發有一組預設的~/.android/debug.keystore,密碼為’android’<br>(當初不知道有這樣的設定,一直嘗試一些無法關聯的調整,浪費了一兩天)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Keystore name: &quot;debug.keystore&quot;</span><br><span class="line">Keystore password: &quot;android&quot;</span><br><span class="line">Key alias: &quot;androiddebugkey&quot;</span><br><span class="line">Key password: &quot;android&quot;</span><br><span class="line">CN: &quot;CN=Android Debug,O=Android,C=US&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="申請OAuth-Client-ID"><a href="#申請OAuth-Client-ID" class="headerlink" title="申請OAuth Client ID"></a>申請OAuth Client ID</h3><p>取得key的SHA1</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//自建key (做成apk要publish才使用這種方式)</span><br><span class="line">keytool -genkey -v -keystore my-key.keystore -alias myalias -keyalg RSA -keysize 2048 -validity 10000</span><br><span class="line">keytool -exportcert -list -v -alias myalias -keystore my-key.keystore</span><br><span class="line"></span><br><span class="line">//使用預設~/.android/debug.keystore (開發階段使用)</span><br><span class="line">keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore</span><br><span class="line"></span><br><span class="line">//申請OAuth Client ID&gt; Android, 貼上sha1,與config.xml的&apos;widget id&apos;</span><br><span class="line">//https://developers.google.com/mobile/add</span><br><span class="line">//https://console.developers.google.com</span><br></pre></td></tr></table></figure>
-<h3 id="安裝package"><a href="#安裝package" class="headerlink" title="安裝package"></a>安裝package</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//據說REVERSED_CLIENT_ID是給iOS看的 (之前沒reverse也能正常)</span><br><span class="line">ionic cordova plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=com.googleusercontent.apps.686840052494-pclnksh67f04srjmnta2tqa2m7mmroct</span><br><span class="line"></span><br><span class="line">//REVERSED_CLIENT_ID若用686...,用android測試時可以登入</span><br><span class="line">//若真reverse會???</span><br><span class="line"></span><br><span class="line">npm install --save @ionic-native/google-plus</span><br></pre></td></tr></table></figure>
-<h3 id="app-information"><a href="#app-information" class="headerlink" title="app information"></a>app information</h3><p>device app的oauth很依賴app提供的資訊(widget id, SHA-1).</p>
-<p>app的資訊除了在config.xml能看到,還散佈在其他檔案,當需要修改app id或一些其他ID時要注意,最好project一開始就決定好,不然可能會被搞死.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">config.xml</span><br><span class="line">plugins/android.json</span><br><span class="line">plugins/fetch.json</span><br><span class="line">platforms/android/android.json</span><br></pre></td></tr></table></figure>
-<h3 id="app登入"><a href="#app登入" class="headerlink" title="app登入"></a>app登入</h3><p><a href="https://devdactic.com/google-sign-in-ionic-firebase/" target="_blank" rel="noopener">Google</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.platform.ready().then(<span class="function">(<span class="params">readySource</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//不加webClientId僅能取得部份文字資料,不包含idToken</span></span><br><span class="line">  <span class="keyword">this</span>.googlePlus.login(&#123;</span><br><span class="line">    <span class="string">'webClientId'</span>: <span class="string">'686840052494-pclnksh67f04srjmnta2tqa2m7mmroct.apps.googleusercontent.com'</span>,</span><br><span class="line">    <span class="string">'offline'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(err)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="npm-package"><a href="#npm-package" class="headerlink" title="npm package"></a>npm package</h3><ul>
-<li><a href="https://www.npmjs.com/package/angular-social-auth" target="_blank" rel="noopener">angular-social-auth (mobile base)</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/Angular生命週期掛勾函數.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/angular2/Angular生命週期掛勾函數.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-10-07T19:50:22+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  OnChanges,SimpleChanges,</span><br><span class="line">  OnInit,</span><br><span class="line">  DoCheck,</span><br><span class="line">    AfterContentChecked,</span><br><span class="line">    AfterContentInit,</span><br><span class="line">    AfterViewChecked,</span><br><span class="line">    AfterViewInit,</span><br><span class="line">  OnDestroy</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>Init/Destory的動作僅會執行一次,之後的髒檢查不會再被呼叫,屬於生命週期的部分.其他Check的部分會隨髒檢查循環執行,與’生命’無關.</p>
-</li>
-<li><p>AfterViewInit : View已完成初次初始化,表示已能取得View上的元件參考,也可以再執行變更View相關的動作,</p>
-</li>
-<li><p>AfterViewChecked : 表示已經做完View的髒檢查,若在此又執行變更View相關的動作,會造成顯示後立刻又進入DoCheck,變成無窮循環.</p>
-</li>
-</ul>
-<h3 id="運用時機"><a href="#運用時機" class="headerlink" title="運用時機"></a>運用時機</h3><p>動態建立view時需善用onInit與afterViewInit.</p>
-<ul>
-<li>onInit時雖沒有任何view ref,但能初始化一些變數,改變view的結構(ngIf/ngFor…)</li>
-<li>afterViewInit是最後改變’第一畫面’的機會,該取得的view ref都該趁onInit時製造出來.</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2017,7 +2022,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

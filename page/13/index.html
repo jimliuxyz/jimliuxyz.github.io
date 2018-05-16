@@ -288,6 +288,287 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/00.others/server rendering.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/00.others/server rendering.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-13T18:13:22+08:00">
+                2017-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>意指瀏覽器上顯示的內容是直接從伺服器產生 直接的嵌在html中</p>
+<p>相反的則為client rendering,顯示內容為client端執行js後產生,server在只負責產生一個基本能使js運作的網頁與data api讓client js查詢</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/database/mongoDB/readme.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/database/mongoDB/readme.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-06T20:05:58+08:00">
+                2017-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://ithelp.ithome.com.tw/articles/10165786" target="_blank" rel="noopener">http://ithelp.ithome.com.tw/articles/10165786</a><br><a href="http://mongodbcanred.blogspot.tw/2015/01/mongodb.html" target="_blank" rel="noopener">http://mongodbcanred.blogspot.tw/2015/01/mongodb.html</a><br><a href="http://mongodbcanred.blogspot.tw/2015/01/mongodbinsert-document-remove-document.html" target="_blank" rel="noopener">http://mongodbcanred.blogspot.tw/2015/01/mongodbinsert-document-remove-document.html</a><br><a href="http://ithelp.ithome.com.tw/articles/10166066?sc=pt" target="_blank" rel="noopener">http://ithelp.ithome.com.tw/articles/10166066?sc=pt</a></p>
+<hr>
+<p>RDBMS到NoSQL</p>
+<p>DB-&gt;DB<br>TABLE-&gt;COLLECTION : 可以不用事先定義欄位 (稱為Schema-Free)<br>RECORD/ROW-&gt;DOCUMENT : COLLECTION下的每筆DOC允許有不等數量的欄位<br>Column-&gt;Field<br>PK-&gt;_id</p>
+<p>DOC為JSON格式(儲存的格式為BSON,即binary)</p>
+<p>可透過 subcollections來組織資料庫,例如IT部門下有兩個子部門ERP跟MIS,就可以分別建成三個collection<br>IT / IT.ERP / IT.MIS</p>
+<hr>
+<p>選取或建立DB<br>use mydb</p>
+<p>顯示目前操作的DB(db相當於指向目前使用的DB)<br>db</p>
+<p>顯示所有DB(至少含有一個collection的DB才會被顯示)<br>show dbs</p>
+<p>刪除DB<br>db.dropDatabase()</p>
+<hr>
+<p>建立COLLECTION<br>db.createCollection(NAME, OPTIONS)</p>
+<p>(直接用insert也可以用預設的OPTIONS建立COLLECTION)</p>
+<p>db.createCollection(“mycol”)<br>db.mycol.drop()<br>show collections</p>
+<hr>
+<p>插入DOC<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.collection.insert(&lt;documents&gt;,&lt;option&gt;)</span><br><span class="line"></span><br><span class="line">db.mycol.insert(&#123;</span><br><span class="line">   title: 'MongoDB Overview', </span><br><span class="line">   description: 'MongoDB is no sql database',</span><br><span class="line">   tags: ['mongodb', 'database', 'NoSQL'],</span><br><span class="line">   likes: 100</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><option> : 資料寫入確保<br>writeConcern:寫入確保等級設定<br>               w:-1     (嚴謹性：非常低)；發生資料庫寫入錯誤一律不回傳<br>               w:0      (嚴謹性：低)       ；只可以偵測到網路錯誤<br>               w:1      (嚴謹性：中 預設等級)<br>               w:1,j:1  (嚴謹性：高)       ；在寫入日誌後才回傳處理過程。<br>               w:2      (嚴謹性： 高 )     ；這個級別只在replica set的部署模式下生效</option></p>
+<p>db.collection.insert({name:’jim’},{writeConcern:{w:1,j:1}})</p>
+<hr>
+<p>更新DOC (update:僅更新值) db.COLLECTION_NAME.update(WHERE, UPDATED_DATA, OPTIONS)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.update(&#123;<span class="string">'title'</span>:<span class="string">'MongoDB Overview'</span>&#125;,&#123;<span class="attr">$set</span>:&#123;<span class="string">'title'</span>:<span class="string">'New MongoDB Tutorial'</span>&#125;&#125;,&#123;<span class="attr">multi</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>預設僅能更新單一doc</p>
+<p>$set : 設定key的value<br>$unset : 刪除key<br>$inc : 累加</p>
+<p>更新DOC (save:有_id時為’取代’doc,沒_id時相當於insert)</p>
+<p>刪除DOC<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.COLLECTION_NAME.remove(WHERE,justOne&lt;option&gt;)</span><br><span class="line">db.mycol.remove() <span class="comment">//刪除全部</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>查詢DOC (find/findOne)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.COLLECTION_NAME.find(WHERE).pretty()</span><br></pre></td></tr></table></figure></p>
+<p>用pretty()返回格式化內容</p>
+<p>WHERE:<br>where A = ‘ABC’ : {“A”:”ABC”}<br>where A &lt; 1 : {“A”:{$lt:1}}<br>lt lte<br>gt gte<br>ne<br>$in   (包含)<br>$nin (不包含)<br>$and   (和)<br>$or   (或)<br>$not (否)<br>$all 匹配所有指定內容才行(and) (key為陣列時)<br>$in 匹配一筆指定內容即可(or) (key為陣列時)<br>$size (node數量) (key為陣列時)<br>$type 匹配資料型態<br>$elemMatch 進入sub doc匹配<br>$slice 取陣列的部分元素 (稍微複雜,要用例子驗證一下行為)</p>
+<p>OR: (預設為AND)<br>A=1 and (B=2 or C=3)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;&#123;<span class="string">"A"</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">$or</span>:[&#123;<span class="string">"B"</span>:<span class="number">2</span>&#125;,&#123;<span class="string">"C"</span>:<span class="number">3</span>&#125;]&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>key:value區分大小寫,可以用正規表示法(但速度比較慢)<br>db.mycol.find({name:/Russell/i})</p>
+<hr>
+<p>投影 (Projection) : 僅查詢DOC的部分資料 (1:顯示 0:不顯示)(_id預設為顯示)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find(&#123;&#125;,&#123;<span class="string">"title"</span>:<span class="number">1</span>,<span class="attr">_id</span>:<span class="number">0</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>限制DOC數量<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find(&#123;&#125;,&#123;<span class="string">"title"</span>:<span class="number">1</span>,<span class="attr">_id</span>:<span class="number">0</span>&#125;).limit(<span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
+<p>略過N個DOC<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find(&#123;&#125;,&#123;<span class="string">"title"</span>:<span class="number">1</span>,<span class="attr">_id</span>:<span class="number">0</span>&#125;).skip(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>取得DOC數量<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find().count()</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>Indexing</p>
+<hr>
+<p>Aggregation and Groups</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/seo/readme.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1243,7 +1524,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

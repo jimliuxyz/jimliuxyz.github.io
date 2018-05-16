@@ -288,6 +288,279 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Ionic/ionic-oauth.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Ionic/ionic-oauth.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-10-10T15:04:43+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="從web登入"><a href="#從web登入" class="headerlink" title="從web登入"></a>從web登入</h3><p>彈出視窗方式<br>申請clientID(即webClientId)通常只需要鎖網域</p>
+<h3 id="從app登入"><a href="#從app登入" class="headerlink" title="從app登入"></a>從app登入</h3><p>透過app內建的widget程式登入. (client端主要是驗證apk的signed資訊,似乎與程式碼無關.)<br>申請登錄clientID需要:</p>
+<ul>
+<li>app id (widget id of config.xml)</li>
+<li>app SHA-1</li>
+</ul>
+<p>登入時若沒有加webClientId只會回傳少數文字資料,所以透過app.登入若需要進一步操作用戶資料就同時也需要web client id.</p>
+<h3 id="Android-Studio預設的debug-keystore設定"><a href="#Android-Studio預設的debug-keystore設定" class="headerlink" title="Android Studio預設的debug.keystore設定"></a>Android Studio預設的debug.keystore設定</h3><p><a href="https://stackoverflow.com/questions/18589694/i-have-never-set-any-passwords-to-my-keystore-and-alias-so-how-are-they-created" target="_blank" rel="noopener">參考</a></p>
+<p>android開發有一組預設的~/.android/debug.keystore,密碼為’android’<br>(當初不知道有這樣的設定,一直嘗試一些無法關聯的調整,浪費了一兩天)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Keystore name: &quot;debug.keystore&quot;</span><br><span class="line">Keystore password: &quot;android&quot;</span><br><span class="line">Key alias: &quot;androiddebugkey&quot;</span><br><span class="line">Key password: &quot;android&quot;</span><br><span class="line">CN: &quot;CN=Android Debug,O=Android,C=US&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="申請OAuth-Client-ID"><a href="#申請OAuth-Client-ID" class="headerlink" title="申請OAuth Client ID"></a>申請OAuth Client ID</h3><p>取得key的SHA1</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//自建key (做成apk要publish才使用這種方式)</span><br><span class="line">keytool -genkey -v -keystore my-key.keystore -alias myalias -keyalg RSA -keysize 2048 -validity 10000</span><br><span class="line">keytool -exportcert -list -v -alias myalias -keystore my-key.keystore</span><br><span class="line"></span><br><span class="line">//使用預設~/.android/debug.keystore (開發階段使用)</span><br><span class="line">keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore</span><br><span class="line"></span><br><span class="line">//申請OAuth Client ID&gt; Android, 貼上sha1,與config.xml的&apos;widget id&apos;</span><br><span class="line">//https://developers.google.com/mobile/add</span><br><span class="line">//https://console.developers.google.com</span><br></pre></td></tr></table></figure>
+<h3 id="安裝package"><a href="#安裝package" class="headerlink" title="安裝package"></a>安裝package</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//據說REVERSED_CLIENT_ID是給iOS看的 (之前沒reverse也能正常)</span><br><span class="line">ionic cordova plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=com.googleusercontent.apps.686840052494-pclnksh67f04srjmnta2tqa2m7mmroct</span><br><span class="line"></span><br><span class="line">//REVERSED_CLIENT_ID若用686...,用android測試時可以登入</span><br><span class="line">//若真reverse會???</span><br><span class="line"></span><br><span class="line">npm install --save @ionic-native/google-plus</span><br></pre></td></tr></table></figure>
+<h3 id="app-information"><a href="#app-information" class="headerlink" title="app information"></a>app information</h3><p>device app的oauth很依賴app提供的資訊(widget id, SHA-1).</p>
+<p>app的資訊除了在config.xml能看到,還散佈在其他檔案,當需要修改app id或一些其他ID時要注意,最好project一開始就決定好,不然可能會被搞死.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">config.xml</span><br><span class="line">plugins/android.json</span><br><span class="line">plugins/fetch.json</span><br><span class="line">platforms/android/android.json</span><br></pre></td></tr></table></figure>
+<h3 id="app登入"><a href="#app登入" class="headerlink" title="app登入"></a>app登入</h3><p><a href="https://devdactic.com/google-sign-in-ionic-firebase/" target="_blank" rel="noopener">Google</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.platform.ready().then(<span class="function">(<span class="params">readySource</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//不加webClientId僅能取得部份文字資料,不包含idToken</span></span><br><span class="line">  <span class="keyword">this</span>.googlePlus.login(&#123;</span><br><span class="line">    <span class="string">'webClientId'</span>: <span class="string">'686840052494-pclnksh67f04srjmnta2tqa2m7mmroct.apps.googleusercontent.com'</span>,</span><br><span class="line">    <span class="string">'offline'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(err)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="npm-package"><a href="#npm-package" class="headerlink" title="npm package"></a>npm package</h3><ul>
+<li><a href="https://www.npmjs.com/package/angular-social-auth" target="_blank" rel="noopener">angular-social-auth (mobile base)</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/Angular生命週期掛勾函數.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/Angular生命週期掛勾函數.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-10-07T19:50:22+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  OnChanges,SimpleChanges,</span><br><span class="line">  OnInit,</span><br><span class="line">  DoCheck,</span><br><span class="line">    AfterContentChecked,</span><br><span class="line">    AfterContentInit,</span><br><span class="line">    AfterViewChecked,</span><br><span class="line">    AfterViewInit,</span><br><span class="line">  OnDestroy</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Init/Destory的動作僅會執行一次,之後的髒檢查不會再被呼叫,屬於生命週期的部分.其他Check的部分會隨髒檢查循環執行,與’生命’無關.</p>
+</li>
+<li><p>AfterViewInit : View已完成初次初始化,表示已能取得View上的元件參考,也可以再執行變更View相關的動作,</p>
+</li>
+<li><p>AfterViewChecked : 表示已經做完View的髒檢查,若在此又執行變更View相關的動作,會造成顯示後立刻又進入DoCheck,變成無窮循環.</p>
+</li>
+</ul>
+<h3 id="運用時機"><a href="#運用時機" class="headerlink" title="運用時機"></a>運用時機</h3><p>動態建立view時需善用onInit與afterViewInit.</p>
+<ul>
+<li>onInit時雖沒有任何view ref,但能初始化一些變數,改變view的結構(ngIf/ngFor…)</li>
+<li>afterViewInit是最後改變’第一畫面’的機會,該取得的view ref都該趁onInit時製造出來.</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/angular動態新增元件.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1352,259 +1625,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/react/redux.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/react/redux.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-28T20:33:42+08:00">
-                2017-09-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>redux基本上是針對狀態讀寫(不是針對變數)的一種設計思想,把散落的狀態讀寫集中到一個稱為’store‘的模組上.</p>
-<h3 id="制定狀態結構"><a href="#制定狀態結構" class="headerlink" title="制定狀態結構"></a>制定狀態結構</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface SpeedState &#123;</span><br><span class="line">  speed: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">INI_STATE: SpeedState = &#123;</span><br><span class="line">  speed: <span class="number">0</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="怎麼寫入狀態？"><a href="#怎麼寫入狀態？" class="headerlink" title="怎麼寫入狀態？"></a>怎麼寫入狀態？</h3><p>狀態的寫入需要透過發送’action’,其實就是一個{type,payload}的物件,做為一個命令傳送給store.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">store.dispath(&#123;</span><br><span class="line">    type:SET_SPEED,</span><br><span class="line">    payload:&#123;</span><br><span class="line">        speed:<span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="誰處理action"><a href="#誰處理action" class="headerlink" title="誰處理action"></a>誰處理action</h3><p>處理的函數稱做reducer,這個名稱來自於Array的reduce函數,也提供類似的行為new=f(old,act)</p>
-<p>reducer須符合pure function的設計,意即同樣輸入必須得到同樣輸出,這是設計理念,涉及狀態回朔的可能性,與何者該被定義為’狀態’有關.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speedReducer</span>(<span class="params">state: SpeedState=INI_STATE, action: Action</span>): <span class="title">SpeedState</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;type, payload&#125; = action;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">    <span class="keyword">case</span> SET_SPEED:</span><br><span class="line">      <span class="comment">//依照action.type產生新的狀態(以不修改原state的方式使其舊state能保留)</span></span><br><span class="line">      <span class="keyword">return</span> &#123;...state, <span class="attr">speed</span>: payload.speed&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="建立store"><a href="#建立store" class="headerlink" title="建立store"></a>建立store</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;StoreModule&#125; <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;</span><br><span class="line">...</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">    imports: [</span><br><span class="line">      StoreModule.provideStore(speedReducer),</span><br><span class="line">    ]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h3 id="怎麼讀？"><a href="#怎麼讀？" class="headerlink" title="怎麼讀？"></a>怎麼讀？</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">mynum: Observable&lt;number&gt;</span><br><span class="line">mynum = store.select(<span class="string">'num'</span>);    <span class="comment">//回傳observable</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>num: &#123;&#123; mynum | async &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">//或直接subscribe observable(mynum)進行更多處理</span><br></pre></td></tr></table></figure>
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>redux架構的使用很容易導致over design,用ng service + RxJs會比較精簡些</p>
-<p><a href="http://oomusou.io/angular/angular-ngrx/" target="_blank" rel="noopener">http://oomusou.io/angular/angular-ngrx/</a></p>
-<p><a href="https://www.youtube.com/watch?v=hJtUdXqPLDc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=hJtUdXqPLDc</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/npm/版本規範semver.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/npm/版本規範semver.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-27T15:09:12+08:00">
-                2017-09-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="版本規範semver"><a href="#版本規範semver" class="headerlink" title="版本規範semver"></a>版本規範semver</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">3.4</span><span class="number">.1</span></span><br><span class="line">MAJOR.MINOR.PATCH</span><br><span class="line">主版號.次版號.修訂號</span><br><span class="line"></span><br><span class="line">MAJOR : 用於造成<span class="string">'相容性變動'</span>時</span><br><span class="line">MINOR : 用於仍維持相容性的<span class="string">'功能新增'</span></span><br><span class="line">PATCH : 用於仍維持相容性的<span class="string">'功能修正'</span></span><br></pre></td></tr></table></figure>
-<h3 id="package-json-版本"><a href="#package-json-版本" class="headerlink" title="package.json 版本"></a>package.json 版本</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* : 任意版本</span><br><span class="line">^ : MAJOR不能變 (允許新增功能與修正)</span><br><span class="line">~ : MAJOR與MINOR不能變 (僅允許新增修正:更嚴格)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">~<span class="number">1.2</span><span class="number">.3</span> 表示 &gt;=<span class="number">1.2</span><span class="number">.3</span> and &lt; <span class="number">1.3</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">^<span class="number">1.2</span><span class="number">.3</span> 表示 &gt;=<span class="number">1.2</span><span class="number">.3</span> and &lt; <span class="number">2.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">^<span class="number">0.1</span><span class="number">.2</span> 表示 &gt;=<span class="number">0.1</span><span class="number">.2</span> and &lt; <span class="number">0.2</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1655,7 +1675,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

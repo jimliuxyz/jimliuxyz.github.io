@@ -288,6 +288,654 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/ViewNStyle.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/ViewNStyle.html" itemprop="url">view 與 Style</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:37:31+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><span class="inline-path">/Users/jimliu/Library/Android/sdk/platforms/android-26/data/res/values/styles.xml</span></p>
+<h2 id="容器類型的view"><a href="#容器類型的view" class="headerlink" title="容器類型的view"></a>容器類型的view</h2><ul>
+<li>ListView : 列表顯示</li>
+<li>RecyclerView : 列表顯示 更為靈活 取代ListView</li>
+<li>ScrollView : 可滑動的顯示</li>
+<li>gridview / gallery / cardview</li>
+</ul>
+<h3 id="LayoutInflater"><a href="#LayoutInflater" class="headerlink" title="LayoutInflater"></a>LayoutInflater</h3><blockquote>
+<p>layout的實體化工具 將layout resource轉成view的實例</p>
+</blockquote>
+<h3 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h3><blockquote>
+<p>設計模式中稱作”適配器” 簡單的說就是轉換器 以view容器的應用來說 就是將’資料數據’轉換填充到’ListView裡的各個item view’上</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//以simple_list_item_1做為item view</span></span><br><span class="line">adp = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(<span class="keyword">this</span>, android.R.layout.simple_list_item_1);</span><br><span class="line"></span><br><span class="line"><span class="comment">//替adp添加兩筆資料</span></span><br><span class="line">adp.add(<span class="string">"first"</span>);</span><br><span class="line">adp.add(<span class="string">"second"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//將adp指定給listview使用</span></span><br><span class="line">lv = findViewById(R.id.listView);</span><br><span class="line">lv.setAdapter(adp);</span><br></pre></td></tr></table></figure>
+<h3 id="BaseAdapter"><a href="#BaseAdapter" class="headerlink" title="BaseAdapter"></a>BaseAdapter</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> pos, View convertView, ViewGroup parent)</span></span>&#123;</span><br><span class="line">  <span class="comment">//getView用於取得item view</span></span><br><span class="line">  <span class="comment">//convertView : 先前已建立的view,用於優化效能</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">notifyDataSetChanged(); <span class="comment">//向view通知data有變動 view才會refresh</span></span><br></pre></td></tr></table></figure>
+<h4 id="ViewHolder"><a href="#ViewHolder" class="headerlink" title="ViewHolder"></a>ViewHolder</h4><blockquote>
+<p>主要用意在復用item view時避免重複findViewById<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">v.setTag(holder);</span><br><span class="line">holder = (Holder) v.getTag();</span><br><span class="line"><span class="comment">//RecyclerView.Adapter不用這樣寫</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h2><blockquote>
+<p>有自己的ui thread 用於較佔時間繪圖應用 (VideoView/ImageView)</p>
+</blockquote>
+<h2 id="View狀態的save與restore"><a href="#View狀態的save與restore" class="headerlink" title="View狀態的save與restore"></a>View狀態的save與restore</h2><ol>
+<li>view需要設定id才能被儲存</li>
+<li>android:saveEnabled 預設已為true</li>
+</ol>
+<h2 id="自定義View-ViewGroup"><a href="#自定義View-ViewGroup" class="headerlink" title="自定義View / ViewGroup"></a>自定義View / ViewGroup</h2><p><a href="http://tw.gitbook.net/android/android_custom_components.html" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
+<p>先分清元件與佈局的角色</p>
+</blockquote>
+<h4 id="大致"><a href="#大致" class="headerlink" title="大致"></a>大致</h4><ol>
+<li>需要複寫onMeasure (父要求子做元件尺寸測量<code>measureChildren</code>) (子則量測自己) 量測完執行<code>setMeasuredDimension</code></li>
+<li>ViewGroup需複寫 onLayout (排定子的繪出位置) 逐個叫用<code>child.layout</code></li>
+<li>View需複寫 onDraw (繪製本身)</li>
+</ol>
+<h4 id="MeasureSpec定義"><a href="#MeasureSpec定義" class="headerlink" title="MeasureSpec定義"></a>MeasureSpec定義</h4><blockquote>
+<p>為一整數 前3bit做為mode 之後作為size(寬或高) 做為父要求子做尺寸量測時的參考 (由父提供spec 子做量測)</p>
+</blockquote>
+<ul>
+<li>UNSPECIFIED : 沒有任何約束</li>
+<li>EXACTLY : 約束明確的size</li>
+<li>AT_MOST : 約束上限的size</li>
+</ul>
+<h4 id="LayoutParams"><a href="#LayoutParams" class="headerlink" title="LayoutParams"></a>LayoutParams</h4><blockquote>
+<p>一個ViewGroup要遍歷所有子View的LayoutParams才知道每個子View要求被如何佈局 (所以是ViewGroup定義的 但由子View描述給其ViewGroup參照的) <code>child.getLayoutParams</code></p>
+</blockquote>
+<h2 id="Theme與Style"><a href="#Theme與Style" class="headerlink" title="Theme與Style"></a>Theme與Style</h2><blockquote>
+<p>aad:Construct a layout using XML or Java code</p>
+</blockquote>
+<blockquote>
+<p>aad:Create a custom view class and add it to a layout</p>
+</blockquote>
+<blockquote>
+<p>aad:Implement a custom application theme</p>
+</blockquote>
+<blockquote>
+<p>aad:Apply a custom style to a group of common widgets</p>
+</blockquote>
+<blockquote>
+<p>兩者僅有使用廣度上的差別 theme針對app或activity, style針對元件, 基本上都是style</p>
+</blockquote>
+<h4 id="單位"><a href="#單位" class="headerlink" title="單位"></a>單位</h4><p><img src="http://1.bp.blogspot.com/-k8iDcrGHmz4/UfCrsfwyoPI/AAAAAAAADJA/Kvpga5ZH1Fc/s1600/pixel-density-2.png" alt=""></p>
+<p>dp : 1dp=160ppi的px長度 (像素隨密度改變)<br>sp : 類似dp 用於文字<br>pt : 點 用於文字<br>px : 像素<br>ppi, dpi : 像素密度 pixel per inch 每英寸像素數<br>mm : 毫米<br>in : 英吋</p>
+<h4 id="attr宣告"><a href="#attr宣告" class="headerlink" title="attr宣告"></a>attr宣告</h4><blockquote>
+<p>寫在values/attrs.xml 作為元件的屬性 (元件屬性是從xml建立的 java code僅是依資源ID取值賦予元件)</p>
+</blockquote>
+<blockquote>
+<p>attr及所有資源都會自動產生於R類中的id</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> =<span class="string">"mycolor"</span> <span class="attr">format</span>= <span class="string">"color"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>屬性名稱一多容易重複混淆 用declare-styleable可將其分類 java code也會比較好讀取</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//將多個attr並於declare-styleable有利組織化與讀取 在R類中會是一個resId的陣列</span><br><span class="line"><span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"MyStyle"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span> =<span class="string">"mycolor"</span> <span class="attr">format</span>= <span class="string">"color"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">declare-styleable</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="attr的賦值"><a href="#attr的賦值" class="headerlink" title="attr的賦值"></a>attr的賦值</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//在元件標籤中賦值 (前半部需指定命名空間)</span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:</span> <span class="attr">mycolor</span>=<span class="string">"#00ff00"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:style</span>=<span class="string">"@style/MyStyle"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TextView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//在style/theme中賦值</span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"mycolor"</span>&gt;</span>#0037ff<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textViewStyle"</span>&gt;</span>@style/textviewstyle<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="元件取得attr的來源"><a href="#元件取得attr的來源" class="headerlink" title="元件取得attr的來源"></a>元件取得attr的來源</h4><blockquote>
+<p>一個元件的一個attr可能有多個來源 (大致的優先順序)</p>
+</blockquote>
+<ol>
+<li>於元件標籤中或標籤中指定的style有描述</li>
+<li>從application或activity指定的theme中有描述</li>
+<li>theme中指定的style有描述 (即指android:textViewStyle)(format=”reference”)</li>
+<li>元件hardcode裡有預設的style</li>
+</ol>
+<h4 id="元件取得attr-obtainStyledAttributes-AttributeSet-set-int-attrs-int-defStyleAttr-int-defStyleRes"><a href="#元件取得attr-obtainStyledAttributes-AttributeSet-set-int-attrs-int-defStyleAttr-int-defStyleRes" class="headerlink" title="元件取得attr obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)"></a>元件取得attr obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)</h4><ul>
+<li>AttributeSet 即元件標籤中的描述</li>
+<li>attrs 欲取得的attr</li>
+<li>defStyleAttr 預設的style的attr (在theme中經由該attr參考到確切的style)(即指android:textViewStyle) 透過這樣的機制就可在theme中複寫掉元件的整個style</li>
+<li>defStyleRes 預設的style 若沒有可丟0</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(context, attrs, defStyleAttr, <span class="number">0</span>);</span><br><span class="line">    TypedArray a = theme.obtainStyledAttributes(attrs,</span><br><span class="line">            R.styleable.MyStyle, defStyleAttr, defStyleRes);</span><br><span class="line">    <span class="keyword">int</span> color = a.getColor(R.styleable.MyStyle_mycolor, Color.BLACK);</span><br><span class="line">    a. recycle();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="可見性的設定"><a href="#可見性的設定" class="headerlink" title="可見性的設定"></a>可見性的設定</h2><p>View.visable<br>View.invisable : 看不見 但仍佔位置<br>View.gone : 消失 不佔位置</p>
+<h2 id="模糊視窗-blur"><a href="#模糊視窗-blur" class="headerlink" title="模糊視窗(blur)"></a>模糊視窗(blur)</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);</span><br></pre></td></tr></table></figure>
+<h2 id="ViewStub"><a href="#ViewStub" class="headerlink" title="ViewStub"></a>ViewStub</h2><p>一個空的view 用來延遲載入另一個view時當作佔位用</p>
+<h4 id="SpannableString"><a href="#SpannableString" class="headerlink" title="SpannableString"></a>SpannableString</h4><blockquote>
+<p>v.setText()通常傳入字串 更複雜可以傳入(html, img_getter, tag_handler) 另一種是傳入SpannableString 用途都是達到圖文混排</p>
+</blockquote>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h4 id="onTouch-和-onTouchEvent"><a href="#onTouch-和-onTouchEvent" class="headerlink" title="onTouch 和 onTouchEvent"></a>onTouch 和 onTouchEvent</h4><blockquote>
+<p>onTouch優先於onTouchEvent 若onTouch回傳true則事件就不會再往下傳播<br>onTouch是作用於view處於enable狀態下</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Accessibility.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Accessibility.html" itemprop="url">Accessibility</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:33:38+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Accessibility-無障礙能力"><a href="#Accessibility-無障礙能力" class="headerlink" title="Accessibility 無障礙能力"></a>Accessibility 無障礙能力</h2><p><a href="https://developer.android.com/guide/topics/ui/accessibility/apps.html" target="_blank" rel="noopener">官方</a><br><a href="https://medium.com/@robillo/android-custom-views-part-4-making-views-more-accessible-65cdbd59ace0" target="_blank" rel="noopener">Event</a><br><a href="https://blog.csdn.net/itfootball/article/details/21953763" target="_blank" rel="noopener">AccessibilityService</a><br><a href="https://blog.darkness463.top/2017/04/17/accessibility-event/" target="_blank" rel="noopener">AccessibilityEvent</a><br><a href="https://kompasim.coding.me/2017/04/09/android-accessibility-service/" target="_blank" rel="noopener">AccessibilityService</a></p>
+<blockquote>
+<p>aad:Apply content descriptions to views for accessibility</p>
+</blockquote>
+<blockquote>
+<p>aad:Add accessibility hooks to a custom view</p>
+</blockquote>
+<blockquote>
+<p>自訂View時需要<code>sendAccessibilityEvent</code> 否則只要注意<code>contentDescription</code> <code>focusable</code> <code>nextFocus</code></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/basic.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/basic.html" itemprop="url">Android環境概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:13:31+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h1 id="編譯流程"><a href="#編譯流程" class="headerlink" title="編譯流程"></a>編譯流程</h1><ul>
+<li>Dalvik : Android的JVM</li>
+<li>dex : 類似jar</li>
+<li>appt：Android Asset Packaging Tool</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20161122102458470" alt="編譯流程"></p>
+<hr>
+<h1 id="Minifest"><a href="#Minifest" class="headerlink" title="Minifest"></a>Minifest</h1><p><a href="http://www.wenwenti.info/article/856135" target="_blank" rel="noopener">Minifest-activity參數</a></p>
+<hr>
+<h1 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h1><p><a href="https://www.jianshu.com/p/fb0681f5f12b" target="_blank" rel="noopener">ref</a></p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/1311456-5ca2e2152180d6aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/623" width="400" alt=""></p>
+<blockquote>
+<p>context可理解為app的執行環境 (包含狀態與工具)</p>
+</blockquote>
+<blockquote>
+<p>ContextWrapper會包含一個Context實例(mBase)達到複製Context</p>
+</blockquote>
+<blockquote>
+<p>Application與Activity與Service雖都能當context用(但非對應同一個mBase) 要注意Activity與Service是有被回收的可能 避免將其當context傳遞 但某些關聯性的動作只能使用activity(像是show dialog)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若context的傳遞會被對方持有時 盡可能使用Application的context</span></span><br><span class="line">context.getApplicationContext()</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h1><blockquote>
+<p>繼承Context 可以理解為另外一個層級的執行環境<br>透過Manifest指定自訂的Application類</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--Manifest--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">application</span> <span class="attr">android:name</span>=<span class="string">".CustomApplication"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="SharedPreference"><a href="#SharedPreference" class="headerlink" title="SharedPreference"></a>SharedPreference</h1><p>key/value pair的儲存器 用於儲存app的設定值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">MODE_MULTI_PROCESS</span><br><span class="line">MODE_PRIVATE</span><br><span class="line"></span><br><span class="line">sp = PreferenceManager.getDefaultSharedPreferences(context);</span><br><span class="line">sp = getSharedPreferences(<span class="string">"mysp"</span>, Context. MODE_PRIVATE);</span><br><span class="line">sp.getBoolean(<span class="string">"key"</span>, <span class="keyword">false</span>);</span><br><span class="line">sp.edit().putBoolean(<span class="string">"key"</span>, <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/紀錄/Single/Hexo安裝紀錄.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/紀錄/Single/Hexo安裝紀錄.html" itemprop="url">Hexo安裝紀錄</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/紀錄/" itemprop="url" rel="index">
+                    <span itemprop="name">紀錄</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">Hexo</a> 、<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
+<div class="note danger"><ul>
+<li>站內連結若用相對連結在首頁跟文章內顯示的連結路徑不同</li>
+<li>UTF-8編碼中若參雜其他編碼會讓search.xml錯誤而無法搜索</li>
+<li>md檔案若有尖括號未置入code tag 可能造成解析錯誤</li>
+</ul></div>
+<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><p>本地端透過Hexo建立網站骨架 並將markdown文章轉為html 上傳到github做為blog網站<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/home/紀錄/Single/Hexo安裝紀錄.html#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/git/Git.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -740,158 +1388,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/紀錄/Single/Hexo安裝紀錄.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/紀錄/Single/Hexo安裝紀錄.html" itemprop="url">Hexo安裝紀錄</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
-                2018-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/紀錄/" itemprop="url" rel="index">
-                    <span itemprop="name">紀錄</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">Hexo</a> 、<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
-<div class="note danger"><ul>
-<li>站內連結若用相對連結在首頁跟文章內顯示的連結路徑不同</li>
-<li>UTF-8編碼中若參雜其他編碼會讓search.xml錯誤而無法搜索</li>
-<li>md檔案若有尖括號未置入code tag 可能造成解析錯誤</li>
-</ul></div>
-<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><p>本地端透過Hexo建立網站骨架 並將markdown文章轉為html 上傳到github做為blog網站<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/home/紀錄/Single/Hexo安裝紀錄.html#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Service.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1062,955 +1558,6 @@
 <li>POWER_OFF_WAKEUP : 能於關機中喚醒</li>
 </ul>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/media/style.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Single/media/style.html" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-03-03T22:34:51+08:00">
-                2018-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            @font-face {
-  font-family: octicons-anchor;
-  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff');
-}
-
-body {
-  background-color: white;
-}
-
-.markdown-body {
-  min-width: 200px;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 20px;
-
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  color: #333;
-  overflow: hidden;
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  word-wrap: break-word;
-}
-
-.markdown-body a {
-  background: transparent;;word-wrap: break-word; word-break: break-all;
-}
-
-.markdown-body a:active,
-.markdown-body a:hover {
-  outline: 0;
-}
-
-.markdown-body strong {
-  font-weight: bold;
-}
-
-.markdown-body h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-.markdown-body img {
-  border: 0;
-}
-
-.markdown-body hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-}
-
-.markdown-body pre {
-  overflow: auto;
-}
-
-.markdown-body code,
-.markdown-body kbd,
-.markdown-body pre {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-.markdown-body input {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-
-.markdown-body html input[disabled] {
-  cursor: default;
-}
-
-.markdown-body input {
-  line-height: normal;
-}
-
-.markdown-body input[type="checkbox"] {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0;
-}
-
-.markdown-body table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-.markdown-body td,
-.markdown-body th {
-  padding: 0;
-}
-
-.markdown-body * {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body input {
-  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-.markdown-body a {
-  color: #4183c4;
-  text-decoration: none;
-}
-
-.markdown-body a:hover,
-.markdown-body a:focus,
-.markdown-body a:active {
-  text-decoration: underline;
-}
-
-.markdown-body hr {
-  height: 0;
-  margin: 15px 0;
-  overflow: hidden;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.markdown-body hr:before {
-  display: table;
-  content: "";
-}
-
-.markdown-body hr:after {
-  display: table;
-  clear: both;
-  content: "";
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  line-height: 1.1;
-}
-
-.markdown-body h1 {
-  font-size: 30px;
-}
-
-.markdown-body h2 {
-  font-size: 21px;
-}
-
-.markdown-body h3 {
-  font-size: 16px;
-}
-
-.markdown-body h4 {
-  font-size: 14px;
-}
-
-.markdown-body h5 {
-  font-size: 12px;
-}
-
-.markdown-body h6 {
-  font-size: 11px;
-}
-
-.markdown-body blockquote {
-  margin: 0;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body ol ol,
-.markdown-body ul ol {
-  list-style-type: lower-roman;
-}
-
-.markdown-body ul ul ol,
-.markdown-body ul ol ol,
-.markdown-body ol ul ol,
-.markdown-body ol ol ol {
-  list-style-type: lower-alpha;
-}
-
-.markdown-body dd {
-  margin-left: 0;
-}
-
-.markdown-body code {
-  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-}
-
-.markdown-body pre {
-  margin-top: 0;
-  margin-bottom: 0;
-  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-}
-
-.markdown-body kbd {
-  background-color: #e7e7e7;
-  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
-  background-image: linear-gradient(#fefefe, #e7e7e7);
-  background-repeat: repeat-x;
-  border-radius: 2px;
-  border: 1px solid #cfcfcf;
-  color: #000;
-  padding: 3px 5px;
-  line-height: 10px;
-  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  display: inline-block;
-}
-
-.markdown-body>*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body>*:last-child {
-  margin-bottom: 0 !important;
-}
-
-.markdown-body .anchor {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  padding-right: 6px;
-  padding-left: 30px;
-  margin-left: -30px;
-}
-
-.markdown-body .anchor:focus {
-  outline: none;
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  position: relative;
-  margin-top: 1em;
-  margin-bottom: 16px;
-  font-weight: bold;
-  line-height: 1.4;
-}
-
-.markdown-body h1 .octicon-link,
-.markdown-body h2 .octicon-link,
-.markdown-body h3 .octicon-link,
-.markdown-body h4 .octicon-link,
-.markdown-body h5 .octicon-link,
-.markdown-body h6 .octicon-link {
-  display: none;
-  color: #000;
-  vertical-align: middle;
-}
-
-.markdown-body h1:hover .anchor,
-.markdown-body h2:hover .anchor,
-.markdown-body h3:hover .anchor,
-.markdown-body h4:hover .anchor,
-.markdown-body h5:hover .anchor,
-.markdown-body h6:hover .anchor {
-  height: 1em;
-  padding-left: 8px;
-  margin-left: -30px;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.markdown-body h1:hover .anchor .octicon-link,
-.markdown-body h2:hover .anchor .octicon-link,
-.markdown-body h3:hover .anchor .octicon-link,
-.markdown-body h4:hover .anchor .octicon-link,
-.markdown-body h5:hover .anchor .octicon-link,
-.markdown-body h6:hover .anchor .octicon-link {
-  display: inline-block;
-}
-
-.markdown-body h1 {
-  padding-bottom: 0.3em;
-  font-size: 2.25em;
-  line-height: 1.2;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h2 {
-  padding-bottom: 0.3em;
-  font-size: 1.75em;
-  line-height: 1.225;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h3 {
-  font-size: 1.5em;
-  line-height: 1.43;
-}
-
-.markdown-body h4 {
-  font-size: 1.25em;
-}
-
-.markdown-body h5 {
-  font-size: 1em;
-}
-
-.markdown-body h6 {
-  font-size: 1em;
-  color: #777;
-}
-
-.markdown-body p,
-.markdown-body blockquote,
-.markdown-body ul,
-.markdown-body ol,
-.markdown-body dl,
-.markdown-body table,
-.markdown-body pre {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.markdown-body hr {
-  height: 4px;
-  padding: 0;
-  margin: 16px 0;
-  background-color: #e7e7e7;
-  border: 0 none;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding-left: 2em;
-}
-
-.markdown-body ul ul,
-.markdown-body ul ol,
-.markdown-body ol ol,
-.markdown-body ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body li>p {
-  margin-top: 16px;
-}
-
-.markdown-body dl {
-  padding: 0;
-}
-
-.markdown-body dl dt {
-  padding: 0;
-  margin-top: 16px;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.markdown-body dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px;
-}
-
-.markdown-body blockquote {
-  padding: 0 15px;
-  color: #777;
-  border-left: 4px solid #ddd;
-}
-
-.markdown-body blockquote>:first-child {
-  margin-top: 0;
-}
-
-.markdown-body blockquote>:last-child {
-  margin-bottom: 0;
-}
-
-.markdown-body table {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  word-break: normal;
-  word-break: keep-all;
-}
-
-.markdown-body table th {
-  font-weight: bold;
-}
-
-.markdown-body table th,
-.markdown-body table td {
-  padding: 6px 13px;
-  border: 1px solid #ddd;
-}
-
-.markdown-body table tr {
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-}
-
-.markdown-body table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-
-.markdown-body img {
-  max-width: 100%;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body code {
-  padding: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(0,0,0,0.04);
-  border-radius: 3px;
-}
-
-.markdown-body code:before,
-.markdown-body code:after {
-  letter-spacing: -0.2em;
-  content: "\00a0";
-}
-
-.markdown-body pre>code {
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-}
-
-.markdown-body .highlight {
-  margin-bottom: 16px;
-}
-
-.markdown-body .highlight pre,
-.markdown-body pre {
-  padding: 16px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f7f7f7;
-  border-radius: 3px;
-}
-
-.markdown-body .highlight pre {
-  margin-bottom: 0;
-  word-break: normal;
-}
-
-.markdown-body pre {
-  word-wrap: normal;
-}
-
-.markdown-body pre code {
-  display: inline;
-  max-width: initial;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: transparent;
-  border: 0;
-}
-
-.markdown-body pre code:before,
-.markdown-body pre code:after {
-  content: normal;
-}
-
-.markdown-body .highlight {
-  background: #fff;
-}
-
-.markdown-body .highlight .mf,
-.markdown-body .highlight .mh,
-.markdown-body .highlight .mi,
-.markdown-body .highlight .mo,
-.markdown-body .highlight .il,
-.markdown-body .highlight .m {
-  color: #945277;
-}
-
-.markdown-body .highlight .s,
-.markdown-body .highlight .sb,
-.markdown-body .highlight .sc,
-.markdown-body .highlight .sd,
-.markdown-body .highlight .s2,
-.markdown-body .highlight .se,
-.markdown-body .highlight .sh,
-.markdown-body .highlight .si,
-.markdown-body .highlight .sx,
-.markdown-body .highlight .s1 {
-  color: #df5000;
-}
-
-.markdown-body .highlight .kc,
-.markdown-body .highlight .kd,
-.markdown-body .highlight .kn,
-.markdown-body .highlight .kp,
-.markdown-body .highlight .kr,
-.markdown-body .highlight .kt,
-.markdown-body .highlight .k,
-.markdown-body .highlight .o {
-  font-weight: bold;
-}
-
-.markdown-body .highlight .kt {
-  color: #458;
-}
-
-.markdown-body .highlight .c,
-.markdown-body .highlight .cm,
-.markdown-body .highlight .c1 {
-  color: #998;
-  font-style: italic;
-}
-
-.markdown-body .highlight .cp,
-.markdown-body .highlight .cs {
-  color: #999;
-  font-weight: bold;
-}
-
-.markdown-body .highlight .cs {
-  font-style: italic;
-}
-
-.markdown-body .highlight .n {
-  color: #333;
-}
-
-.markdown-body .highlight .na,
-.markdown-body .highlight .nv,
-.markdown-body .highlight .vc,
-.markdown-body .highlight .vg,
-.markdown-body .highlight .vi {
-  color: #008080;
-}
-
-.markdown-body .highlight .nb {
-  color: #0086B3;
-}
-
-.markdown-body .highlight .nc {
-  color: #458;
-  font-weight: bold;
-}
-
-.markdown-body .highlight .no {
-  color: #094e99;
-}
-
-.markdown-body .highlight .ni {
-  color: #800080;
-}
-
-.markdown-body .highlight .ne {
-  color: #990000;
-  font-weight: bold;
-}
-
-.markdown-body .highlight .nf {
-  color: #945277;
-  font-weight: bold;
-}
-
-.markdown-body .highlight .nn {
-  color: #555;
-}
-
-.markdown-body .highlight .nt {
-  color: #000080;
-}
-
-.markdown-body .highlight .err {
-  color: #a61717;
-  background-color: #e3d2d2;
-}
-
-.markdown-body .highlight .gd {
-  color: #000;
-  background-color: #fdd;
-}
-
-.markdown-body .highlight .gd .x {
-  color: #000;
-  background-color: #faa;
-}
-
-.markdown-body .highlight .ge {
-  font-style: italic;
-}
-
-.markdown-body .highlight .gr {
-  color: #aa0000;
-}
-
-.markdown-body .highlight .gh {
-  color: #999;
-}
-
-.markdown-body .highlight .gi {
-  color: #000;
-  background-color: #dfd;
-}
-
-.markdown-body .highlight .gi .x {
-  color: #000;
-  background-color: #afa;
-}
-
-.markdown-body .highlight .go {
-  color: #888;
-}
-
-.markdown-body .highlight .gp {
-  color: #555;
-}
-
-.markdown-body .highlight .gs {
-  font-weight: bold;
-}
-
-.markdown-body .highlight .gu {
-  color: #800080;
-  font-weight: bold;
-}
-
-.markdown-body .highlight .gt {
-  color: #aa0000;
-}
-
-.markdown-body .highlight .ow {
-  font-weight: bold;
-}
-
-.markdown-body .highlight .w {
-  color: #bbb;
-}
-
-.markdown-body .highlight .sr {
-  color: #017936;
-}
-
-.markdown-body .highlight .ss {
-  color: #8b467f;
-}
-
-.markdown-body .highlight .bp {
-  color: #999;
-}
-
-.markdown-body .highlight .gc {
-  color: #999;
-  background-color: #EAF2F5;
-}
-
-.markdown-body .octicon {
-  font: normal normal 16px octicons-anchor;
-  line-height: 1;
-  display: inline-block;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.markdown-body .octicon-link:before {
-  content: '\f05c';
-}
-
-.markdown-body .task-list-item {
-  list-style-type: none;
-}
-
-.markdown-body .task-list-item+.task-list-item {
-  margin-top: 3px;
-}
-
-.markdown-body .task-list-item input {
-  float: left;
-  margin: 0.3em 0 0.25em -1.6em;
-  vertical-align: middle;
-}
-table td{ word-wrap: break-word !important; word-break: break-all !important; }
-/*
-
-github.com style (c) Vasily Polovnyov <vast@whiteants.net>
-
-*/
-
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  color: #333;
-  background: #f8f8f8;
-  -webkit-text-size-adjust: none;
-}
-
-.hljs-comment,
-.diff .hljs-header {
-  color: #998;
-  font-style: italic;
-}
-
-.hljs-keyword,
-.css .rule .hljs-keyword,
-.hljs-winutils,
-.nginx .hljs-title,
-.hljs-subst,
-.hljs-request,
-.hljs-status {
-  color: #333;
-  font-weight: bold;
-}
-
-.hljs-number,
-.hljs-hexcolor,
-.ruby .hljs-constant {
-  color: #008080;
-}
-
-.hljs-string,
-.hljs-tag .hljs-value,
-.hljs-doctag,
-.tex .hljs-formula {
-  color: #d14;
-}
-
-.hljs-title,
-.hljs-id,
-.scss .hljs-preprocessor {
-  color: #900;
-  font-weight: bold;
-}
-
-.hljs-list .hljs-keyword,
-.hljs-subst {
-  font-weight: normal;
-}
-
-.hljs-class .hljs-title,
-.hljs-type,
-.vhdl .hljs-literal,
-.tex .hljs-command {
-  color: #458;
-  font-weight: bold;
-}
-
-.hljs-tag,
-.hljs-tag .hljs-title,
-.hljs-rule .hljs-property,
-.django .hljs-tag .hljs-keyword {
-  color: #000080;
-  font-weight: normal;
-}
-
-.hljs-attribute,
-.hljs-variable,
-.lisp .hljs-body,
-.hljs-name {
-  color: #008080;
-}
-
-.hljs-regexp {
-  color: #009926;
-}
-
-.hljs-symbol,
-.ruby .hljs-symbol .hljs-string,
-.lisp .hljs-keyword,
-.clojure .hljs-keyword,
-.scheme .hljs-keyword,
-.tex .hljs-special,
-.hljs-prompt {
-  color: #990073;
-}
-
-.hljs-built_in {
-  color: #0086b3;
-}
-
-.hljs-preprocessor,
-.hljs-pragma,
-.hljs-pi,
-.hljs-doctype,
-.hljs-shebang,
-.hljs-cdata {
-  color: #999;
-  font-weight: bold;
-}
-
-.hljs-deletion {
-  background: #fdd;
-}
-
-.hljs-addition {
-  background: #dfd;
-}
-
-.diff .hljs-change {
-  background: #0086b3;
-}
-
-.hljs-chunk {
-  color: #aaa;
-}
-
-</vast@whiteants.net>
           
         
       
@@ -2469,284 +2016,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Ionic/langstar-資料流架構.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Ionic/langstar-資料流架構.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-06T17:18:00+08:00">
-                2018-02-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>View</p>
-<p> <-> DataService(ServiceCache)</-></p>
-<p> <-> DataServer(DataAccess/DBCache/DBAccess)</-></p>
-<blockquote>
-<p>主要分成DataService與DataServer兩大塊</p>
-</blockquote>
-<h1 id="DataService"><a href="#DataService" class="headerlink" title="DataService"></a>DataService</h1><blockquote>
-<p>提供資料服務</p>
-</blockquote>
-<ul>
-<li>向View或任何需要資料者提供資料服務</li>
-<li>貼近應用的資料結構</li>
-<li>提供有邏輯功能性的操作 (例如新增使用者)</li>
-</ul>
-<h2 id="ServiceCache"><a href="#ServiceCache" class="headerlink" title="ServiceCache"></a>ServiceCache</h2><blockquote>
-<p>存放使用中的DataService 避免資料服務四散各處</p>
-</blockquote>
-<ul>
-<li>透過ServiceCache存取已建立的資料服務 確保同一來源的資料僅有一個服務 便於資料同步</li>
-<li>避免無限制的cache可用WeakRef(weak value)控制 但js只有WeakMap.<br>  只能用 counter 或 時間+數量來workaround</li>
-</ul>
-<h1 id="DataServer"><a href="#DataServer" class="headerlink" title="DataServer"></a>DataServer</h1><blockquote>
-<p>處理資料讀寫 (僅是一個目錄)</p>
-</blockquote>
-<h2 id="DataAccess"><a href="#DataAccess" class="headerlink" title="DataAccess"></a>DataAccess</h2><blockquote>
-<p>提供資料讀寫介面 處裡讀寫機制(本地/遠端)</p>
-</blockquote>
-<h2 id="DBCache"><a href="#DBCache" class="headerlink" title="DBCache"></a>DBCache</h2><blockquote>
-<p>本地資料快取 用於離線操作</p>
-</blockquote>
-<h2 id="DBAccess"><a href="#DBAccess" class="headerlink" title="DBAccess"></a>DBAccess</h2><blockquote>
-<p>遠端資料庫讀寫</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/DevOps CICD/持續性整合與發佈(CI:CD).html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/DevOps CICD/持續性整合與發佈(CI:CD).html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-03T14:21:30+08:00">
-                2018-02-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://blog.91app.com/continuous-integration-delivery/" target="_blank" rel="noopener">持續性整合與發佈</a></p>
-<p>這部分屬於整個”開發到佈建”過程的自動化 包含版本控制/編譯/測試/發佈 等等</p>
-<p>DevOps:泛指開發與營運的集合</p>
-<p>這些工具通常都是以website的形式在雲端運作 也有能自行架設的</p>
-<p><img src="https://alln-extcloud-storage.cisco.com/gblogs/sites/35/Screenshot-2017-06-09-15.50.53.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BitBucket</span><br><span class="line">Github / Travis CI</span><br><span class="line">GitLab</span><br><span class="line">GiTea</span><br><span class="line"></span><br><span class="line">Jenkins</span><br><span class="line"></span><br><span class="line">codeship</span><br><span class="line">drone</span><br><span class="line">wercker</span><br><span class="line"></span><br><span class="line">//CD</span><br><span class="line">heroku</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.youtube.com/watch?v=CCEY1BSP9pU" target="_blank" rel="noopener">使用 Jenkins 持續集成與發佈 Android 應用程式</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2797,7 +2066,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

@@ -288,6 +288,341 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/02.DOM操作.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/javascript/02.DOM操作.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-21T16:40:49+08:00">
+                2017-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>取得 DOM 物件的常用方法：<br>document.getElementById()<br>document.querySelector()<br>document.getElementsByTagName()<br>document.getElementsByClassName()</p>
+<hr>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/Events</a></p>
+<p>滑鼠點擊事件</p>
+<p>‘mousedown’ -&gt; ‘mouseup’ -&gt; ‘click’</p>
+<p>‘mousemove’</p>
+<p>//事件捕捉<br><a href="http://blog.techbridge.cc/2017/07/15/javascript-event-propagation/" target="_blank" rel="noopener">http://blog.techbridge.cc/2017/07/15/javascript-event-propagation/</a></p>
+<p>e.preventDefault //防止執行預設行為<br>e.stopPropagation //終止事件往下層傳播<br>e.stopImmediatePropagation //立即終止事件往傳播(平行傳播也終止)</p>
+<hr>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Element</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/readme.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/javascript/readme.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-21T11:17:53+08:00">
+                2017-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>資料型態</p>
+<p>string<br>number<br>boolean<br>null and undefined<br>object<br>symbol (new to ES6)</p>
+<hr>
+<p>物件建立<br>一個物件一定會有<strong>proto</strong>,但不一定有prototype (function一定有prototype)</p>
+<p><strong>proto</strong>:是物件實質的繼承鏈<br>prototype:僅用來規劃繼承內容(所以function之所以稱構造函數,一定要有prototype)</p>
+<p>var Car = function(){this.speed=100}<br>當mycar=new Car()時,mycar的<strong>proto</strong>會被指向Car.prototype,當作mycar的繼承鏈</p>
+<hr>
+<p>邏輯運算子的延伸</p>
+<p>x=A||B||C<br>依序檢查,第一個為true的即指定給x,若全為false則指定最後一個</p>
+<p>x=A&amp;&amp;B&amp;&amp;C<br>依序檢查,第一個為false的即指定給x,若全為true則指定最後一個</p>
+<hr>
+<p>Hoisting(提升)</p>
+<p>指用’var’宣告的變數將被拆為declaration與assignment,<br>declaration的部分將被提升到scope的上方,其值會先處於undefined</p>
+<p>‘var’屬於function scope,將被’let’的block scope取代</p>
+<hr>
+<p>Closure<br>閉包. 若將function視為一個物件,若呼叫funcA又回傳funcB,此時funcA會自動產生一個物件實體,<br>只要透過funcB就能持續存取這個實體的props.<br>First-class function就是形容有這樣特性的程式語言,將function視為物件(頭等公民)</p>
+<p>function funcA()<br>{<br>  let c=0;<br>  return function() {return c++;}<br>}</p>
+<p>let funcB = funcA();<br>console.log(funcB(),funcB(),funcB()); //0 1 2</p>
+<hr>
+<p>who is this<br>函數中的’this’指向誰</p>
+<p>function()宣告 : this指向呼叫該function的object<br>()-&gt;{}宣告 : this指向建立arrow function的對象(即該函數的外層),右邊不加{}即直接返回值,列如:()=&gt;3</p>
+<hr>
+<p>bind this<br>綁定function的this對象</p>
+<p>以function()宣告為例,this會指向呼叫該function的object<br>例如myobj.func(),func中的this就會指向myobj<br>但let myfunc=myobj.func後在最外層執行myfunc(),此時this會指向window(root object)<br>造成func中的this沒有固定的對象</p>
+<p>若要綁定this到固定的對象可以用<br>let myfunc=x.func.bind(myobj);<br>myfunc();<br>或<br>myfunc.call(myobj, arg1, arg2);<br>myfunc.apply(myobj, [arg1, arg2])</p>
+<p>PS: bind產生出來的func與原func都仍在同一個closure object裡,只是this指向不同</p>
+<hr>
+<p>[]除用在array外,還用於computed property names或key-name</p>
+<p>myobj.var1<br>myobj[“var”+1]</p>
+<p>key-name的部分與Symbol資料型態是搭配的,用於製造唯一鍵與變數的隱蔽性<br>let x = Symbol(‘sym’);<br>myobj[x]=…</p>
+<hr>
+<p>getter/setter<br>延伸變數存取的機能性</p>
+<p>var myObject = {<br>    get a() {return this._a;},<br>    set a(val) {this._a = val * 2;}<br>};<br>myObject.a = 2;</p>
+<hr>
+<p>檢查物件是否擁有某prop (不含prototype chain)<br>myObject.hasOwnProperty(“a”);</p>
+<p>檢查物件是否擁有某prop (包含prototype chain)<br>(“a” in myObject)</p>
+<hr>
+<p>取得屬性描述<br>Object.getOwnPropertyDescriptor(myobj, “myvar”);</p>
+<p>設定屬性唯獨<br>Object.defineProperty(myobj, “myvar”, {<br>    value: 5,<br>    writable: false,        //可寫入?<br>    configurable: false,    //可刪除?<br>    enumerable: true<br>});</p>
+<p>禁止物件添加prop<br>Object.preventExtensions(myobj);</p>
+<p>禁止物件添加/刪除prop<br>Object.seal(myobj);</p>
+<p>禁止物件添加/刪除/修改prop<br>Object.freeze(myobj);</p>
+<p>以上均為淺層(shallow)的設定</p>
+<hr>
+<p>enumerable<br>列舉,相當於一個無序屬性的集合<br>能被列舉的對象表示能透過for-in歷遍(Traversals)<br>object與array的元素預設都是enumerable (若透過descriptor定義則預設是false)</p>
+<p>for (key in myobj) {<br>    console.log(key + ‘ : ‘ + myobj[key]);<br>}</p>
+<hr>
+<p>iterator<br>迭代器,一個能夠產生無須索引(key)資料的function().next(),例如產生亂數…<br>在JS裡iterator固定建立於myobj[Symbol.iterator]</p>
+<p>iterator有延遲運算(Lazy evaluation)的特性,即call-by-need,<br>很適合做非同步運算(把大量串列運算切割分時執行)<br>這部分其實跟generator很相似</p>
+<p>取得:<br>var arr = [1, 2, 3];<br>var iterator = arr<a href="">Symbol.iterator</a>;<br>iterator.next(); //{ value: 1, done: false }</p>
+<p>自建:<br>myObject[Symbol.iterator]=function(){<br>    var idx = 0;<br>    var ks = Object.keys(myObject);</p>
+<pre><code>return {
+    next: function() {
+    return {
+        done: (idx &gt;= ks.length),
+        value: myObject[ks[idx++]]
+    };
+    }
+};
+</code></pre><p>}<br>或透過defineProperty建立<br>Object.defineProperty(myObject, Symbol.iterator, {…});</p>
+<hr>
+<p>Generator<br>類iterator(也有next()函數),在某些情境上程式碼會更精簡有彈性</p>
+<p>function* hello_g() {<br>    yield ‘hello’; // when step 0<br>    yield ‘world’; // when step 1<br>}<br>var iter = hello_g();<br>for (var v of iter) {<br>    console.log( v );<br>}</p>
+<hr>
+<p>Observable<br>可觀察物件.來自RxJS,補強很多JS相關於互動與非同步的操作.<br>從enumerable -&gt; iterator -&gt; generator,都跟處理串列資料有關<br>但又僅止於資料產生,RxJS的Observable的設計則更有應用情境.</p>
+<hr>
+<p>for (let key in myobj/obj)    //與enumerable<br>Object或Array都可以用</p>
+<p>for (let value of arr)    //object要有iterator才能用,或是object為一個generator<br>Array可以用,Object要自寫iterator</p>
+<p>for (let [key, value] of map) //of map回傳的是陣列[key, value],所以可以這樣寫(解構)</p>
+<p>arr.forEach(function(value, key, arr){…});</p>
+<p>(記法 : in enumerable(有key) ; of iterator/generator/map)</p>
+<hr>
+<p>Set Map</p>
+<hr>
+<p>數學公式上<br>迭代：使用迴圈實作。有疊加的意思<br>遞迴：函式推疊呼叫。</p>
+<hr>
+<p>@ 開頭是實例變數(instance variable)<br>@@ 開頭則是類別變數(class/prototype)</p>
+<hr>
+<p>簡寫</p>
+<p>let name=”jim”<br>let myobj = {<br>    name,    //等同於name:name<br>    who()    //等同於who: function()<br>    { return this.name }<br>}</p>
+<hr>
+<p>Destructuring<br>解構,簡化變數宣告與指定</p>
+<p>[]:以左右邊的順序依序指派<br>var [x, y, , z = 100] = [1, 2, 3];<br>for (let [key, value] of map)</p>
+<p>{}:依key指派<br>var {w, h} = {x:0, y: 0, w:100, h:100};<br>var {w, h} = getSize();</p>
+<hr>
+<p>mixin: 混和,僅一名詞. 指的是多重繼承,一般只有單一繼承,JS可透過修改Prototype達到多重繼承的效果</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/00.Promise & async & await.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1410,287 +1745,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/00.others/server rendering.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/00.others/server rendering.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-13T18:13:22+08:00">
-                2017-08-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>意指瀏覽器上顯示的內容是直接從伺服器產生 直接的嵌在html中</p>
-<p>相反的則為client rendering,顯示內容為client端執行js後產生,server在只負責產生一個基本能使js運作的網頁與data api讓client js查詢</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/database/mongoDB/readme.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/database/mongoDB/readme.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-06T20:05:58+08:00">
-                2017-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://ithelp.ithome.com.tw/articles/10165786" target="_blank" rel="noopener">http://ithelp.ithome.com.tw/articles/10165786</a><br><a href="http://mongodbcanred.blogspot.tw/2015/01/mongodb.html" target="_blank" rel="noopener">http://mongodbcanred.blogspot.tw/2015/01/mongodb.html</a><br><a href="http://mongodbcanred.blogspot.tw/2015/01/mongodbinsert-document-remove-document.html" target="_blank" rel="noopener">http://mongodbcanred.blogspot.tw/2015/01/mongodbinsert-document-remove-document.html</a><br><a href="http://ithelp.ithome.com.tw/articles/10166066?sc=pt" target="_blank" rel="noopener">http://ithelp.ithome.com.tw/articles/10166066?sc=pt</a></p>
-<hr>
-<p>RDBMS到NoSQL</p>
-<p>DB-&gt;DB<br>TABLE-&gt;COLLECTION : 可以不用事先定義欄位 (稱為Schema-Free)<br>RECORD/ROW-&gt;DOCUMENT : COLLECTION下的每筆DOC允許有不等數量的欄位<br>Column-&gt;Field<br>PK-&gt;_id</p>
-<p>DOC為JSON格式(儲存的格式為BSON,即binary)</p>
-<p>可透過 subcollections來組織資料庫,例如IT部門下有兩個子部門ERP跟MIS,就可以分別建成三個collection<br>IT / IT.ERP / IT.MIS</p>
-<hr>
-<p>選取或建立DB<br>use mydb</p>
-<p>顯示目前操作的DB(db相當於指向目前使用的DB)<br>db</p>
-<p>顯示所有DB(至少含有一個collection的DB才會被顯示)<br>show dbs</p>
-<p>刪除DB<br>db.dropDatabase()</p>
-<hr>
-<p>建立COLLECTION<br>db.createCollection(NAME, OPTIONS)</p>
-<p>(直接用insert也可以用預設的OPTIONS建立COLLECTION)</p>
-<p>db.createCollection(“mycol”)<br>db.mycol.drop()<br>show collections</p>
-<hr>
-<p>插入DOC<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.collection.insert(&lt;documents&gt;,&lt;option&gt;)</span><br><span class="line"></span><br><span class="line">db.mycol.insert(&#123;</span><br><span class="line">   title: 'MongoDB Overview', </span><br><span class="line">   description: 'MongoDB is no sql database',</span><br><span class="line">   tags: ['mongodb', 'database', 'NoSQL'],</span><br><span class="line">   likes: 100</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p><option> : 資料寫入確保<br>writeConcern:寫入確保等級設定<br>               w:-1     (嚴謹性：非常低)；發生資料庫寫入錯誤一律不回傳<br>               w:0      (嚴謹性：低)       ；只可以偵測到網路錯誤<br>               w:1      (嚴謹性：中 預設等級)<br>               w:1,j:1  (嚴謹性：高)       ；在寫入日誌後才回傳處理過程。<br>               w:2      (嚴謹性： 高 )     ；這個級別只在replica set的部署模式下生效</option></p>
-<p>db.collection.insert({name:’jim’},{writeConcern:{w:1,j:1}})</p>
-<hr>
-<p>更新DOC (update:僅更新值) db.COLLECTION_NAME.update(WHERE, UPDATED_DATA, OPTIONS)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.update(&#123;<span class="string">'title'</span>:<span class="string">'MongoDB Overview'</span>&#125;,&#123;<span class="attr">$set</span>:&#123;<span class="string">'title'</span>:<span class="string">'New MongoDB Tutorial'</span>&#125;&#125;,&#123;<span class="attr">multi</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>預設僅能更新單一doc</p>
-<p>$set : 設定key的value<br>$unset : 刪除key<br>$inc : 累加</p>
-<p>更新DOC (save:有_id時為’取代’doc,沒_id時相當於insert)</p>
-<p>刪除DOC<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.COLLECTION_NAME.remove(WHERE,justOne&lt;option&gt;)</span><br><span class="line">db.mycol.remove() <span class="comment">//刪除全部</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>查詢DOC (find/findOne)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.COLLECTION_NAME.find(WHERE).pretty()</span><br></pre></td></tr></table></figure></p>
-<p>用pretty()返回格式化內容</p>
-<p>WHERE:<br>where A = ‘ABC’ : {“A”:”ABC”}<br>where A &lt; 1 : {“A”:{$lt:1}}<br>lt lte<br>gt gte<br>ne<br>$in   (包含)<br>$nin (不包含)<br>$and   (和)<br>$or   (或)<br>$not (否)<br>$all 匹配所有指定內容才行(and) (key為陣列時)<br>$in 匹配一筆指定內容即可(or) (key為陣列時)<br>$size (node數量) (key為陣列時)<br>$type 匹配資料型態<br>$elemMatch 進入sub doc匹配<br>$slice 取陣列的部分元素 (稍微複雜,要用例子驗證一下行為)</p>
-<p>OR: (預設為AND)<br>A=1 and (B=2 or C=3)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;&#123;<span class="string">"A"</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">$or</span>:[&#123;<span class="string">"B"</span>:<span class="number">2</span>&#125;,&#123;<span class="string">"C"</span>:<span class="number">3</span>&#125;]&#125;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>key:value區分大小寫,可以用正規表示法(但速度比較慢)<br>db.mycol.find({name:/Russell/i})</p>
-<hr>
-<p>投影 (Projection) : 僅查詢DOC的部分資料 (1:顯示 0:不顯示)(_id預設為顯示)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find(&#123;&#125;,&#123;<span class="string">"title"</span>:<span class="number">1</span>,<span class="attr">_id</span>:<span class="number">0</span>&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>限制DOC數量<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find(&#123;&#125;,&#123;<span class="string">"title"</span>:<span class="number">1</span>,<span class="attr">_id</span>:<span class="number">0</span>&#125;).limit(<span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
-<p>略過N個DOC<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find(&#123;&#125;,&#123;<span class="string">"title"</span>:<span class="number">1</span>,<span class="attr">_id</span>:<span class="number">0</span>&#125;).skip(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
-<p>取得DOC數量<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find().count()</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>Indexing</p>
-<hr>
-<p>Aggregation and Groups</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1741,7 +1795,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

@@ -88,7 +88,7 @@
   <entry>
     <title></title>
     <url>%2Fhome%2F%2FSingle%2FArts.html</url>
-    <content type="text"><![CDATA[testing… MapRunnerGitHub 以兩隻手機模擬 跑步機與行動裝置 間的互動情境 模擬跑步機 等待藍芽裝置連入連入後 開始定位 並透過google api下載行進路線 (終點預設為’台中火車站’)開始位置移動的模擬 並傳送給手持裝置 模擬手持裝置 搜尋與連接藍芽裝置連接後 開始接收移動位置 顯示於地圖 並寫入資料庫 Kotlin / Room / Retrofit 畫面翻轉狀態保留 以Sketch繪製與切版 自定義View(儀表板) 加減速指針動畫 TSNoteGitHub / Google Play 多國語言 有聲 翻譯 筆記 Kotlin / Dagger LangStarGitHub / Google Play / 線上web版本 語言單字學習 類似單字卡的分享平台 以Ionic開發的Hybrid App 後台用Firebase 包含social login 以標籤機制區分各國語言與內容 過往操作可離線使用 WOVOGitHub / Marketplace 一個VSCode的Extension 股票程式化分析軟體 能夠即時編譯腳本程式 用以繪圖或分析選股或執行程式交易 Java 僅能於window平台執行 免安裝下載 官網連結]]></content>
+    <content type="text"><![CDATA[testing… MapRunnerGitHub 以兩隻手機模擬 跑步機與行動裝置 間的互動情境 模擬跑步機 等待藍芽裝置連入連入後 開始定位 並透過google api下載行進路線 (終點預設為’台中火車站’)開始位置移動的模擬 並傳送給手持裝置 {:width=”200”} 模擬手持裝置 搜尋與連接藍芽裝置連接後 開始接收移動位置 顯示於地圖 並寫入資料庫 Kotlin / Room / Retrofit 畫面翻轉狀態保留 以Sketch繪製與切版 自定義View(儀表板) 加減速指針動畫 TSNoteGitHub / Google Play 多國語言 有聲 翻譯 筆記 Kotlin / Dagger LangStarGitHub / Google Play / 線上web版本 語言單字學習 類似單字卡的分享平台 以Ionic開發的Hybrid App 後台用Firebase 包含social login 以標籤機制區分各國語言與內容 過往操作可離線使用 WOVOGitHub / Marketplace 一個VSCode的Extension 股票程式化分析軟體 能夠即時編譯腳本程式 用以繪圖或分析選股或執行程式交易 Java 僅能於window平台執行 免安裝下載 官網連結]]></content>
   </entry>
   <entry>
     <title><![CDATA[Hybrid App Architecture]]></title>

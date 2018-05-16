@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="資料型態 stringnumberbooleannull and undefinedobjectsymbol (new to ES6)  物件建立一個物件一定會有proto,但不一定有prototype (function一定有prototype) proto:是物件實質的繼承鏈prototype:僅用來規劃繼承內容(所以function之所以稱構造函數,一定要有prototype) var Ca">
-<meta property="og:type" content="website">
-<meta property="og:title" content="__">
-<meta property="og:url" content="http://yoursite.com/草稿/整理中/javascript/readme.html">
+<meta name="description" content="#連接# (Permissions too open)chmod 0600 ~/Downloads/AwsKeyStore.pem# 用key連接ssh進入主機ssh -i &quot;~/Downloads/AwsKeyStore.pem&quot; ec2-user@ec2-18-221-14-16.us-east-2.compute.amazonaws.com# 透過security group的設定控制por">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS EC2">
+<meta property="og:url" content="http://yoursite.com/home//CoinPocket/AWS.html">
 <meta property="og:site_name" content="自用筆記">
-<meta property="og:description" content="資料型態 stringnumberbooleannull and undefinedobjectsymbol (new to ES6)  物件建立一個物件一定會有proto,但不一定有prototype (function一定有prototype) proto:是物件實質的繼承鏈prototype:僅用來規劃繼承內容(所以function之所以稱構造函數,一定要有prototype) var Ca">
+<meta property="og:description" content="#連接# (Permissions too open)chmod 0600 ~/Downloads/AwsKeyStore.pem# 用key連接ssh進入主機ssh -i &quot;~/Downloads/AwsKeyStore.pem&quot; ec2-user@ec2-18-221-14-16.us-east-2.compute.amazonaws.com# 透過security group的設定控制por">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-12T04:20:35.000Z">
+<meta property="og:updated_time" content="2018-05-16T07:05:35.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="__">
-<meta name="twitter:description" content="資料型態 stringnumberbooleannull and undefinedobjectsymbol (new to ES6)  物件建立一個物件一定會有proto,但不一定有prototype (function一定有prototype) proto:是物件實質的繼承鏈prototype:僅用來規劃繼承內容(所以function之所以稱構造函數,一定要有prototype) var Ca">
+<meta name="twitter:title" content="AWS EC2">
+<meta name="twitter:description" content="#連接# (Permissions too open)chmod 0600 ~/Downloads/AwsKeyStore.pem# 用key連接ssh進入主機ssh -i &quot;~/Downloads/AwsKeyStore.pem&quot; ec2-user@ec2-18-221-14-16.us-east-2.compute.amazonaws.com# 透過security group的設定控制por">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/草稿/整理中/javascript/readme.html"/>
+  <link rel="canonical" href="http://yoursite.com/home//CoinPocket/AWS.html"/>
 
 
 
 
 
-  <title>__ | 自用筆記</title>
+  <title>AWS EC2 | 自用筆記</title>
   
 
 
@@ -276,120 +276,159 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/CoinPocket/AWS.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">__</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>資料型態</p>
-<p>string<br>number<br>boolean<br>null and undefined<br>object<br>symbol (new to ES6)</p>
-<hr>
-<p>物件建立<br>一個物件一定會有<strong>proto</strong>,但不一定有prototype (function一定有prototype)</p>
-<p><strong>proto</strong>:是物件實質的繼承鏈<br>prototype:僅用來規劃繼承內容(所以function之所以稱構造函數,一定要有prototype)</p>
-<p>var Car = function(){this.speed=100}<br>當mycar=new Car()時,mycar的<strong>proto</strong>會被指向Car.prototype,當作mycar的繼承鏈</p>
-<hr>
-<p>邏輯運算子的延伸</p>
-<p>x=A||B||C<br>依序檢查,第一個為true的即指定給x,若全為false則指定最後一個</p>
-<p>x=A&amp;&amp;B&amp;&amp;C<br>依序檢查,第一個為false的即指定給x,若全為true則指定最後一個</p>
-<hr>
-<p>Hoisting(提升)</p>
-<p>指用’var’宣告的變數將被拆為declaration與assignment,<br>declaration的部分將被提升到scope的上方,其值會先處於undefined</p>
-<p>‘var’屬於function scope,將被’let’的block scope取代</p>
-<hr>
-<p>Closure<br>閉包. 若將function視為一個物件,若呼叫funcA又回傳funcB,此時funcA會自動產生一個物件實體,<br>只要透過funcB就能持續存取這個實體的props.<br>First-class function就是形容有這樣特性的程式語言,將function視為物件(頭等公民)</p>
-<p>function funcA()<br>{<br>  let c=0;<br>  return function() {return c++;}<br>}</p>
-<p>let funcB = funcA();<br>console.log(funcB(),funcB(),funcB()); //0 1 2</p>
-<hr>
-<p>who is this<br>函數中的’this’指向誰</p>
-<p>function()宣告 : this指向呼叫該function的object<br>()-&gt;{}宣告 : this指向建立arrow function的對象(即該函數的外層),右邊不加{}即直接返回值,列如:()=&gt;3</p>
-<hr>
-<p>bind this<br>綁定function的this對象</p>
-<p>以function()宣告為例,this會指向呼叫該function的object<br>例如myobj.func(),func中的this就會指向myobj<br>但let myfunc=myobj.func後在最外層執行myfunc(),此時this會指向window(root object)<br>造成func中的this沒有固定的對象</p>
-<p>若要綁定this到固定的對象可以用<br>let myfunc=x.func.bind(myobj);<br>myfunc();<br>或<br>myfunc.call(myobj, arg1, arg2);<br>myfunc.apply(myobj, [arg1, arg2])</p>
-<p>PS: bind產生出來的func與原func都仍在同一個closure object裡,只是this指向不同</p>
-<hr>
-<p>[]除用在array外,還用於computed property names或key-name</p>
-<p>myobj.var1<br>myobj[“var”+1]</p>
-<p>key-name的部分與Symbol資料型態是搭配的,用於製造唯一鍵與變數的隱蔽性<br>let x = Symbol(‘sym’);<br>myobj[x]=…</p>
-<hr>
-<p>getter/setter<br>延伸變數存取的機能性</p>
-<p>var myObject = {<br>    get a() {return this._a;},<br>    set a(val) {this._a = val * 2;}<br>};<br>myObject.a = 2;</p>
-<hr>
-<p>檢查物件是否擁有某prop (不含prototype chain)<br>myObject.hasOwnProperty(“a”);</p>
-<p>檢查物件是否擁有某prop (包含prototype chain)<br>(“a” in myObject)</p>
-<hr>
-<p>取得屬性描述<br>Object.getOwnPropertyDescriptor(myobj, “myvar”);</p>
-<p>設定屬性唯獨<br>Object.defineProperty(myobj, “myvar”, {<br>    value: 5,<br>    writable: false,        //可寫入?<br>    configurable: false,    //可刪除?<br>    enumerable: true<br>});</p>
-<p>禁止物件添加prop<br>Object.preventExtensions(myobj);</p>
-<p>禁止物件添加/刪除prop<br>Object.seal(myobj);</p>
-<p>禁止物件添加/刪除/修改prop<br>Object.freeze(myobj);</p>
-<p>以上均為淺層(shallow)的設定</p>
-<hr>
-<p>enumerable<br>列舉,相當於一個無序屬性的集合<br>能被列舉的對象表示能透過for-in歷遍(Traversals)<br>object與array的元素預設都是enumerable (若透過descriptor定義則預設是false)</p>
-<p>for (key in myobj) {<br>    console.log(key + ‘ : ‘ + myobj[key]);<br>}</p>
-<hr>
-<p>iterator<br>迭代器,一個能夠產生無須索引(key)資料的function().next(),例如產生亂數…<br>在JS裡iterator固定建立於myobj[Symbol.iterator]</p>
-<p>iterator有延遲運算(Lazy evaluation)的特性,即call-by-need,<br>很適合做非同步運算(把大量串列運算切割分時執行)<br>這部分其實跟generator很相似</p>
-<p>取得:<br>var arr = [1, 2, 3];<br>var iterator = arr<a href="">Symbol.iterator</a>;<br>iterator.next(); //{ value: 1, done: false }</p>
-<p>自建:<br>myObject[Symbol.iterator]=function(){<br>    var idx = 0;<br>    var ks = Object.keys(myObject);</p>
-<pre><code>return {
-    next: function() {
-    return {
-        done: (idx &gt;= ks.length),
-        value: myObject[ks[idx++]]
-    };
-    }
-};
-</code></pre><p>}<br>或透過defineProperty建立<br>Object.defineProperty(myObject, Symbol.iterator, {…});</p>
-<hr>
-<p>Generator<br>類iterator(也有next()函數),在某些情境上程式碼會更精簡有彈性</p>
-<p>function* hello_g() {<br>    yield ‘hello’; // when step 0<br>    yield ‘world’; // when step 1<br>}<br>var iter = hello_g();<br>for (var v of iter) {<br>    console.log( v );<br>}</p>
-<hr>
-<p>Observable<br>可觀察物件.來自RxJS,補強很多JS相關於互動與非同步的操作.<br>從enumerable -&gt; iterator -&gt; generator,都跟處理串列資料有關<br>但又僅止於資料產生,RxJS的Observable的設計則更有應用情境.</p>
-<hr>
-<p>for (let key in myobj/obj)    //與enumerable<br>Object或Array都可以用</p>
-<p>for (let value of arr)    //object要有iterator才能用,或是object為一個generator<br>Array可以用,Object要自寫iterator</p>
-<p>for (let [key, value] of map) //of map回傳的是陣列[key, value],所以可以這樣寫(解構)</p>
-<p>arr.forEach(function(value, key, arr){…});</p>
-<p>(記法 : in enumerable(有key) ; of iterator/generator/map)</p>
-<hr>
-<p>Set Map</p>
-<hr>
-<p>數學公式上<br>迭代：使用迴圈實作。有疊加的意思<br>遞迴：函式推疊呼叫。</p>
-<hr>
-<p>@ 開頭是實例變數(instance variable)<br>@@ 開頭則是類別變數(class/prototype)</p>
-<hr>
-<p>簡寫</p>
-<p>let name=”jim”<br>let myobj = {<br>    name,    //等同於name:name<br>    who()    //等同於who: function()<br>    { return this.name }<br>}</p>
-<hr>
-<p>Destructuring<br>解構,簡化變數宣告與指定</p>
-<p>[]:以左右邊的順序依序指派<br>var [x, y, , z = 100] = [1, 2, 3];<br>for (let [key, value] of map)</p>
-<p>{}:依key指派<br>var {w, h} = {x:0, y: 0, w:100, h:100};<br>var {w, h} = getSize();</p>
-<hr>
-<p>mixin: 混和,僅一名詞. 指的是多重繼承,一般只有單一繼承,JS可透過修改Prototype達到多重繼承的效果</p>
-<hr>
-
+          <h1 class="post-title" itemprop="name headline">AWS EC2</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-13T10:16:12+08:00">
+                2018-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>#連接<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># (Permissions too open)</span></span><br><span class="line">chmod 0600 ~/Downloads/AwsKeyStore.pem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用key連接ssh進入主機</span></span><br><span class="line">ssh -i <span class="string">"~/Downloads/AwsKeyStore.pem"</span> ec2-user@ec2-18-221-14-16.us-east-2.compute.amazonaws.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 透過security group的設定控制port的開放與否</span></span><br></pre></td></tr></table></figure></p>
+<p>#安裝<br><a href="http://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener">Docker 安装</a><br><a href="https://philipzheng.gitbooks.io/docker_practice/content/install/ubuntu.html" target="_blank" rel="noopener">Ubuntu 系列安裝 Docker</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 安裝yum</span></span><br><span class="line">rpm -qa | grep yum</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切換到super user</span></span><br><span class="line">sudo su</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝docker</span></span><br><span class="line">yum -y install docker-io</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝docker-compose</span></span><br><span class="line">sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line"></span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/bin/docker-compose /bin/docker-compose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動docker daemond</span></span><br><span class="line">service docker start</span><br><span class="line">sudo service docker start</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">sudo dockerd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝git</span></span><br><span class="line">yum install git-core</span><br></pre></td></tr></table></figure>
+<p>#安裝最新版nodejs<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">apt-get update  </span><br><span class="line">apt-get install -y python-software-properties software-properties-common  </span><br><span class="line">add-apt-repository ppa:chris-lea/node.js  </span><br><span class="line">apt-get update  </span><br><span class="line">apt-get install nodejs  </span><br><span class="line"></span><br><span class="line"><span class="comment">#方法二</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh</span><br><span class="line">bash nodesource_setup.sh</span><br><span class="line">apt-get install nodejs</span><br><span class="line"></span><br><span class="line"><span class="comment">#或...</span></span><br><span class="line">curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -</span><br><span class="line"></span><br><span class="line">curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -</span><br></pre></td></tr></table></figure></p>
+<p>#安裝mongodb</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum -y install mongodb-org</span><br><span class="line"></span><br><span class="line">service mongod start</span><br></pre></td></tr></table></figure>
+<p>#安裝其他</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm i -g truffle</span><br><span class="line"></span><br><span class="line">npm install -g ethereumjs-testrpc</span><br><span class="line">testrpc</span><br></pre></td></tr></table></figure>
+<p>#操作docker<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/jimliuxyz/coinpocket.git</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/jimliuxyz/ethereum-poa-docker.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或 下載image</span></span><br><span class="line">docker pull jlxyz/coinpocket</span><br></pre></td></tr></table></figure></p>
+<p>#bash<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># .bash_profile</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Get the aliases and functions</span></span><br><span class="line"><span class="keyword">if</span> [ -f ~/.bashrc ]; <span class="keyword">then</span></span><br><span class="line">        . ~/.bashrc</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User specific environment and startup programs</span></span><br><span class="line"></span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.<span class="built_in">local</span>/bin:<span class="variable">$HOME</span>/bin</span><br><span class="line"><span class="built_in">export</span> DOCKER_HOST=127.0.0.1</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure></p>
+<p>yum-config-manager \<br>     –add-repo \<br>     <a href="https://download.docker.com/linux/centos/docker-ce.repo" target="_blank" rel="noopener">https://download.docker.com/linux/centos/docker-ce.repo</a></p>
+<p>#</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">renice -n +10 -p 22609</span><br><span class="line">renice -n +10 -p 22751</span><br></pre></td></tr></table></figure>
+<h1 id="異常"><a href="#異常" class="headerlink" title="異常"></a>異常</h1><p>用newAccount函數測試區塊鏈 通常會成功一次 之後節點似乎會自己死掉</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Web3 = <span class="built_in">require</span>(<span class="string">'web3'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> httpsoc = <span class="string">`http://127.0.0.1:8545`</span></span><br><span class="line"><span class="keyword">const</span> provider = <span class="keyword">new</span> Web3.providers.HttpProvider(httpsoc);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> web3 = <span class="keyword">new</span> Web3(provider);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`web3.eth.coinbase : <span class="subst">$&#123;web3.eth.coinbase&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"A"</span>)</span><br><span class="line">  <span class="keyword">let</span> account = <span class="keyword">await</span> web3.personal.newAccount(<span class="string">""</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"B "</span>, account)</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">(node:3029) UnhandledPromiseRejectionWarning: Error: Invalid JSON RPC response: undefined</span><br><span class="line">    at Object.InvalidResponse (/home/ubuntu/coinpocket/node_modules/web3/lib/web3/errors.js:38:16)</span><br><span class="line">    at HttpProvider.send (/home/ubuntu/coinpocket/node_modules/web3/lib/web3/httpprovider.js:91:22)</span><br><span class="line">    at RequestManager.send (/home/ubuntu/coinpocket/node_modules/web3/lib/web3/requestmanager.js:58:32)</span><br><span class="line">    at Personal.send [as newAccount] (/home/ubuntu/coinpocket/node_modules/web3/lib/web3/method.js:145:58)</span><br><span class="line">    at Timeout.setTimeout [as _onTimeout] (/home/ubuntu/coinpocket/test.js:18:37)</span><br></pre></td></tr></table></figure>
+<p>#安裝<a href="mailto:web3@1.0.0" target="_blank" rel="noopener">web3@1.0.0</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install gcc-c++</span><br><span class="line"></span><br><span class="line">sudo npm install --save web3@1.0.0-beta.26 --unsafe-perm --verbose</span><br><span class="line"></span><br><span class="line">sudo npm install --save web3@0.19.0</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/Single/MWeb畫圖.html" rel="next" title="MWeb">
+                <i class="fa fa-chevron-left"></i> MWeb
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/CoinPocket/區塊鏈Demo架構.html" rel="prev" title="區塊鏈Demo架構">
+                區塊鏈Demo架構 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -422,8 +461,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -501,6 +549,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#異常"><span class="nav-number">1.</span> <span class="nav-text">異常</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

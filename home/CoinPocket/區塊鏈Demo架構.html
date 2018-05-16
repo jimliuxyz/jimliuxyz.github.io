@@ -81,17 +81,21 @@
 
 
 
-<meta name="description" content="release APK參考 // 產生private key (alias_name可自訂)keytool -genkey -v -keystore mykey.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000// 檢視private keykeytool -list -v -keystore mykey.ke">
-<meta property="og:type" content="website">
-<meta property="og:title" content="__">
-<meta property="og:url" content="http://yoursite.com/草稿/Ionic/Ionic.html">
+<meta name="description" content="簡介區塊鏈節點 礦工節點 主要負責區塊鏈資料的維護 私有節點 用以介接應用程式與區塊鏈 (建立帳號(keystore)/執行交易/取得資訊) 應用程式接入區塊鏈的方法 自建私有節點加入區塊網絡  透過第三方節點開放的rpc介面    智能合約 如同一個可程式化的資料表(記帳人+帳本) 在區塊鏈裡如一個’公證人’帳號 該帳號如同一記帳人(帳本) 與該帳號的交易行為就如同執行合約一般 其執行結果同樣寫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="區塊鏈Demo架構">
+<meta property="og:url" content="http://yoursite.com/home//CoinPocket/區塊鏈Demo架構.html">
 <meta property="og:site_name" content="自用筆記">
-<meta property="og:description" content="release APK參考 // 產生private key (alias_name可自訂)keytool -genkey -v -keystore mykey.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000// 檢視private keykeytool -list -v -keystore mykey.ke">
+<meta property="og:description" content="簡介區塊鏈節點 礦工節點 主要負責區塊鏈資料的維護 私有節點 用以介接應用程式與區塊鏈 (建立帳號(keystore)/執行交易/取得資訊) 應用程式接入區塊鏈的方法 自建私有節點加入區塊網絡  透過第三方節點開放的rpc介面    智能合約 如同一個可程式化的資料表(記帳人+帳本) 在區塊鏈裡如一個’公證人’帳號 該帳號如同一記帳人(帳本) 與該帳號的交易行為就如同執行合約一般 其執行結果同樣寫">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-12T04:20:35.000Z">
+<meta property="og:image" content="https://www.plantuml.com/plantuml/svg/TP9FIm916CRlyoa6ErGNm_KM2LgdRa9NB-FEgeFhZCoEGKIGLAH8_o02GGmFaWSXoXHB-ZRjhdwBPcTrqwtci8Vd-StpllFkcxG4ug9ICe5L9BICE2f1qyWR5EyYlPZdh4Bn7ZCPXsivTNvpZ6E3hpB0jw1WPKdb172VgawhFhkfERsEtMu0QVe801W9b4MM0IC-v8vUtM5dGxAR4OWic3MPNjGBY508Zm6KHpPCSaWNCE8qFwPdd_PjpNqxLx3EgE3IKjmwPSA0dEGB0h9SuC5jUC1CWeauKfZwK8Qz3fvFPvEsIlA4sBAbcilG4ABzVpkkhA1g8h6K6LQrFzLu41w3qL0vRQx4mGa0y_htFQSsSbfNTgDfDtiPcahlgsuiWnyQ7FZNTcIuByX1yBA-HSewy4Vb_IflKe4TYzhZmRJvw0ucxl0bGxMeSzsrBxfkl_yrhZiFxxFBEsTO1K47gxegBWg4OxamSjhptCIo1kHxvUP4KXHpHh2wegJOmY7f0gF6Zw6182YnG4E2H99okUHQVmC0">
+<meta property="og:image" content="https://www.plantuml.com/plantuml/svg/RP9DIoD148Rl_IkAsODwoPBa9WPqz-H14BpcqZizIPfCkaDFHrcM1SKDnYzK426iAoYYOSaYBgluWV_6dd7-nLOwap69rl5zdwfwAMesq5JfHiqdGPMBEbMq1hvNzWJxHDrgMSc6O9-bBnLyADbwoqd5F3NAaBu5MjQHAcbYcjtmU3FUQuMTKtEoJT3i8uIulcmmS9xls-Ryj_crXQXfNaUtVwERqqdic7A01l35bsxLhL0k0BuHmCBOl4HT3KxOVdXPVpBxhUZV3mkxKcY5bkKcXDGUA5wkQ92br8DfM98-Prn_9POJaddWH9Th6BGeeglL-F74JkiPsM5arCgziOfYikPfka23wbIAvIsMRYyKXkQEgxbtrNowA0kPiTMvHCcJxuGaMLRtNYwUJBjJ5F7FH_DdFzuvCplD_ZMLN0ayPSayp1Hmmq0QT1zsmjPjUBnhjjjsnjpYl6r5PZdfpFOw4m7FgUhkHrvtqmdTxlFTPdXq7sySX3Th3lIwTOKhXj-3H-_7dibaXaMIJ1iLyGZuNCwSO4foPcDOAJjm-6952k_LoAM3C622ZWc8pEB_uUV_1m00">
+<meta property="og:image" content="https://www.plantuml.com/plantuml/svg/PPA_JW914CRxVOh9sKF4ZeW1qK8h8eKDpTxjtXyvTiZkdiGO4X8jY8HeOKDYIAoaip4K6X_d3daBz-u0KQVyljzyExExLQMfr54d9AeTY2wLj0CXzxXWXzHfUn8ZmUeOeeGTDwl_74h6vM-6v1Pex1hArUI8Tp2PpfEN4J5wxXBYX1Wni6hdJJYkbooW2cXF0LmJCCMefZPL7AnuF8YVxvRtmmonGtJQZay3iIRJCbi4BdKqMCda_UlcCtuOBjvkimO7XPR6ojXDWq1ceXUlW-N7j2KoC9LA6s3T1fNAbjCdwv1LmECi6SwJft4yciIJMKlK6YTPcEBoaiiDMO9zavEBK0RPTKYV486QWmmyNmEwFoUMGM4Oi41V_KNoGJok_Q971NLydbuefD1VT3L0sd6XYXqK7ZARQ1cvRiYBFMxl5Ookp6LoNGXmAyUCO1xJgWacCM3vkwJIBY6h1Smk1olD37kgK9mrwe2fPOARMIOXLHDfljOt">
+<meta property="og:updated_time" content="2018-05-16T06:48:40.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="__">
-<meta name="twitter:description" content="release APK參考 // 產生private key (alias_name可自訂)keytool -genkey -v -keystore mykey.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000// 檢視private keykeytool -list -v -keystore mykey.ke">
+<meta name="twitter:title" content="區塊鏈Demo架構">
+<meta name="twitter:description" content="簡介區塊鏈節點 礦工節點 主要負責區塊鏈資料的維護 私有節點 用以介接應用程式與區塊鏈 (建立帳號(keystore)/執行交易/取得資訊) 應用程式接入區塊鏈的方法 自建私有節點加入區塊網絡  透過第三方節點開放的rpc介面    智能合約 如同一個可程式化的資料表(記帳人+帳本) 在區塊鏈裡如一個’公證人’帳號 該帳號如同一記帳人(帳本) 與該帳號的交易行為就如同執行合約一般 其執行結果同樣寫">
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/svg/TP9FIm916CRlyoa6ErGNm_KM2LgdRa9NB-FEgeFhZCoEGKIGLAH8_o02GGmFaWSXoXHB-ZRjhdwBPcTrqwtci8Vd-StpllFkcxG4ug9ICe5L9BICE2f1qyWR5EyYlPZdh4Bn7ZCPXsivTNvpZ6E3hpB0jw1WPKdb172VgawhFhkfERsEtMu0QVe801W9b4MM0IC-v8vUtM5dGxAR4OWic3MPNjGBY508Zm6KHpPCSaWNCE8qFwPdd_PjpNqxLx3EgE3IKjmwPSA0dEGB0h9SuC5jUC1CWeauKfZwK8Qz3fvFPvEsIlA4sBAbcilG4ABzVpkkhA1g8h6K6LQrFzLu41w3qL0vRQx4mGa0y_htFQSsSbfNTgDfDtiPcahlgsuiWnyQ7FZNTcIuByX1yBA-HSewy4Vb_IflKe4TYzhZmRJvw0ucxl0bGxMeSzsrBxfkl_yrhZiFxxFBEsTO1K47gxegBWg4OxamSjhptCIo1kHxvUP4KXHpHh2wegJOmY7f0gF6Zw6182YnG4E2H99okUHQVmC0">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/草稿/Ionic/Ionic.html"/>
+  <link rel="canonical" href="http://yoursite.com/home//CoinPocket/區塊鏈Demo架構.html"/>
 
 
 
 
 
-  <title>__ | 自用筆記</title>
+  <title>區塊鏈Demo架構 | 自用筆記</title>
   
 
 
@@ -276,63 +280,176 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/CoinPocket/區塊鏈Demo架構.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">__</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h3 id="release-APK"><a href="#release-APK" class="headerlink" title="release APK"></a>release APK</h3><p><a href="http://xyz.cinc.biz/2013/06/android-app.html" target="_blank" rel="noopener">參考</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 產生private key (alias_name可自訂)</span></span><br><span class="line">keytool -genkey -v -keystore mykey.keystore -alias alias_name -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 檢視private key</span></span><br><span class="line">keytool -list -v -keystore mykey.keystore</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cd ~<span class="regexp">/.android/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//for langstar / pw:9xxxxx</span></span><br><span class="line">keytool -genkey -v -keystore langstar.keystore -alias langstar -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></span><br><span class="line"></span><br><span class="line">keytool -exportcert -list -v -keystore langstar.keystore -alias langstar</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//自建build.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"android"</span>: &#123;</span><br><span class="line">    <span class="string">"release"</span>: &#123;</span><br><span class="line">      <span class="string">"keystore"</span>: <span class="string">"android.keystore"</span>,</span><br><span class="line">      <span class="string">"storePassword"</span>: <span class="string">"storepassword"</span>,</span><br><span class="line">      <span class="string">"alias"</span>: <span class="string">"mykey"</span>,</span><br><span class="line">      <span class="string">"password"</span> : <span class="string">"password"</span>,</span><br><span class="line">      <span class="string">"keystoreType"</span>: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="IonicPage的問題"><a href="#IonicPage的問題" class="headerlink" title="IonicPage的問題"></a>IonicPage的問題</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//讓url能正常運作的兩種方式</span></span><br><span class="line">nav.push(<span class="string">'pagename'</span>);</span><br><span class="line">&lt;ion-item navPush=<span class="string">"pagename"</span>&gt;link&lt;<span class="regexp">/ion-item&gt;</span></span><br></pre></td></tr></table></figure>
-<p>page的載入由ionic背景執行,在其載入之前只有透過ionViewCanEnter回傳promise阻止,用以檢查異步的custom init ready狀態.</p>
-<h3 id="編譯環境"><a href="#編譯環境" class="headerlink" title="編譯環境"></a>編譯環境</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//.bash_profile</span><br><span class="line">//jdk must &lt;= 1.8</span><br><span class="line">export JAVA_HOME=`/usr/libexec/java_home -v 1.8`</span><br><span class="line"></span><br><span class="line">export SDK_HOME=/Users/jimliu/Library/Android/sdk</span><br><span class="line">export ANDROID_HOME=/Users/jimliu/Library/Android/sdk</span><br><span class="line"></span><br><span class="line">export PATH=$JAVA_HOME/bin:$&#123;SDK_HOME&#125;/tools/bin:$&#123;SDK_HOME&#125;/platform-tools:$PATH</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source .bash_profile</span><br><span class="line"></span><br><span class="line">//install sdk dependence</span><br><span class="line">sdkmanager &quot;system-images;android-25;google_apis;x86&quot;</span><br><span class="line">//create virtual device</span><br><span class="line">avdmanager create avd -n mydevice -k &quot;system-images;android-25;google_apis;x86&quot;</span><br><span class="line"></span><br><span class="line">cordova platform add android</span><br><span class="line">cordova platform add android@6.2.3 --save</span><br><span class="line"></span><br><span class="line">//run on local browser</span><br><span class="line">ionic serve</span><br><span class="line"></span><br><span class="line">//run on avd</span><br><span class="line">ionic cordova run android --livereload</span><br><span class="line"></span><br><span class="line">//build .apk</span><br><span class="line">ionic cordova build --release android</span><br><span class="line"></span><br><span class="line">cordova emulate android</span><br></pre></td></tr></table></figure>
-<p>cordova run android失敗可以嘗試移除./platforms/android/.gradle目錄</p>
-<h3 id="real-device-The-connection-to-the-server-was-unsuccessful-http-140-254-160-122-8100"><a href="#real-device-The-connection-to-the-server-was-unsuccessful-http-140-254-160-122-8100" class="headerlink" title="real device : The connection to the server was unsuccessful. (http://140.254.160.122:8100)"></a>real device : The connection to the server was unsuccessful. (<a href="http://140.254.160.122:8100" target="_blank" rel="noopener">http://140.254.160.122:8100</a>)</h3><ul>
-<li>ionic cordova run android –prod –livereload</li>
-<li>似乎與Splashscreen有關</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//config.xml</span><br><span class="line">    &lt;platform name=&quot;android&quot;&gt;</span><br><span class="line">        &lt;preference name=&quot;loadUrlTimeoutValue&quot; value=&quot;700000&quot; /&gt;</span><br><span class="line">    &lt;/platform&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="real-device-PLUGIN-NOT-INSTALLED"><a href="#real-device-PLUGIN-NOT-INSTALLED" class="headerlink" title="real device : PLUGIN_NOT_INSTALLED"></a>real device : PLUGIN_NOT_INSTALLED</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Platform &#125; <span class="keyword">from</span> <span class="string">'ionic-angular'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AndroidPermissions &#125; <span class="keyword">from</span> <span class="string">'@ionic-native/android-permissions'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; SpeechRecognition &#125; <span class="keyword">from</span> <span class="string">'@ionic-native/speech-recognition'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.platform.ready().then(<span class="function">(<span class="params">readySource</span>) =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">'Platform ready from'</span>+readySource);</span><br><span class="line">    <span class="comment">// Platform now ready, execute any required native code</span></span><br><span class="line">          </span><br><span class="line">    <span class="keyword">this</span>.androidPermissions.checkPermission(<span class="keyword">this</span>.androidPermissions.PERMISSION.RECORD_AUDIO).then(</span><br><span class="line">        success =&gt; alert(<span class="string">'Permission granted'</span>),</span><br><span class="line">        err =&gt; alert(<span class="string">'Permission not granted'</span>)</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">this</span>.speechRecognition.isRecognitionAvailable()</span><br><span class="line">        .then(<span class="function">(<span class="params">available: boolean</span>) =&gt;</span> alert(<span class="string">'1?'</span>+available))</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">this</span>.speechRecognition.startListening(&#123;&#125;)</span><br><span class="line">        .subscribe(</span><br><span class="line">            (matches: <span class="built_in">Array</span>&lt;string&gt;) =&gt; alert(<span class="string">'2?'</span>+matches),</span><br><span class="line">            (onerror) =&gt; alert(<span class="string">'error:'</span>+ onerror)</span><br><span class="line">        )      </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="實測裝置"><a href="#實測裝置" class="headerlink" title="實測裝置"></a>實測裝置</h3><ul>
-<li>device要開啟開發人員模式 與 usb debug 與 wifi(與server同網域)</li>
-</ul>
-<h3 id="app-nav-tab-view"><a href="#app-nav-tab-view" class="headerlink" title="app nav tab view"></a>app nav tab view</h3><p>app 本身有一預設的nav<br>tab也算一個nav (但tabs不是)</p>
-<h3 id="ion-tab"><a href="#ion-tab" class="headerlink" title="ion-tab"></a>ion-tab</h3><p>本身算一個可nav元件,url名稱為tag上的<strong>tab-Title</strong>,不設定會變tab-0</p>
-<h3 id="IonicPage"><a href="#IonicPage" class="headerlink" title="IonicPage"></a>IonicPage</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">@IonicPage(&#123;</span><br><span class="line">  name: <span class="string">'my-page'</span>,      <span class="comment">//ion-nav [root]=...對應的字串 (預設為元件名稱)</span></span><br><span class="line">  segment: <span class="string">'some-path'</span>  <span class="comment">//僅url顯示 與程式碼沒有連結 (預設為檔名)</span></span><br><span class="line"></span><br><span class="line">  defaultHistory: [<span class="string">'my-page'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//linkpage.module.ts 與 linkpage.ts 檔名需一致,其檔名為預設的segment字串</span></span><br></pre></td></tr></table></figure>
-<h3 id="route"><a href="#route" class="headerlink" title="route"></a>route</h3><p>IonicPage與Componet類似,大概差在deeplink,但好像有bug</p>
-<ul>
-<li>IonicPage可用其component name的字串做nav (name:? segment:?)</li>
-<li>tab url路徑的目錄名稱是來自”tabComponentFilename/ion-tab的tabTitle/ComponentFilename”</li>
-<li>IonicPage url路徑名稱覆寫</li>
-<li>url還是會穿插一些內部的nav路徑 像是nav/n4/tabs/t0 <a href="https://github.com/ionic-team/ionic/releases" target="_blank" rel="noopener">更新到3.6可以解決</a></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//ionic-app-scripts</span></span><br><span class="line">cd node_modules/@ionic/app-scripts/dist</span><br><span class="line"></span><br><span class="line">providers: [</span><br><span class="line">    &#123;<span class="attr">provide</span>: APP_BASE_HREF, <span class="attr">useValue</span>: <span class="string">"/"</span>&#125;,</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">locationStrategy: <span class="string">'path'</span><span class="comment">//url上不使用#,但server要配合導向index.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//page stack會保留,back不會reload,但url不會跳到pageurl</span></span><br><span class="line">nav.push(<span class="string">'...'</span>)</span><br><span class="line"><span class="comment">//每次back都會reload,但url會跳到pageurl</span></span><br><span class="line">nav.setRoot(<span class="string">'...'</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="調整slide"><a href="#調整slide" class="headerlink" title="調整slide"></a>調整slide</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.scroll-content</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slide-zoom</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">overflow-y</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+          <h1 class="post-title" itemprop="name headline">區塊鏈Demo架構</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-14T19:02:23+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h1><h4 id="區塊鏈節點"><a href="#區塊鏈節點" class="headerlink" title="區塊鏈節點"></a>區塊鏈節點</h4><ul>
+<li>礦工節點 主要負責區塊鏈資料的維護</li>
+<li>私有節點 用以介接應用程式與區塊鏈 (建立帳號(keystore)/執行交易/取得資訊)</li>
+<li>應用程式接入區塊鏈的方法<ol>
+<li>自建私有節點加入區塊網絡 </li>
+<li>透過第三方節點開放的rpc介面</li>
+</ol>
+</li>
+</ul>
+<h4 id="智能合約"><a href="#智能合約" class="headerlink" title="智能合約"></a>智能合約</h4><ul>
+<li>如同一個可程式化的資料表(記帳人+帳本)</li>
+<li>在區塊鏈裡如一個’公證人’帳號 該帳號如同一記帳人(帳本) 與該帳號的交易行為就如同執行合約一般 其執行結果同樣寫入區塊鏈</li>
+</ul>
+<h1 id="私有鏈"><a href="#私有鏈" class="headerlink" title="私有鏈"></a>私有鏈</h1><h4 id="優點"><a href="#優點" class="headerlink" title="優點"></a>優點</h4><ul>
+<li>所有節點都自己安插 安全</li>
+</ul>
+<h4 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h4><ul>
+<li>大致行為無異於分散式資料庫 區塊鏈形同虛設</li>
+</ul>
+<p><img src="https://www.plantuml.com/plantuml/svg/TP9FIm916CRlyoa6ErGNm_KM2LgdRa9NB-FEgeFhZCoEGKIGLAH8_o02GGmFaWSXoXHB-ZRjhdwBPcTrqwtci8Vd-StpllFkcxG4ug9ICe5L9BICE2f1qyWR5EyYlPZdh4Bn7ZCPXsivTNvpZ6E3hpB0jw1WPKdb172VgawhFhkfERsEtMu0QVe801W9b4MM0IC-v8vUtM5dGxAR4OWic3MPNjGBY508Zm6KHpPCSaWNCE8qFwPdd_PjpNqxLx3EgE3IKjmwPSA0dEGB0h9SuC5jUC1CWeauKfZwK8Qz3fvFPvEsIlA4sBAbcilG4ABzVpkkhA1g8h6K6LQrFzLu41w3qL0vRQx4mGa0y_htFQSsSbfNTgDfDtiPcahlgsuiWnyQ7FZNTcIuByX1yBA-HSewy4Vb_IflKe4TYzhZmRJvw0ucxl0bGxMeSzsrBxfkl_yrhZiFxxFBEsTO1K47gxegBWg4OxamSjhptCIo1kHxvUP4KXHpHh2wegJOmY7f0gF6Zw6182YnG4E2H99okUHQVmC0"></p>
+<h1 id="公有鏈"><a href="#公有鏈" class="headerlink" title="公有鏈"></a>公有鏈</h1><h4 id="優點-1"><a href="#優點-1" class="headerlink" title="優點"></a>優點</h4><ul>
+<li>依附於<code>乙太坊公共網絡</code></li>
+<li>與第三方應用的結合較為多元</li>
+</ul>
+<h4 id="缺點-1"><a href="#缺點-1" class="headerlink" title="缺點"></a>缺點</h4><ul>
+<li>在<code>乙太坊公共網絡</code>執行交易須支付乙太幣</li>
+</ul>
+<p><img src="https://www.plantuml.com/plantuml/svg/RP9DIoD148Rl_IkAsODwoPBa9WPqz-H14BpcqZizIPfCkaDFHrcM1SKDnYzK426iAoYYOSaYBgluWV_6dd7-nLOwap69rl5zdwfwAMesq5JfHiqdGPMBEbMq1hvNzWJxHDrgMSc6O9-bBnLyADbwoqd5F3NAaBu5MjQHAcbYcjtmU3FUQuMTKtEoJT3i8uIulcmmS9xls-Ryj_crXQXfNaUtVwERqqdic7A01l35bsxLhL0k0BuHmCBOl4HT3KxOVdXPVpBxhUZV3mkxKcY5bkKcXDGUA5wkQ92br8DfM98-Prn_9POJaddWH9Th6BGeeglL-F74JkiPsM5arCgziOfYikPfka23wbIAvIsMRYyKXkQEgxbtrNowA0kPiTMvHCcJxuGaMLRtNYwUJBjJ5F7FH_DdFzuvCplD_ZMLN0ayPSayp1Hmmq0QT1zsmjPjUBnhjjjsnjpYl6r5PZdfpFOw4m7FgUhkHrvtqmdTxlFTPdXq7sySX3Th3lIwTOKhXj-3H-_7dibaXaMIJ1iLyGZuNCwSO4foPcDOAJjm-6952k_LoAM3C622ZWc8pEB_uUV_1m00"></p>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p><img src="https://www.plantuml.com/plantuml/svg/PPA_JW914CRxVOh9sKF4ZeW1qK8h8eKDpTxjtXyvTiZkdiGO4X8jY8HeOKDYIAoaip4K6X_d3daBz-u0KQVyljzyExExLQMfr54d9AeTY2wLj0CXzxXWXzHfUn8ZmUeOeeGTDwl_74h6vM-6v1Pex1hArUI8Tp2PpfEN4J5wxXBYX1Wni6hdJJYkbooW2cXF0LmJCCMefZPL7AnuF8YVxvRtmmonGtJQZay3iIRJCbi4BdKqMCda_UlcCtuOBjvkimO7XPR6ojXDWq1ceXUlW-N7j2KoC9LA6s3T1fNAbjCdwv1LmECi6SwJft4yciIJMKlK6YTPcEBoaiiDMO9zavEBK0RPTKYV486QWmmyNmEwFoUMGM4Oi41V_KNoGJok_Q971NLydbuefD1VT3L0sd6XYXqK7ZARQ1cvRiYBFMxl5Ookp6LoNGXmAyUCO1xJgWacCM3vkwJIBY6h1Smk1olD37kgK9mrwe2fPOARMIOXLHDfljOt"></p>
+<h3 id="原始碼"><a href="#原始碼" class="headerlink" title="原始碼"></a>原始碼</h3><p><a href="https://github.com/jimliuxyz/ethereum-poa-docker" target="_blank" rel="noopener">私鏈(PoA)Docker</a><br><a href="https://github.com/jimliuxyz/coinpocket" target="_blank" rel="noopener">用戶服務器</a><br><a href="https://github.com/jimliuxyz/coinpocket-android" target="_blank" rel="noopener">Android用戶端</a></p>
+<h1 id="附錄"><a href="#附錄" class="headerlink" title="附錄"></a>附錄</h1><h3 id="電子錢包應用"><a href="#電子錢包應用" class="headerlink" title="電子錢包應用"></a>電子錢包應用</h3><h4 id="BitoEx-台廠-幣託"><a href="#BitoEx-台廠-幣託" class="headerlink" title="BitoEx 台廠 幣託"></a><a href="https://www.bitoex.com/" target="_blank" rel="noopener">BitoEx 台廠 幣託</a></h4><ul>
+<li>以email申請一個帳號 透過web/phone介面查詢</li>
+<li>台灣可透過FamiPort繳費&gt;虛擬帳號&gt;廠商代號&gt;輸入手機號碼&gt;買多少台幣的BTC 現金結帳取得收據與手機簡訊 回BitoEx介面&gt;超商兌換</li>
+<li>可綁定信用卡/銀行帳號(可出帳)</li>
+<li>等於私鑰託管給BitoEx</li>
+</ul>
+<h4 id="MaiCoin-台廠"><a href="#MaiCoin-台廠" class="headerlink" title="MaiCoin 台廠"></a><a href="https://www.maicoin.com/" target="_blank" rel="noopener">MaiCoin 台廠</a></h4><h4 id="Coinbase-美加密貨幣交易所"><a href="#Coinbase-美加密貨幣交易所" class="headerlink" title="Coinbase 美加密貨幣交易所"></a><a href="https://www.coinbase.com/" target="_blank" rel="noopener">Coinbase 美加密貨幣交易所</a></h4><ul>
+<li>可綁定信用卡/銀行帳號/paypal/wire transfer</li>
+</ul>
+<h3 id="台灣第三方金流服務"><a href="#台灣第三方金流服務" class="headerlink" title="台灣第三方金流服務"></a>台灣第三方金流服務</h3><h4 id="台景達TaiPay"><a href="#台景達TaiPay" class="headerlink" title="台景達TaiPay"></a><a href="https://www.taipay.com.tw/" target="_blank" rel="noopener">台景達TaiPay</a></h4><h4 id="智付通Spgateway"><a href="#智付通Spgateway" class="headerlink" title="智付通Spgateway"></a><a href="https://www.spgateway.com/" target="_blank" rel="noopener">智付通Spgateway</a></h4><h4 id="綠界ECPay"><a href="#綠界ECPay" class="headerlink" title="綠界ECPay"></a><a href="https://www.ecpay.com.tw/" target="_blank" rel="noopener">綠界ECPay</a></h4>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/CoinPocket/AWS.html" rel="next" title="AWS EC2">
+                <i class="fa fa-chevron-left"></i> AWS EC2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -463,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#release-APK"><span class="nav-number">1.</span> <span class="nav-text">release APK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IonicPage的問題"><span class="nav-number">2.</span> <span class="nav-text">IonicPage的問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#編譯環境"><span class="nav-number">3.</span> <span class="nav-text">編譯環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#real-device-The-connection-to-the-server-was-unsuccessful-http-140-254-160-122-8100"><span class="nav-number">4.</span> <span class="nav-text">real device : The connection to the server was unsuccessful. (http://140.254.160.122:8100)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#real-device-PLUGIN-NOT-INSTALLED"><span class="nav-number">5.</span> <span class="nav-text">real device : PLUGIN_NOT_INSTALLED</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#實測裝置"><span class="nav-number">6.</span> <span class="nav-text">實測裝置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-nav-tab-view"><span class="nav-number">7.</span> <span class="nav-text">app nav tab view</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ion-tab"><span class="nav-number">8.</span> <span class="nav-text">ion-tab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IonicPage"><span class="nav-number">9.</span> <span class="nav-text">IonicPage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#route"><span class="nav-number">10.</span> <span class="nav-text">route</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#調整slide"><span class="nav-number">11.</span> <span class="nav-text">調整slide</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#簡介"><span class="nav-number">1.</span> <span class="nav-text">簡介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#區塊鏈節點"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">區塊鏈節點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智能合約"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">智能合約</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#私有鏈"><span class="nav-number">2.</span> <span class="nav-text">私有鏈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#優點"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺點"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">缺點</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#公有鏈"><span class="nav-number">3.</span> <span class="nav-text">公有鏈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#優點-1"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺點-1"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">缺點</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Demo"><span class="nav-number">4.</span> <span class="nav-text">Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始碼"><span class="nav-number">4.0.1.</span> <span class="nav-text">原始碼</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附錄"><span class="nav-number">5.</span> <span class="nav-text">附錄</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#電子錢包應用"><span class="nav-number">5.0.1.</span> <span class="nav-text">電子錢包應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BitoEx-台廠-幣託"><span class="nav-number">5.0.1.1.</span> <span class="nav-text">BitoEx 台廠 幣託</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MaiCoin-台廠"><span class="nav-number">5.0.1.2.</span> <span class="nav-text">MaiCoin 台廠</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Coinbase-美加密貨幣交易所"><span class="nav-number">5.0.1.3.</span> <span class="nav-text">Coinbase 美加密貨幣交易所</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#台灣第三方金流服務"><span class="nav-number">5.0.2.</span> <span class="nav-text">台灣第三方金流服務</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#台景達TaiPay"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">台景達TaiPay</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智付通Spgateway"><span class="nav-number">5.0.2.2.</span> <span class="nav-text">智付通Spgateway</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#綠界ECPay"><span class="nav-number">5.0.2.3.</span> <span class="nav-text">綠界ECPay</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

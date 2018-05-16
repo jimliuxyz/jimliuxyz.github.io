@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="Scheduler主要用來控制Obs的發送機制,基本上有…  queue : 多用於never complete的op (repeat) asap : 異步, =&amp;gt; setTimeout(0) async : 異步, =&amp;gt; setInterval  多用於timer相關的op animationFrame :   scheduler的設定可以接在creation operators的最">
-<meta property="og:type" content="website">
-<meta property="og:title" content="__">
-<meta property="og:url" content="http://yoursite.com/草稿/整理中/RxJS/02.Scheduler.html">
+<meta name="description" content="ethereum-docker中文 docker stop $(docker ps -a -q)docker rm $(docker ps -a -q)#強制移除所有imagesdocker rmi -f $(docker images -q)#啟動docker-compose.ymldocker-compose up -d 基本上會啟動3個服務bootstrap 對外開放8545  ethere">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Capgemini-AIE&#x2F;ethereum-docker">
+<meta property="og:url" content="http://yoursite.com/home//CoinPocket/ethereum-docker(Capgemini-AIE).html">
 <meta property="og:site_name" content="自用筆記">
-<meta property="og:description" content="Scheduler主要用來控制Obs的發送機制,基本上有…  queue : 多用於never complete的op (repeat) asap : 異步, =&amp;gt; setTimeout(0) async : 異步, =&amp;gt; setInterval  多用於timer相關的op animationFrame :   scheduler的設定可以接在creation operators的最">
+<meta property="og:description" content="ethereum-docker中文 docker stop $(docker ps -a -q)docker rm $(docker ps -a -q)#強制移除所有imagesdocker rmi -f $(docker images -q)#啟動docker-compose.ymldocker-compose up -d 基本上會啟動3個服務bootstrap 對外開放8545  ethere">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-12T04:20:35.000Z">
+<meta property="og:updated_time" content="2018-05-16T07:05:54.461Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="__">
-<meta name="twitter:description" content="Scheduler主要用來控制Obs的發送機制,基本上有…  queue : 多用於never complete的op (repeat) asap : 異步, =&amp;gt; setTimeout(0) async : 異步, =&amp;gt; setInterval  多用於timer相關的op animationFrame :   scheduler的設定可以接在creation operators的最">
+<meta name="twitter:title" content="Capgemini-AIE&#x2F;ethereum-docker">
+<meta name="twitter:description" content="ethereum-docker中文 docker stop $(docker ps -a -q)docker rm $(docker ps -a -q)#強制移除所有imagesdocker rmi -f $(docker images -q)#啟動docker-compose.ymldocker-compose up -d 基本上會啟動3個服務bootstrap 對外開放8545  ethere">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/草稿/整理中/RxJS/02.Scheduler.html"/>
+  <link rel="canonical" href="http://yoursite.com/home//CoinPocket/ethereum-docker(Capgemini-AIE).html"/>
 
 
 
 
 
-  <title>__ | 自用筆記</title>
+  <title>Capgemini-AIE/ethereum-docker | 自用筆記</title>
   
 
 
@@ -276,44 +276,173 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/CoinPocket/ethereum-docker(Capgemini-AIE).html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">__</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h1 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h1><p>主要用來控制Obs的發送機制,基本上有…</p>
+          <h1 class="post-title" itemprop="name headline">Capgemini-AIE/ethereum-docker</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-02T22:11:09+08:00">
+                2018-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://github.com/Capgemini-AIE/ethereum-docker" target="_blank" rel="noopener">ethereum-docker</a><br><a href="http://yutianx.info/2017/10/07/2017-10-07-docker-ethereum/" target="_blank" rel="noopener">中文</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker stop $(docker ps -a -q)</span><br><span class="line">docker rm $(docker ps -a -q)</span><br><span class="line"></span><br><span class="line"><span class="comment">#強制移除所有images</span></span><br><span class="line">docker rmi -f $(docker images -q)</span><br><span class="line"></span><br><span class="line"><span class="comment">#啟動docker-compose.yml</span></span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<h3 id="基本上會啟動3個服務"><a href="#基本上會啟動3個服務" class="headerlink" title="基本上會啟動3個服務"></a>基本上會啟動3個服務</h3><h4 id="bootstrap"><a href="#bootstrap" class="headerlink" title="bootstrap"></a>bootstrap</h4><blockquote>
+<p>對外開放8545</p>
+</blockquote>
+<h4 id="ethereumdocker-eth-1"><a href="#ethereumdocker-eth-1" class="headerlink" title="ethereumdocker_eth_1"></a>ethereumdocker_eth_1</h4><blockquote>
+<p>礦工節點</p>
+</blockquote>
+<h4 id="netstats"><a href="#netstats" class="headerlink" title="netstats"></a>netstats</h4><blockquote>
+<p><a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a></p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#bootstrap </span></span><br><span class="line"></span><br><span class="line"><span class="comment">#啟動單一節點</span></span><br><span class="line">docker-compose up bootstrap</span><br><span class="line">docker-compose up ethereumdocker_eth_1</span><br><span class="line"></span><br><span class="line"><span class="comment">#關閉或移除所有container</span></span><br><span class="line">docker-compose stop</span><br><span class="line">docker-compose rm</span><br><span class="line">docker-compose <span class="built_in">kill</span></span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> -it bootstrap /bin/bash</span><br><span class="line">docker <span class="built_in">exec</span> -it bootstrap geth attach ipc://root/.ethereum/devchain/geth.ipc</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> -it ethereumdocker_eth_1 geth attach ipc://root/.ethereum/devchain/geth.ipc</span><br><span class="line"></span><br><span class="line"><span class="comment">#???</span></span><br><span class="line">docker logs --follow bootstrap</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">admin.nodeInfo.enode</span><br><span class="line"></span><br><span class="line">eth.mining</span><br><span class="line">miner.start()</span><br><span class="line"></span><br><span class="line">eth.coinbase</span><br><span class="line">eth.accounts[0]</span><br><span class="line"></span><br><span class="line">personal.unlockAccount(web3.eth.accounts[0])</span><br><span class="line">personal.unlockAccount(web3.eth.accounts[0], &quot;&quot;, 99999999)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">eth.pendingTransactions</span><br><span class="line"></span><br><span class="line">admin.addPeer(&quot;enode://6814e667f9feef605b9f168d7ea51a5b7d555936974683e51fab1d8d3d4ac9be2f098405b8c17024ba3800a30ce308470b006bb322bcc1b2918b40575c39cab2@127.0.0.1:30303&quot;)</span><br><span class="line">admin.peers</span><br><span class="line"></span><br><span class="line">#授權挖礦帳號</span><br><span class="line">clique.propose(&quot;0x0fe2d8747d24156b342c9fa5c5e7138cf4047a8d&quot;, true)</span><br></pre></td></tr></table></figure>
+<h4 id="挖礦權限-PoA"><a href="#挖礦權限-PoA" class="headerlink" title="挖礦權限(PoA)"></a>挖礦權限(PoA)</h4><p>挖礦權限跟節點無關 跟節點上eth.coinbase有關(即miner.setEtherbase綁定的帳戶)</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">#取得當下礦工帳號</span><br><span class="line">eth.coinbase</span><br><span class="line"></span><br><span class="line">#設定礦工帳號 (coinbase)</span><br><span class="line">miner.setEtherbase(web3.eth.accounts[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">#設定後最好重新stop/start</span><br><span class="line">miner.start()</span><br><span class="line"></span><br><span class="line">#授權其他帳號挖礦</span><br><span class="line">clique.propose(web3.eth.accounts[<span class="number">1</span>], <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="bootnode"><a href="#bootnode" class="headerlink" title="bootnode"></a>bootnode</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#產生一組key並存到bootnode.key中</span></span><br><span class="line"><span class="comment">#該key可在啟動geth時以nodekeyhex帶入 之後節點就會有固定的enode</span></span><br><span class="line">bootnode -genkey bootnode.key</span><br><span class="line"><span class="comment">#091bd6067cb4612df85d9c1ff85cc47f259ced4d4cd99816b14f35650f59c322</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以該key產生enode (主要是@前的數字)</span></span><br><span class="line">bootnode -nodekeyhex 091bd6067....</span><br><span class="line">INFO [05-03|16:57:03] UDP listener up           self=enode://288b972....@[::]:30301</span><br></pre></td></tr></table></figure>
+<h1 id="副錄"><a href="#副錄" class="headerlink" title="副錄"></a>副錄</h1><p>…</p>
+<h4 id="PoW模式-挖礦很慢-建立第一個區塊都長達數分鐘"><a href="#PoW模式-挖礦很慢-建立第一個區塊都長達數分鐘" class="headerlink" title="(PoW模式) 挖礦很慢 建立第一個區塊都長達數分鐘"></a>(PoW模式) 挖礦很慢 建立第一個區塊都長達數分鐘</h4><blockquote>
+<p>感覺在discover找其他節點 想要做block sync?<br>換chainId與difficulty都沒改善</p>
+</blockquote>
+<h4 id="執行合約函數時gas不足"><a href="#執行合約函數時gas不足" class="headerlink" title="執行合約函數時gas不足"></a>執行合約函數時gas不足</h4><blockquote>
+<p>gas required exceeds allowance or always failing transaction<br>兩種可能:</p>
 <ul>
-<li>queue : 多用於never complete的op (repeat)</li>
-<li>asap : 異步, =&gt; setTimeout(0)</li>
-<li>async : 異步, =&gt; setInterval  多用於timer相關的op</li>
-<li>animationFrame : </li>
+<li>gas limit真的下少了</li>
+<li>合約函數寫錯導致<code>注定失敗</code> 例如require(0==1)</li>
 </ul>
-<p>scheduler的設定可以接在creation operators的最後一個參數<br>或是用obs的方法observeOn()</p>
-<hr>
-<p>obs.observeOn(Rx.Scheduler.async)<br>//讓obs的next()變成非同步執行<br>//內部的動作比較像是buffer住資料,再用setTimeout做next()</p>
-<hr>
+</blockquote>
+<h4 id="下載舊版本的docker-image"><a href="#下載舊版本的docker-image" class="headerlink" title="下載舊版本的docker image"></a>下載舊版本的docker image</h4><blockquote>
+<p>以下載ethereum/client-go為例<br><a href="https://hub.docker.com/r/ethereum/client-go/builds/" target="_blank" rel="noopener">查版本號</a></p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker pull ethereum/client-go:v1.8.6</span><br></pre></td></tr></table></figure>
+<h4 id="puppeth做出的json多包了一層"><a href="#puppeth做出的json多包了一層" class="headerlink" title="puppeth做出的json多包了一層"></a>puppeth做出的json多包了一層</h4><h4 id="docker-compose忽略修改後的dockerfile"><a href="#docker-compose忽略修改後的dockerfile" class="headerlink" title="docker compose忽略修改後的dockerfile"></a>docker compose忽略修改後的dockerfile</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止</span></span><br><span class="line">docker-compose down</span><br><span class="line"></span><br><span class="line"><span class="comment">#重做</span></span><br><span class="line">docker-compose build --no-cache</span><br><span class="line"></span><br><span class="line">docker-compose up -d --force-recreate</span><br></pre></td></tr></table></figure>
 
-        
-      </div>
-      
-      
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/Single/Docker.html" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/Single/MWeb畫圖.html" rel="prev" title="MWeb">
+                MWeb <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -444,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Scheduler"><span class="nav-number">1.</span> <span class="nav-text">Scheduler</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本上會啟動3個服務"><span class="nav-number">1.</span> <span class="nav-text">基本上會啟動3個服務</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bootstrap"><span class="nav-number">1.1.</span> <span class="nav-text">bootstrap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ethereumdocker-eth-1"><span class="nav-number">1.2.</span> <span class="nav-text">ethereumdocker_eth_1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#netstats"><span class="nav-number">1.3.</span> <span class="nav-text">netstats</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挖礦權限-PoA"><span class="nav-number">1.4.</span> <span class="nav-text">挖礦權限(PoA)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bootnode"><span class="nav-number">1.5.</span> <span class="nav-text">bootnode</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#副錄"><span class="nav-number"></span> <span class="nav-text">副錄</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PoW模式-挖礦很慢-建立第一個區塊都長達數分鐘"><span class="nav-number">0.1.</span> <span class="nav-text">(PoW模式) 挖礦很慢 建立第一個區塊都長達數分鐘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#執行合約函數時gas不足"><span class="nav-number">0.2.</span> <span class="nav-text">執行合約函數時gas不足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下載舊版本的docker-image"><span class="nav-number">0.3.</span> <span class="nav-text">下載舊版本的docker image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#puppeth做出的json多包了一層"><span class="nav-number">0.4.</span> <span class="nav-text">puppeth做出的json多包了一層</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-compose忽略修改後的dockerfile"><span class="nav-number">0.5.</span> <span class="nav-text">docker compose忽略修改後的dockerfile</span></a></li></ol></li></ol></div>
             
 
           </div>

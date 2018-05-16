@@ -288,6 +288,814 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/git/git_.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/git/git_.html" itemprop="url">Git</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-30T16:02:41+08:00">
+                2017-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.jianshu.com/p/a980fc1eb626" target="_blank" rel="noopener">***Git的好習慣</a></p>
+<p><a href="http://v.youku.com/v_show/id_XNzgwOTk0NDQw.html?f=22842023" target="_blank" rel="noopener">Git版本控制视频教程</a></p>
+<h1 id="SVN-subversion-與-Git"><a href="#SVN-subversion-與-Git" class="headerlink" title="SVN(subversion) 與 Git"></a>SVN(subversion) 與 Git</h1><h3 id="cvs"><a href="#cvs" class="headerlink" title="cvs"></a>cvs</h3><ul>
+<li>集中式</li>
+</ul>
+<h3 id="svn"><a href="#svn" class="headerlink" title="svn"></a>svn</h3><ul>
+<li>集中式:</li>
+<li>所有版本都在svn server上,client端僅存有某一特定版本,所以版本切換時很慢</li>
+<li>server一掛就全部死光.</li>
+<li>紀錄diff patch,每個版本透過patch還原,所以換版本時也很慢.</li>
+</ul>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><ul>
+<li>分散式</li>
+<li>本地端含有所有版本,遠端僅進行與各個用戶端同步. 紀錄個別檔案</li>
+</ul>
+<h1 id="使用ssh連結遠端git"><a href="#使用ssh連結遠端git" class="headerlink" title="使用ssh連結遠端git"></a>使用ssh連結遠端git</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//產生公私鑰</span><br><span class="line">ssh-keygen -t rsa -b 4096 -C jimliuxyz@gmail.com</span><br><span class="line"></span><br><span class="line">//將pub key貼到gitbut網站的setting&gt;SSH keys&gt;new key</span><br><span class="line"></span><br><span class="line">//針對目錄設定就不要加global</span><br><span class="line">git config --global user.name jimliuxyz</span><br><span class="line">git config --global user.email jimliuxyz@gmail.com</span><br><span class="line"></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line">git remote add origin https://github.com/jimliuxyz/wovo.git</span><br></pre></td></tr></table></figure>
+<p>ssh機制與私人repo較有關聯<br><a href="http://riny.net/2014/git-ssh-key/" target="_blank" rel="noopener">ssh config</a></p>
+<h1 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h1><p><a href="https://blog.exfast.me/2016/05/git-instructions-instructions/" target="_blank" rel="noopener">常用指令</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//取得remote repo變數設定</span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line">//取得所有branch與當下使用的branch (與本地追蹤狀況)</span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line">//取得遠端分支資訊</span><br><span class="line">git ls-remote</span><br><span class="line"></span><br><span class="line">//取得當下branch名稱與其版本狀態</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//測試</span><br><span class="line">git <span class="built_in">clone</span> ... //會自建一個目錄</span><br><span class="line">touch file.txt</span><br><span class="line"><span class="built_in">echo</span> 123 &gt;&gt; file.txt</span><br><span class="line">git add file.txt</span><br><span class="line">git commit -a -m comment...</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//建立project (wovo)</span><br><span class="line">git init</span><br><span class="line">git add &lt;...&gt;</span><br><span class="line">git commit -m <span class="string">"first commit"</span></span><br><span class="line"></span><br><span class="line">//建立origin(remote repo var)並對應到remote url</span><br><span class="line">//origin是慣用預設對remote repo的命名</span><br><span class="line">git remote add origin https://github.com/jimliuxyz/wovo.git</span><br><span class="line"></span><br><span class="line">//將本地版本推送到 origin/master (remote repo/branch)</span><br><span class="line">//master是慣用預設對主要branch的命名</span><br><span class="line">//-u | --<span class="built_in">set</span>-upstream設定master的remote repo是origin</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//建立新分支newfeature,從master分出</span><br><span class="line">git branch newfeature master</span><br><span class="line"></span><br><span class="line">//切換分支</span><br><span class="line">git checkout newfeature</span><br><span class="line"></span><br><span class="line">//推送分支到remote</span><br><span class="line">git push -u origin newfeature</span><br><span class="line"></span><br><span class="line">//之後的push動作</span><br><span class="line">git push origin</span><br><span class="line"></span><br><span class="line">//本地端分支:遠端分支</span><br><span class="line">git push -u origin master:master</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//更新<span class="built_in">local</span> repo,但不合併</span><br><span class="line">git fetch</span><br><span class="line"></span><br><span class="line">//合併</span><br><span class="line">git merge origin/master</span><br><span class="line"></span><br><span class="line">// (fetch + merge)</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h1 id="初建立"><a href="#初建立" class="headerlink" title="初建立"></a>初建立</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rm -rf .git</span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line">//重新commit</span><br><span class="line">git commit -a -m <span class="string">"first commmit"</span></span><br><span class="line"></span><br><span class="line">//增加遠端origin路徑</span><br><span class="line">git remote add origin https://github.com/jimliuxyz/...</span><br><span class="line"></span><br><span class="line">//push到遠端origin</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p><a href="https://zlargon.gitbooks.io/git-tutorial/content/remote/upstream.html" target="_blank" rel="noopener">參數-u</a><br>設定本地端master追蹤遠端origin/master,設定一次後以後可以直接使用git push上傳</p>
+<h1 id="標籤"><a href="#標籤" class="headerlink" title="標籤"></a>標籤</h1><p>感覺標籤像一個release的紀錄點,至少在github上確實會產生release的內容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag -a 1.0 -m &quot;first release&quot;</span><br><span class="line"></span><br><span class="line">git push origin 1.0</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/vscode/vscode-extension.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/vscode/vscode-extension.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-29T10:10:20+08:00">
+                2017-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="create-project"><a href="#create-project" class="headerlink" title="create project"></a>create project</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g yo generator-code</span><br><span class="line">yo code</span><br></pre></td></tr></table></figure>
+<h3 id="publish-extension"><a href="#publish-extension" class="headerlink" title="publish extension"></a>publish extension</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g vsce</span><br><span class="line"></span><br><span class="line">//申請VSTS(Visual Studio Team Services)帳號, then create token</span><br><span class="line">https://go.microsoft.com/fwlink/?LinkId=307137</span><br><span class="line"></span><br><span class="line">//create publisher by token</span><br><span class="line">vsce create-publisher jimliuxyz</span><br><span class="line"></span><br><span class="line">vsce login jimliuxyz</span><br><span class="line"></span><br><span class="line">vsce publish 1.0.0</span><br><span class="line">vsce publish major</span><br><span class="line">vsce publish minor</span><br><span class="line">vsce publish patch</span><br><span class="line">vsce publish</span><br></pre></td></tr></table></figure>
+<p><a href="https://code.visualstudio.com/docs/extensions/publish-extension" target="_blank" rel="noopener">publish-extension</a></p>
+<p><a href="http://semver.org/lang/zh-TW/" target="_blank" rel="noopener">Semantic Versioning</a></p>
+<h3 id="devlopment"><a href="#devlopment" class="headerlink" title="devlopment"></a>devlopment</h3><p>直接點選側欄選單的debug, start debug</p>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">"icon": "assert/logo.png",</span><br><span class="line">"activationEvents": [</span><br><span class="line">  <span class="string">"*"</span></span><br><span class="line">],</span><br><span class="line">"contributes": &#123;</span><br><span class="line">  "configuration": &#123;</span><br><span class="line">    "type": "object",</span><br><span class="line">    "title": "Word Voice configuration",</span><br><span class="line">    "properties": &#123;</span><br><span class="line">      "wovo.voice_filename": &#123;</span><br><span class="line">        "type": "boolean",</span><br><span class="line">        "default": true,</span><br><span class="line">        "description": "voice filename when changing editor."</span><br><span class="line">      &#125;,</span><br><span class="line">      "wovo.voice_editing": &#123;</span><br><span class="line">        "type": "boolean",</span><br><span class="line">        "default": true,</span><br><span class="line">        "description": "voice word when editing."</span><br><span class="line">      &#125;,</span><br><span class="line">      "wovo.voice_cursor": &#123;</span><br><span class="line">        "type": "boolean",</span><br><span class="line">        "default": true,</span><br><span class="line">        "description": "voice filename when moving cursor."</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;<span class="built_in">window</span>, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument&#125; <span class="keyword">from</span> <span class="string">'vscode'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> vscode <span class="keyword">from</span> <span class="string">'vscode'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> say <span class="keyword">from</span> <span class="string">'say'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cfgVoFilename = (): <span class="function"><span class="params">boolean</span> =&gt;</span></span><br><span class="line">vscode.workspace.getConfiguration(<span class="string">'wovo'</span>).get&lt;boolean&gt;(<span class="string">'voice_filename'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cfgVoEditing = (): <span class="function"><span class="params">boolean</span> =&gt;</span></span><br><span class="line">vscode.workspace.getConfiguration(<span class="string">'wovo'</span>).get&lt;boolean&gt;(<span class="string">'voice_editing'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cfgVoCursor = (): <span class="function"><span class="params">boolean</span> =&gt;</span></span><br><span class="line">vscode.workspace.getConfiguration(<span class="string">'wovo'</span>).get&lt;boolean&gt;(<span class="string">'voice_cursor'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">activate</span>(<span class="params">context: ExtensionContext</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'"WoVo" is now active!'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// create a new word voice</span></span><br><span class="line">    <span class="keyword">let</span> wordVoice = <span class="keyword">new</span> WordVoice();</span><br><span class="line">    <span class="keyword">let</span> controller = <span class="keyword">new</span> WordVoiceController(wordVoice);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Add to a list of disposables which are disposed when this extension is deactivated.</span></span><br><span class="line">    context.subscriptions.push(controller);</span><br><span class="line">    context.subscriptions.push(wordVoice);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(cfgVoFilename())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordVoice</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    private WORDRE = <span class="regexp">/[A-Za-z0-9_]+/</span>;</span><br><span class="line">    private _statusBarItem: StatusBarItem;</span><br><span class="line">    private _prevFilename: string;</span><br><span class="line">    private _prevVersion: number;</span><br><span class="line">    private _delaycall:NodeJS.Timer;</span><br><span class="line">    </span><br><span class="line">    public onDidChnage() &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Create as needed</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>._statusBarItem) &#123;</span><br><span class="line">            <span class="keyword">this</span>._statusBarItem = <span class="built_in">window</span>.createStatusBarItem(StatusBarAlignment.Left);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Get the current text editor</span></span><br><span class="line">        <span class="keyword">let</span> editor = <span class="built_in">window</span>.activeTextEditor;</span><br><span class="line">        <span class="keyword">if</span> (!editor) &#123;</span><br><span class="line">            <span class="keyword">this</span>._statusBarItem.hide();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> doc = editor.document;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// this._statusBarItem.text = doc.fileName+" : "+doc.version;</span></span><br><span class="line">        <span class="comment">// this._statusBarItem.show();</span></span><br><span class="line">        <span class="comment">// this._statusBarItem.hide();</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//changing active editor        </span></span><br><span class="line">        <span class="keyword">if</span> (doc.fileName !== <span class="keyword">this</span>._prevFilename) &#123;</span><br><span class="line">            <span class="keyword">var</span> fname = doc.fileName.replace(<span class="regexp">/^.*[\\\/]/</span>, <span class="string">""</span>).replace(<span class="regexp">/[^A-Za-z0-9]/g</span>,<span class="string">". "</span>)<span class="comment">/*.replace(/[.].*$/,"")*/</span>;</span><br><span class="line">            <span class="comment">//to avoid stopped by cursor voice, so it should voice later</span></span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                say.stop() <span class="comment">//stop cursor voice</span></span><br><span class="line">                <span class="keyword">if</span> (cfgVoFilename())</span><br><span class="line">                    say.speak(fname)</span><br><span class="line">            &#125;,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>._prevFilename = doc.fileName;</span><br><span class="line">            <span class="keyword">this</span>._prevVersion = doc.version;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> editing = <span class="keyword">this</span>._prevVersion !== doc.version;</span><br><span class="line">        <span class="keyword">this</span>._prevVersion = doc.version;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> stext:string;</span><br><span class="line">        <span class="keyword">if</span> (editor.selection.isEmpty) &#123;</span><br><span class="line">            <span class="keyword">var</span> pos = editor.selection.active;</span><br><span class="line">            <span class="keyword">if</span> (pos.line == <span class="number">0</span> &amp;&amp; pos.character == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span>;    </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">var</span> char = <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">if</span> (pos.character &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                char = (doc.lineAt(pos.line).text)[pos.character - <span class="number">1</span>]</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//on editing</span></span><br><span class="line">            <span class="keyword">if</span> (editing) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!cfgVoEditing())</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                <span class="comment">//move back one character if cursor not in a word</span></span><br><span class="line">                <span class="keyword">if</span> (!<span class="keyword">this</span>.WORDRE.test(char)) &#123;</span><br><span class="line">                    pos = <span class="keyword">new</span> vscode.Position(pos.line + (pos.character == <span class="number">0</span> ? <span class="number">-1</span> : <span class="number">0</span>), pos.character &gt; <span class="number">0</span> ? (pos.character - <span class="number">1</span>) : (doc.lineAt(pos.line - <span class="number">1</span>).text.length))</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//delay if editing a word</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    clearTimeout(<span class="keyword">this</span>._delaycall);</span><br><span class="line">                    <span class="keyword">this</span>._delaycall = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.onDidChnage(), <span class="number">500</span>);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (!cfgVoCursor())</span><br><span class="line">                <span class="keyword">return</span>;    </span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> range = doc.getWordRangeAtPosition(pos,<span class="keyword">this</span>.WORDRE);</span><br><span class="line">            <span class="keyword">if</span> (range) &#123;</span><br><span class="line">                stext = doc.getText(range);</span><br><span class="line">                <span class="comment">// vscode.window.showInformationMessage(stext)</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//split text if has both lower and upper case</span></span><br><span class="line">        <span class="keyword">if</span> (stext &amp;&amp; (stext !== stext.toLowerCase() &amp;&amp; stext !== stext.toUpperCase())) &#123;</span><br><span class="line">            <span class="keyword">var</span> arr: string[]=[];</span><br><span class="line">            <span class="keyword">var</span> word = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> s <span class="keyword">of</span> &lt;any&gt;stext) &#123;</span><br><span class="line">                <span class="keyword">if</span> (s === s.toUpperCase()) &#123;</span><br><span class="line">                    arr.push(word);</span><br><span class="line">                    word = <span class="string">""</span>;                    </span><br><span class="line">                &#125;</span><br><span class="line">                word += s;</span><br><span class="line">            &#125;</span><br><span class="line">            arr.push(word);</span><br><span class="line">            stext = arr.join(<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (stext) &#123;     </span><br><span class="line">            say.stop()    </span><br><span class="line">            say.speak(stext)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dispose() &#123;</span><br><span class="line">        <span class="keyword">this</span>._statusBarItem.dispose();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordVoiceController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    private _wordVoice: WordVoice;</span><br><span class="line">    private _disposable: Disposable;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(wordVoice: WordVoice) &#123;</span><br><span class="line">        <span class="keyword">this</span>._wordVoice = wordVoice;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// subscribe to selection change and editor activation events</span></span><br><span class="line">        <span class="keyword">let</span> subscriptions: Disposable[] = [];</span><br><span class="line">        <span class="built_in">window</span>.onDidChangeActiveTextEditor(<span class="keyword">this</span>._onEvent, <span class="keyword">this</span>, subscriptions);</span><br><span class="line">        <span class="built_in">window</span>.onDidChangeTextEditorSelection(<span class="keyword">this</span>._onEvent, <span class="keyword">this</span>, subscriptions);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// create a combined disposable from both event subscriptions</span></span><br><span class="line">        <span class="keyword">this</span>._disposable = Disposable.from(...subscriptions);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dispose() &#123;</span><br><span class="line">        <span class="keyword">this</span>._disposable.dispose();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private _onEvent() &#123;</span><br><span class="line">        <span class="keyword">this</span>._wordVoice.onDidChnage();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/react/redux.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/react/redux.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-28T20:33:42+08:00">
+                2017-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>redux基本上是針對狀態讀寫(不是針對變數)的一種設計思想,把散落的狀態讀寫集中到一個稱為’store‘的模組上.</p>
+<h3 id="制定狀態結構"><a href="#制定狀態結構" class="headerlink" title="制定狀態結構"></a>制定狀態結構</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface SpeedState &#123;</span><br><span class="line">  speed: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">INI_STATE: SpeedState = &#123;</span><br><span class="line">  speed: <span class="number">0</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="怎麼寫入狀態？"><a href="#怎麼寫入狀態？" class="headerlink" title="怎麼寫入狀態？"></a>怎麼寫入狀態？</h3><p>狀態的寫入需要透過發送’action’,其實就是一個{type,payload}的物件,做為一個命令傳送給store.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">store.dispath(&#123;</span><br><span class="line">    type:SET_SPEED,</span><br><span class="line">    payload:&#123;</span><br><span class="line">        speed:<span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="誰處理action"><a href="#誰處理action" class="headerlink" title="誰處理action"></a>誰處理action</h3><p>處理的函數稱做reducer,這個名稱來自於Array的reduce函數,也提供類似的行為new=f(old,act)</p>
+<p>reducer須符合pure function的設計,意即同樣輸入必須得到同樣輸出,這是設計理念,涉及狀態回朔的可能性,與何者該被定義為’狀態’有關.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speedReducer</span>(<span class="params">state: SpeedState=INI_STATE, action: Action</span>): <span class="title">SpeedState</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;type, payload&#125; = action;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">    <span class="keyword">case</span> SET_SPEED:</span><br><span class="line">      <span class="comment">//依照action.type產生新的狀態(以不修改原state的方式使其舊state能保留)</span></span><br><span class="line">      <span class="keyword">return</span> &#123;...state, <span class="attr">speed</span>: payload.speed&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="建立store"><a href="#建立store" class="headerlink" title="建立store"></a>建立store</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;StoreModule&#125; <span class="keyword">from</span> <span class="string">'@ngrx/store'</span>;</span><br><span class="line">...</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">    imports: [</span><br><span class="line">      StoreModule.provideStore(speedReducer),</span><br><span class="line">    ]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="怎麼讀？"><a href="#怎麼讀？" class="headerlink" title="怎麼讀？"></a>怎麼讀？</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">mynum: Observable&lt;number&gt;</span><br><span class="line">mynum = store.select(<span class="string">'num'</span>);    <span class="comment">//回傳observable</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>num: &#123;&#123; mynum | async &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">//或直接subscribe observable(mynum)進行更多處理</span><br></pre></td></tr></table></figure>
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>redux架構的使用很容易導致over design,用ng service + RxJs會比較精簡些</p>
+<p><a href="http://oomusou.io/angular/angular-ngrx/" target="_blank" rel="noopener">http://oomusou.io/angular/angular-ngrx/</a></p>
+<p><a href="https://www.youtube.com/watch?v=hJtUdXqPLDc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=hJtUdXqPLDc</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/npm/版本規範semver.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/npm/版本規範semver.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-27T15:09:12+08:00">
+                2017-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="版本規範semver"><a href="#版本規範semver" class="headerlink" title="版本規範semver"></a>版本規範semver</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">3.4</span><span class="number">.1</span></span><br><span class="line">MAJOR.MINOR.PATCH</span><br><span class="line">主版號.次版號.修訂號</span><br><span class="line"></span><br><span class="line">MAJOR : 用於造成<span class="string">'相容性變動'</span>時</span><br><span class="line">MINOR : 用於仍維持相容性的<span class="string">'功能新增'</span></span><br><span class="line">PATCH : 用於仍維持相容性的<span class="string">'功能修正'</span></span><br></pre></td></tr></table></figure>
+<h3 id="package-json-版本"><a href="#package-json-版本" class="headerlink" title="package.json 版本"></a>package.json 版本</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">* : 任意版本</span><br><span class="line">^ : MAJOR不能變 (允許新增功能與修正)</span><br><span class="line">~ : MAJOR與MINOR不能變 (僅允許新增修正:更嚴格)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">~<span class="number">1.2</span><span class="number">.3</span> 表示 &gt;=<span class="number">1.2</span><span class="number">.3</span> and &lt; <span class="number">1.3</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">^<span class="number">1.2</span><span class="number">.3</span> 表示 &gt;=<span class="number">1.2</span><span class="number">.3</span> and &lt; <span class="number">2.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">^<span class="number">0.1</span><span class="number">.2</span> 表示 &gt;=<span class="number">0.1</span><span class="number">.2</span> and &lt; <span class="number">0.2</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/angular深入.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/angular深入.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-26T22:49:45+08:00">
+                2017-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="髒檢測觸發"><a href="#髒檢測觸發" class="headerlink" title="髒檢測觸發"></a>髒檢測觸發</h2><p><a href="https://segmentfault.com/a/1190000008747225" target="_blank" rel="noopener">Angular 2 Change Detection-1</a></p>
+<ol>
+<li>Events：click, mouseover, keyup …</li>
+<li>Timers：setInterval、setTimeout</li>
+<li>XHRs：Ajax(GET、POST …)</li>
+</ol>
+<ul>
+<li>zone.js : 它是用於攔截和跟蹤異步工作</li>
+<li>Monkey-patched : 覆寫預設method</li>
+</ul>
+<h2 id="Change-Detection提高效率"><a href="#Change-Detection提高效率" class="headerlink" title="Change Detection提高效率"></a>Change Detection提高效率</h2><p><a href="https://segmentfault.com/a/1190000008754052" target="_blank" rel="noopener">Angular 2 Change Detection-2</a></p>
+<p><a href="https://blog.kevinyang.net/2017/01/23/angular2-change-detection/" target="_blank" rel="noopener">Change Detection</a></p>
+<p><a href="https://blog.kevinyang.net/2017/08/09/angular-changedetector-markforcheck/" target="_blank" rel="noopener">markForCheck</a></p>
+<ol>
+<li>input需要改變時採immuteable策略,用Object.assign({}, person, {name: ‘new name’});複製物件再整個assign到input,避免ng做深層的髒檢測</li>
+<li>改為手動策略changeDetection: ChangeDetectionStrategy.OnPush,改用ChangeDetectorRef.markForCheck()的方式推動髒檢測</li>
+</ol>
+<h2 id="ngZone"><a href="#ngZone" class="headerlink" title="ngZone"></a>ngZone</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Ionic/Ionic.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Ionic/Ionic.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-23T11:21:57+08:00">
+                2017-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="release-APK"><a href="#release-APK" class="headerlink" title="release APK"></a>release APK</h3><p><a href="http://xyz.cinc.biz/2013/06/android-app.html" target="_blank" rel="noopener">參考</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 產生private key (alias_name可自訂)</span></span><br><span class="line">keytool -genkey -v -keystore mykey.keystore -alias alias_name -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 檢視private key</span></span><br><span class="line">keytool -list -v -keystore mykey.keystore</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cd ~<span class="regexp">/.android/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//for langstar / pw:9xxxxx</span></span><br><span class="line">keytool -genkey -v -keystore langstar.keystore -alias langstar -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></span><br><span class="line"></span><br><span class="line">keytool -exportcert -list -v -keystore langstar.keystore -alias langstar</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//自建build.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"android"</span>: &#123;</span><br><span class="line">    <span class="string">"release"</span>: &#123;</span><br><span class="line">      <span class="string">"keystore"</span>: <span class="string">"android.keystore"</span>,</span><br><span class="line">      <span class="string">"storePassword"</span>: <span class="string">"storepassword"</span>,</span><br><span class="line">      <span class="string">"alias"</span>: <span class="string">"mykey"</span>,</span><br><span class="line">      <span class="string">"password"</span> : <span class="string">"password"</span>,</span><br><span class="line">      <span class="string">"keystoreType"</span>: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="IonicPage的問題"><a href="#IonicPage的問題" class="headerlink" title="IonicPage的問題"></a>IonicPage的問題</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//讓url能正常運作的兩種方式</span></span><br><span class="line">nav.push(<span class="string">'pagename'</span>);</span><br><span class="line">&lt;ion-item navPush=<span class="string">"pagename"</span>&gt;link&lt;<span class="regexp">/ion-item&gt;</span></span><br></pre></td></tr></table></figure>
+<p>page的載入由ionic背景執行,在其載入之前只有透過ionViewCanEnter回傳promise阻止,用以檢查異步的custom init ready狀態.</p>
+<h3 id="編譯環境"><a href="#編譯環境" class="headerlink" title="編譯環境"></a>編譯環境</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//.bash_profile</span><br><span class="line">//jdk must &lt;= 1.8</span><br><span class="line">export JAVA_HOME=`/usr/libexec/java_home -v 1.8`</span><br><span class="line"></span><br><span class="line">export SDK_HOME=/Users/jimliu/Library/Android/sdk</span><br><span class="line">export ANDROID_HOME=/Users/jimliu/Library/Android/sdk</span><br><span class="line"></span><br><span class="line">export PATH=$JAVA_HOME/bin:$&#123;SDK_HOME&#125;/tools/bin:$&#123;SDK_HOME&#125;/platform-tools:$PATH</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source .bash_profile</span><br><span class="line"></span><br><span class="line">//install sdk dependence</span><br><span class="line">sdkmanager &quot;system-images;android-25;google_apis;x86&quot;</span><br><span class="line">//create virtual device</span><br><span class="line">avdmanager create avd -n mydevice -k &quot;system-images;android-25;google_apis;x86&quot;</span><br><span class="line"></span><br><span class="line">cordova platform add android</span><br><span class="line">cordova platform add android@6.2.3 --save</span><br><span class="line"></span><br><span class="line">//run on local browser</span><br><span class="line">ionic serve</span><br><span class="line"></span><br><span class="line">//run on avd</span><br><span class="line">ionic cordova run android --livereload</span><br><span class="line"></span><br><span class="line">//build .apk</span><br><span class="line">ionic cordova build --release android</span><br><span class="line"></span><br><span class="line">cordova emulate android</span><br></pre></td></tr></table></figure>
+<p>cordova run android失敗可以嘗試移除./platforms/android/.gradle目錄</p>
+<h3 id="real-device-The-connection-to-the-server-was-unsuccessful-http-140-254-160-122-8100"><a href="#real-device-The-connection-to-the-server-was-unsuccessful-http-140-254-160-122-8100" class="headerlink" title="real device : The connection to the server was unsuccessful. (http://140.254.160.122:8100)"></a>real device : The connection to the server was unsuccessful. (<a href="http://140.254.160.122:8100" target="_blank" rel="noopener">http://140.254.160.122:8100</a>)</h3><ul>
+<li>ionic cordova run android –prod –livereload</li>
+<li>似乎與Splashscreen有關</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//config.xml</span><br><span class="line">    &lt;platform name=&quot;android&quot;&gt;</span><br><span class="line">        &lt;preference name=&quot;loadUrlTimeoutValue&quot; value=&quot;700000&quot; /&gt;</span><br><span class="line">    &lt;/platform&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="real-device-PLUGIN-NOT-INSTALLED"><a href="#real-device-PLUGIN-NOT-INSTALLED" class="headerlink" title="real device : PLUGIN_NOT_INSTALLED"></a>real device : PLUGIN_NOT_INSTALLED</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Platform &#125; <span class="keyword">from</span> <span class="string">'ionic-angular'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AndroidPermissions &#125; <span class="keyword">from</span> <span class="string">'@ionic-native/android-permissions'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; SpeechRecognition &#125; <span class="keyword">from</span> <span class="string">'@ionic-native/speech-recognition'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.platform.ready().then(<span class="function">(<span class="params">readySource</span>) =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">'Platform ready from'</span>+readySource);</span><br><span class="line">    <span class="comment">// Platform now ready, execute any required native code</span></span><br><span class="line">          </span><br><span class="line">    <span class="keyword">this</span>.androidPermissions.checkPermission(<span class="keyword">this</span>.androidPermissions.PERMISSION.RECORD_AUDIO).then(</span><br><span class="line">        success =&gt; alert(<span class="string">'Permission granted'</span>),</span><br><span class="line">        err =&gt; alert(<span class="string">'Permission not granted'</span>)</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">this</span>.speechRecognition.isRecognitionAvailable()</span><br><span class="line">        .then(<span class="function">(<span class="params">available: boolean</span>) =&gt;</span> alert(<span class="string">'1?'</span>+available))</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">this</span>.speechRecognition.startListening(&#123;&#125;)</span><br><span class="line">        .subscribe(</span><br><span class="line">            (matches: <span class="built_in">Array</span>&lt;string&gt;) =&gt; alert(<span class="string">'2?'</span>+matches),</span><br><span class="line">            (onerror) =&gt; alert(<span class="string">'error:'</span>+ onerror)</span><br><span class="line">        )      </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="實測裝置"><a href="#實測裝置" class="headerlink" title="實測裝置"></a>實測裝置</h3><ul>
+<li>device要開啟開發人員模式 與 usb debug 與 wifi(與server同網域)</li>
+</ul>
+<h3 id="app-nav-tab-view"><a href="#app-nav-tab-view" class="headerlink" title="app nav tab view"></a>app nav tab view</h3><p>app 本身有一預設的nav<br>tab也算一個nav (但tabs不是)</p>
+<h3 id="ion-tab"><a href="#ion-tab" class="headerlink" title="ion-tab"></a>ion-tab</h3><p>本身算一個可nav元件,url名稱為tag上的<strong>tab-Title</strong>,不設定會變tab-0</p>
+<h3 id="IonicPage"><a href="#IonicPage" class="headerlink" title="IonicPage"></a>IonicPage</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">@IonicPage(&#123;</span><br><span class="line">  name: <span class="string">'my-page'</span>,      <span class="comment">//ion-nav [root]=...對應的字串 (預設為元件名稱)</span></span><br><span class="line">  segment: <span class="string">'some-path'</span>  <span class="comment">//僅url顯示 與程式碼沒有連結 (預設為檔名)</span></span><br><span class="line"></span><br><span class="line">  defaultHistory: [<span class="string">'my-page'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//linkpage.module.ts 與 linkpage.ts 檔名需一致,其檔名為預設的segment字串</span></span><br></pre></td></tr></table></figure>
+<h3 id="route"><a href="#route" class="headerlink" title="route"></a>route</h3><p>IonicPage與Componet類似,大概差在deeplink,但好像有bug</p>
+<ul>
+<li>IonicPage可用其component name的字串做nav (name:? segment:?)</li>
+<li>tab url路徑的目錄名稱是來自”tabComponentFilename/ion-tab的tabTitle/ComponentFilename”</li>
+<li>IonicPage url路徑名稱覆寫</li>
+<li>url還是會穿插一些內部的nav路徑 像是nav/n4/tabs/t0 <a href="https://github.com/ionic-team/ionic/releases" target="_blank" rel="noopener">更新到3.6可以解決</a></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//ionic-app-scripts</span></span><br><span class="line">cd node_modules/@ionic/app-scripts/dist</span><br><span class="line"></span><br><span class="line">providers: [</span><br><span class="line">    &#123;<span class="attr">provide</span>: APP_BASE_HREF, <span class="attr">useValue</span>: <span class="string">"/"</span>&#125;,</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">locationStrategy: <span class="string">'path'</span><span class="comment">//url上不使用#,但server要配合導向index.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//page stack會保留,back不會reload,但url不會跳到pageurl</span></span><br><span class="line">nav.push(<span class="string">'...'</span>)</span><br><span class="line"><span class="comment">//每次back都會reload,但url會跳到pageurl</span></span><br><span class="line">nav.setRoot(<span class="string">'...'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="調整slide"><a href="#調整slide" class="headerlink" title="調整slide"></a>調整slide</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.scroll-content</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slide-zoom</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">overflow-y</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/npm/toollist.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -826,961 +1634,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/css/02-Basic.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/css/02-Basic.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-17T12:01:24+08:00">
-                2017-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <style>
-div.test div{
-  margin:8px;
-  padding:5px;
-  border:.5px solid red;
-}
-</style>
-
-<h2 id="前提知識"><a href="#前提知識" class="headerlink" title="前提知識"></a>前提知識</h2><h3 id="單位"><a href="#單位" class="headerlink" title="單位"></a>單位</h3><h4 id="元件寬高"><a href="#元件寬高" class="headerlink" title="元件寬高"></a>元件寬高</h4><ul>
-<li>px</li>
-<li>cm</li>
-<li>% 容器空間的百分比</li>
-<li>vh/vw/vmin/vmax : 可視空間的百分比。與%不同在於能撐開空白元件，類似px的行為。</li>
-<li>em : 上層元件字體的倍數</li>
-<li><strong>rem</strong> : html元件字體的倍數</li>
-</ul>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
-<li>fr : fraction.用於grid-template</li>
-</ul>
-<h2 id="控制內容物排版"><a href="#控制內容物排版" class="headerlink" title="控制內容物排版"></a>控制內容物排版</h2><ul>
-<li>align-items：center (垂直置中)</li>
-<li>justify-content : center(水平置中)</li>
-<li>text-align:justify 使全形半形混用的文章頭尾對齊(左右平衡)</li>
-</ul>
-<h2 id="文字斷行"><a href="#文字斷行" class="headerlink" title="文字斷行"></a>文字斷行</h2><p>word-wrap跟word-break似乎有些重疊…</p>
-<h3 id="word-wrap-單詞內斷行-同overflow-wrap"><a href="#word-wrap-單詞內斷行-同overflow-wrap" class="headerlink" title="word-wrap 單詞內斷行 (同overflow-wrap)"></a>word-wrap 單詞內斷行 (同overflow-wrap)</h3><ul>
-<li><p>normal</p>
-<div class="test"><br><div style="width:50px">aaaaaaaaa 123456789 中中中中中</div><br></div>
-</li>
-<li><p><strong>break-word 確保一定斷行,盡量保持行的開頭為單詞的開頭</strong></p>
-<div class="test"><br><div style="width:50px;word-wrap:break-word">aaaaaaaaa 123456789 中中中中中</div><br></div>
-
-</li>
-</ul>
-<h3 id="word-break-單詞內斷行策略"><a href="#word-break-單詞內斷行策略" class="headerlink" title="word-break 單詞內斷行策略"></a>word-break 單詞內斷行策略</h3><ul>
-<li><p>keep-all 不確保一定斷行,盡量保持行的開頭為單詞的開頭 (斷在符號)</p>
-<div class="test"><br><div style="width:50px;word-break:keep-all;">aaaaaaaaa 123456789 中中中中中</div><br></div>
-</li>
-<li><p>break-all 確保一定斷行,在任意字元都可以斷</p>
-<div class="test"><br><div style="width:50px;word-wrap:break-word;word-break:break-all;">aaaaaaaaa 123456789 中中中中中</div><br></div>
-
-</li>
-</ul>
-<p><strong>MacDown無法順利顯示確實的效果</strong></p>
-<h2 id="文字column排版"><a href="#文字column排版" class="headerlink" title="文字column排版"></a>文字column排版</h2><p><a href="http://zh-tw.learnlayout.com/column.html" target="_blank" rel="noopener">column</a></p>
-<h2 id="pistion"><a href="#pistion" class="headerlink" title="pistion"></a>pistion</h2><ul>
-<li>static : 預設值，位置照版面推移</li>
-<li>fixed : 相對於瀏覽器視窗位置，不佔版面</li>
-<li>relative : 相對於當下位置，仍佔原版面空間</li>
-<li>absolute : 相對於relative parent(往上搜尋)，不佔版面</li>
-</ul>
-<p>定位都用(top/bottom)與（left/right)，其值為與其相對物件的距離</p>
-<h2 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a>overflow</h2><p>當容器有指定寬度時,就表示容器不會隨內容物縮放空間,就可能造成內容物溢出,overflow則是其對策<br><a href="http://www.eion.com.tw/Blogger/?Pid=1158" target="_blank" rel="noopener">eion.com.tw</a></p>
-<ul>
-<li>hidden / visible / scroll</li>
-</ul>
-<h2 id="media-query"><a href="#media-query" class="headerlink" title="@media query"></a>@media query</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">//括弧中條件成立才apply 即width不超過640</span><br><span class="line">@<span class="keyword">media</span> screen and (max-width:<span class="number">640px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">nav</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//這種方式載入的css會與link載入的css會有時間差,畫面可能會閃爍</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"style.css"</span> screen and ...;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"default.css"</span> /&gt;</span></span><br><span class="line">//screen handheld all ...</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"print.css"</span> <span class="attr">media</span>=<span class="string">"print"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">media</span>=<span class="string">"screen and (min-width: 400px) and (max-width: 700px)"</span> <span class="attr">href</span>=<span class="string">"example.css"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://zh-tw.learnlayout.com/media-queries.html" target="_blank" rel="noopener">ref</a></p>
-<h2 id="viewport"><a href="#viewport" class="headerlink" title="@viewport"></a>@viewport</h2><ul>
-<li><p>手持裝置瀏覽器有些不同於桌上型的特性,<strong>通常是盡力將整個網頁呈現</strong></p>
-<ul>
-<li>內部有一個虛擬的viewport width(不是手機解析度)與scale值做自動調整</li>
-<li><strong>viewport width指的是可視寬度</strong>,即螢幕寬度對應的部分,scroll出去的不算</li>
-<li>initial-scale的優先權比設定viewport width大(<strong>實驗:設了scale,width就沒作用了</strong>)</li>
-<li>initial-scale=0.5其實是把viewport width*2.</li>
-<li><strong>不設initial-scale再將body.width:100%取出document.body.offsetWidth即為viewport width</strong></li>
-</ul>
-</li>
-<li><p>因為這樣的特性使得畫面被縮小,不容易瀏覽與點擊操作,故做響應式設計(RWD)時會將scale設為1,讓layout能透過css的media query做調整,而不是直接被scale</p>
-</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">viewport</span> &#123;</span><br><span class="line">    <span class="selector-tag">width</span>: <span class="selector-tag">device-width</span>;</span><br><span class="line">    <span class="comment">/*width: 1024;*/</span></span><br><span class="line">    <span class="selector-tag">initial-scale</span>: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span>&gt;</span></span><br><span class="line">//關閉畫面縮放</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"</span>&gt;</span></span><br><span class="line">css file:@viewport&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/JavaScript DOM Crash Course.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/javascript/JavaScript DOM Crash Course.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-17T10:18:27+08:00">
-                2017-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.youtube.com/embed/0ik6X4DJKCc" target="_blank" rel="noopener">JavaScript DOM Crash Course</a></p>
-<h2 id="選取元件"><a href="#選取元件" class="headerlink" title="選取元件"></a>選取元件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"input[type='submit']"</span>)</span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">".myclass"</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="innerText與textContent的差別"><a href="#innerText與textContent的差別" class="headerlink" title="innerText與textContent的差別"></a>innerText與textContent的差別</h2><p>innerText能反應內元素display:none的變化,textContent僅是列出text node.</p>
-<h2 id="Node-Element-HTMLElement"><a href="#Node-Element-HTMLElement" class="headerlink" title="Node/Element/HTMLElement"></a>Node/Element/HTMLElement</h2><p>之間是繼承關係</p>
-<ul>
-<li>Node 在分類中包含TextNode</li>
-<li>Element 可以看作tag</li>
-<li>HTMLElement 即Element再包裹一層HTML特性,相對表示也有XMLElement</li>
-</ul>
-<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">el=<span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">el=<span class="built_in">document</span>.createTextNode(<span class="string">'some text'</span>);</span><br><span class="line"></span><br><span class="line">el.className = <span class="string">'myclass'</span>;</span><br><span class="line">el.style.border = <span class="string">"1px solid red"</span>;</span><br><span class="line">el.setAttribute(<span class="string">'type'</span>, <span class="string">'none'</span>);</span><br><span class="line"></span><br><span class="line">el.addElementListener(<span class="string">'click'</span>, eventhandle);</span><br></pre></td></tr></table></figure>
-<h2 id="event-type"><a href="#event-type" class="headerlink" title="event type"></a>event type</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">click dblclick</span><br><span class="line">mouse~ down up enter leave over out move</span><br><span class="line">key~ down up press</span><br><span class="line">foucs blur</span><br><span class="line">cut paste</span><br><span class="line">input change submit</span><br></pre></td></tr></table></figure>
-<h2 id="event"><a href="#event" class="headerlink" title="event"></a>event</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">eventhandle</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line"> e.target</span><br><span class="line"> e.preventDefault() <span class="comment">//停止預設事件對應</span></span><br><span class="line"></span><br><span class="line"> e.clientX <span class="comment">//滑鼠位置 相對於瀏覽器視窗</span></span><br><span class="line"> e.offsetX <span class="comment">//滑鼠位置 相對於e.target</span></span><br><span class="line"></span><br><span class="line"> e.altKey</span><br><span class="line"> e.ctrlKey</span><br><span class="line"> e.shiftKey</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/css/03-Layout.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/css/03-Layout.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-16T22:24:53+08:00">
-                2017-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前提知識"><a href="#前提知識" class="headerlink" title="前提知識"></a>前提知識</h2><h3 id="Element-Box"><a href="#Element-Box" class="headerlink" title="Element (Box)"></a>Element (Box)</h3><p>一個元件的完整空間由margin border padding content組成</p>
-<ul>
-<li>content 內容物</li>
-<li>border 邊線</li>
-<li>padding content與border的間距</li>
-<li>margin 元件間的間距 兩元件取margin大者做為間距 <strong>常做為元件垂直置中的手段</strong></li>
-<li>margin可以只撐開外容器 padding可以撐開自身(進而影響外容器) <strong>但在inline元素中兩者的margin-top/margin-bottom都強制為零(除非是inline-block)</strong></li>
-<li>補充<ul>
-<li>block元件間的margin是border to border,但inline元件是content to content(不是很重要)</li>
-<li>參數順序：上下 左右</li>
-</ul>
-</li>
-</ul>
-<h3 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h3><p>決定width/height的組成成員。以border決定空間的border-box顯得更直覺。</p>
-<ul>
-<li>content-box 預設值</li>
-<li>border-box (border+padding+content)</li>
-</ul>
-<h3 id="inline-block"><a href="#inline-block" class="headerlink" title="inline / block"></a>inline / block</h3><ul>
-<li>inline 行內元素</li>
-<li>block 換行(列)元素,<strong>預設有左右撐開佔滿的特性(就算沒有內容)</strong></li>
-<li>inline-block 對外是inline,但對內是block(可以被撐開,外容器空間會改變)</li>
-<li>none 不顯示且不佔版面(visiability:hidden會佔版面)</li>
-</ul>
-<style>
-div.test div{
-  margin:8px;
-  padding:5px;
-  border:.5px solid red;
-}
-</style>
-
-<div class="test"><br> <div style="display:inline;margin:100px;">inline</div><br> <div style="display:block">block</div><br></div>
-
-
-<h3 id="容器概念"><a href="#容器概念" class="headerlink" title="容器概念"></a>容器概念</h3><ul>
-<li>容器 wrapper / container</li>
-<li>內容物 item</li>
-</ul>
-<p>元件的排列從視覺上像是挖空往內塞,但實際上是一層一層<strong>‘往上’</strong>推疊. (所以處理不當時內容物才會暴露到容器外)</p>
-<p>設計容器有兩種角度(以高度舉例)</p>
-<ul>
-<li>容器有確切的高度或比例<ul>
-<li>由外層向內層定義</li>
-</ul>
-</li>
-<li>內容物有確切高度<ul>
-<li>由內層向外層定義</li>
-<li><strong>容器最後的大小是從內向外撐開的</strong></li>
-</ul>
-</li>
-</ul>
-<p>容器一但指定了height(px或%或其他),就不會被內容物撐開<br>容器若沒有指定height,內容物用%時就會參考到更上層有指定height的容器作分子</p>
-<p>沒有指定height的情況通常是希望瀏覽器內部能自動排版位置與空間,像是用了display:flex,但層層的容器中終究會遇到要指定寬高的內容物,通常會想設定容器的n%,但卻發現容器被撐破了.</p>
-<p>以下是一個使wrapper撐破與修復的範例. 修復的方式是在要設定寬高的層中加入absolute,並在外容器加上relative對應,這算是relative另一個很大的用處.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'wrapper'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flowbox"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box2"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"fullbox"</span>&gt;</span>fullbox<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>:border-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wrapper</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: gray;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.flowbox</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">display</span>:flex;</span><br><span class="line">  <span class="attribute">flex-flow</span>:column;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">2px</span> solid blue;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.box1</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">2px</span> solid green;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.box2</span>&#123; <span class="comment">//沒有指定height</span></span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">2px</span> solid green;</span><br><span class="line">    <span class="attribute">flex</span>:<span class="number">1</span>;</span><br><span class="line">    <span class="comment">/* position:relative; //fix */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fullbox</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100%</span>;  <span class="comment">//要參考box2的height</span></span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">  <span class="comment">/* position:absolute; //fix */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="float-left-right"><a href="#float-left-right" class="headerlink" title="float:left/right"></a>float:left/right</h3><p>float的概念是將元件A抽離原本的位置,讓給下一個元件B,而自身則轉移到另一個xy相近但z軸更高的容器上,造成AB外框重疊,但content不重疊的特性,也就是B元件的內容會避開A元件,常見的應用就是文(B)繞圖(A)。<br>另一種應用就是拿來做選單,只想取其使元件水平排列的特性,但不想造成B被A覆蓋的情形,就會在B做clear的動作,使B整個移動出float容器的遮擋。這應該算過渡時期的用法，CSS3後多用flex做選單。</p>
-<ul>
-<li>透過float可將block元件的流動調整為水平的</li>
-<li>float可以自動換行</li>
-</ul>
-<h2 id="自適應式Layout-RWD"><a href="#自適應式Layout-RWD" class="headerlink" title="自適應式Layout (RWD)"></a>自適應式Layout (RWD)</h2><h3 id="display-flex"><a href="#display-flex" class="headerlink" title="display:flex"></a>display:flex</h3><h3 id="flex-wrapper"><a href="#flex-wrapper" class="headerlink" title="flex (wrapper)"></a>flex (wrapper)</h3><ul>
-<li>flex-flow : 流動方向(main-axis) <strong>row(水平流)</strong> colume</li>
-<li>flex-wrap : 換行 nowrap wrap</li>
-<li>justify-content : 配位(main-axis) flex-start flex-end center space-between space-around</li>
-<li>align-content : 配位(cross-axis) flex-start flex-end center space-between space-around stretch</li>
-<li>align-items: 對齊(cross-axis) flex-start flex-end center baseline stretch</li>
-</ul>
-<h3 id="flex-item"><a href="#flex-item" class="headerlink" title="flex (item)"></a>flex (item)</h3><ul>
-<li>flex-grow : 空間權重(有設定時容器才會撐開,一律只能左右撐開)</li>
-<li>flex-shrink : 空間權重(當wrapper被縮的比固定px還小時)</li>
-<li>flex-basis : 最小空間(px，通常設auto，設0會變成能放不能縮)</li>
-<li>flex : 結合上述三者一起設定</li>
-<li>align-self : 脫離wrapper自己對齊</li>
-<li>order : 調整順序 數字越小越前</li>
-</ul>
-<hr>
-<h3 id="display-grid"><a href="#display-grid" class="headerlink" title="display:grid"></a>display:grid</h3><h3 id="grid-wrapper"><a href="#grid-wrapper" class="headerlink" title="grid (wrapper)"></a>grid (wrapper)</h3><ul>
-<li><strong>grid-template-columns(水平流)</strong> grid-template-rows<br><br>分別指定一個CxR的grid line規範,line可以命名,單位 px fr % atuo,函數repeat</li>
-<li>grid-template-areas<br><br>定義區塊area name</li>
-<li>grid-gap : 間隔</li>
-<li>justify-content align-content justify-items</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.grid-wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: [gc1] <span class="number">100px</span> [gc2] <span class="number">1</span>fr [gc3] <span class="number">2</span>fr [gc-end];</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: [gr1] <span class="number">100px</span> [gr2] auto [gr-end];</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: <span class="string">"r1c1 r1c2"</span></span><br><span class="line">                       <span class="string">"r2c1 r2c2"</span></span><br><span class="line">                       <span class="string">"footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>flex裡的item空間使用％時會對應到body甚至完全無法對應 <br><br>必須在item裡做position:absolute,外容器做position:relative <br><br>讓item重新定位到reference parent</p>
-</blockquote>
-<h3 id="grid-item"><a href="#grid-item" class="headerlink" title="grid (item)"></a>grid (item)</h3><ul>
-<li>grid-column : 以數字或名稱指定column的start/end</li>
-<li>grid-row : 以數字或名稱指定row的start/end</li>
-<li>grid-area : 以area name指定區塊</li>
-<li>justify-self align-self</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.grid-item</span>&#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: gc2 / gc-end;</span><br><span class="line">  <span class="attribute">grid-row</span>: gr2 / gr-end;</span><br><span class="line">  <span class="attribute">grid-area</span>: footer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<script>
-var x=document.getElementById('xxx');
-x.innerText='哈哈';
-</script>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/WorkingNotes/diary.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/WorkingNotes/diary.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-14T20:38:46+08:00">
-                2017-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Resizer"><a href="#Resizer" class="headerlink" title="Resizer"></a>Resizer</h1><p>一個看似單純的東西竟然寫了整整兩天,四個版本</p>
-<ul>
-<li><p>原本用每次move的delta推動,但體驗上會出現cursor與resizer產生距離,必須用drag start event與move event的差,而非每次move event之間的差</p>
-</li>
-<li><p>多級運作時沒辦法推動下一級,與推動後要定位</p>
-</li>
-<li><p>原本用px運作,忘了resize擴大時會無法填滿</p>
-</li>
-</ul>
-<hr>
-<h1 id="載入CSS時機"><a href="#載入CSS時機" class="headerlink" title="載入CSS時機"></a>載入CSS時機</h1><p>以angular只有單一html入口的情況,如果在A/B兩網址(非SPA)用上不同的‘body bgcolor?</p>
-<ul>
-<li>非原生存在於.html的style的插入或變更都可能使畫面抖動</li>
-<li>最後只能從server端吐出對應好的css style</li>
-</ul>
-<blockquote>
-<p>可以嘗試用binding，<link rel="..." href="{BOOTCSS}">讓server吐不同的href</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link id=&quot;theme&quot; rel=&apos;stylesheet&apos; href=&apos;assets/demo.css&apos;&gt;</span><br><span class="line">//---</span><br><span class="line">    $(&apos;body&apos;).addClass(&apos;fullbody&apos;)</span><br><span class="line">//--</span><br><span class="line">    var style = document.createElement(&apos;link&apos;);</span><br><span class="line">    style.setAttribute(&apos;rel&apos;, &apos;stylesheet&apos;);</span><br><span class="line">    style.setAttribute(&apos;href&apos;, &apos;assets/demo.css&apos;);</span><br><span class="line">    document.querySelector(&apos;head&apos;).appendChild(style);</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="實現方式太多"><a href="#實現方式太多" class="headerlink" title="實現方式太多"></a>實現方式太多</h1><p>驚覺常常進入放空狀態，不知從哪下手比較正規</p>
-<hr>
-<h1 id="bootstrap"><a href="#bootstrap" class="headerlink" title="bootstrap"></a>bootstrap</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install bootstrap@3 --save</span><br><span class="line">或</span><br><span class="line">npm install bootstrap-sass@3 --save</span><br><span class="line"></span><br><span class="line">        &quot;../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss&quot;</span><br><span class="line">        &quot;../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$icon-font-path: &apos;../node_modules/bootstrap-sass/assets/fonts/bootstrap/&apos;; //fix path error</span><br><span class="line"></span><br><span class="line">@import &quot;assets/variables&quot;;	//a copy to override bootstrap variables</span><br><span class="line">@import &quot;../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap&quot;;</span><br></pre></td></tr></table></figure>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/WorkingNotes/layout-css.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/WorkingNotes/layout-css.html" itemprop="url">layout css</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-12T20:22:00+08:00">
-                2017-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="佔滿整頁的設計"><a href="#佔滿整頁的設計" class="headerlink" title="佔滿整頁的設計"></a>佔滿整頁的設計</h1><ul>
-<li>body height:100%</li>
-<li>body padding-bottom:?? (非百分比的高度和,手動計算)</li>
-</ul>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/WorkingNotes/starbook.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/WorkingNotes/starbook.html" itemprop="url">__</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-09-11T14:06:56+08:00">
-                2017-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1+2=3 \<br>1+3=4</p>
-<h4 id="以下何者大於10"><a href="#以下何者大於10" class="headerlink" title="?以下何者大於10?"></a>?以下何者大於10?</h4><ul>
-<li>敘述1</li>
-<li>敘述2</li>
-</ul>
-<ol>
-<li>=14</li>
-<li>1</li>
-<li>-3</li>
-</ol>
-<p>解題</p>
-<hr>
-<p>//<a href="https://translate.google.com.tw/translate_a/single?client=t&amp;sl=en&amp;tl=zh-TW&amp;dt=t&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=who%20are%20you" target="_blank" rel="noopener">https://translate.google.com.tw/translate_a/single?client=t&amp;sl=en&amp;tl=zh-TW&amp;dt=t&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=who%20are%20you</a><br>//<a href="https://ctrlq.org/code/19899-google-translate-languages#languages" target="_blank" rel="noopener">https://ctrlq.org/code/19899-google-translate-languages#languages</a><br>//<a href="https://translate.google.com/translate_tts?ie=UTF-8&amp;client=tw-ob&amp;tl=zh-TW&amp;q=測試" target="_blank" rel="noopener">https://translate.google.com/translate_tts?ie=UTF-8&amp;client=tw-ob&amp;tl=zh-TW&amp;q=測試</a></p>
-<p>console.clear();</p>
-<p>var sourceLang=”zh-TW”<br>var targetLang=”en”<br>var sourceText=”我愛妳”<br>  var url = “<a href="https://translate.googleapis.com/translate_a/single?client=gtx&amp;sl=&quot;" target="_blank" rel="noopener">https://translate.googleapis.com/translate_a/single?client=gtx&amp;sl=&quot;</a> </p>
-<pre><code>+ sourceLang + &quot;&amp;tl=&quot; + targetLang + &quot;&amp;dt=t&amp;q=&quot; + encodeURI(sourceText);
-</code></pre><p> // var result = JSON.parse(fetch(url).getContentText());</p>
-<p>//console.log(result);</p>
-<p>fetch(url).then(res=&gt;{<br>//   console.log(res.json())<br>      res.json().then(function(data) {<br>      console.log(data);<br>    });<br>})</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1826,7 +1684,7 @@ x.innerText='哈哈';
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

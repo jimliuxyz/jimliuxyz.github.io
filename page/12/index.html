@@ -288,6 +288,799 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/RxJS.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/RxJS.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-15T21:20:54+08:00">
+                2017-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://blog.techbridge.cc/2016/05/28/reactive-programming-intro-by-rxjs/" target="_blank" rel="noopener">http://blog.techbridge.cc/2016/05/28/reactive-programming-intro-by-rxjs/</a><br><a href="https://segmentfault.com/a/1190000005051034" target="_blank" rel="noopener">https://segmentfault.com/a/1190000005051034</a></p>
+<hr>
+<p>Observable算是一種設計邏輯,一般函數呼叫的運作都是同步的,偶爾會希望它是異步的,<br>所以會用setTimeout的方式進行異步,但setTimeout在情境意義上比較缺乏,Observable就像加入情境意義的setTimeout</p>
+<p>通常的設計都有’提供服務者’與’被服務者’,就像server與client的關係,溝通上可以用push與pull來區別<br>pull(拉取) client主動 向 server取得資料<br>push(推送) server主動 向 client推送資料</p>
+<p>其中pull又稱作’輪詢’,即定時詢問之意,其資料的即時性掌握在client的主動程度;<br>push則類似youtube的頻道訂閱(subscribe),若有訂閱,在頻道更新時會由server主動推送通知</p>
+<p>兩者各有所長,例如pull適合應用在’取樣’大量事件,或有些較低階的語言不易實行push<br>push最大的優點就是即時,又有效率,但也有些情境讓push很為難,像是上述的大量事件,要每個事件都<br>即時傳達是不可能,也可能造成server超過負荷</p>
+<p>js最常用到的push方式就是button event,透過addListener向event emitter註冊一個event listener<br>觀念轉到RxJS上,event emitter就是Observable,event listener就是Observer</p>
+<hr>
+<p>Observable<br>基本上透過Rx.Observable.create建立,或從第三方應用中取得</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/angular2/decorators - Pipe.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/angular2/decorators - Pipe.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-14T16:31:45+08:00">
+                2017-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>功能形容:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; birthday | mydate:fmt &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>輸出 April 15, 1988 而非 Fri Apr 15 1988 00:00:00 GMT-0700<br>其中的mydate就是一個pipe元件</p>
+<hr>
+<p>又分pure跟impure<br>區別在pure是在birthday更動時運作,impure則在任何的component change detection cycle運作<br>是需求選用</p>
+<hr>
+<p>範例<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">@Pipe(&#123;</span><br><span class="line">  name: <span class="string">'mydate'</span>,</span><br><span class="line">  pure: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDatePipe</span> <span class="title">implements</span> <span class="title">PipeTransform</span> </span>&#123;</span><br><span class="line">  transform(value: number, <span class="attr">fmt</span>: string): string &#123;</span><br><span class="line">    <span class="keyword">return</span> ...;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/00.others/server rendering.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/00.others/server rendering.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-13T18:13:22+08:00">
+                2017-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>意指瀏覽器上顯示的內容是直接從伺服器產生 直接的嵌在html中</p>
+<p>相反的則為client rendering,顯示內容為client端執行js後產生,server在只負責產生一個基本能使js運作的網頁與data api讓client js查詢</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/database/mongoDB/readme.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/database/mongoDB/readme.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-06T20:05:58+08:00">
+                2017-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://ithelp.ithome.com.tw/articles/10165786" target="_blank" rel="noopener">http://ithelp.ithome.com.tw/articles/10165786</a><br><a href="http://mongodbcanred.blogspot.tw/2015/01/mongodb.html" target="_blank" rel="noopener">http://mongodbcanred.blogspot.tw/2015/01/mongodb.html</a><br><a href="http://mongodbcanred.blogspot.tw/2015/01/mongodbinsert-document-remove-document.html" target="_blank" rel="noopener">http://mongodbcanred.blogspot.tw/2015/01/mongodbinsert-document-remove-document.html</a><br><a href="http://ithelp.ithome.com.tw/articles/10166066?sc=pt" target="_blank" rel="noopener">http://ithelp.ithome.com.tw/articles/10166066?sc=pt</a></p>
+<hr>
+<p>RDBMS到NoSQL</p>
+<p>DB-&gt;DB<br>TABLE-&gt;COLLECTION : 可以不用事先定義欄位 (稱為Schema-Free)<br>RECORD/ROW-&gt;DOCUMENT : COLLECTION下的每筆DOC允許有不等數量的欄位<br>Column-&gt;Field<br>PK-&gt;_id</p>
+<p>DOC為JSON格式(儲存的格式為BSON,即binary)</p>
+<p>可透過 subcollections來組織資料庫,例如IT部門下有兩個子部門ERP跟MIS,就可以分別建成三個collection<br>IT / IT.ERP / IT.MIS</p>
+<hr>
+<p>選取或建立DB<br>use mydb</p>
+<p>顯示目前操作的DB(db相當於指向目前使用的DB)<br>db</p>
+<p>顯示所有DB(至少含有一個collection的DB才會被顯示)<br>show dbs</p>
+<p>刪除DB<br>db.dropDatabase()</p>
+<hr>
+<p>建立COLLECTION<br>db.createCollection(NAME, OPTIONS)</p>
+<p>(直接用insert也可以用預設的OPTIONS建立COLLECTION)</p>
+<p>db.createCollection(“mycol”)<br>db.mycol.drop()<br>show collections</p>
+<hr>
+<p>插入DOC<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.collection.insert(&lt;documents&gt;,&lt;option&gt;)</span><br><span class="line"></span><br><span class="line">db.mycol.insert(&#123;</span><br><span class="line">   title: 'MongoDB Overview', </span><br><span class="line">   description: 'MongoDB is no sql database',</span><br><span class="line">   tags: ['mongodb', 'database', 'NoSQL'],</span><br><span class="line">   likes: 100</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><option> : 資料寫入確保<br>writeConcern:寫入確保等級設定<br>               w:-1     (嚴謹性：非常低)；發生資料庫寫入錯誤一律不回傳<br>               w:0      (嚴謹性：低)       ；只可以偵測到網路錯誤<br>               w:1      (嚴謹性：中 預設等級)<br>               w:1,j:1  (嚴謹性：高)       ；在寫入日誌後才回傳處理過程。<br>               w:2      (嚴謹性： 高 )     ；這個級別只在replica set的部署模式下生效</option></p>
+<p>db.collection.insert({name:’jim’},{writeConcern:{w:1,j:1}})</p>
+<hr>
+<p>更新DOC (update:僅更新值) db.COLLECTION_NAME.update(WHERE, UPDATED_DATA, OPTIONS)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.update(&#123;<span class="string">'title'</span>:<span class="string">'MongoDB Overview'</span>&#125;,&#123;<span class="attr">$set</span>:&#123;<span class="string">'title'</span>:<span class="string">'New MongoDB Tutorial'</span>&#125;&#125;,&#123;<span class="attr">multi</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>預設僅能更新單一doc</p>
+<p>$set : 設定key的value<br>$unset : 刪除key<br>$inc : 累加</p>
+<p>更新DOC (save:有_id時為’取代’doc,沒_id時相當於insert)</p>
+<p>刪除DOC<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.COLLECTION_NAME.remove(WHERE,justOne&lt;option&gt;)</span><br><span class="line">db.mycol.remove() <span class="comment">//刪除全部</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>查詢DOC (find/findOne)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.COLLECTION_NAME.find(WHERE).pretty()</span><br></pre></td></tr></table></figure></p>
+<p>用pretty()返回格式化內容</p>
+<p>WHERE:<br>where A = ‘ABC’ : {“A”:”ABC”}<br>where A &lt; 1 : {“A”:{$lt:1}}<br>lt lte<br>gt gte<br>ne<br>$in   (包含)<br>$nin (不包含)<br>$and   (和)<br>$or   (或)<br>$not (否)<br>$all 匹配所有指定內容才行(and) (key為陣列時)<br>$in 匹配一筆指定內容即可(or) (key為陣列時)<br>$size (node數量) (key為陣列時)<br>$type 匹配資料型態<br>$elemMatch 進入sub doc匹配<br>$slice 取陣列的部分元素 (稍微複雜,要用例子驗證一下行為)</p>
+<p>OR: (預設為AND)<br>A=1 and (B=2 or C=3)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;&#123;<span class="string">"A"</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">$or</span>:[&#123;<span class="string">"B"</span>:<span class="number">2</span>&#125;,&#123;<span class="string">"C"</span>:<span class="number">3</span>&#125;]&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>key:value區分大小寫,可以用正規表示法(但速度比較慢)<br>db.mycol.find({name:/Russell/i})</p>
+<hr>
+<p>投影 (Projection) : 僅查詢DOC的部分資料 (1:顯示 0:不顯示)(_id預設為顯示)<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find(&#123;&#125;,&#123;<span class="string">"title"</span>:<span class="number">1</span>,<span class="attr">_id</span>:<span class="number">0</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>限制DOC數量<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find(&#123;&#125;,&#123;<span class="string">"title"</span>:<span class="number">1</span>,<span class="attr">_id</span>:<span class="number">0</span>&#125;).limit(<span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
+<p>略過N個DOC<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find(&#123;&#125;,&#123;<span class="string">"title"</span>:<span class="number">1</span>,<span class="attr">_id</span>:<span class="number">0</span>&#125;).skip(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>取得DOC數量<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db.mycol.find().count()</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>Indexing</p>
+<hr>
+<p>Aggregation and Groups</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/seo/readme.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/seo/readme.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-06T14:04:41+08:00">
+                2017-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>title<br>meta keyword/description</p>
+<p>h1 / h2</p>
+<p>img-alt</p>
+<hr>
+<p>goggle trends</p>
+<hr>
+<p>robots.txt<br>規範搜尋引擎<br>$用來結尾,否則路徑後可能被視為*<br>指定Sitemap路徑</p>
+<hr>
+<p>sitemap.xml<br>主動提交sitemap給各大搜尋引擎,要求搜尋引擎建立檢索<br>內容包含各個url,及其更新頻率/日期/重要程度等</p>
+<p>其內容可靠軟體自動產生</p>
+<p><a href="http://www.google.com/webmasters" target="_blank" rel="noopener">http://www.google.com/webmasters</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/JQuery/05.AJAX.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/整理中/javascript/JQuery/05.AJAX.html" itemprop="url">__</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-04T14:50:59+08:00">
+                2017-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>$(‘#result’).load(‘url…’)</p>
+<p>$(‘#result’).load(‘url…’, function(respTxt, statusTxt, xhr){})<br>$.get(‘url…’, function(respTxt, statusTxt, xhr){})</p>
+<p>statusTxt為’success’或’error’</p>
+<p>load基本上與get相同,但會將get回的內容置於selector中</p>
+<p>load / get /getJSON</p>
+<hr>
+<p>$.ajax({<br>    method: ‘GET’,<br>    url: ‘’,<br>    dataType: ‘json’<br>}).done(function(data){})</p>
+<hr>
+<p>$.post(url, {title:’A’, body:’B’}).done(function(data){})</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/javascript/JQuery/03.dom manipulation.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -801,145 +1594,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/整理中/00.editor/atom/readme.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/整理中/00.editor/atom/readme.html" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-01T12:40:50+08:00">
-                2017-08-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>//js語法提示補全<br>atom-ternjs</p>
-<p>//git command support<br>git-plus</p>
-<p>//html標籤快打<br>emmet</p>
-<p>file-icons</p>
-<p>atom-live-server</p>
-<p>//標籤索引<br>todo</p>
-<p>minimap</p>
-<p>//顯示css顏色<br>pigments</p>
-<p>//語法檢查<br>linter</p>
-<p>//排版<br>atom-beautify</p>
-<p>//stack overflow搜尋<br>ask-stack</p>
-<p>//將與選取字串同樣的字串標示<br>highlight selected</p>
-<p>//git server<br>C:\Users\Jim\AppData\Local\atom\app-1.18.0\resources\app\node_modules\dugite\git\git.exe</p>
-<p>//git command<br>C:\Users\Jim\AppData\Local\atom\app-1.18.0\resources\app\node_modules\dugite\git\cmd\git.exe</p>
-<p>set PATH=%PATH%;C:\Users\Jim\AppData\Local\atom\app-1.18.0\resources\app\node_modules\dugite\git\cmd\</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -985,7 +1644,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

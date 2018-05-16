@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="S7HvkrH4R_HiKK7j675QXHEjbdWWQiVyrmMeDjXxZT8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="FinTeck支付行為詳解 EMVco 國際晶片卡組織 初期由EuroPay + MasterCard + Visa共組發佈信用卡代碼化(Tokenization)標準 也是HCE的核心架構  發卡組織(International Association) 由銀行共同成立 如VISA/MasterCard/JCB/中國銀聯本身不發行信用卡 算是提供支付網路/收單/清算 由其會員銀行(發卡機構或發卡">
+<meta property="og:type" content="article">
+<meta property="og:title" content="電子支付">
+<meta property="og:url" content="http://yoursite.com/home//Single/電子支付.html">
+<meta property="og:site_name" content="自用筆記">
+<meta property="og:description" content="FinTeck支付行為詳解 EMVco 國際晶片卡組織 初期由EuroPay + MasterCard + Visa共組發佈信用卡代碼化(Tokenization)標準 也是HCE的核心架構  發卡組織(International Association) 由銀行共同成立 如VISA/MasterCard/JCB/中國銀聯本身不發行信用卡 算是提供支付網路/收單/清算 由其會員銀行(發卡機構或發卡">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://slideplayer.com/4253771/14/images/16/Debit+Card+Online+POS+Authorisation+Flow+%28Domestic+%26+International%29.jpg">
+<meta property="og:image" content="https://s4.itho.me/sites/default/files/styles/picture_size_large/public/field/image/703-P29-960.png?itok=QVxCyWBA">
+<meta property="og:updated_time" content="2018-04-26T03:37:36.521Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="電子支付">
+<meta name="twitter:description" content="FinTeck支付行為詳解 EMVco 國際晶片卡組織 初期由EuroPay + MasterCard + Visa共組發佈信用卡代碼化(Tokenization)標準 也是HCE的核心架構  發卡組織(International Association) 由銀行共同成立 如VISA/MasterCard/JCB/中國銀聯本身不發行信用卡 算是提供支付網路/收單/清算 由其會員銀行(發卡機構或發卡">
+<meta name="twitter:image" content="http://slideplayer.com/4253771/14/images/16/Debit+Card+Online+POS+Authorisation+Flow+%28Domestic+%26+International%29.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/home//Single/電子支付.html"/>
+
+
+
+
+
+  <title>電子支付 | 自用筆記</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">自用筆記</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">自用筆記</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/電子支付.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">電子支付</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-24T15:30:30+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="FinTeck"><a href="#FinTeck" class="headerlink" title="FinTeck"></a>FinTeck</h1><p><a href="http://technews.tw/2017/06/15/mobile-wallet-issues/" target="_blank" rel="noopener">支付行為詳解</a></p>
+<h4 id="EMVco-國際晶片卡組織"><a href="#EMVco-國際晶片卡組織" class="headerlink" title="EMVco 國際晶片卡組織"></a>EMVco 國際晶片卡組織</h4><blockquote>
+<p>初期由EuroPay + MasterCard + Visa共組<br>發佈<code>信用卡代碼化(Tokenization)</code>標準 也是HCE的核心架構</p>
+</blockquote>
+<h4 id="發卡組織-International-Association"><a href="#發卡組織-International-Association" class="headerlink" title="發卡組織(International Association)"></a>發卡組織(International Association)</h4><blockquote>
+<p>由銀行共同成立 如VISA/MasterCard/JCB/中國銀聯<br>本身不發行信用卡 算是<code>提供支付網路/收單/清算</code> 由其會員銀行(<code>發卡機構</code>或<code>發卡銀行</code>)發卡<br>賺取跨國交易手續費</p>
+</blockquote>
+<h4 id="發卡機構-發卡銀行-Issuer"><a href="#發卡機構-發卡銀行-Issuer" class="headerlink" title="發卡機構(發卡銀行)(Issuer)"></a>發卡機構(發卡銀行)(Issuer)</h4><blockquote>
+<p>指實際發行信用卡的單位 通常是銀行<br>手續費約佔75%</p>
+</blockquote>
+<h4 id="特約商店"><a href="#特約商店" class="headerlink" title="特約商店"></a>特約商店</h4><blockquote>
+<p>即加入諸如VISA/MasterCard支付網路的商家<br>通常需支付2~3%的手續費給<code>收單機構</code>再分配給整個供應鏈</p>
+</blockquote>
+<h4 id="清算中心-跨行-Interbank-Card-Center-BKM"><a href="#清算中心-跨行-Interbank-Card-Center-BKM" class="headerlink" title="清算中心(跨行) Interbank Card Center(BKM)"></a>清算中心(跨行) Interbank Card Center(BKM)</h4><blockquote>
+<p>負責在<code>收單機構</code>與<code>發卡銀行</code>(跨行)間<code>整合、交換交易紀錄</code>的組織<br>如VISA/MasterCard/台灣的NCCC都能擔任此角色<br>手續費約佔2.5%</p>
+</blockquote>
+<h4 id="NCCC-National-Credit-Card-Center-of-R-O-C"><a href="#NCCC-National-Credit-Card-Center-of-R-O-C" class="headerlink" title="NCCC(National Credit Card Center of R.O.C.)"></a>NCCC(National Credit Card Center of R.O.C.)</h4><blockquote>
+<p>聯合信用卡處理中心<br>是中華民國一家處理信用卡交易的非營利組織<br>收單/清算 負責信用卡交易請款扣帳訊息的交換與傳送</p>
+</blockquote>
+<h4 id="收單機構-Acquirer"><a href="#收單機構-Acquirer" class="headerlink" title="收單機構(Acquirer)"></a>收單機構(Acquirer)</h4><blockquote>
+<p>刷卡機的提供者 通常是<code>發卡銀行</code><br>第三方支付通常要尋求收單機構配合 (第三方支付的角色在此)<br>手續費約佔22%</p>
+</blockquote>
+<h4 id="聯名卡-co-branded-credit-card"><a href="#聯名卡-co-branded-credit-card" class="headerlink" title="聯名卡(co-branded credit card)"></a>聯名卡(co-branded credit card)</h4><blockquote>
+<p>即信用卡 僅因與特定商家合作 刷卡能取得些許回饋</p>
+</blockquote>
+<h4 id="行動支付-線上"><a href="#行動支付-線上" class="headerlink" title="行動支付 線上"></a>行動支付 線上</h4><blockquote>
+<p>網路購物(線上)</p>
+</blockquote>
+<h4 id="行動支付-近端支付"><a href="#行動支付-近端支付" class="headerlink" title="行動支付 近端支付"></a>行動支付 近端支付</h4><blockquote>
+<p>超商NFC(線下) / 商店BarCode(線上)</p>
+</blockquote>
+<h4 id="NFC（Near-Field-Communication）"><a href="#NFC（Near-Field-Communication）" class="headerlink" title="NFC（Near Field Communication）"></a>NFC（Near Field Communication）</h4><blockquote>
+<p>近場傳輸</p>
+</blockquote>
+<h4 id="感應式讀卡機-NFC-Payment"><a href="#感應式讀卡機-NFC-Payment" class="headerlink" title="感應式讀卡機 (NFC Payment)"></a>感應式讀卡機 (NFC Payment)</h4><blockquote>
+<p>Visa Wave 與 Master PayPass<br>刷卡上限約超過3000需簽名</p>
+</blockquote>
+<h4 id="刷卡流程"><a href="#刷卡流程" class="headerlink" title="刷卡流程"></a>刷卡流程</h4><p><img src="http://slideplayer.com/4253771/14/images/16/Debit+Card+Online+POS+Authorisation+Flow+%28Domestic+%26+International%29.jpg" alt=""><br><img src="https://s4.itho.me/sites/default/files/styles/picture_size_large/public/field/image/703-P29-960.png?itok=QVxCyWBA" alt=""></p>
+<ul>
+<li>消費者(Cardholder)欲付1,000 商家(Merchant)進行交易</li>
+<li>傳給<code>收單機構(Acquirer)</code>並被抽25元</li>
+<li>若跨行需再透過<code>清算機構(BKM)</code> 並支付25的2%</li>
+<li>若跨國再透過<code>國際發卡組織(VISA/MasterCard...)</code> 並支付?</li>
+<li>最後支付25的75%給<code>發卡銀行(Issuer)</code></li>
+</ul>
+<h1 id="支付模式"><a href="#支付模式" class="headerlink" title="支付模式"></a>支付模式</h1><h4 id="TSM-Trusted-Service-Manager-信託服務管理平台"><a href="#TSM-Trusted-Service-Manager-信託服務管理平台" class="headerlink" title="TSM(Trusted Service Manager) 信託服務管理平台"></a>TSM(Trusted Service Manager) 信託服務管理平台</h4><ul>
+<li>須向電信公司申請將SIM卡換成USIM卡</li>
+<li>再向銀行臨櫃申請綁定信用卡</li>
+<li>優點:無需網路 USIM如同信用卡 硬體晶片加密(Secure Element)</li>
+<li>難以普及 淘汰</li>
+</ul>
+<h4 id="HCE-Host-based-Card-Emulation-主機卡模擬"><a href="#HCE-Host-based-Card-Emulation-主機卡模擬" class="headerlink" title="HCE(Host-based Card Emulation) 主機卡模擬"></a>HCE(Host-based Card Emulation) 主機卡模擬</h4><ul>
+<li>Apple/Sumsung/Google/t wallet+</li>
+<li>需預先取得真實卡號對應的token來進行交易</li>
+<li>與POS機之間通常以NFC交互token</li>
+<li>基本上由app主導支付機制 安全性由app控制(解鎖/密碼/指紋等)</li>
+<li>可短暫離線 但通常有安全機制 例如1小時內有效</li>
+</ul>
+<h4 id="BarCode"><a href="#BarCode" class="headerlink" title="BarCode"></a>BarCode</h4><ul>
+<li>Line/街口/支付寶AliPay/歐付寶AllPay改O’Pay(台灣)</li>
+<li>不需NFC</li>
+<li>可離線支付 但通常有安全機制 例如10分鐘內有效</li>
+</ul>
+<h1 id="HCE"><a href="#HCE" class="headerlink" title="HCE"></a>HCE</h1><p><a href="https://www.youtube.com/watch?v=NfoYg6MOXdQ" target="_blank" rel="noopener">流程</a></p>
+<blockquote>
+<p>以Tokenization技術認證持卡人 而不用將真實卡號透露給商家或其他組織<br>發卡銀行必須付手續費給Apple或Google 因其替代了信用卡進而促成交易</p>
+</blockquote>
+<h4 id="取得Token流程-Visa-Token"><a href="#取得Token流程-Visa-Token" class="headerlink" title="取得Token流程 (Visa Token)"></a>取得Token流程 (Visa Token)</h4><ol>
+<li>安裝app</li>
+<li>輸入信用卡號</li>
+<li>送向<code>Token Requestor</code>(即Apple或Google等app提供者)</li>
+<li>再轉向<code>TokenServiceProvider</code>(發卡組織 如MasterCard或Visa)產生Token</li>
+<li>最後將卡號與Token送到<code>發卡銀行</code></li>
+<li>發卡銀行主動傳送Token給app, app必須解出該token已達到認證 並將之前輸入的卡號刪除</li>
+</ol>
+<h4 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h4><ol>
+<li>傳送Token給<code>商家</code> 通常經由NFC/Bluetooth/BarCode/MST(磁條) </li>
+<li><code>商家</code>將Token傳給<code>收單機構</code>再傳給<code>清算機構</code></li>
+<li><code>清算機構</code>將Token傳給<code>TokenServiceProvider</code>做真實卡號的解碼 再回傳<code>Acquirer收單機構(發卡銀行)</code>與<code>NCCC(聯合信用卡處理中心/清算機構)</code></li>
+</ol>
+<h1 id="第三方支付"><a href="#第三方支付" class="headerlink" title="第三方支付"></a>第三方支付</h1><blockquote>
+<p>與行動支付的差別在於 第三方支付類似代理收單平台<br>提供一手交錢一手交貨的保障 向會員或購物平台收取手續費<br>通常需綁定信用卡 或儲值(或匯款) 建立一個money buffer 即電子錢包<br>相對於Tokenization技術 信用卡的安全是比較有疑慮的 故在台灣發展受限</p>
+</blockquote>
+<h4 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h4><ul>
+<li><p>付款情境1 : 在路邊購物 商家提供QRCode做為收費帳號的連結 買家掃描該QRCode進入付費頁面 決定付費金額 付費 (金額自己決定)</p>
+</li>
+<li><p>付款情境2 : 在便利商店 買家主動提供自己帳號的QRCode/BarCode做為付費帳號的連結 商家用掃條碼及完成付費 (金額商家POS機決定)</p>
+</li>
+</ul>
+<h1 id="電子票證"><a href="#電子票證" class="headerlink" title="電子票證"></a>電子票證</h1><blockquote>
+<p>儲值支付 雖同為第三方支付 但以<code>電子票證發行管理條例</code>來規範<br>悠遊卡(EasyCard)<br>一卡通(iPass)<br>iCash(統一集團)<br>happycash(遠東集團)</p>
+</blockquote>
+<h1 id=""><a href="#" class="headerlink" title="???"></a>???</h1><h4 id="掃碼式"><a href="#掃碼式" class="headerlink" title="掃碼式"></a>掃碼式</h4><h4 id="接觸式"><a href="#接觸式" class="headerlink" title="接觸式"></a>接觸式</h4><h4 id="手機信用卡"><a href="#手機信用卡" class="headerlink" title="手機信用卡"></a>手機信用卡</h4><p>SIM卡需改為USIM卡 經由官方</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/home/ios/UI.html" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/home/Single/區塊鏈.html" rel="prev" title="區塊鏈">
+                區塊鏈 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JimLiuXyz</p>
+              <p class="site-description motion-element" itemprop="description">自用筆記</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/zh-tw/docs/" title="Hexo" target="_blank">Hexo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://theme-next.iissnan.com/" title="NextT" target="_blank">NextT</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FinTeck"><span class="nav-number">1.</span> <span class="nav-text">FinTeck</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EMVco-國際晶片卡組織"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">EMVco 國際晶片卡組織</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#發卡組織-International-Association"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">發卡組織(International Association)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#發卡機構-發卡銀行-Issuer"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">發卡機構(發卡銀行)(Issuer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特約商店"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">特約商店</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#清算中心-跨行-Interbank-Card-Center-BKM"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">清算中心(跨行) Interbank Card Center(BKM)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NCCC-National-Credit-Card-Center-of-R-O-C"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">NCCC(National Credit Card Center of R.O.C.)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#收單機構-Acquirer"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">收單機構(Acquirer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聯名卡-co-branded-credit-card"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">聯名卡(co-branded credit card)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行動支付-線上"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">行動支付 線上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行動支付-近端支付"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">行動支付 近端支付</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NFC（Near-Field-Communication）"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">NFC（Near Field Communication）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#感應式讀卡機-NFC-Payment"><span class="nav-number">1.0.0.12.</span> <span class="nav-text">感應式讀卡機 (NFC Payment)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#刷卡流程"><span class="nav-number">1.0.0.13.</span> <span class="nav-text">刷卡流程</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支付模式"><span class="nav-number">2.</span> <span class="nav-text">支付模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TSM-Trusted-Service-Manager-信託服務管理平台"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">TSM(Trusted Service Manager) 信託服務管理平台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HCE-Host-based-Card-Emulation-主機卡模擬"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">HCE(Host-based Card Emulation) 主機卡模擬</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BarCode"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">BarCode</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HCE"><span class="nav-number">3.</span> <span class="nav-text">HCE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取得Token流程-Visa-Token"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">取得Token流程 (Visa Token)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#支付流程"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">支付流程</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三方支付"><span class="nav-number">4.</span> <span class="nav-text">第三方支付</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#微信"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">微信</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#電子票證"><span class="nav-number">5.</span> <span class="nav-text">電子票證</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">6.</span> <span class="nav-text">???</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#掃碼式"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">掃碼式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接觸式"><span class="nav-number">6.0.0.2.</span> <span class="nav-text">接觸式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手機信用卡"><span class="nav-number">6.0.0.3.</span> <span class="nav-text">手機信用卡</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JimLiuXyz</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -288,6 +288,407 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Layout.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Layout.html" itemprop="url">Layout</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T17:46:56+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h1 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h1><blockquote>
+<p>view跟layout定義上的差別: view是通常形容元件 layout則是容器(容器內的排版)<br>layout是view的子類</p>
+</blockquote>
+<h3 id="RelativeLayout"><a href="#RelativeLayout" class="headerlink" title="RelativeLayout"></a>RelativeLayout</h3><p>定位於 某元件 或 所處容器 的相對位置</p>
+<h3 id="FrameLayout"><a href="#FrameLayout" class="headerlink" title="FrameLayout"></a>FrameLayout</h3><p>定位於左上角 (view會重疊)</p>
+<h3 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h3><p>水平或垂直 接續排列 權重分佈</p>
+<h3 id="TableLayout"><a href="#TableLayout" class="headerlink" title="TableLayout"></a>TableLayout</h3><p>格狀排列</p>
+<h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><p>約束排列 約束元間之間的相對關係 (取代RelativeLayout)</p>
+<h3 id="StaggeredGridLayout"><a href="#StaggeredGridLayout" class="headerlink" title="StaggeredGridLayout"></a>StaggeredGridLayout</h3><p>格狀(磚塊)排列</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LayoutParams.FILL_PARENT <span class="comment">//依父容器大小 填滿父容器</span></span><br><span class="line">LayoutParams.WRAP_CONTENT <span class="comment">//依內容大小 適當顯示</span></span><br></pre></td></tr></table></figure>
+<h3 id="SwipeRefreshLayout"><a href="#SwipeRefreshLayout" class="headerlink" title="SwipeRefreshLayout"></a>SwipeRefreshLayout</h3><p>有下拉Refresh功能</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">findViewById&lt;SwipeRefreshLayout&gt;(R.id.refresh_layout)?.apply &#123;</span><br><span class="line">    isRefreshing = <span class="literal">true</span> <span class="comment">//設定為正在refresh</span></span><br><span class="line">    setColorSchemeColors(</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimary),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorAccent),</span><br><span class="line">            ContextCompat.getColor(activity, R.color.colorPrimaryDark)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    setOnRefreshListener&#123;</span><br><span class="line">        println(<span class="string">"do refresh..."</span>)</span><br><span class="line"></span><br><span class="line">        postDelayed(&#123;</span><br><span class="line">            println(<span class="string">"done refresh..."</span>)</span><br><span class="line">            isRefreshing = <span class="literal">false</span> <span class="comment">//設定為沒在refresh</span></span><br><span class="line">        &#125;, <span class="number">3000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h1><p>一個view中前綴layout的屬性是給其容器看的 例如layout_gravity與gravity 以個是告訴容器把自己放在哪 另一個是自己中把內容物放在哪</p>
+<h1 id="指定layout-manager"><a href="#指定layout-manager" class="headerlink" title="指定layout manager"></a>指定layout manager</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">manager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">RecyclerView mList = (RecyclerView) findViewById(R.id.list_view);</span><br><span class="line">mList.setLayoutManager(manager);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/ArchitectureComponent.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/ArchitectureComponent.html" itemprop="url">ArchitectureComponent</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T17:24:29+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.youtube.com/watch?v=kdcqXOhBivE" target="_blank" rel="noopener">video</a></p>
+<p><a href="https://www.youtube.com/watch?v=ai6kKsC5JnY" target="_blank" rel="noopener">video</a></p>
+<ul>
+<li><p>LifecycleOwner : lifecycle的擁有者 像activity或fragment都是LifecycleOwner 可透過getLifecycle()取得Life</p>
+</li>
+<li><p>LifecycleObserver : 一個介面 實作這個介面 就能透過Life.addObserver加入監聽lifecycle事件的行列</p>
+</li>
+<li><p>ViewModel : </p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Misc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/Misc.html" itemprop="url">Misc</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:58:34+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Launcher"><a href="#Launcher" class="headerlink" title="Launcher"></a>Launcher</h2><blockquote>
+<p>即手機home鍵看到的畫面 以及其延伸的機制 本身同樣為activity</p>
+</blockquote>
+<ul>
+<li><p>HomeScreen</p>
+<ul>
+<li>WorkSpace 上半部的大範圍</li>
+<li>HotSeat 底下的熱連結</li>
+<li>AppList (GridView)</li>
+</ul>
+</li>
+<li><p>應用</p>
+<ul>
+<li>Shortcut 將app中某些功能結合user需求產生快捷</li>
+<li>LiveFolder 類似將一個content provider封裝</li>
+<li>AppWidget</li>
+<li>WallPaper</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Widget.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1324,469 +1725,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Linux/Single/ShellCmd.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Linux/Single/ShellCmd.html" itemprop="url">ShellCmd</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:04:44+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.openfoundry.org/foss-programs/8628" target="_blank" rel="noopener">ref</a><br><a href="http://rodney2009.pixnet.net/blog/post/21465471-%E5%B7%A5%E4%BD%9C%E5%B8%B8%E7%94%A8%E5%88%B0%E7%9A%84linux%E6%8C%87%E4%BB%A4" target="_blank" rel="noopener">ref</a></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 搜尋執行檔路徑 (依環境path)</span></span><br><span class="line"><span class="built_in">which</span> git</span><br><span class="line">whereis git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 依檔名尋找檔案</span></span><br><span class="line">find / -name git</span><br><span class="line"></span><br><span class="line">find grep awk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 資料夾中搜尋文件內容</span></span><br><span class="line">grep -r <span class="string">'導航'</span> ~/GoogleDrive/</span><br><span class="line"></span><br><span class="line">grep -r --include=<span class="string">"*.java"</span> <span class="string">"service"</span> .</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Nav.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Nav.html" itemprop="url">頁面導航</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T16:01:31+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="task-back-stack行為設定參考"><a href="#task-back-stack行為設定參考" class="headerlink" title="task back stack行為設定參考"></a>task back stack行為設定參考</h2><p><a href="https://developer.android.com/guide/components/tasks-and-back-stack.html?hl=zh-tw" target="_blank" rel="noopener">官方中文說明</a><br><a href="https://www.youtube.com/playlist?list=PLO5e_-yXpYLCQNdl6G8RIZLrlBPRQDCWR" target="_blank" rel="noopener">Android 深入Activity</a><br><a href="https://www.bilibili.com/video/av11208065/index_11.html#page=1" target="_blank" rel="noopener">Android基礎知識</a></p>
-<ol>
-<li>launchMode</li>
-<li>intent flag</li>
-<li>minifest activity</li>
-</ol>
-<h2 id="Deep-Link-App-Links-超連結啟動app"><a href="#Deep-Link-App-Links-超連結啟動app" class="headerlink" title="Deep Link(App Links) 超連結啟動app"></a>Deep Link(App Links) 超連結啟動app</h2><p><a href="https://developer.android.com/training/app-links/deep-linking.html" target="_blank" rel="noopener">ref</a><br><a href="https://developer.android.com/studio/write/app-link-indexing.html" target="_blank" rel="noopener">ref</a></p>
-<blockquote>
-<p>aad:Implement non-standard task stack navigation (deep links)</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span> <span class="comment">&lt;!--從adb啟動--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.BROWSABLE"</span> /&gt;</span> <span class="comment">&lt;!--從browser啟動--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"app"</span> <span class="attr">android:host</span>=<span class="string">"jimliuxyz.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">adb shell am start -W -a android.intent.action.VIEW -d <span class="string">"app://jimliuxyz.com"</span> com.jimliuxyz.tsnote</span><br><span class="line"></span><br><span class="line">am : activity maneger</span><br><span class="line">-W : <span class="built_in">wait</span> <span class="keyword">for</span> launch to complete</span><br><span class="line">[-a &lt;ACTION&gt;] [-d &lt;DATA_URI&gt;]</span><br><span class="line">package不一定要</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果要用override fun onNewIntent()處理 activity要為<code>singleTop</code>之類</p>
-</blockquote>
-<h2 id="TaskStackBuilder"><a href="#TaskStackBuilder" class="headerlink" title="TaskStackBuilder"></a>TaskStackBuilder</h2><p><a href="https://www.youtube.com/watch?v=MvIlVsXxXmY" target="_blank" rel="noopener">ref</a><br><a href="https://developer.android.com/training/implementing-navigation/ancestral.html" target="_blank" rel="noopener">ref</a></p>
-<blockquote>
-<p>用於憑空建立parent activity於TaskStack中<br>當MsgActivity是從其他app(intent或deep link)啟動時 並沒有自己的back stack 所以按下back按鈕時 無法回到MainActivity 此時就需要NavUtils工具</p>
-</blockquote>
-<h4 id="Minifest"><a href="#Minifest" class="headerlink" title="Minifest"></a>Minifest</h4><blockquote>
-<p>指定android:parentActivityName為欲返回的MainActivity</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"com.example.myfirstapp.MsgActivity"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:label</span>=<span class="string">"display_message"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:parentActivityName</span>=<span class="string">"com.example.myfirstapp.MainActivity"</span> &gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Parent activity meta-data to support 4.0 and lower --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">"android.support.PARENT_ACTIVITY"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:value</span>=<span class="string">"com.example.myfirstapp.MainActivity"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//通常都經由ActionBar左上角的箭頭驅動返回事件(android.R.id.home)</span></span><br><span class="line">getActionBar().setDisplayHomeAsUpEnabled(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//測試不ok</span></span><br><span class="line">Intent upIntent = NavUtils.getParentActivityIntent(<span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">if</span> (NavUtils.shouldUpRecreateTask(<span class="keyword">this</span>, upIntent)) &#123;</span><br><span class="line">    <span class="comment">//非處於自己app的back stack中時</span></span><br><span class="line">    TaskStackBuilder.create(<span class="keyword">this</span>)</span><br><span class="line">        .addNextIntentWithParentStack(upIntent)</span><br><span class="line">        .startActivities();</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    NavUtils.navigateUpTo(<span class="keyword">this</span>, upIntent);</span><br></pre></td></tr></table></figure>
-<h4 id="透過PendingIntent預先設定好-測試ok"><a href="#透過PendingIntent預先設定好-測試ok" class="headerlink" title="透過PendingIntent預先設定好(測試ok)"></a>透過PendingIntent預先設定好(測試ok)</h4><p><a href="https://developer.android.com/training/notify-user/navigation.html" target="_blank" rel="noopener">notify-user</a></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MsgActivity.class);</span><br><span class="line"></span><br><span class="line">TaskStackBuilder stackBuilder = TaskStackBuilder.create(<span class="keyword">this</span>);</span><br><span class="line">stackBuilder.addNextIntentWithParentStack(intent); <span class="comment">//依manifest設定的android:parentActivityName</span></span><br><span class="line"></span><br><span class="line">pi = stackBuilder.getPendingIntent(<span class="number">0</span>, PendingIntent.FLAG_UPDATE_CURRENT);</span><br></pre></td></tr></table></figure>
-<h2 id="launchMode"><a href="#launchMode" class="headerlink" title="launchMode"></a>launchMode</h2><blockquote>
-<p>manifest可設定activity的android:launchMode</p>
-</blockquote>
-<h4 id="standard-不斷新建堆疊"><a href="#standard-不斷新建堆疊" class="headerlink" title="standard : 不斷新建堆疊"></a>standard : 不斷新建堆疊</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a - a&apos; - a&apos;&apos;</span><br></pre></td></tr></table></figure>
-<h4 id="singleTop-同standard-但當該activity已處於stack-top時不會再新建"><a href="#singleTop-同standard-但當該activity已處於stack-top時不會再新建" class="headerlink" title="singleTop : 同standard,但當該activity已處於stack top時不會再新建"></a>singleTop : 同standard,但當該activity已處於stack top時不會再新建</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a - a - a - b - a&apos; - a&apos;</span><br></pre></td></tr></table></figure>
-<h4 id="singleTask-不會重開-該activity出現時勢必將task中其他task全部拋掉"><a href="#singleTask-不會重開-該activity出現時勢必將task中其他task全部拋掉" class="headerlink" title="singleTask : 不會重開,該activity出現時勢必將task中其他task全部拋掉"></a>singleTask : 不會重開,該activity出現時勢必將task中其他task全部拋掉</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a - a - b - c - d - a [back]離開app</span><br></pre></td></tr></table></figure>
-<h4 id="singleInstance-不會新建-該activity的task僅允許自己使用"><a href="#singleInstance-不會新建-該activity的task僅允許自己使用" class="headerlink" title="singleInstance : 不會新建,該activity的task僅允許自己使用"></a>singleInstance : 不會新建,該activity的task僅允許自己使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a - a -     a [back]離開a回到b</span><br><span class="line">        b -                  [back]離開b回到home</span><br></pre></td></tr></table></figure>
-<h2 id="簡述"><a href="#簡述" class="headerlink" title="簡述"></a>簡述</h2><ul>
-<li>standard - 不斷重開堆疊 : 預設 (可能有多個aty重複)</li>
-<li>singleTop - 頂端不新建 : 合理避免重複 (可能有多個aty重複)</li>
-<li>singleTask - 頂端排他 task pop all : Home</li>
-<li>singleInstance - 獨佔 : 供別的app使用</li>
-</ul>
-<p>single指的是activity不新建 但會執行onNewIntent()</p>
-<h2 id="taskAffinity-allowTaskReparenting"><a href="#taskAffinity-allowTaskReparenting" class="headerlink" title="taskAffinity allowTaskReparenting"></a>taskAffinity allowTaskReparenting</h2><p>affinity類似一個groupId的概念 activity預設的affinity為package name<br>當一個activity以FLAG_ACTIVITY_NEW_TASK啟動時會以affinity去找該被加到哪個task中</p>
-<h2 id="FLAG-ACTIVITY"><a href="#FLAG-ACTIVITY" class="headerlink" title="FLAG_ACTIVITY"></a>FLAG_ACTIVITY</h2><p>透過intent開啟的activity該依循何策略進入task或操作stack</p>
-<ul>
-<li>FLAG_ACTIVITY_NEW_TASK(同singleTask) : aty會在自己的task中</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new aty : 為aty新增task</span><br><span class="line">new aty : push進aty原屬的task</span><br><span class="line">old aty : 顯示task但aty不會到top (怪怪的)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>FLAG_ACTIVITY_CLEAR_TOP : pop出原本在其上者</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b是FLAG_ACTIVITY_CLEAR_TOP</span><br><span class="line">a - b - c - d - b (此時cd會被pop出,剩下ab)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>FLAG_ACTIVITY_BROUGHT_TO_FRONT : activity會to front</p>
-</li>
-<li><p>FLAG_ACTIVITY_MULTIPLE_TASK : 能以另一個task啟動(act實體個別存在不同的task)</p>
-</li>
-<li><p>FLAG_ACTIVITY_SINGLE_TOP(同singleTop)</p>
-</li>
-<li><p>FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET與FLAG_ACTIVITY_RESET_TASK_IF_NEEDED : 1.設定清除點 2.pop掉清除點與之後的</p>
-</li>
-</ul>
-<p>還有很多…</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/Intent.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Android/Intent.html" itemprop="url">Intent</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:59:41+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p>一個意圖/命令的容器<br>putExtra僅能傳遞native type,或序列化物件(Serializable或Parcelable)</p>
-</blockquote>
-<ul>
-<li>顯示 : 指定元件的類別</li>
-<li>隱式 : 僅提供ACTION/CATEGORY/URI 不指定元件的類別</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">intent.setDataAndType(Uri.fromFile(file), <span class="string">"image/*"</span>);</span><br><span class="line">startActivity(intent);</span><br><span class="line"></span><br><span class="line">intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"http://..."</span>));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h2 id="Intent導航與返航"><a href="#Intent導航與返航" class="headerlink" title="Intent導航與返航"></a>Intent導航與返航</h2><p>####導航</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//啟動</span></span><br><span class="line">startActivity(intent)</span><br><span class="line">startActivityForResult(intent, req_id) <span class="comment">//透過activity或fragment呼叫</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//被啟動</span></span><br><span class="line"><span class="function">override fun <span class="title">onCreate</span><span class="params">(savedInstanceState: Bundle?)</span>  <span class="comment">//首次啟動</span></span></span><br><span class="line"><span class="function">override fun <span class="title">onNewIntent</span><span class="params">(intent: Intent?)</span>   <span class="comment">//已啟動 但有新intent</span></span></span><br></pre></td></tr></table></figure>
-<p>####返航</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">setResult() <span class="comment">//均透過activity</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityResult</span><span class="params">(int requestCode, int resultCode, Intent <span class="keyword">data</span>)</span></span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>fragment有startActivityForResult與onActivityResult,但沒有setResult</p>
-</blockquote>
-<h4 id="PendingIntent"><a href="#PendingIntent" class="headerlink" title="PendingIntent"></a>PendingIntent</h4><blockquote>
-<p>封裝執行intent的機制 類似於將startActive/startService與intent封裝起來 丟給系統 透過系統機制讓user觸發intent此外尚有些flag策略 通常就是和Notification合用</p>
-</blockquote>
-<h4 id="Notification"><a href="#Notification" class="headerlink" title="Notification"></a>Notification</h4><blockquote>
-<p>位於手機上方的通知欄 可作為service的ui使其能顯示狀態與被使用者操作</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//NotificationManager</span></span><br><span class="line">nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Intent</span></span><br><span class="line">intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class);</span><br><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);</span><br><span class="line"></span><br><span class="line"><span class="comment">//PendingIntent</span></span><br><span class="line">pi = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, intent, PendingIntent.FLAG_ONE_SHOT);</span><br><span class="line"></span><br><span class="line"><span class="comment">//NotificationCompat.Builder</span></span><br><span class="line">builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>, <span class="string">"practice_channel"</span>)</span><br><span class="line">        .setSmallIcon(android.R.drawable.ic_dialog_info)</span><br><span class="line">        .setContentTitle(getString(R.string.time_to_practice))</span><br><span class="line">        .setContentText(getString(R.string.it_is_time_to_practice))</span><br><span class="line">        .setAutoCancel(<span class="keyword">true</span>)</span><br><span class="line">        .setContentIntent(pi);</span><br><span class="line"></span><br><span class="line"><span class="comment">//產生與取消</span></span><br><span class="line">nm.notify(NOTIFICATION_ID, builder.build());</span><br><span class="line"></span><br><span class="line">nm.cancel(NOTIFICATION_ID);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1837,7 +1775,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

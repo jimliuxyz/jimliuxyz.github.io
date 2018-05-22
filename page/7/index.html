@@ -288,6 +288,501 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/basic.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Android/basic.html" itemprop="url">Android環境概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-04T15:13:31+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h1 id="編譯流程"><a href="#編譯流程" class="headerlink" title="編譯流程"></a>編譯流程</h1><ul>
+<li>Dalvik : Android的JVM</li>
+<li>dex : 類似jar</li>
+<li>appt：Android Asset Packaging Tool</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20161122102458470" alt="編譯流程"></p>
+<hr>
+<h1 id="Minifest"><a href="#Minifest" class="headerlink" title="Minifest"></a>Minifest</h1><p><a href="http://www.wenwenti.info/article/856135" target="_blank" rel="noopener">Minifest-activity參數</a></p>
+<hr>
+<h1 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h1><p><a href="https://www.jianshu.com/p/fb0681f5f12b" target="_blank" rel="noopener">ref</a></p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/1311456-5ca2e2152180d6aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/623" width="400" alt=""></p>
+<blockquote>
+<p>context可理解為app的執行環境 (包含狀態與工具)</p>
+</blockquote>
+<blockquote>
+<p>ContextWrapper會包含一個Context實例(mBase)達到複製Context</p>
+</blockquote>
+<blockquote>
+<p>Application與Activity與Service雖都能當context用(但非對應同一個mBase) 要注意Activity與Service是有被回收的可能 避免將其當context傳遞 但某些關聯性的動作只能使用activity(像是show dialog)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若context的傳遞會被對方持有時 盡可能使用Application的context</span></span><br><span class="line">context.getApplicationContext()</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h1><blockquote>
+<p>繼承Context 可以理解為另外一個層級的執行環境<br>透過Manifest指定自訂的Application類</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--Manifest--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">application</span> <span class="attr">android:name</span>=<span class="string">".CustomApplication"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="SharedPreference"><a href="#SharedPreference" class="headerlink" title="SharedPreference"></a>SharedPreference</h1><p>key/value pair的儲存器 用於儲存app的設定值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">MODE_MULTI_PROCESS</span><br><span class="line">MODE_PRIVATE</span><br><span class="line"></span><br><span class="line">sp = PreferenceManager.getDefaultSharedPreferences(context);</span><br><span class="line">sp = getSharedPreferences(<span class="string">"mysp"</span>, Context. MODE_PRIVATE);</span><br><span class="line">sp.getBoolean(<span class="string">"key"</span>, <span class="keyword">false</span>);</span><br><span class="line">sp.edit().putBoolean(<span class="string">"key"</span>, <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/git/Git.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/git/Git.html" itemprop="url">Git</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://az787680.vo.msecnd.net/user/chris%20chen/007d76f8-8773-444a-858f-608b6ef2fa2e/1461940246_55914.png" alt=""></p>
+<ul>
+<li>working space : 工作區 即源碼開發的目錄</li>
+<li>commit history(repo) : 即提交歷史紀錄區</li>
+<li><p>stage(index) : 緩存區 介於工作區與歷史區之間 add進了stage之後commit才會進repo 而不是讓工作區所有檔案都進repo</p>
+</li>
+<li><p>patch : 即commit產生的紀錄點</p>
+</li>
+<li>master : git最初預設的分支</li>
+<li><p>origin : 慣用的預設的遠端別名 用來表示某一個遠端的路徑</p>
+</li>
+<li><p>HEAD : 指向當下所處的base patch (可以用@符號)</p>
+</li>
+<li>HEAD^ : 指HEAD的前一個patch 等同HEAD~或HEAD~1</li>
+<li>HEAD@{2} : 歷史紀錄(reflog)的指向簡寫</li>
+<li>detached HEAD : 脫離的HEAD(斷頭) 即HEAD未處於分支的末端(git checkout HEAD^) 之後若再建新的patch將難以合併回分支</li>
+<li>ORIG_HEAD : 當merge或rebase時會留下的一個記錄點 用於合併出錯時的返回點</li>
+</ul>
+<h1 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h1><p><a href="https://ithelp.ithome.com.tw/articles/10138150" target="_blank" rel="noopener">git reflog</a></p>
+<h1 id="查詢"><a href="#查詢" class="headerlink" title="查詢"></a>查詢</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出設定</span></span><br><span class="line">git config -l</span><br><span class="line">git config --global -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查訊patch</span></span><br><span class="line">git show HEAD</span><br><span class="line">git <span class="built_in">log</span> --oneline	<span class="comment"># 當下repo版本的歷史</span></span><br><span class="line">git reflog			<span class="comment"># 所有操作歷史 (不會進遠端)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 比對</span></span><br><span class="line">git diff	<span class="comment"># 比對工作區not staged的檔案</span></span><br><span class="line">git diff --cached	<span class="comment"># 比對工作區與repo</span></span><br><span class="line"></span><br><span class="line">git status</span><br><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<h1 id="程式碼還原"><a href="#程式碼還原" class="headerlink" title="程式碼還原"></a>程式碼還原</h1><p><a href="https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9" target="_blank" rel="noopener">ref</a><br>還原前須注意當下工作區與緩存區是否有工作尚未commit 可以先commit或stash做暫存patch</p>
+<h2 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h2><blockquote>
+<p>切換patch(branch) 直接影響working space/stage/repo</p>
+</blockquote>
+<blockquote>
+<p>在任何動前 最好都先知道自己在哪個branch下作業 或直接用checkout確保一定在某個branch下<br>可針對個別檔案還原</p>
+</blockquote>
+<h2 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h2><p><a href="https://dotblogs.com.tw/wasichris/2016/04/29/225157" target="_blank" rel="noopener">ref</a></p>
+<blockquote>
+<p>重置回某patch版本<br>可針對個別檔案還原</p>
+</blockquote>
+<blockquote>
+<p>commit流程 : 修改檔案 -&gt; add進stage -&gt; commit進repo<br>reset流程  : <code>(hard)</code>還原檔案 &lt;- <code>(mixed)</code>stage重置回未add &lt;- <code>(soft)</code>repo重置回某版本</p>
+</blockquote>
+<ul>
+<li>將HEAD移到某patch(即變更repo的版本) 且之後的patch將於數十天後被GC刪除</li>
+<li>reset的所有操作都被記錄在reflog中 最算reset沒有起任何作用</li>
+<li>最好只在<code>私有的本地分支</code>進行 不要影響到遠端及其他開發者的base</li>
+<li>模式<ul>
+<li>soft : 保留當下的stage與working space</li>
+<li>mixed(預設) : 保留當下的working space 但stage退回(如同未add)</li>
+<li>hard : 完全重置</li>
+</ul>
+</li>
+</ul>
+<h2 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h2><blockquote>
+<p>將某個patch逆向重做後當成一個新的patch 如同撤銷某個patch 雖會多一個patch但不會影響既有的history</p>
+</blockquote>
+<h1 id="暫存patch"><a href="#暫存patch" class="headerlink" title="暫存patch"></a>暫存patch</h1><p>當工作到一半若要切換到其他patch或branch 但又不想commit當下的修改時 可以此法暫存之後再取回</p>
+<h2 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h2><blockquote>
+<p>將<code>工作區與緩存區</code>暫存起來 再硬重置回HEAD<br>pop動作如同cherry-pick也會有conflict 所以要先回到正確的patch再pop<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash	<span class="comment"># 暫存</span></span><br><span class="line">git stash save <span class="string">"mywork"</span>	<span class="comment"># 給定暫存訊息	</span></span><br><span class="line">git stash list</span><br><span class="line">git stash pop stash@&#123;1&#125; <span class="comment"># pop出來後就移出list了</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="合併"><a href="#合併" class="headerlink" title="合併"></a>合併</h1><p><a href="https://zlargon.gitbooks.io/git-tutorial/content/branch/rebase.html" target="_blank" rel="noopener">ref</a><br>首先要切到要進行合併的分支</p>
+<h2 id="cherry-pick"><a href="#cherry-pick" class="headerlink" title="cherry-pick"></a>cherry-pick</h2><blockquote>
+<p>將其他分支中想要的patch<code>複製</code>成新的patch加到當下分支</p>
+</blockquote>
+<h2 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h2><blockquote>
+<p>將該分支的起點(交叉點)換到新的patch或branch (以cherry-pick實現)<br>達人推薦的合併方式</p>
+</blockquote>
+<h2 id="merge-–no-ff"><a href="#merge-–no-ff" class="headerlink" title="merge –no-ff"></a>merge –no-ff</h2><blockquote>
+<p>將兩個分支合併產生一個merge patch<br>被併的分支仍能保留末端節點</p>
+</blockquote>
+<h4 id="Fast-Forward"><a href="#Fast-Forward" class="headerlink" title="Fast-Forward"></a>Fast-Forward</h4><p>指合併的兩個分支原本就重疊在一起 此時合併不需產生merge patch (就看不出分支的起點了)</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rebase或merge出錯時 可以此返回合併前狀態</span></span><br><span class="line">git reset --hard ORIG_HEAD</span><br></pre></td></tr></table></figure>
+<h1 id="解衝突"><a href="#解衝突" class="headerlink" title="解衝突"></a>解衝突</h1><p><a href="https://zlargon.gitbooks.io/git-tutorial/content/patch/cherry_pick_conflict.html" target="_blank" rel="noopener">ref</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 完成解衝突</span></span><br><span class="line">git cherry-pick --<span class="built_in">continue</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消pick</span></span><br><span class="line">git cherry-pick --abort</span><br></pre></td></tr></table></figure>
+<h1 id="同步遠端分支"><a href="#同步遠端分支" class="headerlink" title="同步遠端分支"></a>同步遠端分支</h1><p>要push前或每日工作前先pull確保本地端base與遠端相同 一方面及時察覺新版本的變動 二方面確保push時順利</p>
+<h2 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h2><blockquote>
+<p>下載</p>
+</blockquote>
+<h2 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h2><blockquote>
+<p>下載並merge</p>
+</blockquote>
+<h2 id="pull-–rebase"><a href="#pull-–rebase" class="headerlink" title="pull –rebase"></a>pull –rebase</h2><blockquote>
+<p>下載並以rebase合併</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/紀錄/Single/Hexo安裝紀錄.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/紀錄/Single/Hexo安裝紀錄.html" itemprop="url">Hexo安裝紀錄</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-02T17:34:13+08:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/紀錄/" itemprop="url" rel="index">
+                    <span itemprop="name">紀錄</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">Hexo</a> 、<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
+<div class="note danger"><ul>
+<li>站內連結若用相對連結在首頁跟文章內顯示的連結路徑不同</li>
+<li>UTF-8編碼中若參雜其他編碼會讓search.xml錯誤而無法搜索</li>
+<li>md檔案若有尖括號未置入code tag 可能造成解析錯誤</li>
+</ul></div>
+<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><p>本地端透過Hexo建立網站骨架 並將markdown文章轉為html 上傳到github做為blog網站<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/home/紀錄/Single/Hexo安裝紀錄.html#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Android/00.index.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -944,7 +1439,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

@@ -288,6 +288,669 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Python/matplotlib.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Python/matplotlib.html" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-20T11:39:03+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.youtube.com/watch?v=dLrndCJzbzA" target="_blank" rel="noopener">教學</a></p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">Import matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data.plot()</span><br><span class="line">plt.show() <span class="comment"># 與data沒有連結???</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Python/numpy&pandas.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Python/numpy&pandas.html" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-19T15:59:24+08:00">
+                2018-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.youtube.com/playlist?list=PLXO45tsB95cKKyC45gatc8wEc3Ue7BlI4" target="_blank" rel="noopener">週莫煩</a></p>
+<h4 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h4><p>主要用來處理矩陣</p>
+<h4 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h4><blockquote>
+<p>架構numpy之上 更適合數據應用上的操作 而不僅是數學</p>
+</blockquote>
+<ul>
+<li>替行列矩陣加上了<code>行索引值</code>與<code>列欄位名</code> </li>
+</ul>
+<h1 id="矩陣"><a href="#矩陣" class="headerlink" title="矩陣"></a>矩陣</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr = np.array([</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">arr = np.zeros((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 3x4全為0的矩陣, ones/empty/range</span></span><br><span class="line"></span><br><span class="line">arr = np.linespace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">6</span>).reshape((<span class="number">2</span>,<span class="number">3</span>)) <span class="comment"># 0~10 6個元素 轉為2x3的矩陣</span></span><br><span class="line"></span><br><span class="line">arr = np.random.random((<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"dim"</span>, arr.ndim, <span class="string">"shape"</span>, arr.shapre, <span class="string">"size"</span>, arr.size, arr.dtype)</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">np.sin(a)</span><br><span class="line"></span><br><span class="line">a*b <span class="comment"># 直接乘法</span></span><br><span class="line"></span><br><span class="line">np.dot(a, b) <span class="comment">#矩陣乘法</span></span><br><span class="line">a.dot(b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合併</span></span><br><span class="line">np.vstack(a,b) <span class="comment"># [[a,b]]</span></span><br><span class="line">np.hstack(a,b) <span class="comment"># [a,b]</span></span><br><span class="line">np.concatenate(..., axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分割</span></span><br><span class="line">np.split(a, 切塊數, axis=<span class="number">0</span>)</span><br><span class="line">np.array_split(a, 切塊數, axis=<span class="number">0</span>) <span class="comment">#不等量的分割</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># deep copy</span></span><br><span class="line">b = a.copy()</span><br><span class="line"></span><br><span class="line">np.nan  <span class="comment"># NaN</span></span><br><span class="line">np.sum(a, axis=<span class="number">0</span>) <span class="comment">#axis=0/1 行(橫/row)或列(直/column)</span></span><br><span class="line">np.min(a)</span><br><span class="line">np.max(a)</span><br><span class="line">np.argmin(a) <span class="comment">#最小值的索引</span></span><br><span class="line">np.mean(a)</span><br><span class="line">np.average(a)</span><br><span class="line">np.median(a) <span class="comment">#中位數</span></span><br><span class="line">np.cumsum(a) <span class="comment">#累加矩陣</span></span><br><span class="line">np.diff(a) <span class="comment">#累差矩陣</span></span><br><span class="line">np.transpose(a) <span class="comment">#行列反向 等同a.T</span></span><br><span class="line">np.clip(a, <span class="number">3</span>, <span class="number">9</span>) <span class="comment">#&lt;3則為3 &gt;9則為9</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">a[行][列]</span><br><span class="line">a[行,列]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> arr:</span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> arr.T:</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> arr.flat: <span class="comment">#flatten()轉為一維</span></span><br></pre></td></tr></table></figure>
+<p>#Pandas</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]) <span class="comment">#一維</span></span><br><span class="line"></span><br><span class="line">pd.date_range(<span class="string">'20180101'</span>, periods=<span class="number">6</span>) <span class="comment">#一維 6個日期</span></span><br><span class="line"></span><br><span class="line">pd.DataFrame(np.random.randn(<span class="number">3</span>,<span class="number">4</span>), index=[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>], columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]) <span class="comment"># 二維 行索引為012 列欄位為abc</span></span><br><span class="line"></span><br><span class="line">pd.DataFrame(&#123;</span><br><span class="line"><span class="string">'date'</span>: pd.Timestamp(<span class="string">'20180101'</span>),</span><br><span class="line"><span class="string">'type'</span>: pd.Categorical(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"b"</span>, <span class="string">"a"</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">data.dtypes <span class="comment"># 取得列的所以類型</span></span><br><span class="line">data.index <span class="comment"># 取得行索引值</span></span><br><span class="line">data.columns <span class="comment"># 取得列欄位名</span></span><br><span class="line"></span><br><span class="line">data.values <span class="comment"># 取每一行的value</span></span><br><span class="line"></span><br><span class="line">data.describe() <span class="comment"># 取個欄位的統計值</span></span><br><span class="line"></span><br><span class="line">data.sort_index(axis=<span class="number">0</span>, ascending=<span class="keyword">True</span>) <span class="comment"># 以行索引排序</span></span><br><span class="line">data.sort_values(by=<span class="string">'type'</span>) <span class="comment"># 以欄位內的值排序</span></span><br></pre></td></tr></table></figure>
+<h4 id="取-選-資料"><a href="#取-選-資料" class="headerlink" title="取(選)資料"></a>取(選)資料</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">data[<span class="string">'type'</span>]</span><br><span class="line">data.type</span><br><span class="line">data[<span class="number">0</span>:<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># by label name</span></span><br><span class="line">data.loc[<span class="string">'20180101'</span>, [<span class="string">'type'</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># by index position</span></span><br><span class="line">data.iloc[<span class="number">0</span>, <span class="number">1</span>:<span class="number">2</span>] <span class="comment"># 0行的12列</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># by mixed selection</span></span><br><span class="line">data.ix[<span class="number">0</span>, [<span class="string">'type'</span>, <span class="string">'date'</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># filter</span></span><br><span class="line">data[data.type==<span class="string">'a'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取前五筆</span></span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">data.dropna(asix=<span class="number">0</span>, how=<span class="string">'any'</span>) <span class="comment"># 丟掉行中若出現nan的行</span></span><br><span class="line">data.fillna(value=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">data.isnull()</span><br><span class="line">np.any(data.isnull()) == <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h4 id="讀取文件資料"><a href="#讀取文件資料" class="headerlink" title="讀取文件資料"></a>讀取文件資料</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">'file.csv'</span>) <span class="comment"># html/excel/json...</span></span><br><span class="line"></span><br><span class="line">data.to_pickle(<span class="string">'file.pickle'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="合併"><a href="#合併" class="headerlink" title="合併"></a>合併</h4><p><a href="https://www.youtube.com/watch?v=DcyFh2m3g6c" target="_blank" rel="noopener">concat</a> <a href="https://www.youtube.com/watch?v=Y2xmMG_jXnc" target="_blank" rel="noopener">merge</a></p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">data = pd.concat([data1,data2], axis=<span class="number">0</span>, ignore_index=<span class="keyword">True</span>) <span class="comment"># 合併行</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># join參數</span></span><br><span class="line"><span class="comment"># outer:沒交集的欄位用nan </span></span><br><span class="line"><span class="comment"># inner:沒交集的欄位直接刪除</span></span><br><span class="line">join&#123;<span class="string">'outer'</span>, <span class="string">'inner'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Python/Thread&Process.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Python/Thread&Process.html" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-19T12:39:57+08:00">
+                2018-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Mutli-Thread"><a href="#Mutli-Thread" class="headerlink" title="Mutli-Thread"></a>Mutli-Thread</h1><blockquote>
+<p>Python的Thread其實受限於GIL(Global Interpreter Lock全局鎖)的設計 多執行緒同時僅能有一個執行緒被執行 等同於多執行分切cpu時間 使得thread的用法僅在處理大量IO時能得到好處<br>GIL的限制應該是來自於python最初的設計架構 要真正能多執行緒必須靠multi-processing</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">()</span>:</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    print(<span class="string">"working..."</span>)</span><br><span class="line"></span><br><span class="line">th = threading.Thread(target=work, name=<span class="string">"worker"</span>)</span><br><span class="line">th.start()</span><br><span class="line">th.join()</span><br></pre></td></tr></table></figure>
+<p>multi-thread搭配queue做為運算結果的回傳</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue</span><br><span class="line"></span><br><span class="line">q = Queue()</span><br><span class="line">q.put(a)</span><br><span class="line">a = q.get()</span><br></pre></td></tr></table></figure>
+<h1 id="Multi-Processing"><a href="#Multi-Processing" class="headerlink" title="Multi-Processing"></a>Multi-Processing</h1><blockquote>
+<p>用法同Thread 但進程間無法共用變數 需透過shared memory </p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    print(<span class="string">"working..."</span>)</span><br><span class="line">q = mp.Queue()</span><br><span class="line">th = mp.Process(target=work, args=(<span class="number">1</span>,<span class="number">2</span>))</span><br><span class="line">th.start()</span><br><span class="line">th.join()</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(a)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a*a</span><br><span class="line">    </span><br><span class="line">pool = mp.Pool(processes=<span class="number">2</span>) <span class="comment"># 進程池</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法1: 用map切分任務</span></span><br><span class="line">res = pool.map(work, range(<span class="number">10</span>))</span><br><span class="line">print(res)</span><br><span class="line"><span class="comment"># [0, 1, 4, 9 ....]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2: 只能處理一個</span></span><br><span class="line">res = pool.apply_async(work, (<span class="number">2</span>,))</span><br><span class="line"><span class="comment"># 4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法3: 迴圈式</span></span><br><span class="line">ress = [pool.apply_async(work, (i,)) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line">print([res.get <span class="keyword">for</span> res <span class="keyword">in</span> ress])</span><br></pre></td></tr></table></figure>
+<h4 id="shared-memory"><a href="#shared-memory" class="headerlink" title="shared memory"></a>shared memory</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">import multiprocessing as mp</span><br><span class="line"></span><br><span class="line">sv = mp.Value(<span class="string">'d'</span>, 1.5)</span><br><span class="line">sv = mp.Array(<span class="string">'i'</span>, [1,2,3]) <span class="comment">#只能一維</span></span><br><span class="line"><span class="comment"># sv在process間是共用的</span></span><br><span class="line"></span><br><span class="line">sv.value = 1 <span class="comment">#取值與賦值要加.value</span></span><br></pre></td></tr></table></figure>
+<h4 id="lock"><a href="#lock" class="headerlink" title="lock"></a>lock</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">import multiprocessing as mp</span><br><span class="line"></span><br><span class="line">lock = mp.Lock()</span><br><span class="line">lock.acquire()  <span class="comment"># lock</span></span><br><span class="line">lock.release()  <span class="comment"># unlock</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Python/Tkinter.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Python/Tkinter.html" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-19T12:38:43+08:00">
+                2018-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Tkinter-念T-K-inter或kin-ter"><a href="#Tkinter-念T-K-inter或kin-ter" class="headerlink" title="Tkinter (念T.K.inter或kin.ter)"></a>Tkinter (念T.K.inter或kin.ter)</h1><p>GUI介面</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立視窗</span></span><br><span class="line">win = tk.Tk()</span><br><span class="line">win.title = <span class="string">"title"</span></span><br><span class="line">win.geometry(<span class="string">"200x100"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立label</span></span><br><span class="line">lab = tk.Label(win, text=<span class="string">"label"</span>)</span><br><span class="line">lab.pack()</span><br><span class="line"></span><br><span class="line">svar = tk.StringVar()</span><br><span class="line">lab = tk.Label(win, textvariable=svar)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立button</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clickme</span>:</span></span><br><span class="line">    svar.set(<span class="string">"clicked!"</span>)</span><br><span class="line">    </span><br><span class="line">btn = tk.Button(win, text=<span class="string">"ClickMe"</span>, command=clickme)</span><br><span class="line">btn.pack()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動window</span></span><br><span class="line">win.mainloop()</span><br><span class="line"></span><br><span class="line">popwin = tk.TopLevel(win)</span><br><span class="line">popwin.destory()</span><br></pre></td></tr></table></figure>
+<h4 id="input-textarea"><a href="#input-textarea" class="headerlink" title="input / textarea"></a>input / textarea</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">inp = tk.Entry(win, show=<span class="string">'None'</span>)</span><br><span class="line">text = tk.Text(win, hight=<span class="number">2</span>) <span class="comment"># 寬高為字數</span></span><br><span class="line"></span><br><span class="line">text.insert(<span class="string">'insert'</span>, <span class="number">123</span>) <span class="comment"># 插入在游標處</span></span><br><span class="line">text.insert(<span class="string">'end'</span>, <span class="number">456</span>) <span class="comment"># 插入在結尾</span></span><br><span class="line">text.insert(<span class="number">1.5</span>, <span class="number">456</span>) <span class="comment"># 插入在第一行第五個字元</span></span><br></pre></td></tr></table></figure>
+<h4 id="Listbox"><a href="#Listbox" class="headerlink" title="Listbox"></a>Listbox</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">list = tk.StringVar()</span><br><span class="line">list.set((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">listbox = tk.Listbox(win, listvariable=list)</span><br><span class="line"></span><br><span class="line">sel = listbox.get(listbox.curselection())</span><br></pre></td></tr></table></figure>
+<h4 id="RadioButton"><a href="#RadioButton" class="headerlink" title="RadioButton"></a>RadioButton</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">var = tk.StringVar()</span><br><span class="line"></span><br><span class="line">ra1 = tk.RadioButton(win, text=<span class="string">"op1"</span>, value=<span class="number">1</span>, variable=var)</span><br></pre></td></tr></table></figure>
+<h4 id="Othres"><a href="#Othres" class="headerlink" title="Othres"></a>Othres</h4><ul>
+<li>Scale 即seek bar</li>
+<li>CheckButton</li>
+</ul>
+<h4 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas = tk.Canvas(win, bg=<span class="string">'blue'</span>, height=<span class="number">200</span>, width=<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">tkimg = tk.PhotoImage(file=<span class="string">"img.png"</span>)</span><br><span class="line">canvas.create_image(<span class="number">0</span>, <span class="number">0</span>, anchor=<span class="string">"nw"</span>, image=tkimg)</span><br><span class="line"></span><br><span class="line">canvas.pack()</span><br></pre></td></tr></table></figure>
+<h4 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">menubar = tk.Menu(win)</span><br><span class="line"></span><br><span class="line">menuA = tk.Menu(menubar)</span><br><span class="line">menuB = tk.Menu(menubar)</span><br><span class="line"></span><br><span class="line">menubar.add_casecade(label=<span class="string">"File"</span>, menu=menuA)</span><br><span class="line">menubar.add_casecade(label=<span class="string">"Edit"</span>, menu=menuB)</span><br><span class="line"></span><br><span class="line">menuA.add_command(label=<span class="string">"open"</span>, command=openfile)</span><br><span class="line">menuA.add_separator()</span><br><span class="line">menuA.add_command(label=<span class="string">"exit"</span>, command=win.quit)</span><br><span class="line"></span><br><span class="line">win.config(menu=menubar)</span><br></pre></td></tr></table></figure>
+<h4 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h4><p>類似一個空間規劃(view或layout的概念)</p>
+<h4 id="messagebox"><a href="#messagebox" class="headerlink" title="messagebox"></a>messagebox</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">tk.messagebox.showinfo(title=<span class="string">""</span>, message=<span class="string">""</span>)</span><br><span class="line"><span class="comment"># showwarning / showerror / askquestion / askyesno</span></span><br><span class="line"><span class="comment"># asktrycancel / askokcancel</span></span><br></pre></td></tr></table></figure>
+<h4 id="pack"><a href="#pack" class="headerlink" title="pack"></a>pack</h4><p>元件放置方式</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">pack(side=<span class="string">"top"</span>)</span><br><span class="line"></span><br><span class="line">grid(row=<span class="number">1</span>, column=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">place(x=<span class="number">0</span>, y=<span class="number">0</span>, anchor=<span class="string">'nw'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.tutorialspoint.com/python/images/tkanchor.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Python/Python.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JimLiuXyz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自用筆記">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/home/Python/Python.html" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-18T18:14:57+08:00">
+                2018-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://www.runoob.com/python3/python3-data-type.html" target="_blank" rel="noopener">參考</a><br><a href="https://www.youtube.com/channel/UCdyjiB5H8Pu7aDTNVXTTpcg" target="_blank" rel="noopener">週莫煩</a></p>
+<ul>
+<li>Python為直譯語言 沒有bytecode 須透過直譯器執行(又稱解釋器) CPython為C編寫的直譯器 Jython為Java編寫 </li>
+</ul>
+<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># pip3為python3預安裝的模塊管理cli程式</span></span><br><span class="line">sudo pip3 install numpy</span><br><span class="line">sudo pip3 install -U numpy <span class="comment"># update</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使py為可執行</span></span><br><span class="line">chmod +x hello.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python #用來提示使用的直譯器</span></span><br><span class="line"></span><br><span class="line"><span class="string">''' #多行註解 (三個單或雙引號)</span></span><br><span class="line"><span class="string">變數不需要宣告類型 類型可以多載</span></span><br><span class="line"><span class="string">block用tab(四個空格)縮排約束</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">x = <span class="keyword">None</span></span><br><span class="line">x = <span class="string">"""abc</span></span><br><span class="line"><span class="string">123"""</span> <span class="comment"># 多行字串</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"hello"</span>, x)</span><br><span class="line">print(x, end=<span class="string">""</span>) <span class="comment"># 不換行</span></span><br><span class="line"></span><br><span class="line">a = b = c = <span class="number">1</span></span><br><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = int(input(<span class="string">"input your age"</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># list 同array 可用+號 insert/remove/index/count/sort</span></span><br><span class="line">x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">x = range(<span class="number">3</span>) <span class="comment"># 回傳[0,1,2]</span></span><br><span class="line"></span><br><span class="line">x = x[<span class="number">1</span>:<span class="number">3</span>] <span class="comment">#取索引1~2 (半開/不包含最後一個)</span></span><br><span class="line">x[<span class="number">1</span>:<span class="number">3</span>] = [] <span class="comment">#相當於刪除</span></span><br><span class="line">x = x[<span class="number">-1</span>] <span class="comment"># 負號為從尾端索引</span></span><br><span class="line"></span><br><span class="line">length = len(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># tuple(元祖) 同list 但不可修改</span></span><br><span class="line">x = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">x = (<span class="number">1</span>,) <span class="comment"># 如果只有一個 後面一定要加,</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># set</span></span><br><span class="line">x = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">x = set(<span class="string">"hello"</span>) <span class="comment"># &#123;"l", "h" "e" "o"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dictionary (map)</span></span><br><span class="line">x = &#123;<span class="string">"jim"</span>: <span class="number">18</span>, <span class="string">"john"</span>: <span class="number">15</span>&#125;</span><br><span class="line"><span class="keyword">del</span> x[<span class="string">"john"</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">True</span>:</span><br><span class="line"><span class="keyword">elif</span> <span class="keyword">False</span>:</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line"><span class="comment"># else還可用於for/while/try做為final block</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    print(x)</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment"># 類似break但會執行完該次loop才離開</span></span><br><span class="line"><span class="keyword">else</span>    <span class="comment"># 離開loop時執行</span></span><br><span class="line">    print(<span class="string">"end of loop"</span>)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">while</span> c&lt;<span class="number">10</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(x, y=<span class="number">3</span>)</span>:</span> <span class="comment"># 函數可巢狀定義</span></span><br><span class="line">    <span class="keyword">global</span> a <span class="comment"># 可以access到caller的a變數</span></span><br><span class="line">    print(x)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">myfunc(x=<span class="number">1</span>) <span class="comment"># 可指定參數名</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">** <span class="comment"># 次方</span></span><br><span class="line">// <span class="comment"># 除法取整數</span></span><br><span class="line">% <span class="comment"># 除法取於數</span></span><br></pre></td></tr></table></figure>
+<h1 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    file = open(<span class="string">""</span>, <span class="string">'r'</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(e)</span><br></pre></td></tr></table></figure>
+<h1 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCls</span></span></span><br><span class="line">    name = ""</span><br><span class="line">    __init__(self, name):</span><br><span class="line">        self.name = name</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myfun</span><span class="params">(self)</span>:</span> <span class="comment"># self為this用途 呼叫時不需要</span></span><br><span class="line">        print(self.name) <span class="comment"># class內的屬性一定要加self</span></span><br><span class="line"></span><br><span class="line">c = MyCls(<span class="string">"jim"</span>)</span><br><span class="line">c.myfun()</span><br><span class="line"></span><br><span class="line"><span class="comment">#判斷類型</span></span><br><span class="line">isinstance(<span class="number">1</span>, int) <span class="comment">#回傳true</span></span><br><span class="line">type(<span class="number">1</span>) <span class="comment">#回傳類型 &lt;class 'int'&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="系統變數"><a href="#系統變數" class="headerlink" title="系統變數"></a>系統變數</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">__name__ <span class="comment"># Thread name</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">sys.path <span class="comment"># 模組搜尋路徑</span></span><br><span class="line"><span class="comment"># 外部模組通常在python/site-packages下</span></span><br><span class="line"></span><br><span class="line">sys.argv <span class="comment"># 命令列參數</span></span><br></pre></td></tr></table></figure>
+<h1 id="模組"><a href="#模組" class="headerlink" title="模組"></a>模組</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">sys.path.append(<span class="string">"MyModuleFolder"</span>) <span class="comment">#加入自定義模組路徑</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> PYTHON_FILENAME <span class="comment">#不用副檔名</span></span><br><span class="line"><span class="keyword">import</span> PYTHON_FILENAME <span class="keyword">as</span> mod</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PYTHON_FILENAME <span class="keyword">import</span> *   <span class="comment"># 之後呼叫不用模組名</span></span><br><span class="line"><span class="keyword">from</span> PYTHON_FILENAME <span class="keyword">import</span> func</span><br></pre></td></tr></table></figure>
+<h1 id="Package"><a href="#Package" class="headerlink" title="Package"></a>Package</h1><p>在目錄底下新增<strong>init</strong>.py及可使該目錄成為package 用法與module一樣 只是多一層package name</p>
+<h1 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a>lambda</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">func = <span class="keyword">lambda</span> x,y: x+y</span><br></pre></td></tr></table></figure>
+<h1 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">b = a</span><br><span class="line">print(id(a) + <span class="string">" == "</span> + id(b)) <span class="comment"># a與b有同樣的索引 表示指向同樣的資料 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>]]</span><br><span class="line"></span><br><span class="line">shallow = copy.copy(a) <span class="comment"># 僅能copy一層</span></span><br><span class="line">deep = copy.deepcopy(a)</span><br></pre></td></tr></table></figure>
+<h1 id="file"><a href="#file" class="headerlink" title="file"></a>file</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">#離開with會自動file close</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"file.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    str = f.readline() <span class="comment">#讀單行 回傳str</span></span><br><span class="line">    list = f.readlines() <span class="comment">#讀全行 回傳list</span></span><br></pre></td></tr></table></figure>
+<h1 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h1><p>儲存變數到檔案</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">f = open(<span class="string">"file.pick"</span>, <span class="string">"wb"</span>)</span><br><span class="line">pickle.dump(a, f)</span><br><span class="line"></span><br><span class="line">f = open(<span class="string">"file.pick"</span>, <span class="string">"rb"</span>)</span><br><span class="line">a = pickle.load(f)</span><br></pre></td></tr></table></figure>
+<h1 id="RegEx"><a href="#RegEx" class="headerlink" title="RegEx"></a>RegEx</h1><p><a href="https://www.youtube.com/watch?v=l1MAW1z641E" target="_blank" rel="noopener">ref</a></p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/CoinPocket/區塊鏈Demo架構.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -378,7 +1041,7 @@
 <h4 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h4><ul>
 <li>大致行為無異於分散式資料庫 區塊鏈形同虛設</li>
 </ul>
-<p><img src="https://www.plantuml.com/plantuml/svg/TP9FIm916CRlyoa6ErGNm_KM2LgdRa9NB-FEgeFhZCoEGKIGLAH8_o02GGmFaWSXoXHB-ZRjhdwBPcTrqwtci8Vd-StpllFkcxG4ug9ICe5L9BICE2f1qyWR5EyYlPZdh4Bn7ZCPXsivTNvpZ6E3hpB0jw1WPKdb172VgawhFhkfERsEtMu0QVe801W9b4MM0IC-v8vUtM5dGxAR4OWic3MPNjGBY508Zm6KHpPCSaWNCE8qFwPdd_PjpNqxLx3EgE3IKjmwPSA0dEGB0h9SuC5jUC1CWeauKfZwK8Qz3fvFPvEsIlA4sBAbcilG4ABzVpkkhA1g8h6K6LQrFzLu41w3qL0vRQx4mGa0y_htFQSsSbfNTgDfDtiPcahlgsuiWnyQ7FZNTcIuByX1yBA-HSewy4Vb_IflKe4TYzhZmRJvw0ucxl0bGxMeSzsrBxfkl_yrhZiFxxFBEsTO1K47gxegBWg4OxamSjhptCIo1kHxvUP4KXHpHh2wegJOmY7f0gF6Zw6182YnG4E2H99okUHQVmC0"></p>
+<p><img src="https://www.plantuml.com/plantuml/svg/TP9FIyCm6CRl-HHX7jJBT9rUnC6c9s-2rrrYasrXNLBIA8e83XKduZyGeJ0cEuWx2A9puX_yDhPrty8qtUgi6cWFp_FByxvz--OTYOHSgrd0CP55uCpiz8PwW5Ebp4O2rQ15oeJX1MHMouAlCRp8BIxWM4cVtnmNc8YV38WiABcjg984mKtTRnxsJnj-f-srZe0o8mG0Z2HQHGw1gGWAdXw2Ndj2iPCfY1ouQd6pQbOGPH1k0QYEQf-Ma2bXodTVFtVVlRD6yBYdOPCpAPIbkN769O62bYiIybBimJcumYsAgTpKc7unZiCExdRwRosT50gPKKitLsG9nFZ_TbPRSTLSRYGpgHf_gjauF0FJYNB6GCc2RG06zIywVkF9RnvxHwxdTegiiBoakt68M2S2HDVcLNWag448svoYjWcYKOM_AfnKR6VItdFtqxqAkcz1xxx8ZBH_SktjNmUtjn_FX_xbI__WtE_LGTp1JrqNbnKgi5eODUr1RcvK0-fxrUQa2WmBJh6-egNCqA7B5Sx8js60E2WtH1E2Gl9gkTIIVm40"></p>
 <h1 id="公有鏈"><a href="#公有鏈" class="headerlink" title="公有鏈"></a>公有鏈</h1><h4 id="優點-1"><a href="#優點-1" class="headerlink" title="優點"></a>優點</h4><ul>
 <li>依附於<code>乙太坊公共網絡</code></li>
 <li>與第三方應用的結合較為多元</li>
@@ -386,8 +1049,8 @@
 <h4 id="缺點-1"><a href="#缺點-1" class="headerlink" title="缺點"></a>缺點</h4><ul>
 <li>在<code>乙太坊公共網絡</code>執行交易須支付乙太幣</li>
 </ul>
-<p><img src="https://www.plantuml.com/plantuml/svg/RP9DIoD148Rl_IkAsODwoPBa9WPqz-H14BpcqZizIPfCkaDFHrcM1SKDnYzK426iAoYYOSaYBgluWV_6dd7-nLOwap69rl5zdwfwAMesq5JfHiqdGPMBEbMq1hvNzWJxHDrgMSc6O9-bBnLyADbwoqd5F3NAaBu5MjQHAcbYcjtmU3FUQuMTKtEoJT3i8uIulcmmS9xls-Ryj_crXQXfNaUtVwERqqdic7A01l35bsxLhL0k0BuHmCBOl4HT3KxOVdXPVpBxhUZV3mkxKcY5bkKcXDGUA5wkQ92br8DfM98-Prn_9POJaddWH9Th6BGeeglL-F74JkiPsM5arCgziOfYikPfka23wbIAvIsMRYyKXkQEgxbtrNowA0kPiTMvHCcJxuGaMLRtNYwUJBjJ5F7FH_DdFzuvCplD_ZMLN0ayPSayp1Hmmq0QT1zsmjPjUBnhjjjsnjpYl6r5PZdfpFOw4m7FgUhkHrvtqmdTxlFTPdXq7sySX3Th3lIwTOKhXj-3H-_7dibaXaMIJ1iLyGZuNCwSO4foPcDOAJjm-6952k_LoAM3C622ZWc8pEB_uUV_1m00"></p>
-<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p><img src="https://www.plantuml.com/plantuml/svg/PPA_JW914CRxVOh9sKF4ZeW1qK8h8eKDpTxjtXyvTiZkdiGO4X8jY8HeOKDYIAoaip4K6X_d3daBz-u0KQVyljzyExExLQMfr54d9AeTY2wLj0CXzxXWXzHfUn8ZmUeOeeGTDwl_74h6vM-6v1Pex1hArUI8Tp2PpfEN4J5wxXBYX1Wni6hdJJYkbooW2cXF0LmJCCMefZPL7AnuF8YVxvRtmmonGtJQZay3iIRJCbi4BdKqMCda_UlcCtuOBjvkimO7XPR6ojXDWq1ceXUlW-N7j2KoC9LA6s3T1fNAbjCdwv1LmECi6SwJft4yciIJMKlK6YTPcEBoaiiDMO9zavEBK0RPTKYV486QWmmyNmEwFoUMGM4Oi41V_KNoGJok_Q971NLydbuefD1VT3L0sd6XYXqK7ZARQ1cvRiYBFMxl5Ookp6LoNGXmAyUCO1xJgWacCM3vkwJIBY6h1Smk1olD37kgK9mrwe2fPOARMIOXLHDfljOt"></p>
+<p><img src="https://www.plantuml.com/plantuml/svg/RPDTQnD158RlvrSSrWlRcvWFUoCDj7hbXL3mDZVZp2GPifa9inC_4A55Wwcjj888mLgeY0Q9Y6ABjVJVT7Qx_yAJoMPDKkVoVP_pdhE7iskHfSPsso6960q5h1IBZs-k54dKagf33Mr3A1f2yTkKjHf6TnM_eqDju5hTlwkSDboOUOPCBB2wWrJT4jSRnGVRwLu_7Xwvmns2vWGXX8Mwoo6uE1suJr_TXrU8kjwFvEHdSdoqX1NB0T087eIQjLYJIWNmb00-_0XPfyn240_-N3u_T_lzvDSB3pEjh47BSzULjWACR3Gjw7hkmIsuhqF9fNr2FASq5n0aNxPmq9fAlc-cPuS-RMoKPf5vgtp5ggcbjh3q7erQopbMyLZUlLgToLrKo_zLAtcZ4XGMMfSpfKAU4PBDihbt-VdS3OOrbRu_Sz_sqzsFRhStsQRHZo9XF5c1rIfsc4hJwhV3k7yI7xnsEmEViRvnrvSYyp2hB8qhCm7NQJhiXkomF64qklYz7RyxJL--YO-t0XXNswOq7Ay7bpuPUxLGc1L9bZOluXBmk89rnOsMt8_XfTBKaHjDhSG_evm7uO0PkY0WieRtX__1Nm00"></p>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p><img src="https://www.plantuml.com/plantuml/svg/NP8nImCn5CVtV8h7ZGwjdheK2otYu5PmSEcIIt9tqMiYIMeHAHHqA4hHmQKWWbit5t5G_3XtjT_2TzUxjZIGvVz-x__UoqlBEcfSlvSGosWYuE1mTmSl8IpHVGvU-_mCJevz3wW5Eh00jmJmSEfeGAq0BvsCqlU7nTEuG894iqiMKwagCZzOGOQKEV2owVVVtM_wF9v_tXS9J2jdC5ImgmIbELhFFqQBdxUkAi1SybT0bGRDvaPaI2gJqk1bbes_ijT9-ZXDfxEkQdTE2pChpBKmAzA78_HPYj00SyN8a12bdG0ZezY13jSL6s1r8hbqDzl8if58kBWUKKLPB8XG779e6oqRo3CkRBsdLQHvG9pfXs4YwWCHxDTGj_YOmjMatl315hJ1lIXkjEJBlUJINXMHdLWhiGxuX9IJuOmbkYKWqi8A-0l-0G00"></p>
 <h3 id="原始碼"><a href="#原始碼" class="headerlink" title="原始碼"></a>原始碼</h3><p><a href="https://github.com/jimliuxyz/ethereum-poa-docker" target="_blank" rel="noopener">私鏈(PoA)Docker</a><br><a href="https://github.com/jimliuxyz/coinpocket" target="_blank" rel="noopener">用戶服務器</a><br><a href="https://github.com/jimliuxyz/coinpocket-android" target="_blank" rel="noopener">Android用戶端</a></p>
 <h1 id="附錄"><a href="#附錄" class="headerlink" title="附錄"></a>附錄</h1><h3 id="電子錢包應用"><a href="#電子錢包應用" class="headerlink" title="電子錢包應用"></a>電子錢包應用</h3><h4 id="BitoEx-台廠-幣託"><a href="#BitoEx-台廠-幣託" class="headerlink" title="BitoEx 台廠 幣託"></a><a href="https://www.bitoex.com/" target="_blank" rel="noopener">BitoEx 台廠 幣託</a></h4><ul>
 <li>以email申請一個帳號 透過web/phone介面查詢</li>
@@ -519,7 +1182,7 @@
           
             <p>#連接<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># (Permissions too open)</span></span><br><span class="line">chmod 0600 ~/Downloads/AwsKeyStore.pem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用key連接ssh進入主機</span></span><br><span class="line">ssh -i <span class="string">"~/Downloads/AwsKeyStore.pem"</span> ec2-user@ec2-18-221-14-16.us-east-2.compute.amazonaws.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 透過security group的設定控制port的開放與否</span></span><br></pre></td></tr></table></figure></p>
 <p>#安裝<br><a href="http://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener">Docker 安装</a><br><a href="https://philipzheng.gitbooks.io/docker_practice/content/install/ubuntu.html" target="_blank" rel="noopener">Ubuntu 系列安裝 Docker</a></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 安裝yum</span></span><br><span class="line">rpm -qa | grep yum</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切換到super user</span></span><br><span class="line">sudo su</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝docker</span></span><br><span class="line">yum -y install docker-io</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝docker-compose</span></span><br><span class="line">sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line"></span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/bin/docker-compose /bin/docker-compose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動docker daemond</span></span><br><span class="line">service docker start</span><br><span class="line">sudo service docker start</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">sudo dockerd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝git</span></span><br><span class="line">yum install git-core</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">chmod +x demo.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝yum</span></span><br><span class="line">rpm -qa | grep yum</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切換到super user</span></span><br><span class="line">sudo su</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝docker</span></span><br><span class="line">yum -y install docker-io</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝docker-compose</span></span><br><span class="line">sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line"></span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/bin/docker-compose /bin/docker-compose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動docker daemond</span></span><br><span class="line">service docker start</span><br><span class="line">sudo service docker start</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">sudo dockerd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝git</span></span><br><span class="line">yum install git-core</span><br></pre></td></tr></table></figure>
 <p>#安裝最新版nodejs<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">apt-get update  </span><br><span class="line">apt-get install -y python-software-properties software-properties-common  </span><br><span class="line">add-apt-repository ppa:chris-lea/node.js  </span><br><span class="line">apt-get update  </span><br><span class="line">apt-get install nodejs  </span><br><span class="line"></span><br><span class="line"><span class="comment">#方法二</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh</span><br><span class="line">bash nodesource_setup.sh</span><br><span class="line">apt-get install nodejs</span><br><span class="line"></span><br><span class="line"><span class="comment">#或...</span></span><br><span class="line">curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -</span><br><span class="line"></span><br><span class="line">curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -</span><br></pre></td></tr></table></figure></p>
 <p>#安裝mongodb</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum -y install mongodb-org</span><br><span class="line"></span><br><span class="line">service mongod start</span><br></pre></td></tr></table></figure>
@@ -969,1105 +1632,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/web3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/Single/web3.html" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-30T00:47:59+08:00">
-                2018-04-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="sendTransaction與call"><a href="#sendTransaction與call" class="headerlink" title="sendTransaction與call"></a>sendTransaction與call</h4><p>method type指的是一個合約函數是不是constant,如果不是,最終一定要用sendTransaction,因為該函數需要寫資料進區塊鏈,寫入動作是規範在交易裡,必須消耗gas(手續費),也需要解鎖發起人帳號的權限(因為要付錢)</p>
-<p>另外,寫資料需要區塊鏈的多數共識,操作的結果在web3中是異步事件.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// Automatically determines the use of call or sendTransaction based on the method type</span><br><span class="line">myContractInstance.myMethod(param1 [, param2, ...] [, transactionObject] [, defaultBlock] [, callback]);</span><br><span class="line"> </span><br><span class="line">// Explicitly calling this method</span><br><span class="line">myContractInstance.myMethod.call(param1 [, param2, ...] [, transactionObject] [, defaultBlock] [, callback]);</span><br><span class="line"> </span><br><span class="line">// Explicitly sending a transaction to this method</span><br><span class="line">myContractInstance.myMethod.sendTransaction(param1 [, param2, ...] [, transactionObject] [, callback]);</span><br><span class="line"> </span><br><span class="line">// Get the call data, so you can call the contract through some other means</span><br><span class="line">var myCallData = myContractInstance.myMethod.getData(param1 [, param2, ...]);</span><br><span class="line">// myCallData = &apos;0x45ff3ff6000000000004545345345345..&apos;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/CoinPocket/開發紀錄.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/CoinPocket/開發紀錄.html" itemprop="url">Coinpocket開發紀錄</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-28T22:44:49+08:00">
-                2018-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>區塊鏈技術變化太快 文件 API 最好參考官方的 不然會吃屎</p>
-<p><a href="https://github.com/cubedro/eth-net-intelligence-api/blob/master/Dockerfile" target="_blank" rel="noopener">dockerfile範例</a></p>
-<p><a href="https://larrylu.blog/nodejs-pm2-cluster-455ffbd7671" target="_blank" rel="noopener">nodejs多執行緒cluster/pm2</a></p>
-<p><a href="https://www.youtube.com/watch?v=ouuRKq6tZsI" target="_blank" rel="noopener">nodejs事件迴圈/同步異步/耗時任務</a></p>
-<h1 id="怪事"><a href="#怪事" class="headerlink" title="怪事"></a>怪事</h1><h4 id="remix執行tx只要設Value都會有gas不足的問題-所以不好測payable-聽說跟連接方式有關"><a href="#remix執行tx只要設Value都會有gas不足的問題-所以不好測payable-聽說跟連接方式有關" class="headerlink" title="remix執行tx只要設Value都會有gas不足的問題 (所以不好測payable?/聽說跟連接方式有關)"></a>remix執行tx只要設Value都會有gas不足的問題 (所以不好測payable?/聽說跟連接方式有關)</h4><h4 id="ganache的gas-limit似乎是指節點執行tx的最大油耗-若太小很容易執行失敗"><a href="#ganache的gas-limit似乎是指節點執行tx的最大油耗-若太小很容易執行失敗" class="headerlink" title="ganache的gas limit似乎是指節點執行tx的最大油耗 若太小很容易執行失敗"></a>ganache的gas limit似乎是指節點執行tx的最大油耗 若太小很容易執行失敗</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//best兩行assign對調將出現&quot;out of gas&quot; (用法上沒有邏輯 純粹好奇)</span><br><span class="line">uint[] best;</span><br><span class="line">function func()&#123;</span><br><span class="line">    uint[3] memory a = [uint(1), 2, 3];</span><br><span class="line">    best = new uint[](2);</span><br><span class="line">    best = a;</span><br><span class="line">    report(best);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="vscode的intellisense沒反應"><a href="#vscode的intellisense沒反應" class="headerlink" title="vscode的intellisense沒反應?"></a>vscode的intellisense沒反應?</h4><blockquote>
-<p>require來源不是node_module中的一定要加<code>.</code></p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">"server/test.js"</span>) <span class="comment">//錯誤!!!</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"./server/test.js"</span>) <span class="comment">//正確</span></span><br></pre></td></tr></table></figure>
-<h4 id="The-path-etc-localtime-is-not-shared-from-OS-X-and-is-not-known-to-Docker"><a href="#The-path-etc-localtime-is-not-shared-from-OS-X-and-is-not-known-to-Docker" class="headerlink" title="The path /etc/localtime is not shared from OS X and is not known to Docker"></a>The path /etc/localtime is not shared from OS X and is not known to Docker</h4><blockquote>
-<p>Add -e TZ=<code>ls -la /etc/localtime | cut -d/ -f8-9</code> to the docker run command line</p>
-</blockquote>
-<h4 id="vscode的intellisense與JsDoc搭配"><a href="#vscode的intellisense與JsDoc搭配" class="headerlink" title="vscode的intellisense與JsDoc搭配"></a>vscode的intellisense與JsDoc搭配</h4><p><a href="https://stackoverflow.com/questions/6460604/how-to-describe-object-arguments-in-jsdoc" target="_blank" rel="noopener">ref</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param userInfo - Information about the user.</span></span><br><span class="line"><span class="comment"> * @param userInfo.name - The name of the user.</span></span><br><span class="line"><span class="comment"> * @param userInfo.email - The email of the user.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">userInfo</span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @typedef  &#123;object&#125; TestConfig</span></span><br><span class="line"><span class="comment"> * @property &#123;string&#125; name</span></span><br><span class="line"><span class="comment"> * @property &#123;number&#125; gold</span></span><br><span class="line"><span class="comment"> * @typedef  &#123;object&#125; TestConfig2</span></span><br><span class="line"><span class="comment"> * @property &#123;string&#125; name2</span></span><br><span class="line"><span class="comment"> * @property &#123;number&#125; gold2</span></span><br><span class="line"><span class="comment"> * @param    &#123;TestConfig&#125; config - 註解1</span></span><br><span class="line"><span class="comment"> * @param    &#123;TestConfig2&#125; config2 - 註解2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">config, config2</span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@param &#123;number|<span class="literal">undefined</span>&#125; ...</span><br><span class="line">@param &#123;<span class="built_in">Object</span>.&lt;string, number&gt;&#125; dict ...</span><br><span class="line"></span><br><span class="line">@type &#123;string&#125; ... <span class="comment">//for one var</span></span><br></pre></td></tr></table></figure>
-<h1 id="自創加密貨幣-TutorialToken"><a href="#自創加密貨幣-TutorialToken" class="headerlink" title="自創加密貨幣 (TutorialToken)"></a>自創加密貨幣 (TutorialToken)</h1><p><a href="https://github.com/truffle-box/tutorialtoken-box" target="_blank" rel="noopener">truffle範例 tutorialtoken-box</a></p>
-<p><a href="http://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin" target="_blank" rel="noopener">openzeppelin完整步驟</a></p>
-<p>架構 : 本地端網頁透過websocket連本地MetaMask再連到Ganache的測試環境(節點)上<br>本地端網頁 : 由truffle產生 主要機制在於連接MetaMask 加載合約.json<br>truffle : 網頁上線前 還可幫忙編譯合約與佈建<br>openzeppelin : 合約lib 提供標準加密貨幣的規格讓使用者繼承</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">//下載套用tutorialtoken</span><br><span class="line">truffle unbox tutorialtoken</span><br><span class="line"></span><br><span class="line">//編譯合約與發佈</span><br><span class="line">truffle migrate --reset</span><br><span class="line"></span><br><span class="line">//執行本地端網頁伺服器</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<h4 id="CoinPocket範例"><a href="#CoinPocket範例" class="headerlink" title="CoinPocket範例"></a>CoinPocket範例</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pragma solidity ^0.4.7;</span><br><span class="line"></span><br><span class="line">contract CoinPocket &#123;</span><br><span class="line">    </span><br><span class="line">    event txlog(string dtypes, string action, uint amount);</span><br><span class="line"></span><br><span class="line">    uint constant DTYPELEN = 2;</span><br><span class="line">    string[] dtypes = [&quot;TWD&quot;, &quot;USD&quot;];</span><br><span class="line">    enum DollarType&#123;</span><br><span class="line">        TWD, USD, _END</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    struct Account &#123;</span><br><span class="line">        uint[DTYPELEN] dollar;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    constructor() public&#123;</span><br><span class="line">        users[this].dollar[uint(DollarType.TWD)] = 5000;</span><br><span class="line">        users[this].dollar[uint(DollarType.USD)] = 3000;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    mapping (address =&gt; Account) users;</span><br><span class="line">    </span><br><span class="line">    modifier checkType(uint dtype)&#123;</span><br><span class="line">        require(dtype&gt;=0 &amp;&amp; dtype&lt;dtypes.length</span><br><span class="line">            &amp;&amp; DTYPELEN == dtypes.length</span><br><span class="line">            &amp;&amp; DTYPELEN == uint(DollarType._END)-1</span><br><span class="line">            , &quot;dtype error!&quot;);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    modifier enought(uint dtype, uint amount)&#123;</span><br><span class="line">        require(users[msg.sender].dollar[dtype]&gt;=amount</span><br><span class="line">            , &quot;insufficient balance!&quot;);</span><br><span class="line">        require(users[this].dollar[dtype]&gt;=amount</span><br><span class="line">            , &quot;insufficient balance of contract!!!&quot;);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function deposit(uint dtype, uint amount) checkType(dtype) public&#123;</span><br><span class="line">        users[msg.sender].dollar[dtype] += amount;</span><br><span class="line">        users[this].dollar[dtype] += amount;</span><br><span class="line">        emit txlog(dtypes[dtype], &quot;deposit&quot;, amount);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function withdraw(uint dtype, uint amount) checkType(dtype) enought(dtype, amount) public&#123;</span><br><span class="line">        users[msg.sender].dollar[dtype] -= amount;</span><br><span class="line">        users[this].dollar[dtype] -= amount;</span><br><span class="line">        emit txlog(dtypes[dtype], &quot;withdraw&quot;, amount);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function detail() constant public returns(uint[DTYPELEN])&#123;</span><br><span class="line">        return users[msg.sender].dollar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function detail_pool() constant public returns(uint[DTYPELEN])&#123;</span><br><span class="line">        return users[this].dollar;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function test1() pure public returns(string)&#123;</span><br><span class="line">        return &quot;~~It&apos;s CoinPocket!!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="truffle-migrate失敗"><a href="#truffle-migrate失敗" class="headerlink" title="truffle migrate失敗"></a>truffle migrate失敗</h4><blockquote>
-<p>has not been deployed to detected network (network/artifact mismatch)</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.Remove the build folder</span></span><br><span class="line">rm -r build/</span><br><span class="line">truffle compile</span><br><span class="line">truffle migrate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.Use</span></span><br><span class="line">truffle migrate --reset --all</span><br></pre></td></tr></table></figure>
-<h4 id="直接用web3建立合約"><a href="#直接用web3建立合約" class="headerlink" title="直接用web3建立合約"></a>直接用web3建立合約</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> solc = <span class="built_in">require</span>(<span class="string">'solc'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Web3 = <span class="built_in">require</span>(<span class="string">'web3'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * prepare build folder</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">fs.existsSync(<span class="string">'./build'</span>) || fs.mkdirSync(<span class="string">'./build'</span>)</span><br><span class="line">fs.existsSync(<span class="string">'./build/contracts'</span>) || fs.mkdirSync(<span class="string">'./build/contracts'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * connect to ethereum node</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> ethereumUri = <span class="string">'http://localhost:8545'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> web3 = <span class="keyword">new</span> Web3();</span><br><span class="line">web3.setProvider(<span class="keyword">new</span> web3.providers.HttpProvider(ethereumUri));</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!web3.isConnected())</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'unable to connect to ethereum node at '</span> + ethereumUri);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> address = web3.eth.coinbase</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Compile Contract and Fetch ABI, bytecode</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> source = fs.readFileSync(<span class="string">"./contracts/CoinPocket.sol"</span>, <span class="string">'utf8'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'compiling contract...'</span>);</span><br><span class="line"><span class="keyword">let</span> compiledContract = solc.compile(source);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'done'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> contractName <span class="keyword">in</span> compiledContract.contracts) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> bytecode = compiledContract.contracts[contractName].bytecode;</span><br><span class="line">  <span class="keyword">var</span> abi = <span class="built_in">JSON</span>.parse(compiledContract.contracts[contractName].interface);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//write to local fs</span></span><br><span class="line">  <span class="keyword">let</span> data = &#123;contractName, abi, bytecode&#125;</span><br><span class="line">  fs.writeFileSync(<span class="string">'./build/contracts/'</span> + contractName + <span class="string">'.json'</span></span><br><span class="line">    , <span class="built_in">JSON</span>.stringify(data, <span class="literal">undefined</span>, <span class="number">2</span>)</span><br><span class="line">    , &#123;<span class="attr">encoding</span>: <span class="string">'utf-8'</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Doploy to blockchain network</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> gasEstimate = web3.eth.estimateGas(&#123;<span class="attr">data</span>: <span class="string">'0x'</span> + bytecode&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'gasEstimate = '</span> + gasEstimate);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> MyContract = web3.eth.contract(abi);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'deploying contract...'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myContractReturned = MyContract.new([], &#123;</span><br><span class="line">    <span class="keyword">from</span>: address,</span><br><span class="line">    data: <span class="string">'0x'</span>+ bytecode,</span><br><span class="line">    gas: gasEstimate + <span class="number">50000</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, myContract</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!err) &#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">NOTE:</span> The callback will fire twice!</span></span><br><span class="line">        <span class="comment">// Once the contract has the transactionHash property set and once its deployed on an address.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// e.g. check tx hash on the first call (transaction send)</span></span><br><span class="line">        <span class="keyword">if</span> (!myContract.address) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`myContract.transactionHash = <span class="subst">$&#123;myContract.transactionHash&#125;</span>`</span>); <span class="comment">// The hash of the transaction, which deploys the contract</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// check address on the second call (contract deployed)</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`myContract.address = <span class="subst">$&#123;myContract.address&#125;</span>`</span>); <span class="comment">// the contract address</span></span><br><span class="line">            global.contractAddress = myContract.address;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Note that the returned "myContractReturned" === "myContract",</span></span><br><span class="line">        <span class="comment">// so the returned "myContractReturned" object will also get the address set.</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">wait</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    setTimeout(wait, <span class="number">1000</span>);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<h1 id="brew安裝舊版軟體"><a href="#brew安裝舊版軟體" class="headerlink" title="brew安裝舊版軟體"></a>brew安裝舊版軟體</h1><p>以安裝舊版docker為例</p>
-<ul>
-<li>Formula : 指可安裝軟體的名稱</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#找到Formula的rb檔案的git連結</span></span><br><span class="line">brew cask info docker</span><br><span class="line"></span><br><span class="line"><span class="comment">#連入該git連結 按history找到自己要的版本 按view瀏覽並複製下整份code</span></span><br><span class="line"><span class="comment">#https://github.com/caskroom/homebrew-cask/blob/master/Casks/docker.rb</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#在本機裡自建一個.rb檔 把複製的code貼上(cask 'docker' do改為'docker_old')</span></span><br><span class="line">cat &gt; /usr/<span class="built_in">local</span>/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/docker_old.rb</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定rb路徑做安裝</span></span><br><span class="line">brew cask install /usr/<span class="built_in">local</span>/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/docker_old.rb</span><br></pre></td></tr></table></figure>
-<p>#安裝mongodb<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#官網下載安裝</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#主程式移動到/usr/local/下</span></span><br><span class="line">sudo mv mongodb-osx-x86_64-3.6.4/ /usr/<span class="built_in">local</span>/mongodb</span><br><span class="line"></span><br><span class="line"><span class="comment">#建立db目錄</span></span><br><span class="line">sudo mkdir -p /data/db</span><br><span class="line"></span><br><span class="line"><span class="comment">#編輯.bash_profile</span></span><br><span class="line">code .bash_profile</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加內容</span></span><br><span class="line"><span class="built_in">export</span> MONGO_PATH=/usr/<span class="built_in">local</span>/mongodb</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$MONGO_PATH</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="comment">#啟動daemon程式</span></span><br><span class="line"><span class="built_in">source</span> .bash_profile</span><br><span class="line">mongod</span><br><span class="line"></span><br><span class="line"><span class="comment">#預設port:27017</span></span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/FinTech/ethereum.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/FinTech/ethereum.html" itemprop="url">Ethereum</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-26T19:31:09+08:00">
-                2018-04-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="節點軟體"><a href="#節點軟體" class="headerlink" title="節點軟體"></a>節點軟體</h1><blockquote>
-<p>節點的核心是geth</p>
-</blockquote>
-<p><a href="https://luren5.gitbooks.io/dapp-develop/content/22-mac-os%E4%B8%8B%E5%AE%89%E8%A3%85.html" target="_blank" rel="noopener">MacOs安裝</a></p>
-<h4 id="安裝-以Ubuntu為例"><a href="#安裝-以Ubuntu為例" class="headerlink" title="安裝(以Ubuntu為例)"></a>安裝(以Ubuntu為例)</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#ppa源 : 非Ubuntu官方上架的軟體安裝來源(Personal Package Archive)</span></span><br><span class="line"><span class="comment">#software-properties-common為add-apt-repository的依賴</span></span><br><span class="line"></span><br><span class="line">sudo apt-get install software-properties-common</span><br><span class="line">sudo add-apt-repository -y ppa:ethereum/ethereum</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install ethereum</span><br></pre></td></tr></table></figure>
-<h4 id="簡易安裝"><a href="#簡易安裝" class="headerlink" title="簡易安裝"></a>簡易安裝</h4><p>缺bootnode, evm, disasm, rlpdump, ethtest…</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">apt-get install geth</span><br></pre></td></tr></table></figure>
-<h4 id="編譯"><a href="#編譯" class="headerlink" title="編譯"></a>編譯</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安裝golang編譯器</span></span><br><span class="line">sudo apt-get install -y build-essential golang</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> go-ethereum</span><br><span class="line">make geth</span><br></pre></td></tr></table></figure>
-<p>官方還有提供Docker Image在Hub上</p>
-<h1 id="合約結構"><a href="#合約結構" class="headerlink" title="合約結構"></a>合約結構</h1><ul>
-<li>合約也有自己的一個account <code>把他當人看</code> (這個觀念很重要!!!!!!)</li>
-<li>transaction為一個動作(交易)的執行 例如轉帳/建合約/呼叫合約 就是一個transaction</li>
-<li>任何帳號都能發起transaction呼叫合約函數 且不能確定會有幾個節點同時執行合約 但最終只會有一個勝出</li>
-<li>solidity仍在演化中 語法或結構隨時都會進化</li>
-<li>只要有寫入操作都會消耗gas 若是在不允許消耗gas的函數(宣告為constant或fallback函數)中做寫入操作將導致失敗難以察覺</li>
-</ul>
-<p><a href="https://www.slideshare.net/NicholasLin15/ss-69279815" target="_blank" rel="noopener">solidity中文簡介</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">pragma solidity ^<span class="number">0.4</span><span class="number">.2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用其他合約</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"Another.sol"</span></span><br><span class="line"></span><br><span class="line">contract Test &#123;</span><br><span class="line">    <span class="comment">//狀態變數(state)</span></span><br><span class="line">    <span class="comment">//int/uint/byte/bool/string/struct/address/mapping</span></span><br><span class="line">    <span class="comment">//基本上允許不初始化 即'零態' 但array會報錯</span></span><br><span class="line">    <span class="comment">//var:賦值後才確定型別(棄用)</span></span><br><span class="line">    address public owner; <span class="comment">//相當於uint160 (20byte)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//事件 (會將參數寫到transaction receipt作為收據紀錄)</span></span><br><span class="line">    <span class="comment">//客戶端可以訂閱(watch)這個event (當transaction被放到blockchain後)</span></span><br><span class="line">    event Becalled(address indexed caller, bytes message);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//枚舉 (值為uint)</span></span><br><span class="line">    enum State &#123;Ready, Doing, Done&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//key value pair (初值為0)(不需初始化)</span></span><br><span class="line">    mapping (<span class="function"><span class="params">address</span> =&gt;</span> userInfo) public users;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//array (初值為0,可動態,有維度,刪除元素時會shift)</span></span><br><span class="line">    uint[] best; <span class="comment">//動態陣列類似於arraylist 用push新增</span></span><br><span class="line">    uint[<span class="number">5</span>] top5;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        uint[<span class="number">3</span>] memory a = [uint(<span class="number">1</span>), <span class="number">2</span>, <span class="number">3</span>]; <span class="comment">//左右必須對稱; uint(1)為顯式轉型</span></span><br><span class="line">        best = a;</span><br><span class="line">        best = <span class="keyword">new</span> uint[](<span class="number">2</span>); <span class="comment">//用new初始化陣列; 宣告2個元素的陣列</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    string str = <span class="string">'123'</span> <span class="comment">// ascii 非 unicode</span></span><br><span class="line">    bytes(str)[<span class="number">2</span>] <span class="comment">//string操作通常要轉為bytes</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">0</span>; i&lt;<span class="number">2000</span>; i++)&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//hex字串轉bytes</span></span><br><span class="line">    bytes memory signedString =hex<span class="string">"f4128988cbe7df8...."</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//結構 (如同原生型態 賦值於變數時會被拷貝) (只有internal函數能回傳struct)</span></span><br><span class="line">    struct Member &#123;</span><br><span class="line">        string name;</span><br><span class="line">        uint age;</span><br><span class="line">        bytes12 phone;</span><br><span class="line">        address addr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//建構子</span></span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="comment">//不能用this 不能做自己的external call</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//呼叫函數時用於檢查狀態 類似處理assertion</span></span><br><span class="line">    <span class="comment">//一個函數可以有多個modifier 也可以覆寫父合約的modifier</span></span><br><span class="line">    modifier beforeCall &#123;</span><br><span class="line">        <span class="keyword">if</span>(msg.sender != owner) <span class="keyword">throw</span>;</span><br><span class="line">        <span class="comment">//原函數尚未執行</span></span><br><span class="line">        _; <span class="comment">//&lt;-表示暫時返回原函數執行</span></span><br><span class="line">        <span class="comment">//原函數執行完畢</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//函數 (函數內任何變數其作用域為整個函數 沒有block概念)</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">testFunc</span>(<span class="params"></span>) <span class="title">beforeCall</span> </span>&#123;</span><br><span class="line">        Member memory s = Member(&#123;</span><br><span class="line">            age : <span class="number">10</span>,</span><br><span class="line">            name : <span class="string">"Jack"</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">        Member memory s = Member(<span class="string">"Test"</span>, <span class="number">10</span>,...);</span><br><span class="line">        Becalled(msg.sender, msg.data);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//storage修飾傳入的是一個field(status) (僅能internal或private)</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">modifyX</span>(<span class="params">uint[] storage _x</span>) <span class="title">internal</span> </span>&#123;...&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//fallback function 當找不到叫用的函數(例如有人轉帳到合約中)或寫錯函數名則會呼叫這個函數</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">throw</span>; <span class="comment">//避免合約被當成一般帳戶被入帳 而之後無法出帳</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="memory-storage"><a href="#memory-storage" class="headerlink" title="memory / storage"></a>memory / storage</h4><blockquote>
-<p>僅針對struct與array設計</p>
-</blockquote>
-<ul>
-<li>memory : 記憶體變數 如同一般程式語言 不能宣告做為field</li>
-<li><p>storage : 永久儲存體變數 將寫入區塊</p>
-</li>
-<li><p>兩者轉換都是以copy的方式 (賦值 或 經由函數傳遞時)</p>
-</li>
-<li>memory變數丟到另一個函數參數也是memory 兩個會是同一塊memory (其他程式語言處理struct與array也大致如此)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">contract SimpleAssign&#123;</span><br><span class="line">    //field(status)一律為storage變數</span><br><span class="line">    struct S&#123;</span><br><span class="line">        string a;</span><br><span class="line">        uint b;</span><br><span class="line">    &#125;</span><br><span class="line">    uint x;</span><br><span class="line">    </span><br><span class="line">    function assign(S s) internal&#123; //參數變數(s)預設是memory(即一份copy)</span><br><span class="line">        //struct區域變數(tmp)預設是storage [為何要預設為storage???]</span><br><span class="line">        S tmp = s;  //報錯</span><br><span class="line">        //1.必須強制將傳入參數設為storage (該函數必須為internal)</span><br><span class="line">        //2.或將tmp設為memory</span><br><span class="line">        </span><br><span class="line">        S memory tmp2 = S(&quot;memory&quot;, 0); //在記憶體中使用struct</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //struct宣告該為memory或storage跟宣告的地方與使用的方式有關</span><br><span class="line">    //1.丟進函數前是什麼 2.進入函數時是什麼 3.進入函數後是什麼</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="合約產生合約"><a href="#合約產生合約" class="headerlink" title="合約產生合約"></a>合約產生合約</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &quot;./MyCont.sol&quot;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">address caddr = new MyCont()    //部署合約 先取得address</span><br><span class="line">MyCont cont = MyCont(caddr)     //才能建立實體叫用</span><br></pre></td></tr></table></figure>
-<h4 id="fallback函數"><a href="#fallback函數" class="headerlink" title="fallback函數"></a>fallback函數</h4><blockquote>
-<p>當呼叫一個合約中沒有的函數 會執行fallback<br>當執行address.send()時固定會執行fallback<br>fallback有2300gas的限制 故大致用於事件紀錄</p>
-</blockquote>
-<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><blockquote>
-<p>每次交易可以紀錄receipt(收據) 取回時為json格式<br>每次交易可以觸發多次event 產生多個log<br>參數預設存到data欄位 例如event(A,B) 造成 {data:’AB’} 無分隔符號<br>如果參數前綴indexed可將參數存到topic欄位(有分隔符號) 預設第一個是event的識別字 剩下3個可以用<br>事件在客戶端可被監聽(event callback)</p>
-</blockquote>
-<h4 id="this"><a href="#this" class="headerlink" title="this"></a>this</h4><blockquote>
-<p>合約的執行環境 等同合約的address<br>this不同 表示storage不同 讀寫出的東西就不同</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Contract A&#123;</span><br><span class="line">    function func2() internal &#123;&#125;</span><br><span class="line">    function func1()&#123;</span><br><span class="line">        #func2被以internal的方式呼叫</span><br><span class="line">        func2();</span><br><span class="line">        </span><br><span class="line">        #func2被以external的方式呼叫 (若func2強制宣告為internal則會報錯)</span><br><span class="line">        this.func2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="send-與transfer"><a href="#send-與transfer" class="headerlink" title="send()與transfer()"></a>send()與transfer()</h4><blockquote>
-<p>都用於傳送eth 有2300gas限制</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">send() 失敗回傳false</span><br><span class="line">transfer() 失敗直接throw(建議使用)</span><br><span class="line"></span><br><span class="line">#msg.sender傳送1wei給addr</span><br><span class="line">addr.send(1)</span><br></pre></td></tr></table></figure>
-<h4 id="assert與require與throw"><a href="#assert與require與throw" class="headerlink" title="assert與require與throw"></a>assert與require與throw</h4><blockquote>
-<p>都是assertion的處理<br>throw偏向<code>意外</code>會被取走等同gasLimit的手續費 (正常是gasUsed)<br>assert與throw一樣 (應注意而未注意)<br>require為gasUsed (需求不符)(可傳錯誤訊息)<br>revert() 同require 只是沒有輸入參數(可傳錯誤訊息)</p>
-</blockquote>
-<h4 id="call-與delagatecall"><a href="#call-與delagatecall" class="headerlink" title="call()與delagatecall()"></a>call()與delagatecall()</h4><p><a href="https://vomtom.at/address-call-vs-delegatecall-vs-libraries/" target="_blank" rel="noopener">示例</a><br>除了用send()與transfer()做tx外 call也可以達成</p>
-<p>A為caller B為someone</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">caller執行someone.call(&quot;somefunc&quot;)</span><br><span class="line">&gt; 在somefunc中 : this為someone ; msg.sender為caller</span><br><span class="line">&gt; 兩合約各自安全</span><br><span class="line">&gt; 可以串addr.gas().value().call(...) 指定gas與value</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">caller執行someone.callcode(&quot;somefunc&quot;)</span><br><span class="line">&gt; 在somefunc中 : this為caller 等同於caller將somefunc嵌入自己的函數中</span><br><span class="line">&gt; caller的變數有被覆寫的風險 `somefunc中沒有msg訪問權` (已納入棄用)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">caller執行someone.delagatecall(&quot;somefunc&quot;)</span><br><span class="line">&gt; 同callcode 差別在有msg訪問權 (msg持續是caller中的msg)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#increaseAge為合約內的一個函數</span><br><span class="line">bytes4 methodId = bytes4(keccak256(&quot;increaseAge(string,uint256)&quot;));</span><br><span class="line">#addr為合約帳戶 固定返回bool表示成敗</span><br><span class="line">bool res = addr.call(methodId,&quot;jack&quot;, 1);</span><br><span class="line"></span><br><span class="line">addr.call(&quot;myfunc&quot;, &quot;str&quot;);</span><br><span class="line">#設定gas limit與傳輸的eth值</span><br><span class="line">addr.call.gas(1000000).value(1 ether)(&quot;myfunc&quot;, &quot;str&quot;);</span><br><span class="line"></span><br><span class="line">addr.delagatecall.gas(1000000)(&quot;register&quot;, &quot;MyName&quot;)</span><br></pre></td></tr></table></figure>
-<h4 id="函數可見性-visibility"><a href="#函數可見性-visibility" class="headerlink" title="函數可見性(visibility)"></a>函數可見性(visibility)</h4><p><a href="http://me.tryblockchain.org/solidity-function-advanced1.html" target="_blank" rel="noopener">參考</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public 可被外界使用(預設)(是internal也是external)</span><br><span class="line">private 合約內部使用</span><br><span class="line">internal - 自己與其繼承合約</span><br><span class="line">external 僅供外部合約使用 (內部硬要呼叫要用this.)</span><br><span class="line"></span><br><span class="line">public用於field可讓編譯器建立訪問器(getter) (array一次僅能get一個元素)(mapping要看key/value的型別)(struct也是看型別)</span><br><span class="line"></span><br><span class="line">合約內回傳的資料型態較不受限 合約外(external call)通常是基本型沒問題 其他最好使用時測試 因為solidity變化太快</span><br></pre></td></tr></table></figure>
-<h4 id="函數屬性標示"><a href="#函數屬性標示" class="headerlink" title="函數屬性標示"></a>函數屬性標示</h4><ul>
-<li>payable<ul>
-<li>只要函數涉及msg.value 就要加payable</li>
-</ul>
-</li>
-<li>constant<ul>
-<li>宣告該函數不需寫資料到區塊鏈 不需身份識別與gas</li>
-<li>原本storage變數也不會寫入!!!!</li>
-<li>在remix控制台可以看到return值</li>
-</ul>
-</li>
-<li>非constant<ul>
-<li>即可能需要寫入資料的函數</li>
-<li>必須透過event寫receipt 再讀receipt才能debug</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">payable : </span><br><span class="line">constant : 宣告該函數不需寫資料到區塊鏈 不需身份識別與gas (或呼叫時加.call()也行)</span><br></pre></td></tr></table></figure>
-<h4 id="物件"><a href="#物件" class="headerlink" title="物件"></a>物件</h4><blockquote>
-<p>單位 : ether finney wei<br>時間 : seconds weeks years now (base on block)<br>msg : 與transaction相關的訊息 (sender:發起人 value:交易的ether)<br>address : 一個帳號地址 (用=0x0來歸零)</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">msg : 呼叫函數時以msg帶入呼叫者與一個ehter value</span><br><span class="line">msg.sender : 代表執行函數的人(在建構函數時就是部署合約的人)</span><br><span class="line">msg.vlaue : msg被傳入的ether</span><br><span class="line"></span><br><span class="line">this.balance : 合約餘額</span><br><span class="line"></span><br><span class="line">address.balance : 帳號餘額</span><br><span class="line">address.send(amount) : msg.sender送錢到address (方向邏輯有點相反 特別注意)</span><br><span class="line"></span><br><span class="line">selfdestruct(addr) : 終結合約(結帳) 將合約balance轉到addr</span><br></pre></td></tr></table></figure>
-<h4 id="web3-js內部如何包裝交易訊息到節點上執行"><a href="#web3-js內部如何包裝交易訊息到節點上執行" class="headerlink" title="web3.js內部如何包裝交易訊息到節點上執行"></a>web3.js內部如何包裝交易訊息到節點上執行</h4><p><a href="https://huangwenwei.com/blogs/life-cycle-of-an-ethereum-transaction" target="_blank" rel="noopener">參考</a><br><a href="https://medium.com/@mvmurthy/full-stack-hello-world-voting-ethereum-dapp-tutorial-part-1-40d2d0d807c2" target="_blank" rel="noopener">參考</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//以呼叫此合約函數為例</span></span><br><span class="line">contractInstance.voteForCandidate(<span class="string">'Rama'</span>, &#123;<span class="attr">from</span>: web3.eth.accounts[<span class="number">0</span>]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//建立交易訊息</span></span><br><span class="line"><span class="keyword">var</span> rawTxn = &#123;</span><br><span class="line">    nonce: web3.toHex(txnCount),    <span class="comment">//txnCount可以是當下的交易總筆數</span></span><br><span class="line">    gasPrice: web3.toHex(<span class="number">100000000000</span>),</span><br><span class="line">    gasLimit: web3.toHex(<span class="number">140000</span>),</span><br><span class="line">    to: <span class="string">'0x633296baebc20f33ac2e1c1b105d7cd1f6a0718b'</span>, <span class="comment">//合約帳號</span></span><br><span class="line">    value: web3.toHex(<span class="number">0</span>),   <span class="comment">//交易金額</span></span><br><span class="line">    data: <span class="string">'0xc7ed0149'</span>+<span class="string">'52616d61....'</span>  <span class="comment">//合約函數的hash值的前4byte與參數</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//合約函數的hash值</span></span><br><span class="line">web3.sha3(<span class="string">'voteForCandidate(bytes32 candidate)'</span>)</span><br><span class="line">=<span class="string">'0xc7ed014922ff9493a686391b70ca0e8bb7e80f91c98a5cd3d285778ab2e245b3'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//合約參數被串接為每個32byte的字串</span></span><br><span class="line"><span class="number">0x52616d610000000000</span>....</span><br><span class="line"></span><br><span class="line"><span class="comment">//將privateKey從字串轉為bytes</span></span><br><span class="line"><span class="keyword">const</span> privateKey = Buffer.from(<span class="string">'e331b6d69882b4ab4ea581s88e0b6s4039a3de5967d88dfdcffdd2270c0fd109'</span>, <span class="string">'hex'</span>)</span><br><span class="line"><span class="comment">//產生交易物件</span></span><br><span class="line"><span class="keyword">const</span> txn = <span class="keyword">new</span> EthereumTx(rawTxn)</span><br><span class="line"><span class="comment">//簽名該交易</span></span><br><span class="line">txn.sign(privateKey)</span><br><span class="line"><span class="comment">//序列化</span></span><br><span class="line"><span class="keyword">const</span> serializedTxn = txn.serialize()</span><br><span class="line"><span class="comment">//取得交易id (往後以此id查找交易訊息/狀態)</span></span><br><span class="line">transactionId = sha3(serializedTxn)</span><br><span class="line"><span class="comment">//將serializedTxn傳到任何一個節點即可 (傳到json-rpc??)</span></span><br></pre></td></tr></table></figure>
-<h1 id="模組"><a href="#模組" class="headerlink" title="模組"></a>模組</h1><p><a href="https://kknews.cc/news/vkabnby.html" target="_blank" rel="noopener">安全性防禦建議</a></p>
-<ul>
-<li>eth：交易與區塊</li>
-<li>net：p2p網絡狀態</li>
-<li>admin：管理節點 &lt;危險權限&gt;</li>
-<li>miner：挖礦</li>
-<li>personal：帳戶管理 &lt;危險權限&gt;</li>
-<li>txpool：交易內存池</li>
-<li>web3：包含以上 幣值單位轉換</li>
-</ul>
-<h1 id="私有鏈"><a href="#私有鏈" class="headerlink" title="私有鏈"></a>私有鏈</h1><p><a href="https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8-go-ethereum-1-6-clique-poa-consensus-%E5%BB%BA%E7%AB%8B-private-chain-1-4d359f28feff" target="_blank" rel="noopener">ref</a></p>
-<h4 id="步驟簡述"><a href="#步驟簡述" class="headerlink" title="步驟簡述"></a>步驟簡述</h4><ul>
-<li>安裝節點軟體 geth</li>
-<li>建立account (keystore)</li>
-<li>建立創世區塊 custom_genesis.json</li>
-<li>以創世區塊初始化節點</li>
-<li>啟動節點</li>
-</ul>
-<h4 id="建立node"><a href="#建立node" class="headerlink" title="建立node"></a>建立node</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /mychain</span><br><span class="line"></span><br><span class="line">mkdir node1</span><br><span class="line"><span class="built_in">cd</span> node1</span><br><span class="line"></span><br><span class="line"><span class="comment">#以data目錄做為資料與keystore目錄</span></span><br><span class="line"><span class="comment">#產生新帳號(HASH)表示這個node的account(address)(通常會前綴0X)</span></span><br><span class="line"><span class="comment">#帳號需要搭配一組密碼</span></span><br><span class="line">geth --datadir ./data account new</span><br></pre></td></tr></table></figure>
-<h4 id="建立genesis-block的設定"><a href="#建立genesis-block的設定" class="headerlink" title="建立genesis block的設定"></a>建立genesis block的設定</h4><blockquote>
-<p>初始化時Clique模式需將授權節點的相關資訊放在Block Header中<br>透過puppeth(CLI)按步驟設定</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#回到/mychain目錄</span></span><br><span class="line">puppeth</span><br><span class="line"></span><br><span class="line"><span class="comment">#設定network name為mynet 最後會產生mynet.json</span></span><br><span class="line"><span class="comment">#至少先需要設定一個節點(account)做為授權seal的節點</span></span><br></pre></td></tr></table></figure>
-<h4 id="初始化節點"><a href="#初始化節點" class="headerlink" title="初始化節點"></a>初始化節點</h4><blockquote>
-<p>用同一個設定檔init各個節點</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">geth --datadir node1/data init mynet.json</span><br></pre></td></tr></table></figure>
-<h4 id="啟動節點"><a href="#啟動節點" class="headerlink" title="啟動節點"></a>啟動節點</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> node1</span><br><span class="line">geth --datadir ./data --networkid 55661 --port 2000 console</span><br><span class="line"></span><br><span class="line"><span class="comment">#networkid : 節點間要有共同的id才能互通(1:主網 2:測試)(預設會進到ether主網絡)</span></span><br><span class="line"><span class="comment">#port : 即該節點export出的port 做為入口讓其他節點連結 (非rpc-api的port)(預設30303)</span></span><br><span class="line"><span class="comment">#console : 表示啟動進入javascript console提示符號 可進行geth內部的控制</span></span><br><span class="line"><span class="comment">#rpcapi 'module' : 開啟某module的rpcapi 允許外部連入(預設僅開eth,net,web3)</span></span><br><span class="line"><span class="comment">#rpcaddr : localhost或0.0.0.0表示完全對外開放</span></span><br><span class="line"><span class="comment">#rpccorsdomain : 指定rpc僅接受某domain</span></span><br><span class="line"><span class="comment">#nodiscover : 取消p2p自動搜尋節點</span></span><br><span class="line"><span class="comment">#netrestrict : 限制與之連線的節點在某個子網域</span></span><br><span class="line"><span class="comment">#bootnodes : 指定啟動時直接連接某些節點</span></span><br><span class="line"><span class="comment">#unlock : 解鎖</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>所有節點都可以miner.start() 但要先unlock</li>
-</ul>
-<h4 id="與其他節點連接"><a href="#與其他節點連接" class="headerlink" title="與其他節點連接"></a>與其他節點連接</h4><ol start="0">
-<li>執行geth時帶bootnodes參數</li>
-<li>進節點console執行admin.addPeer()</li>
-<li>設定./data/static-nodes.json</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#節點格式 enode://&lt;id&gt;@&lt;ip&gt;:&lt;port&gt;</span></span><br><span class="line"><span class="comment">#[::]為IPv6的寫法 可能表示localhost或全零</span></span><br><span class="line">enode://e92fd77c6b2df9daff7ac54473c40d1eef18f63eddbd6fadc2d5fd79a5d957e522348314d6bd63c6919e09bd6b2b5e5616d9b8169ab898946a21d0e06abe08ad@61.66.218.xxx:30303</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Kademlia(Kad) : P2P技術 NodeID裡包含路由訊息</li>
-</ul>
-<h4 id="節點的分類"><a href="#節點的分類" class="headerlink" title="節點的分類"></a>節點的分類</h4><p>僅是應用上的定義 實際上每個節點都是一個平等的Account Address</p>
-<ul>
-<li>eth : 一般的用戶端 例如使用電子錢包的人</li>
-<li>miner : 礦工</li>
-<li>bootstrap 用來形容一個固定節點 當有新節點加入時就找bootstrap</li>
-</ul>
-<h4 id="console"><a href="#console" class="headerlink" title="console"></a>console</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#取得node資訊</span></span><br><span class="line">admin.nodeInfo</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入節點 (表示可以去連別的節點)</span></span><br><span class="line">admin.addPeer</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看連接的節點</span></span><br><span class="line">admin.peers</span><br><span class="line"></span><br><span class="line"><span class="comment">#開始挖礦 初次啟動會產生dag檔</span></span><br><span class="line">miner.start()</span><br><span class="line"></span><br><span class="line"><span class="comment">#設定挖礦入帳的地址</span></span><br><span class="line">miner.setEtherbase(eth.accounts[0])</span><br><span class="line">eth.coinbase <span class="comment">#對應到setEtherbase</span></span><br><span class="line"><span class="comment">#第三方client通常會以miner(節點)的coinbase的地址做為from進行操作 所以需要時必須對該節點unlock</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查詢餘額</span></span><br><span class="line">eth.getBalance(<span class="string">"&lt;Address&gt;"</span>)</span><br><span class="line"></span><br><span class="line">eth.sendTransaction <span class="comment">#回傳transaction的hash 合約回傳值要用event寫到收據中</span></span><br><span class="line">eth.getTransaction</span><br><span class="line">eth.pendingTransactions</span><br><span class="line">eth.getTransactionReceipt</span><br><span class="line">eth.estimateGas <span class="comment">#估算交易花費</span></span><br><span class="line">eth.getCode(<span class="string">"&lt;Address&gt;"</span>) <span class="comment">#智能合約編譯後會有一個CODE欄位 如果Account能得到code表示他能執行合約內容</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#建立合約 (之後還需要用new來deploy)</span></span><br><span class="line">eth.contract(abi);</span><br><span class="line"><span class="comment">#編譯合約?</span></span><br><span class="line">eth.compile.solidity(source_text)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#透過node可以做任何事 (某些要解鎖)</span></span><br><span class="line">personal.newAccount()</span><br><span class="line">personal.listAccounts</span><br><span class="line"></span><br><span class="line"><span class="comment">#PoA機制中 授權某節點做為miner</span></span><br><span class="line">clique.propose</span><br></pre></td></tr></table></figure>
-<h4 id="personal-unlockAccount"><a href="#personal-unlockAccount" class="headerlink" title="personal.unlockAccount"></a>personal.unlockAccount</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#將某帳號解鎖 privateKey+passphrese</span></span><br><span class="line"><span class="comment">#即輸入密碼從keystore中提取private key 解鎖狀態默認是300秒</span></span><br><span class="line"><span class="comment">#駭客只要亂槍打鳥 碰巧遇上解鎖的帳號 就不用密碼也可以下達sendTransaction</span></span><br><span class="line">personal.unlockAccount(<span class="string">"&lt;Address&gt;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#經測試truffle做部署時 可經由remix的網頁(rpc)做解鎖 也可經由節點本地端(ipc) 也就是說只要節點把account解鎖了 就算不同的client進去也能視同該account已解鎖</span></span><br></pre></td></tr></table></figure>
-<h4 id="eth-getBalance"><a href="#eth-getBalance" class="headerlink" title="eth.getBalance"></a>eth.getBalance</h4><p>Balance在區塊鏈中預設就是存在的 除字面上作為財產餘額外 Balance也做為買gas驅動節點運作的籌碼</p>
-<h4 id="DAG檔"><a href="#DAG檔" class="headerlink" title="DAG檔"></a>DAG檔</h4><blockquote>
-<p>跟挖礦PoW演算法相關的資料集 據說會越漲越大 到GB等級</p>
-</blockquote>
-<h4 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h4><blockquote>
-<p>用pipefile實現 讀寫這個檔猶如console打字與畫面輸出結果</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/FinTech/區塊鏈.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/FinTech/區塊鏈.html" itemprop="url">區塊鏈</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-24T21:36:15+08:00">
-                2018-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.youtube.com/watch?v=a3EuW8NT39I" target="_blank" rel="noopener">十分鐘數位加密貨幣課程 Ethereum Wallet 以太幣錢包</a></p>
-<p><a href="https://wavesplatform.com/" target="_blank" rel="noopener">區塊鏈代幣平台WAVES</a><br><a href="https://www.youtube.com/watch?v=obRzfcvMshM" target="_blank" rel="noopener">區塊鏈原理</a></p>
-<h4 id="ICO-Initial-Coin-Offering"><a href="#ICO-Initial-Coin-Offering" class="headerlink" title="ICO(Initial Coin Offering)"></a>ICO(Initial Coin Offering)</h4><blockquote>
-<p>以某計畫為基礎 向大眾發起虛擬貨幣的融資 (模仿IPO發股票改發幣)<br>因為區塊鏈的興起 建立虛擬貨幣太容易</p>
-</blockquote>
-<h4 id="加密貨幣"><a href="#加密貨幣" class="headerlink" title="加密貨幣"></a>加密貨幣</h4><blockquote>
-<p>指貨幣機制是經由密碼學等演算法維護</p>
-</blockquote>
-<h4 id="Nonce"><a href="#Nonce" class="headerlink" title="Nonce"></a>Nonce</h4><blockquote>
-<p>一個<code>數</code><br>挖礦尋找出的一個隨機數可稱為nonce<br>交易時也有一個參數稱nonce 做為總交易的流水號</p>
-</blockquote>
-<h4 id="挖礦難度"><a href="#挖礦難度" class="headerlink" title="挖礦難度"></a>挖礦難度</h4><blockquote>
-<p>尋找一個Nonce能產生HASH值前面產生N個0 (0越多越難找)</p>
-</blockquote>
-<h4 id="Hash值通常用SHA-256計算"><a href="#Hash值通常用SHA-256計算" class="headerlink" title="Hash值通常用SHA-256計算"></a>Hash值通常用SHA-256計算</h4><blockquote>
-<p>包含 index+previous block hash+timestamp+data+nonce<br>礦工要找到一個nonce滿足產生的Hash值前N個位數為0</p>
-</blockquote>
-<h4 id="礦池"><a href="#礦池" class="headerlink" title="礦池"></a>礦池</h4><blockquote>
-<p>集結礦工算力</p>
-</blockquote>
-<h4 id="礦場"><a href="#礦場" class="headerlink" title="礦場"></a>礦場</h4><blockquote>
-<p>電費低廉的地方架設礦機</p>
-</blockquote>
-<h4 id="創世區塊-Genesis-block"><a href="#創世區塊-Genesis-block" class="headerlink" title="創世區塊(Genesis block)"></a>創世區塊(Genesis block)</h4><blockquote>
-<p>即第一個區塊</p>
-</blockquote>
-<h4 id="資料"><a href="#資料" class="headerlink" title="資料"></a>資料</h4><blockquote>
-<p>N筆交易-&gt;1筆區塊<br>全部的區塊形成一個帳本(Ledger)</p>
-</blockquote>
-<h4 id="Peer節點"><a href="#Peer節點" class="headerlink" title="Peer節點"></a>Peer節點</h4><blockquote>
-<p>一個礦工就是一個節點</p>
-</blockquote>
-<h4 id="主鏈"><a href="#主鏈" class="headerlink" title="主鏈"></a>主鏈</h4><blockquote>
-<p>最長鏈<br>正確性比對大於50%</p>
-</blockquote>
-<h4 id="network-name"><a href="#network-name" class="headerlink" title="network name"></a>network name</h4><blockquote>
-<p>節點網絡名稱 不要跟ip網路搞混</p>
-</blockquote>
-<h4 id="chain-network-ID"><a href="#chain-network-ID" class="headerlink" title="chain/network ID"></a>chain/network ID</h4><blockquote>
-<p>不明 預設為random</p>
-</blockquote>
-<h1 id="共識機制-勞動證明機制"><a href="#共識機制-勞動證明機制" class="headerlink" title="共識機制(勞動證明機制)"></a>共識機制(勞動證明機制)</h1><p>無論何種共識機制都可能有一個以上的node同時產生block 同時被接到前一block下 出現分歧</p>
-<h4 id="挖礦"><a href="#挖礦" class="headerlink" title="挖礦"></a>挖礦</h4><blockquote>
-<p>用來形容以某演算法產生新區塊 (算得慢的node等於做白工)</p>
-</blockquote>
-<h4 id="PoW-Proof-of-work"><a href="#PoW-Proof-of-work" class="headerlink" title="PoW (Proof of work)"></a>PoW (Proof of work)</h4><blockquote>
-<p>即挖礦認證機制/以工作搶快為主<br>耗電<br>ethereum稱為Ethash</p>
-</blockquote>
-<h4 id="PoS-Proof-of-steak"><a href="#PoS-Proof-of-steak" class="headerlink" title="PoS (Proof of steak)"></a>PoS (Proof of steak)</h4><blockquote>
-<p>另一種挖礦認證機制<br>為解決pow耗電不環保的問題</p>
-</blockquote>
-<h4 id="PoA-Proof-of-Authority"><a href="#PoA-Proof-of-Authority" class="headerlink" title="PoA (Proof of Authority)"></a>PoA (Proof of Authority)</h4><blockquote>
-<p>指定授權某個節點能夠挖礦<br>用seal關鍵字代替挖礦<br>ethereum稱為Clique</p>
-</blockquote>
-<h4 id="分歧導致的問題"><a href="#分歧導致的問題" class="headerlink" title="分歧導致的問題"></a>分歧導致的問題</h4><blockquote>
-<p>使node挖礦效率下降 若分歧持續等量延長 可能表示算法難度或亂數不夠複雜<br>同時挖礦得到的兩個block雖長相不一樣 但內容結果是等效的<br>等待某一分支長過另一分之變成主鏈</p>
-</blockquote>
-<h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><p><a href="https://www.youtube.com/watch?v=Pz5RKVoUrrI" target="_blank" rel="noopener">參考</a></p>
-<h4 id="公有鏈"><a href="#公有鏈" class="headerlink" title="公有鏈"></a>公有鏈</h4><blockquote>
-<p>bitcoin ethereum<br>完全去中心化 透過獎勵機制記帳(PoW)</p>
-</blockquote>
-<h4 id="私有鏈"><a href="#私有鏈" class="headerlink" title="私有鏈"></a>私有鏈</h4><blockquote>
-<p>完全內部節點 但無法竄改資料<br>既然是私有就應該能完全信任 不一定非用上區塊鏈做紀錄 也許分散式資料庫即可</p>
-</blockquote>
-<h4 id="聯盟鏈"><a href="#聯盟鏈" class="headerlink" title="聯盟鏈"></a>聯盟鏈</h4><blockquote>
-<p>適合於機構與機構間 (Proof of Authority)<br>允許更快產生Block</p>
-</blockquote>
-<h4 id="許可鏈"><a href="#許可鏈" class="headerlink" title="許可鏈"></a>許可鏈</h4><blockquote>
-<p>私有鏈 聯盟鏈 都屬於許可鏈 加入的節點 要得到許可</p>
-</blockquote>
-<h4 id="混合鏈"><a href="#混合鏈" class="headerlink" title="混合鏈"></a>混合鏈</h4><blockquote>
-<p>…</p>
-</blockquote>
-<h1 id="電子錢包"><a href="#電子錢包" class="headerlink" title="電子錢包"></a>電子錢包</h1><h4 id="Mist"><a href="#Mist" class="headerlink" title="Mist"></a>Mist</h4><blockquote>
-<p>是Ethereum的Dapp瀏覽器 也能作為官方的Wallet</p>
-</blockquote>
-<h4 id="Ethereum-Wallet"><a href="#Ethereum-Wallet" class="headerlink" title="Ethereum Wallet"></a>Ethereum Wallet</h4><blockquote>
-<p>同樣是官方Wallet 但就僅是Wallet (Dapp)</p>
-</blockquote>
-<h4 id="MEW-MyEtherWallet-網頁版"><a href="#MEW-MyEtherWallet-網頁版" class="headerlink" title="MEW (MyEtherWallet) 網頁版"></a>MEW (MyEtherWallet) 網頁版</h4><blockquote>
-<p><a href="https://www.myetherwallet.com/" target="_blank" rel="noopener">https://www.myetherwallet.com/</a></p>
-</blockquote>
-<h4 id="MetaMask"><a href="#MetaMask" class="headerlink" title="MetaMask"></a>MetaMask</h4><blockquote>
-<p>除了是一個簡單的錢包外，它可以使得Chrome瀏覽器變身成以太坊瀏覽器，讓使用者通過瀏覽器和智慧合約互動<br>情境是:你有一個Dapp網頁供用戶登入錢包 該Dapp無法成為節點操作區塊鏈 所以有兩種方式幫助它</p>
-</blockquote>
-<ol start="0">
-<li>網頁後端有動態伺服器(託管密鑰)像是Truffle(node.js) 對映出api即可</li>
-<li>透過MetaMask(託管密鑰)外掛在Chrome上進行登入 網頁js只需應對MetaMask給出的api</li>
-</ol>
-<h4 id="Parity"><a href="#Parity" class="headerlink" title="Parity"></a>Parity</h4><h1 id="Ethereum-以太坊-念itSeeRin"><a href="#Ethereum-以太坊-念itSeeRin" class="headerlink" title="Ethereum (以太坊)(念itSeeRin)"></a>Ethereum (以太坊)(念itSeeRin)</h1><p><a href="http://yutianx.info/2017/10/07/2017-10-07-docker-ethereum/" target="_blank" rel="noopener">用Docker搭建Ethereum網路</a></p>
-<blockquote>
-<p>一個建立<code>智能合約</code>的平台 同時也是<code>以太幣ETH</code>對應的Project (想像Ethereum是一家公司 以太幣是他發行的股票)<br>智能合約能幫助web或app加入區塊鏈應用 達到Dapp 做出類似區塊鏈的投票機</p>
-</blockquote>
-<h4 id="智能合約"><a href="#智能合約" class="headerlink" title="智能合約"></a>智能合約</h4><blockquote>
-<p>取名有點混淆視聽 其實就是一段程式碼 部署到區塊鏈上 在peer產生實體物件 以該物件作為合約(例如金融帳戶) 可進行合約提供的method(例如轉帳)<br>通常由第三方提供區塊鏈平台(例如Ethereum) 並提供上傳智能合約的機制 便於客製化合約的應用<br>每個peer都能驗證其他peer產生的資料是否依照合約進行<br>執行合約是需要付費給peer的<br>一般合約程式碼需要公開 使參與者知道公平性與共識<br>用Solidity編寫 (類似js)<br>智能合約也視同為一筆Transaction</p>
-</blockquote>
-<h4 id="智能合約開發語言"><a href="#智能合約開發語言" class="headerlink" title="智能合約開發語言"></a>智能合約開發語言</h4><p>Solidity (類JavaScript)<br>Serpent (類Python)<br>Mutan (類Go)<br>LLL (類Lisp)</p>
-<h4 id="Account分兩類"><a href="#Account分兩類" class="headerlink" title="Account分兩類"></a>Account分兩類</h4><blockquote>
-<p>Externally Owned Accounts(EOA) : 即人類交易帳號 (Ethereum Account) 主要紀錄的就是balance(餘額)<br>Contract Account : 部署一個合約如同產生一個帳號 該帳號除了balance外 依合約還有了自定義的狀態</p>
-</blockquote>
-<ul>
-<li>由於Account是Hash出來的 重複機率微乎其微 只要有公私鑰就如同有帳戶地址 故能跨不同ethereum網絡使用 但Contract Account不行(why?)</li>
-</ul>
-<h4 id="EVM-Ethereum虛擬機"><a href="#EVM-Ethereum虛擬機" class="headerlink" title="EVM (Ethereum虛擬機)"></a>EVM (Ethereum虛擬機)</h4><blockquote>
-<p>在node上運行 用以執行智能合約的bytecode</p>
-</blockquote>
-<h4 id="Transaction-Tx-交易"><a href="#Transaction-Tx-交易" class="headerlink" title="Transaction (Tx)(交易)"></a>Transaction (Tx)(交易)</h4><blockquote>
-<p>交易一詞由來於設計時以金融交易做為假想 用以表示執行的動作猶如交易機制<br>交易一詞也表示金融交易時需要做<code>同步鎖</code>的機制 與<code>區塊鏈多數認證結果</code> 與失敗的回滾<br>區塊鏈中所有會導致<code>寫入區塊鏈</code>的動作 都稱為交易<br>交易通常帶有一個<code>value值</code> 表示要轉出的金額</p>
-</blockquote>
-<h4 id="Gas"><a href="#Gas" class="headerlink" title="Gas"></a>Gas</h4><blockquote>
-<p>汽油 是一個單位 指node上執行Transaction或智能合約所需的成本<br>gasPrice則是每單位成本 wei/gas<br>願付出多少gas執行可由用戶決定 但可能有out of gas的狀況 (狀態會被回滾)</p>
-</blockquote>
-<h4 id="Gas-Limit"><a href="#Gas-Limit" class="headerlink" title="Gas Limit"></a>Gas Limit</h4><blockquote>
-<p>限制執行合約交易消耗的gas 若達限制交易將失敗<br>用於客戶端節點 : 表示願意付出的gas上限(預扣) 太低會導致沒有節點願意幫忙執行<br>用於執行端節點 : 節點自己控制自己能夠處理事務 避免接到耗時操作<br>用於fallback函數 : 固定有2300gas限制 避免難以結束交易<br>區塊也有一個經由節點共識產生的gas limit用來限制區塊中交易的數量 (即何時開始打包區塊)</p>
-</blockquote>
-<h4 id="DApp（decentralized-applications）"><a href="#DApp（decentralized-applications）" class="headerlink" title="DApp（decentralized applications）"></a>DApp（decentralized applications）</h4><blockquote>
-<p>去中心化應用<br>泛指區塊鏈應用的app 如透過Ethereum平台建立<code>智能合約</code>應用在自己的app上</p>
-</blockquote>
-<h4 id="架構"><a href="#架構" class="headerlink" title="架構"></a>架構</h4><blockquote>
-<p>底層的geth、用solidity寫智能合約、合約在線瀏覽器browser-solidity(remix)、合約錢包Mist/wallet、以太坊的前端開發框架Truffle<br>RPC 遠程呼叫 基於socket 與node連接通常是透過rpc 所以都要有ip:port</p>
-</blockquote>
-<p><img src="https://i1.read01.com/SIG=n4pddp/30455244466b694e736f.jpg" width="500" style="margin:0px;padding:0px;"></p>
-<h4 id="Geth-節點核心-念Gets"><a href="#Geth-節點核心-念Gets" class="headerlink" title="Geth (節點核心)(念Gets)"></a>Geth (節點核心)(念Gets)</h4><p><a href="https://github.com/ethereum/go-ethereum/wiki/geth" target="_blank" rel="noopener">Geth</a></p>
-<blockquote>
-<p>由Go語言開發的CLI 用以安裝客戶端RPC API (客戶端應該就是指節點)<br>需要node.js<br>可安裝於多種OS上</p>
-</blockquote>
-<h4 id="Go-Ethereum"><a href="#Go-Ethereum" class="headerlink" title="Go-Ethereum"></a>Go-Ethereum</h4><blockquote>
-<p>Geth的project name<br>簡稱Geth因為Geth最核心 事實上還包含其他工具</p>
-</blockquote>
-<h4 id="執行節點-Geth-提供的函數"><a href="#執行節點-Geth-提供的函數" class="headerlink" title="執行節點(Geth)提供的函數"></a>執行節點(Geth)提供的函數</h4><ol>
-<li>透過Geth console (本地端適用 不能coding)</li>
-<li>透過web3.js (均適用) (走WebSocket) (port:8545)</li>
-<li>透過jsonrpc (遠端 無法執行web3.js時) (走TCP基於http?) (port:8545)</li>
-<li>透過WebService-RPC (文件規範比較複雜) (port:8546)</li>
-</ol>
-<h4 id="Truffle（松露）"><a href="#Truffle（松露）" class="headerlink" title="Truffle（松露）"></a>Truffle（松露）</h4><blockquote>
-<p>是以太坊（Ethereum）最受歡迎的一個開發框架<br>一個npm上的cli程式 用來開發自己的錢包(Dapp)<br>包含web3與solc<br>客戶端(web browser)預設有一個react-box的樣板<br>客戶端沒有登入認證系統 需藉由MetaMask</p>
-</blockquote>
-<h4 id="Web3-js"><a href="#Web3-js" class="headerlink" title="Web3.js"></a>Web3.js</h4><blockquote>
-<p>以太坊提供的js api, 執行於node.js上<br>js =&gt; Geth RPC (本地端為一個節點 用RPC連本地端節點)</p>
-</blockquote>
-<h4 id="Ganache-念甘納許"><a href="#Ganache-念甘納許" class="headerlink" title="Ganache (念甘納許)"></a>Ganache (念甘納許)</h4><blockquote>
-<p>前身叫TestRPC<br>用於模擬區塊鏈 生成假的node 有UI畫面<br>預設的port:8545 (示例多用7545)<br>有助記符號(Mnemonic)輔助 (12個單字)(又叫seed phrase) 能替代private key與address</p>
-</blockquote>
-<h4 id="remix"><a href="#remix" class="headerlink" title="remix"></a>remix</h4><blockquote>
-<p>官方提供的IDE <a href="http://remix.ethereum.org/" target="_blank" rel="noopener">remix</a><br>便於編寫智能和約 與呼叫合約方法</p>
-</blockquote>
-<h4 id="abi-Application-Binary-Interface"><a href="#abi-Application-Binary-Interface" class="headerlink" title="abi(Application Binary Interface)"></a>abi(Application Binary Interface)</h4><blockquote>
-<p>一個.json文件 做為smart contract的介面描述 (裡面有個欄位紀錄bytecode)<br>編譯.sol檔後產生 (npm install solc)</p>
-</blockquote>
-<h4 id="Ether"><a href="#Ether" class="headerlink" title="Ether"></a>Ether</h4><blockquote>
-<p>乙太幣有幣值單位 類似K/M/G/T 但以類似人名來表示<br><a href="https://bitshuo.com/public/upload/fb03ee3abeffd808c3c1fdf46c4ee419.png" target="_blank" rel="noopener">單位</a></p>
-</blockquote>
-<h1 id="節點"><a href="#節點" class="headerlink" title="節點"></a>節點</h1><h4 id="運作概述"><a href="#運作概述" class="headerlink" title="運作概述"></a>運作概述</h4><blockquote>
-<p>每個比特幣錢包都是一個節點,除此之外還有一些是全節點(full node). 全節點負責交易紀錄與驗證及擴散資料. 交易發生時,節點會將交易擴散到節點網路中進行紀錄,待區塊滿載(或??)則開始挖礦產生新區塊.</p>
-</blockquote>
-<p>通常還是要有一些永久性的節點(seed node list) 尤其是初期 待複製出更多節點後 才慢慢式微</p>
-<p>節點通常包含四大部分:</p>
-<ol>
-<li>Network : 找到其他節點 與傳輸接收</li>
-<li>Blockchain : 即帳本</li>
-<li>Mining : 產生新區塊</li>
-<li>Wallet : 保管key與address(帳號)</li>
-</ol>
-<blockquote>
-<p>分兩類 一類必須有完整帳本(full node) 在交易時能確認比對 另一類沒有稱為 SPV nodes 需依靠附近node提供資訊</p>
-</blockquote>
-<blockquote>
-<p>用戶(Wallet)也是一個node</p>
-</blockquote>
-<h1 id="疑慮"><a href="#疑慮" class="headerlink" title="疑慮"></a>疑慮</h1><p><a href="https://medium.com/taipei-ethereum-meetup/mastering-bitcoin-ch6-the-bitcoin-network-93d09e36d9e" target="_blank" rel="noopener">節點</a></p>
-<blockquote>
-<p>一般超過兩個區塊 則成為主鏈</p>
-</blockquote>
-<blockquote>
-<p>節點上原本就記錄有</p>
-</blockquote>
-<h4 id="持續長大的帳本"><a href="#持續長大的帳本" class="headerlink" title="持續長大的帳本"></a>持續長大的帳本</h4><p><a href="https://www.getit01.com/p20171230639067000/" target="_blank" rel="noopener">參考</a></p>
-<blockquote>
-<p>PSV node : 一個非全節點<br>建立一個乙太幣主鏈(MainChain)的全節點 下載與驗證可能要超過半天</p>
-</blockquote>
-<h4 id="為什麼10分鐘才能產生一個區塊"><a href="#為什麼10分鐘才能產生一個區塊" class="headerlink" title="為什麼10分鐘才能產生一個區塊"></a>為什麼10分鐘才能產生一個區塊</h4><blockquote>
-<p>區塊若同時產生 就會產生另一個分支的鏈 分支中僅有一個能成為最後的主鏈 也就是被刪去的分支上的區塊都是做白工<br>為避免太輕易發生這樣的問題 所以規劃10分鐘產生一個新區塊<br>節點網路需要時間來擴散資料進行比對<br>10分鐘是基於一個數學運算的難度 例如算出前N位為0的hash值 平均算出時間約10分鐘</p>
-</blockquote>
-<h4 id="區塊的產生"><a href="#區塊的產生" class="headerlink" title="區塊的產生"></a>區塊的產生</h4><blockquote>
-<p>規定每10分鐘僅能產生一個區塊<br>規定每個區塊約1MB<br>bitcoin每筆交易約300byte 每秒平均能交易7筆 (tps/transaction per second)</p>
-</blockquote>
-<h4 id="區塊確認"><a href="#區塊確認" class="headerlink" title="區塊確認"></a>區塊確認</h4><blockquote>
-<p>即資料確認寫入半數節點網絡</p>
-</blockquote>
-<h4 id="需要時間確認交易已寫入主鏈"><a href="#需要時間確認交易已寫入主鏈" class="headerlink" title="需要時間確認交易已寫入主鏈"></a>需要時間確認交易已寫入主鏈</h4><blockquote>
-<p>通常以6個區塊做為界定 分支超過6個區塊的機率微乎其微<br>通常提幣系統都會要求6個區塊做保護 也就是60分鐘<br>以Bito來說每筆交易會有一個狀態區分(有入帳但未打勾)</p>
-</blockquote>
-<h4 id="自創貨幣中誰來挖礦"><a href="#自創貨幣中誰來挖礦" class="headerlink" title="自創貨幣中誰來挖礦?"></a>自創貨幣中誰來挖礦?</h4><blockquote>
-<p>透過ethereum的主網付Ether幣 或其測試網路<br>真實環境裡自己透過geth</p>
-</blockquote>
-<h4 id="總要有一台伺服器傳達工作給礦工吧"><a href="#總要有一台伺服器傳達工作給礦工吧" class="headerlink" title="總要有一台伺服器傳達工作給礦工吧?"></a>總要有一台伺服器傳達工作給礦工吧?</h4><blockquote>
-<p>欲執行任何動作都需要加入節點網路中成為一個節點<br>執行geth即可成為節點產生rpc介面 工作就可以從這裡散播</p>
-</blockquote>
-<h4 id="鏈跟鏈不會衝突嗎"><a href="#鏈跟鏈不會衝突嗎" class="headerlink" title="鏈跟鏈不會衝突嗎?"></a>鏈跟鏈不會衝突嗎?</h4><blockquote>
-<p>會 node間分辨彼此所處的鏈(網絡)是依照network id和genesis_hash 誰都可以建<br>只要這兩個一模一樣即表示節點處於同一個鏈 而區塊鏈短的會被更新掉<br>那如果做一個比Ether更長的鏈 放到公眾網路上是否就能覆蓋其他節點的區塊鏈???</p>
-</blockquote>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h4 id="p2p的UDP打洞"><a href="#p2p的UDP打洞" class="headerlink" title="p2p的UDP打洞"></a>p2p的UDP打洞</h4><ol start="0">
-<li>AB兩節點若在NAT下沒有export對外的port號 則無法互相連接</li>
-<li>AB先都連上S 連接的過程NAT會分配port讓AB對外做請求 此時AB都有特定的port了 但對象都是S</li>
-<li>S得知雙方ip:port 由S仿冒A:port向B:port騙過NAT 之後A就能連B了</li>
-</ol>
-<h4 id="FileCoin"><a href="#FileCoin" class="headerlink" title="FileCoin"></a>FileCoin</h4><ul>
-<li>一家公司 以區塊鏈技術為基礎儲存檔案(切割小份)</li>
-<li>IPFS : 欲取代http中對於檔案通訊協定</li>
-</ul>
-<h4 id="歷代p2p"><a href="#歷代p2p" class="headerlink" title="歷代p2p"></a>歷代p2p</h4><ul>
-<li>NodeServer : 所有節點必須透過NodeServer登記與取得其他節點位置 單點故障就斷鏈</li>
-<li>Boradcast : 造成廣播風暴</li>
-<li>DHT : 分散式HashTable 去中心化 NodeID裡包含路由訊息</li>
-</ul>
-<h4 id="歷代區塊鏈"><a href="#歷代區塊鏈" class="headerlink" title="歷代區塊鏈"></a>歷代區塊鏈</h4><ul>
-<li>比特幣</li>
-<li>乙特幣</li>
-<li>超級帳本 Fabric</li>
-</ul>
-<h4 id="冷錢包"><a href="#冷錢包" class="headerlink" title="冷錢包"></a>冷錢包</h4><blockquote>
-<p>即硬體錢包 將私鑰匯出到硬體(usb)裝置上 完全移除網路上的私鑰</p>
-</blockquote>
-<h4 id="BitoEx-幣託-比特幣錢包"><a href="#BitoEx-幣託-比特幣錢包" class="headerlink" title="BitoEx 幣託-比特幣錢包"></a>BitoEx 幣託-比特幣錢包</h4><p><a href="https://www.bitoex.com/" target="_blank" rel="noopener">BitoEx</a></p>
-<blockquote>
-<p>台灣廠商 用email申請一個帳號 透過web/phone介面查詢<br>台灣可透過FamiPort繳費&gt;虛擬帳號&gt;廠商代號&gt;輸入手機號碼&gt;買多少台幣的BTC 現金結帳取得收據與手機簡訊 回BitoEx介面&gt;超商兌換<br>可綁定信用卡/銀行帳號(可出帳)<br>等於私鑰託管給BitoEx</p>
-</blockquote>
-<p><a href="https://www.bitoex.com/" target="_blank" rel="noopener">https://www.bitoex.com/</a></p>
-<h4 id="MaiCoin"><a href="#MaiCoin" class="headerlink" title="MaiCoin"></a>MaiCoin</h4><p><a href="https://www.maicoin.com/" target="_blank" rel="noopener">MaiCoin</a></p>
-<blockquote>
-<p>同BitoEx 台灣廠商</p>
-</blockquote>
-<h4 id="Coinbase"><a href="#Coinbase" class="headerlink" title="Coinbase"></a>Coinbase</h4><blockquote>
-<p>同BitoEx 但更大更全球化<br>可綁定信用卡/銀行帳號/paypal 或用wire transfer</p>
-</blockquote>
-<h4 id="圖靈完備"><a href="#圖靈完備" class="headerlink" title="圖靈完備"></a>圖靈完備</h4><blockquote>
-<p>圖靈機(Turing machine)是早期的一種紀錄資料的機器 可以無限紀錄與擦除<br>在程式語言上通常指擁有if/for/recursive功能 能達成任何演算法</p>
-</blockquote>
-<h4 id="公私鑰-RSA"><a href="#公私鑰-RSA" class="headerlink" title="公私鑰 RSA"></a>公私鑰 RSA</h4><blockquote>
-<p>公鑰加密私鑰(收) 或 私鑰加密公鑰(送)<br>被公鑰加密的東西 通常是給自己看的 只有自己能用私鑰解<br>被私鑰加密的東西 通常是用來給別人驗證自己身份的 任何人拿我公鑰解出特定的內容 表示內容肯定是我的 <code>數字簽名</code></p>
-</blockquote>
-<p>Docker</p>
-<p>AWS | Amazon Elastic Container Service</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/FinTech/電子支付.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JimLiuXyz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自用筆記">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/home/FinTech/電子支付.html" itemprop="url">電子支付</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-24T15:30:30+08:00">
-                2018-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="FinTeck"><a href="#FinTeck" class="headerlink" title="FinTeck"></a>FinTeck</h1><p><a href="http://technews.tw/2017/06/15/mobile-wallet-issues/" target="_blank" rel="noopener">支付行為詳解</a></p>
-<h4 id="EMVco-國際晶片卡組織"><a href="#EMVco-國際晶片卡組織" class="headerlink" title="EMVco 國際晶片卡組織"></a>EMVco 國際晶片卡組織</h4><blockquote>
-<p>初期由EuroPay + MasterCard + Visa共組<br>發佈<code>信用卡代碼化(Tokenization)</code>標準 也是HCE的核心架構</p>
-</blockquote>
-<h4 id="發卡組織-International-Association"><a href="#發卡組織-International-Association" class="headerlink" title="發卡組織(International Association)"></a>發卡組織(International Association)</h4><blockquote>
-<p>由銀行共同成立 如VISA/MasterCard/JCB/中國銀聯<br>本身不發行信用卡 算是<code>提供支付網路/收單/清算</code> 由其會員銀行(<code>發卡機構</code>或<code>發卡銀行</code>)發卡<br>賺取跨國交易手續費</p>
-</blockquote>
-<h4 id="發卡機構-發卡銀行-Issuer"><a href="#發卡機構-發卡銀行-Issuer" class="headerlink" title="發卡機構(發卡銀行)(Issuer)"></a>發卡機構(發卡銀行)(Issuer)</h4><blockquote>
-<p>指實際發行信用卡的單位 通常是銀行<br>手續費約佔75%</p>
-</blockquote>
-<h4 id="特約商店"><a href="#特約商店" class="headerlink" title="特約商店"></a>特約商店</h4><blockquote>
-<p>即加入諸如VISA/MasterCard支付網路的商家<br>通常需支付2~3%的手續費給<code>收單機構</code>再分配給整個供應鏈</p>
-</blockquote>
-<h4 id="清算中心-跨行-Interbank-Card-Center-BKM"><a href="#清算中心-跨行-Interbank-Card-Center-BKM" class="headerlink" title="清算中心(跨行) Interbank Card Center(BKM)"></a>清算中心(跨行) Interbank Card Center(BKM)</h4><blockquote>
-<p>負責在<code>收單機構</code>與<code>發卡銀行</code>(跨行)間<code>整合、交換交易紀錄</code>的組織<br>如VISA/MasterCard/台灣的NCCC都能擔任此角色<br>手續費約佔2.5%</p>
-</blockquote>
-<h4 id="NCCC-National-Credit-Card-Center-of-R-O-C"><a href="#NCCC-National-Credit-Card-Center-of-R-O-C" class="headerlink" title="NCCC(National Credit Card Center of R.O.C.)"></a>NCCC(National Credit Card Center of R.O.C.)</h4><blockquote>
-<p>聯合信用卡處理中心<br>是中華民國一家處理信用卡交易的非營利組織<br>收單/清算 負責信用卡交易請款扣帳訊息的交換與傳送</p>
-</blockquote>
-<h4 id="收單機構-Acquirer"><a href="#收單機構-Acquirer" class="headerlink" title="收單機構(Acquirer)"></a>收單機構(Acquirer)</h4><blockquote>
-<p>刷卡機的提供者 通常是<code>發卡銀行</code><br>第三方支付通常要尋求收單機構配合 (第三方支付的角色在此)<br>手續費約佔22%</p>
-</blockquote>
-<h4 id="聯名卡-co-branded-credit-card"><a href="#聯名卡-co-branded-credit-card" class="headerlink" title="聯名卡(co-branded credit card)"></a>聯名卡(co-branded credit card)</h4><blockquote>
-<p>即信用卡 僅因與特定商家合作 刷卡能取得些許回饋</p>
-</blockquote>
-<h4 id="行動支付-線上"><a href="#行動支付-線上" class="headerlink" title="行動支付 線上"></a>行動支付 線上</h4><blockquote>
-<p>網路購物(線上)</p>
-</blockquote>
-<h4 id="行動支付-近端支付"><a href="#行動支付-近端支付" class="headerlink" title="行動支付 近端支付"></a>行動支付 近端支付</h4><blockquote>
-<p>超商NFC(線下) / 商店BarCode(線上)</p>
-</blockquote>
-<h4 id="NFC（Near-Field-Communication）"><a href="#NFC（Near-Field-Communication）" class="headerlink" title="NFC（Near Field Communication）"></a>NFC（Near Field Communication）</h4><blockquote>
-<p>近場傳輸</p>
-</blockquote>
-<h4 id="感應式讀卡機-NFC-Payment"><a href="#感應式讀卡機-NFC-Payment" class="headerlink" title="感應式讀卡機 (NFC Payment)"></a>感應式讀卡機 (NFC Payment)</h4><blockquote>
-<p>Visa Wave 與 Master PayPass<br>刷卡上限約超過3000需簽名</p>
-</blockquote>
-<h4 id="刷卡流程"><a href="#刷卡流程" class="headerlink" title="刷卡流程"></a>刷卡流程</h4><p><img src="http://slideplayer.com/4253771/14/images/16/Debit+Card+Online+POS+Authorisation+Flow+%28Domestic+%26+International%29.jpg" alt=""><br><img src="https://s4.itho.me/sites/default/files/styles/picture_size_large/public/field/image/703-P29-960.png?itok=QVxCyWBA" alt=""></p>
-<ul>
-<li>消費者(Cardholder)欲付1,000 商家(Merchant)進行交易</li>
-<li>傳給<code>收單機構(Acquirer)</code>並被抽25元</li>
-<li>若跨行需再透過<code>清算機構(BKM)</code> 並支付25的2%</li>
-<li>若跨國再透過<code>國際發卡組織(VISA/MasterCard...)</code> 並支付?</li>
-<li>最後支付25的75%給<code>發卡銀行(Issuer)</code></li>
-</ul>
-<h1 id="支付模式"><a href="#支付模式" class="headerlink" title="支付模式"></a>支付模式</h1><h4 id="TSM-Trusted-Service-Manager-信託服務管理平台"><a href="#TSM-Trusted-Service-Manager-信託服務管理平台" class="headerlink" title="TSM(Trusted Service Manager) 信託服務管理平台"></a>TSM(Trusted Service Manager) 信託服務管理平台</h4><ul>
-<li>須向電信公司申請將SIM卡換成USIM卡</li>
-<li>再向銀行臨櫃申請綁定信用卡</li>
-<li>優點:無需網路 USIM如同信用卡 硬體晶片加密(Secure Element)</li>
-<li>難以普及 淘汰</li>
-</ul>
-<h4 id="HCE-Host-based-Card-Emulation-主機卡模擬"><a href="#HCE-Host-based-Card-Emulation-主機卡模擬" class="headerlink" title="HCE(Host-based Card Emulation) 主機卡模擬"></a>HCE(Host-based Card Emulation) 主機卡模擬</h4><ul>
-<li>Apple/Sumsung/Google/t wallet+</li>
-<li>需預先取得真實卡號對應的token來進行交易</li>
-<li>與POS機之間通常以NFC交互token</li>
-<li>基本上由app主導支付機制 安全性由app控制(解鎖/密碼/指紋等)</li>
-<li>可短暫離線 但通常有安全機制 例如1小時內有效</li>
-</ul>
-<h4 id="BarCode"><a href="#BarCode" class="headerlink" title="BarCode"></a>BarCode</h4><ul>
-<li>Line/街口/支付寶AliPay/歐付寶AllPay改O’Pay(台灣)</li>
-<li>不需NFC</li>
-<li>可離線支付 但通常有安全機制 例如10分鐘內有效</li>
-</ul>
-<h1 id="HCE"><a href="#HCE" class="headerlink" title="HCE"></a>HCE</h1><p><a href="https://www.youtube.com/watch?v=NfoYg6MOXdQ" target="_blank" rel="noopener">流程</a></p>
-<blockquote>
-<p>以Tokenization技術認證持卡人 而不用將真實卡號透露給商家或其他組織<br>發卡銀行必須付手續費給Apple或Google 因其替代了信用卡進而促成交易</p>
-</blockquote>
-<h4 id="取得Token流程-Visa-Token"><a href="#取得Token流程-Visa-Token" class="headerlink" title="取得Token流程 (Visa Token)"></a>取得Token流程 (Visa Token)</h4><ol>
-<li>安裝app</li>
-<li>輸入信用卡號</li>
-<li>送向<code>Token Requestor</code>(即Apple或Google等app提供者)</li>
-<li>再轉向<code>TokenServiceProvider</code>(發卡組織 如MasterCard或Visa)產生Token</li>
-<li>最後將卡號與Token送到<code>發卡銀行</code></li>
-<li>發卡銀行主動傳送Token給app, app必須解出該token已達到認證 並將之前輸入的卡號刪除</li>
-</ol>
-<h4 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h4><ol>
-<li>傳送Token給<code>商家</code> 通常經由NFC/Bluetooth/BarCode/MST(磁條) </li>
-<li><code>商家</code>將Token傳給<code>收單機構</code>再傳給<code>清算機構</code></li>
-<li><code>清算機構</code>將Token傳給<code>TokenServiceProvider</code>做真實卡號的解碼 再回傳<code>Acquirer收單機構(發卡銀行)</code>與<code>NCCC(聯合信用卡處理中心/清算機構)</code></li>
-</ol>
-<h1 id="第三方支付"><a href="#第三方支付" class="headerlink" title="第三方支付"></a>第三方支付</h1><blockquote>
-<p>與行動支付的差別在於 第三方支付類似代理收單平台<br>提供一手交錢一手交貨的保障 向會員或購物平台收取手續費<br>通常需綁定信用卡 或儲值(或匯款) 建立一個money buffer 即電子錢包<br>相對於Tokenization技術 信用卡的安全是比較有疑慮的 故在台灣發展受限</p>
-</blockquote>
-<h4 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h4><ul>
-<li><p>付款情境1 : 在路邊購物 商家提供QRCode做為收費帳號的連結 買家掃描該QRCode進入付費頁面 決定付費金額 付費 (金額自己決定)</p>
-</li>
-<li><p>付款情境2 : 在便利商店 買家主動提供自己帳號的QRCode/BarCode做為付費帳號的連結 商家用掃條碼及完成付費 (金額商家POS機決定)</p>
-</li>
-</ul>
-<h1 id="電子票證"><a href="#電子票證" class="headerlink" title="電子票證"></a>電子票證</h1><blockquote>
-<p>儲值支付 雖同為第三方支付 但以<code>電子票證發行管理條例</code>來規範<br>悠遊卡(EasyCard)<br>一卡通(iPass)<br>iCash(統一集團)<br>happycash(遠東集團)</p>
-</blockquote>
-<h1 id=""><a href="#" class="headerlink" title="???"></a>???</h1><h4 id="掃碼式"><a href="#掃碼式" class="headerlink" title="掃碼式"></a>掃碼式</h4><h4 id="接觸式"><a href="#接觸式" class="headerlink" title="接觸式"></a>接觸式</h4><h4 id="手機信用卡"><a href="#手機信用卡" class="headerlink" title="手機信用卡"></a>手機信用卡</h4><p>SIM卡需改為USIM卡 經由官方</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2118,7 +1682,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

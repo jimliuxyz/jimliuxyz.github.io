@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="sendTransaction與callmethod type指的是一個合約函數是不是constant,如果不是,最終一定要用sendTransaction,因為該函數需要寫資料進區塊鏈,寫入動作是規範在交易裡,必須消耗gas(手續費),也需要解鎖發起人帳號的權限(因為要付錢) 另外,寫資料需要區塊鏈的多數共識,操作的結果在web3中是異步事件. // Automatically determin">
+<meta name="description" content="週莫煩 numpy主要用來處理矩陣 pandas 架構numpy之上 更適合數據應用上的操作 而不僅是數學   替行列矩陣加上了行索引值與列欄位名   矩陣import numpy as nparr = np.array([[1,2,3],[4,5,6]])arr = np.zeros((3,4)) # 3x4全為0的矩陣, ones/empty/rangearr = np.linespace(0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自用筆記">
-<meta property="og:url" content="http://yoursite.com/home//Single/web3.html">
+<meta property="og:url" content="http://yoursite.com/home//Python/numpy&pandas.html">
 <meta property="og:site_name" content="自用筆記">
-<meta property="og:description" content="sendTransaction與callmethod type指的是一個合約函數是不是constant,如果不是,最終一定要用sendTransaction,因為該函數需要寫資料進區塊鏈,寫入動作是規範在交易裡,必須消耗gas(手續費),也需要解鎖發起人帳號的權限(因為要付錢) 另外,寫資料需要區塊鏈的多數共識,操作的結果在web3中是異步事件. // Automatically determin">
+<meta property="og:description" content="週莫煩 numpy主要用來處理矩陣 pandas 架構numpy之上 更適合數據應用上的操作 而不僅是數學   替行列矩陣加上了行索引值與列欄位名   矩陣import numpy as nparr = np.array([[1,2,3],[4,5,6]])arr = np.zeros((3,4)) # 3x4全為0的矩陣, ones/empty/rangearr = np.linespace(0">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-29T17:00:12.349Z">
+<meta property="og:updated_time" content="2018-05-20T03:40:43.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自用筆記">
-<meta name="twitter:description" content="sendTransaction與callmethod type指的是一個合約函數是不是constant,如果不是,最終一定要用sendTransaction,因為該函數需要寫資料進區塊鏈,寫入動作是規範在交易裡,必須消耗gas(手續費),也需要解鎖發起人帳號的權限(因為要付錢) 另外,寫資料需要區塊鏈的多數共識,操作的結果在web3中是異步事件. // Automatically determin">
+<meta name="twitter:description" content="週莫煩 numpy主要用來處理矩陣 pandas 架構numpy之上 更適合數據應用上的操作 而不僅是數學   替行列矩陣加上了行索引值與列欄位名   矩陣import numpy as nparr = np.array([[1,2,3],[4,5,6]])arr = np.zeros((3,4)) # 3x4全為0的矩陣, ones/empty/rangearr = np.linespace(0">
 
 
 
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/home//Single/web3.html"/>
+  <link rel="canonical" href="http://yoursite.com/home//Python/numpy&pandas.html"/>
 
 
 
@@ -288,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Single/web3.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/home/Python/numpy&pandas.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JimLiuXyz">
@@ -317,8 +317,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-30T00:47:59+08:00">
-                2018-04-30
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-19T15:59:24+08:00">
+                2018-05-19
               </time>
             
 
@@ -355,9 +355,25 @@
       
 
       
-        <h4 id="sendTransaction與call"><a href="#sendTransaction與call" class="headerlink" title="sendTransaction與call"></a>sendTransaction與call</h4><p>method type指的是一個合約函數是不是constant,如果不是,最終一定要用sendTransaction,因為該函數需要寫資料進區塊鏈,寫入動作是規範在交易裡,必須消耗gas(手續費),也需要解鎖發起人帳號的權限(因為要付錢)</p>
-<p>另外,寫資料需要區塊鏈的多數共識,操作的結果在web3中是異步事件.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// Automatically determines the use of call or sendTransaction based on the method type</span><br><span class="line">myContractInstance.myMethod(param1 [, param2, ...] [, transactionObject] [, defaultBlock] [, callback]);</span><br><span class="line"> </span><br><span class="line">// Explicitly calling this method</span><br><span class="line">myContractInstance.myMethod.call(param1 [, param2, ...] [, transactionObject] [, defaultBlock] [, callback]);</span><br><span class="line"> </span><br><span class="line">// Explicitly sending a transaction to this method</span><br><span class="line">myContractInstance.myMethod.sendTransaction(param1 [, param2, ...] [, transactionObject] [, callback]);</span><br><span class="line"> </span><br><span class="line">// Get the call data, so you can call the contract through some other means</span><br><span class="line">var myCallData = myContractInstance.myMethod.getData(param1 [, param2, ...]);</span><br><span class="line">// myCallData = &apos;0x45ff3ff6000000000004545345345345..&apos;</span><br></pre></td></tr></table></figure>
+        <p><a href="https://www.youtube.com/playlist?list=PLXO45tsB95cKKyC45gatc8wEc3Ue7BlI4" target="_blank" rel="noopener">週莫煩</a></p>
+<h4 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h4><p>主要用來處理矩陣</p>
+<h4 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h4><blockquote>
+<p>架構numpy之上 更適合數據應用上的操作 而不僅是數學</p>
+</blockquote>
+<ul>
+<li>替行列矩陣加上了<code>行索引值</code>與<code>列欄位名</code> </li>
+</ul>
+<h1 id="矩陣"><a href="#矩陣" class="headerlink" title="矩陣"></a>矩陣</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr = np.array([</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">arr = np.zeros((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 3x4全為0的矩陣, ones/empty/range</span></span><br><span class="line"></span><br><span class="line">arr = np.linespace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">6</span>).reshape((<span class="number">2</span>,<span class="number">3</span>)) <span class="comment"># 0~10 6個元素 轉為2x3的矩陣</span></span><br><span class="line"></span><br><span class="line">arr = np.random.random((<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"dim"</span>, arr.ndim, <span class="string">"shape"</span>, arr.shapre, <span class="string">"size"</span>, arr.size, arr.dtype)</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">np.sin(a)</span><br><span class="line"></span><br><span class="line">a*b <span class="comment"># 直接乘法</span></span><br><span class="line"></span><br><span class="line">np.dot(a, b) <span class="comment">#矩陣乘法</span></span><br><span class="line">a.dot(b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合併</span></span><br><span class="line">np.vstack(a,b) <span class="comment"># [[a,b]]</span></span><br><span class="line">np.hstack(a,b) <span class="comment"># [a,b]</span></span><br><span class="line">np.concatenate(..., axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分割</span></span><br><span class="line">np.split(a, 切塊數, axis=<span class="number">0</span>)</span><br><span class="line">np.array_split(a, 切塊數, axis=<span class="number">0</span>) <span class="comment">#不等量的分割</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># deep copy</span></span><br><span class="line">b = a.copy()</span><br><span class="line"></span><br><span class="line">np.nan  <span class="comment"># NaN</span></span><br><span class="line">np.sum(a, axis=<span class="number">0</span>) <span class="comment">#axis=0/1 行(橫/row)或列(直/column)</span></span><br><span class="line">np.min(a)</span><br><span class="line">np.max(a)</span><br><span class="line">np.argmin(a) <span class="comment">#最小值的索引</span></span><br><span class="line">np.mean(a)</span><br><span class="line">np.average(a)</span><br><span class="line">np.median(a) <span class="comment">#中位數</span></span><br><span class="line">np.cumsum(a) <span class="comment">#累加矩陣</span></span><br><span class="line">np.diff(a) <span class="comment">#累差矩陣</span></span><br><span class="line">np.transpose(a) <span class="comment">#行列反向 等同a.T</span></span><br><span class="line">np.clip(a, <span class="number">3</span>, <span class="number">9</span>) <span class="comment">#&lt;3則為3 &gt;9則為9</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">a[行][列]</span><br><span class="line">a[行,列]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> arr:</span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> arr.T:</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> arr.flat: <span class="comment">#flatten()轉為一維</span></span><br></pre></td></tr></table></figure>
+<p>#Pandas</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]) <span class="comment">#一維</span></span><br><span class="line"></span><br><span class="line">pd.date_range(<span class="string">'20180101'</span>, periods=<span class="number">6</span>) <span class="comment">#一維 6個日期</span></span><br><span class="line"></span><br><span class="line">pd.DataFrame(np.random.randn(<span class="number">3</span>,<span class="number">4</span>), index=[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>], columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]) <span class="comment"># 二維 行索引為012 列欄位為abc</span></span><br><span class="line"></span><br><span class="line">pd.DataFrame(&#123;</span><br><span class="line"><span class="string">'date'</span>: pd.Timestamp(<span class="string">'20180101'</span>),</span><br><span class="line"><span class="string">'type'</span>: pd.Categorical(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"b"</span>, <span class="string">"a"</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">data.dtypes <span class="comment"># 取得列的所以類型</span></span><br><span class="line">data.index <span class="comment"># 取得行索引值</span></span><br><span class="line">data.columns <span class="comment"># 取得列欄位名</span></span><br><span class="line"></span><br><span class="line">data.values <span class="comment"># 取每一行的value</span></span><br><span class="line"></span><br><span class="line">data.describe() <span class="comment"># 取個欄位的統計值</span></span><br><span class="line"></span><br><span class="line">data.sort_index(axis=<span class="number">0</span>, ascending=<span class="keyword">True</span>) <span class="comment"># 以行索引排序</span></span><br><span class="line">data.sort_values(by=<span class="string">'type'</span>) <span class="comment"># 以欄位內的值排序</span></span><br></pre></td></tr></table></figure>
+<h4 id="取-選-資料"><a href="#取-選-資料" class="headerlink" title="取(選)資料"></a>取(選)資料</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">data[<span class="string">'type'</span>]</span><br><span class="line">data.type</span><br><span class="line">data[<span class="number">0</span>:<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># by label name</span></span><br><span class="line">data.loc[<span class="string">'20180101'</span>, [<span class="string">'type'</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># by index position</span></span><br><span class="line">data.iloc[<span class="number">0</span>, <span class="number">1</span>:<span class="number">2</span>] <span class="comment"># 0行的12列</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># by mixed selection</span></span><br><span class="line">data.ix[<span class="number">0</span>, [<span class="string">'type'</span>, <span class="string">'date'</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># filter</span></span><br><span class="line">data[data.type==<span class="string">'a'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取前五筆</span></span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">data.dropna(asix=<span class="number">0</span>, how=<span class="string">'any'</span>) <span class="comment"># 丟掉行中若出現nan的行</span></span><br><span class="line">data.fillna(value=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">data.isnull()</span><br><span class="line">np.any(data.isnull()) == <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h4 id="讀取文件資料"><a href="#讀取文件資料" class="headerlink" title="讀取文件資料"></a>讀取文件資料</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">'file.csv'</span>) <span class="comment"># html/excel/json...</span></span><br><span class="line"></span><br><span class="line">data.to_pickle(<span class="string">'file.pickle'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="合併"><a href="#合併" class="headerlink" title="合併"></a>合併</h4><p><a href="https://www.youtube.com/watch?v=DcyFh2m3g6c" target="_blank" rel="noopener">concat</a> <a href="https://www.youtube.com/watch?v=Y2xmMG_jXnc" target="_blank" rel="noopener">merge</a></p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">data = pd.concat([data1,data2], axis=<span class="number">0</span>, ignore_index=<span class="keyword">True</span>) <span class="comment"># 合併行</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># join參數</span></span><br><span class="line"><span class="comment"># outer:沒交集的欄位用nan </span></span><br><span class="line"><span class="comment"># inner:沒交集的欄位直接刪除</span></span><br><span class="line">join&#123;<span class="string">'outer'</span>, <span class="string">'inner'</span>&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -381,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/home/CoinPocket/開發紀錄.html" rel="next" title="Coinpocket開發紀錄">
-                <i class="fa fa-chevron-left"></i> Coinpocket開發紀錄
+              <a href="/home/Python/Thread&Process.html" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -391,7 +407,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/home/Single/Docker.html" rel="prev" title="">
+              <a href="/home/Python/matplotlib.html" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -470,7 +486,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -543,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#sendTransaction與call"><span class="nav-number">1.</span> <span class="nav-text">sendTransaction與call</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#numpy"><span class="nav-number">1.</span> <span class="nav-text">numpy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pandas"><span class="nav-number">2.</span> <span class="nav-text">pandas</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩陣"><span class="nav-number"></span> <span class="nav-text">矩陣</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取-選-資料"><span class="nav-number">1.</span> <span class="nav-text">取(選)資料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#讀取文件資料"><span class="nav-number">2.</span> <span class="nav-text">讀取文件資料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合併"><span class="nav-number">3.</span> <span class="nav-text">合併</span></a></li></ol></div>
             
 
           </div>
